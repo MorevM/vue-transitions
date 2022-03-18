@@ -1,0 +1,50 @@
+# Fix end-of-lines in Git versions older than 2.10
+# https://github.com/git/git/blob/master/Documentation/RelNotes/2.10.0.txt#L248
+* text=auto eol=lf
+
+# Binary Files (don't diff, don't fix line endings)
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.tiff binary
+*.webp binary
+
+# Image sources
+*.psd binary
+
+# Fonts
+*.oft binary
+*.ttf binary
+*.eot binary
+*.woff binary
+*.woff2 binary
+
+# Videos
+*.mov binary
+*.mp4 binary
+*.webm binary
+*.ogg binary
+*.ogv binary
+*.mpg binary
+*.3gp binary
+*.avi binary
+*.wmv binary
+*.flv binary
+*.asf binary
+
+# Audio
+*.mp3 binary
+*.wav binary
+*.flac binary
+
+# Compressed
+*.gz binary
+*.zip binary
+*.tar binary
+*.tgz binary
+*.7z binary
+*.rar binary

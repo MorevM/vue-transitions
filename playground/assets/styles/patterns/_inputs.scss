@@ -1,0 +1,37 @@
+@use 'more-sass' as *;
+
+%input-primary {
+	@include reset-input;
+	display: inline-block;
+	padding: 12px;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1.2;
+	font-style: inherit;
+	font-weight: inherit;
+	text-transform: none;
+	background-color: #ffffff;
+	border: 1px solid #dfdfdf;
+	border-radius: 2px;
+	transition-property: border-color, box-shadow, color, opacity;
+	transition-duration: .2s;
+	transition-timing-function: ease-out;
+	transition-delay: 0s;
+
+	&:hover {
+		border-color: #148cd7;
+	}
+
+	&:focus {
+		border-color: #148cd7;
+		box-shadow: inset 0 0 0 1px #148cd7;
+		outline: 0;
+	}
+
+	&:disabled {
+		color: #d3d3d3;
+		border-color: #dfdfdf;
+		opacity: .7;
+		cursor: not-allowed;
+	}
+}

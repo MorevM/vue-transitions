@@ -1,0 +1,35 @@
+@use 'more-sass' as *;
+
+%button-primary {
+	@include reset-button;
+	display: inline-block;
+	padding: 12px;
+	color: #ffffff;
+	line-height: 1.2;
+	background-color: #464646;
+	border: 1px solid #464646;
+	border-radius: 2px;
+	transition-property: background-color, border-color, color, opacity;
+	transition-duration: .2s;
+	transition-timing-function: ease-out;
+	transition-delay: 0s;
+	cursor: pointer;
+	user-select: none;
+
+	&:hover {
+		background-color: #2d2d2d;
+		border-color: #2d2d2d;
+	}
+
+	&:active {
+		transform: translateY(1px);
+	}
+
+	&:disabled {
+		color: #808080;
+		background-color: #dfdfdf;
+		border-color: #dfdfdf;
+		transform: none;
+		cursor: not-allowed;
+	}
+}

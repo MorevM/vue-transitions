@@ -1,0 +1,20 @@
+@use '../../mixins/base-transition.scss';
+
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition-property: opacity !important;
+}
+
+.fade-leave,
+.fade-enter-to {
+	opacity: 1;
+}
+
+.fade-move {
+	@extend %base-move;
+}

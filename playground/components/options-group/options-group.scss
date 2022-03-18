@@ -1,0 +1,51 @@
+@use '../../assets/styles/patterns/inputs.scss';
+
+.options-group {
+	$b: #{&};
+
+	@include padding(10px null);
+
+	&__label {
+		margin-bottom: .75em;
+		line-height: 1.2;
+		font-weight: 700;
+	}
+
+	&__controls {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 15px;
+	}
+
+	&__control {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-gap: 10px;
+		align-items: center;
+
+		&:only-child {
+			grid-template-columns: 1fr;
+			grid-column: span 2;
+		}
+	}
+
+	&__control-label {
+		line-height: 1.2;
+		user-select: none;
+	}
+
+	&__control-inputs {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 5px;
+
+		input {
+			@extend %input-primary;
+			width: 100%;
+
+			&:only-child {
+				grid-column: span 2;
+			}
+		}
+	}
+}

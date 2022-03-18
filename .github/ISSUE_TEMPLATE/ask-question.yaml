@@ -1,0 +1,10 @@
+name: ❓ Ask a question
+description: If something is not explained well enough
+labels: [question]
+
+body:
+  - type: textarea
+    attributes:
+      label: Question
+    validations:
+      required: true

@@ -1,0 +1,33 @@
+# Artifacts
+dist
+build
+tmp
+
+# Editors
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+.vscode
+!.vscode/settings.template.json
+
+# Dependencies
+node_modules
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Log Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.more-sass
+
+# Misc
+todo

@@ -1,0 +1,45 @@
+git:
+  commitMessage: 'release: Release version ${version}'
+  tagAnnotation: 'Release version ${version}'
+  tagName: 'v${version}'
+
+npm:
+  publish: false
+
+plugins:
+  '@release-it/conventional-changelog':
+    infile: CHANGELOG.md
+    preset:
+      name: conventionalcommits
+      types:
+        - type: feat
+          section: Features
+        - type: fix
+          section: Bug fixes
+        - type: refactor
+          section: Refactoring
+        - type: test
+          section: Tests
+        - type: docs
+          section: Documentation
+        - type: chore
+          section: Chores
+        - type: release
+          hidden: true
+        - type: revert
+          hidden: true
+        - type: build
+          hidden: true
+        - type: ci
+          section: CI improvements
+        - type: wip
+          hidden: true
+        - type: nvm
+          hidden: true
+hooks:
+  before:init:
+    - yarn lint:fix
+    - yarn build
+  after:init:
+    - yarn lint
+    - yarn test

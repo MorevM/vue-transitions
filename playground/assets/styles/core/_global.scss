@@ -1,0 +1,31 @@
+html {
+	position: relative;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+body {
+	position: relative;
+	display: flex; // fix IE flexbox min-height problem
+	color: #000000;
+	font-family: -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Ubuntu, Cantarell, 'Helvetica Neue', serif;
+	font-size: 16px;
+	line-height: 1.5;
+	background-color: #ffffff;
+	overflow: hidden;
+}
+
+#app {
+	position: relative;
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	width: 100vw;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+:focus-visible,
+.focus-visible {
+	outline: 3px solid #148cd7;
+}

@@ -1,0 +1,54 @@
+name: 🐛 Bug Report
+description: If something goes wrong
+labels: [bug]
+
+body:
+  - type: textarea
+    attributes:
+      label: Actual behavior
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1.
+        2.
+        3.
+
+  - type: textarea
+    attributes:
+      label: Environment
+      description: |
+        Example:
+          - Device: [Desktop, iPhone X, etc.]
+          - OS: [Windows 10, iOS 11.1, etc.]
+          - Browser: [Chrome 89, iOS Safari 13.7, etc.]
+      value: |
+        - Device:
+        - OS:
+        - Browser:
+
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Any other context about the problem here.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Possible solution
+      description: Any ideas of what could be done to resolve the problem.
+    validations:
+      required: false

@@ -1,0 +1,4 @@
+'*.{js,vue,json.jsonc,json5,yml,yaml}':
+  - eslint --fix
+'*.{css,scss}':
+  - stylelint --fix --allow-empty-input

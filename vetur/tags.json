@@ -1,0 +1,62 @@
+{
+	"transition-expand": {
+		"description": "Expand transition",
+		"attributes": [
+			"duration",
+			"easing",
+			"delay",
+			"appear",
+			"mode",
+			"group",
+			"tag",
+			"move-duration",
+			"move-disable",
+			"axis"
+		]
+	},
+	"transition-fade": {
+		"description": "Fade transition",
+		"attributes": [
+			"duration",
+			"easing",
+			"delay",
+			"appear",
+			"mode",
+			"group",
+			"tag",
+			"move-duration",
+			"move-disable"
+		]
+	},
+	"transition-scale": {
+		"description": "Scale transition",
+		"attributes": [
+			"duration",
+			"easing",
+			"delay",
+			"appear",
+			"mode",
+			"group",
+			"tag",
+			"move-duration",
+			"move-disable",
+			"axis",
+			"origin"
+		]
+	},
+	"transition-slide": {
+		"description": "Slide transition",
+		"attributes": [
+			"duration",
+			"easing",
+			"delay",
+			"appear",
+			"mode",
+			"group",
+			"tag",
+			"move-duration",
+			"move-disable",
+			"offset"
+		]
+	}
+}

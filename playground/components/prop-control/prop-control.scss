@@ -1,0 +1,32 @@
+.prop-control {
+	$b: &;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 16px;
+	}
+
+	&__label {
+		@include font('500 18px/1');
+		margin-right: 24px;
+		white-space: nowrap;
+	}
+
+	&__values {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px;
+	}
+
+	&__value {
+		width: 100% !important;
+
+		&--has-inner {
+			display: grid;
+			grid-auto-flow: column;
+			gap: 8px;
+		}
+	}
+}
