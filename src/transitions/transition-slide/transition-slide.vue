@@ -39,7 +39,7 @@
 				element.offsetTop; // eslint-disable-line no-unused-expressions
 
 				this.setupTransition(element, 'enter');
-				element.style.removeProperty('transform');
+				this.$nextTick(() => element.style.removeProperty('transform'));
 			},
 
 			async onLeave(element) {
@@ -85,7 +85,6 @@
 					matrix[4] = offsetX;
 					matrix[5] = offsetY;
 				}
-
 				element.style.setProperty('transform', `${matrixType}(${matrix})`);
 			},
 
