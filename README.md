@@ -55,6 +55,7 @@ Global usage:
 
 ```js
 import MoreVueTransitions from '@morev/vue-transitions';
+import '@morev/vue-transitions/styles';
 
 Vue.use(MoreVueTransitions);
 ```

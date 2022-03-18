@@ -35,7 +35,8 @@
 		".": {
 			"import": "./dist/vue-transitions.es.js",
 			"require": "./dist/vue-transitions.cjs.js"
-		}
+		},
+		"./styles": "./dist/index.css"
 	},
 	"main": "./dist/vue-transitions.cjs.js",
 	"module": "./dist/vue-transitions.es.js",
