@@ -127,6 +127,10 @@
 		"type": "string|object",
 		"description": "Transform origin property."
 	},
+	"transition-scale/scale": {
+		"type": "number",
+		"description": "The element scale value before/after the transition."
+	},
 	"transition-slide/duration": {
 		"type": "number|object",
 		"description": "Transition animation duration, ms."

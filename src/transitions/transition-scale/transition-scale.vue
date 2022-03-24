@@ -10,10 +10,12 @@
 </template>
 
 <script>
+	import { clamp } from '@morev/helpers';
 	import { baseTransition } from '../../mixins/base-transition.js';
 	import { validateScaleAxis } from '../../utility/validate/validate-scale-axis.js';
 	import { validateScaleOrigin } from '../../utility/validate/validate-scale-origin.js';
-	import { scaleAxis, scaleOrigin } from '../../utility/defaults/defaults.js';
+	import { validateScaleValue } from '../../utility/validate/validate-scale-value.js';
+	import { scaleAxis, scaleOrigin, scaleValue } from '../../utility/defaults/defaults.js';
 	import { getMatrix } from '../../utility/helpers.js';
 
 	export default {
@@ -29,6 +31,10 @@
 			origin: {
 				validator: validateScaleOrigin,
 				default: scaleOrigin,
+			},
+			scale: {
+				validator: validateScaleValue,
+				default: scaleValue,
 			},
 		},
 		data: () => ({}),
@@ -66,21 +72,22 @@
 
 				const axis = this.axis?.[event] ?? this.axis;
 				const origin = this.origin?.[event] ?? this.origin;
+				const scale = clamp(0.0001, this.scale?.[event] ?? this.scale, 0.9999);
 
 				const [matrixType, matrix] = getMatrix(transform);
 
 				// Respect existing 3D transform
 				if (transform.startsWith('matrix3d')) {
-					if (axis !== 'y') matrix[0] = 0.0001;
-					if (axis !== 'x') matrix[5] = 0.0001;
+					if (axis !== 'y') matrix[0] = scale;
+					if (axis !== 'x') matrix[5] = scale;
 				// Respect existing 2D transform
 				} else if (transform.startsWith('matrix')) {
-					if (axis !== 'y') matrix[0] = 0.0001;
-					if (axis !== 'x') matrix[3] = 0.0001;
+					if (axis !== 'y') matrix[0] = scale;
+					if (axis !== 'x') matrix[3] = scale;
 				// Just set own transform
 				} else {
-					matrix[0] = axis === 'y' ? 1 : 0.0001;
-					matrix[3] = axis === 'x' ? 1 : 0.0001;
+					matrix[0] = axis === 'y' ? 1 : scale;
+					matrix[3] = axis === 'x' ? 1 : scale;
 				}
 
 				if (this.opacity) {
