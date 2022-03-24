@@ -1,11 +1,5 @@
 @use '../utility/defaults/defaults.scss';
 
-%base-animation {
-	transition-duration: defaults.$transition-duration;
-	transition-timing-function: defaults.$transition-easing;
-	transition-delay: defaults.$transition-delay;
-}
-
 %base-move {
 	transition-property: transform;
 	transition-duration: defaults.$transition-duration;

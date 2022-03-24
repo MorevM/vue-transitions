@@ -44,7 +44,7 @@
 				element.offsetTop; // eslint-disable-line no-unused-expressions -- Intentionally
 
 				this.setupTransition(element, 'enter');
-				this.expandElement(element, 'enter');
+				this.$nextTick(() => this.expandElement(element, 'enter'));
 			},
 
 			async onLeave(element) {
@@ -72,6 +72,10 @@
 				const margin = elementVisual.margin[axis];
 				const padding = elementVisual.padding[axis];
 
+				if (this.opacity) {
+					element.style.setProperty('opacity', 1);
+				}
+
 				element.style.setProperty(axis === 'x' ? 'width' : 'height', `${parseFloat(size)}px`);
 				element.style.setProperty(`padding-${start}`, `${parseFloat(padding[0])}px`);
 				element.style.setProperty(`padding-${end}`, `${parseFloat(padding[1])}px`);
@@ -81,10 +85,14 @@
 
 			collapseElement(element, event = 'enter') {
 				const axis = this.axis?.[event] ?? this.axis;
+				const axisProp = axis === 'x' ? 'width' : 'height';
 				const start = axis === 'x' ? 'left' : 'top';
 				const end = axis === 'x' ? 'right' : 'bottom';
 
-				const axisProp = axis === 'x' ? 'width' : 'height';
+				if (this.opacity) {
+					element.style.setProperty('opacity', 0);
+				}
+
 				element.style.setProperty(axisProp, '0px');
 				element.style.setProperty(`padding-${start}`, '0px');
 				element.style.setProperty(`padding-${end}`, '0px');
@@ -93,6 +101,7 @@
 			},
 
 			resetElement(element) {
+				element.style.removeProperty('opacity');
 				element.style.removeProperty('width');
 				element.style.removeProperty('height');
 				element.style.removeProperty('padding-top');

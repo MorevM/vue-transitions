@@ -43,7 +43,10 @@
 				element.offsetTop; // eslint-disable-line no-unused-expressions
 
 				this.setupTransition(element, 'enter');
-				element.style.removeProperty('transform');
+				this.$nextTick(() => {
+					element.style.removeProperty('opacity');
+					element.style.removeProperty('transform');
+				});
 			},
 
 			async onLeave(element) {
@@ -80,11 +83,16 @@
 					matrix[3] = axis === 'x' ? 1 : 0.0001;
 				}
 
+				if (this.opacity) {
+					element.style.setProperty('opacity', 0);
+				}
+
 				element.style.setProperty('transform', `${matrixType}(${matrix})`);
 				element.style.setProperty('transform-origin', `${origin}`);
 			},
 
 			resetElement(element) {
+				element.style.removeProperty('opacity');
 				element.style.removeProperty('transform');
 				element.style.removeProperty('transform-origin');
 			},

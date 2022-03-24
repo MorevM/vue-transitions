@@ -18,6 +18,10 @@ export const baseTransition = {
 			validator: validateDelay,
 			default: defaults.transitionDelay,
 		},
+		opacity: {
+			type: Boolean,
+			default: true,
+		},
 		appear: {
 			type: Boolean,
 			default: false,

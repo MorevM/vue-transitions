@@ -11,6 +11,10 @@
 		"type": "number|object",
 		"description": "Transition animation delay, ms."
 	},
+	"transition-expand/opacity": {
+		"type": "boolean",
+		"description": "Whether to animate the element opacity."
+	},
 	"transition-expand/appear": {
 		"type": "boolean",
 		"description": "Whether to apply a transition on the initial render of a node."
@@ -87,6 +91,10 @@
 		"type": "number|object",
 		"description": "Transition animation delay, ms."
 	},
+	"transition-scale/opacity": {
+		"type": "boolean",
+		"description": "Whether to animate the element opacity."
+	},
 	"transition-scale/appear": {
 		"type": "boolean",
 		"description": "Whether to apply a transition on the initial render of a node."
@@ -130,6 +138,10 @@
 	"transition-slide/delay": {
 		"type": "number|object",
 		"description": "Transition animation delay, ms."
+	},
+	"transition-slide/opacity": {
+		"type": "boolean",
+		"description": "Whether to animate the element opacity."
 	},
 	"transition-slide/appear": {
 		"type": "boolean",
