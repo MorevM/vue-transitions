@@ -11,8 +11,7 @@ tmp
 *.sln
 *.sw*
 
-.vscode
-!.vscode/settings.template.json
+.vscode/settings.json
 
 # Dependencies
 node_modules
@@ -28,6 +27,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .more-sass
-
-# Misc
-todo
