@@ -15,12 +15,12 @@ describe('validateScaleAxis', () => {
 		expect(validateScaleAxis(123)).toBe(false);
 	});
 
-	it('Returns `true` if a given value is the object with keys `in` and `out` which values are valid', () => {
+	it('Returns `true` if a given value is the object with keys `enter` and `leave` which values are valid', () => {
 		expect(validateScaleAxis({ enter: 'x', leave: 'y' })).toBe(true);
 		expect(validateScaleAxis({ enter: 'x', leave: 'both' })).toBe(true);
 	});
 
-	it('Returns `false` if a given value is the object with keys `in` and `out` which values are invalid', () => {
+	it('Returns `false` if a given value is the object with keys `enter` and `leave` which values are invalid', () => {
 		expect(validateScaleAxis({ enter: 'x', leave: 'foo' })).toBe(false);
 		expect(validateScaleAxis({ enter: 'foo', leave: 'y' })).toBe(false);
 		expect(validateScaleAxis({ enter: 'foo', leave: 'bar' })).toBe(false);

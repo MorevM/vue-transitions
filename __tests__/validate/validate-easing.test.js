@@ -17,11 +17,11 @@ describe('validateEasing', () => {
 		expect(validateEasing(123)).toBe(false);
 	});
 
-	it('Returns `true` if a given value is the object with keys `in` and `out` which values are valid', () => {
+	it('Returns `true` if a given value is the object with keys `enter` and `leave` which values are valid', () => {
 		expect(validateEasing({ enter: 'ease-in', leave: 'ease-out' })).toBe(true);
 	});
 
-	it('Returns `false` if a given value is the object with keys `in` and `out` which values are invalid', () => {
+	it('Returns `false` if a given value is the object with keys `enter` and `leave` which values are invalid', () => {
 		expect(validateEasing({ enter: 'ease-in', leave: 123 })).toBe(false);
 		expect(validateEasing({ enter: 123, leave: 'ease-out' })).toBe(false);
 		expect(validateEasing({ enter: 123, leave: 456 })).toBe(false);

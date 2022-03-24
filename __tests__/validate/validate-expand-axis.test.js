@@ -14,11 +14,11 @@ describe('validateExpandAxis', () => {
 		expect(validateExpandAxis(123)).toBe(false);
 	});
 
-	it('Returns `true` if a given value is the object with keys `in` and `out` which values are valid', () => {
+	it('Returns `true` if a given value is the object with keys `enter` and `leave` which values are valid', () => {
 		expect(validateExpandAxis({ enter: 'x', leave: 'y' })).toBe(true);
 	});
 
-	it('Returns `false` if a given value is the object with keys `in` and `out` which values are invalid', () => {
+	it('Returns `false` if a given value is the object with keys `enter` and `leave` which values are invalid', () => {
 		expect(validateExpandAxis({ enter: 'x', leave: 'foo' })).toBe(false);
 		expect(validateExpandAxis({ enter: 'foo', leave: 'y' })).toBe(false);
 		expect(validateExpandAxis({ enter: 'foo', leave: 'bar' })).toBe(false);
