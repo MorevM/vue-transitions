@@ -1,6 +1,6 @@
 module.exports = {
 	extends: [
-		'@morev/stylelint-config/scss/warn-autofixable',
+		'@morev/stylelint-config/scss',
 	],
 	rules: {
 		'plugin/no-low-performance-animation-properties': null,

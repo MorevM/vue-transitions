@@ -9,4 +9,6 @@ build
 tmp
 node_modules
 
+LICENSE.md
+CHANGELOG.md
 .more-sass
