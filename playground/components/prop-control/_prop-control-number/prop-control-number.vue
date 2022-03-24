@@ -3,8 +3,9 @@
 		<el-input-number
 			v-bem:value
 			key="in"
-			:min="0"
-			:step="50"
+			:min="min"
+			:max="max"
+			:step="step"
 			:value="isSeparated ? value[0] : value"
 			@change="(v) => onChange(v, 'in')"
 		/>
@@ -27,8 +28,11 @@
 		name: 'prop-control-number',
 		block: 'prop-control',
 		props: {
-			isSeparated: _prop.bool.def(false),
 			value: _prop.oneOfType([Number, Array]),
+			min: _prop.number.def(0),
+			max: _prop.number.def(undefined),
+			step: _prop.number.def(50),
+			isSeparated: _prop.bool.def(false),
 		},
 		emits: ['input'],
 		watch: {
@@ -42,7 +46,10 @@
 		},
 		methods: {
 			onChange(value, mode) {
-				if (!this.isSeparated) return this.$emit('input', value);
+				if (!this.isSeparated) {
+					return this.$emit('input', value);
+				}
+
 				if (mode === 'in') {
 					this.$emit('input', [value, this.value[1]]);
 				} else {

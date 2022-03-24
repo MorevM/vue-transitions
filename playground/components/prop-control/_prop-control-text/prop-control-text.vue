@@ -23,8 +23,8 @@
 		name: 'prop-control-text',
 		block: 'prop-control',
 		props: {
-			isSeparated: _prop.bool.def(false),
 			value: _prop.oneOfType([String, Array]),
+			isSeparated: _prop.bool.def(false),
 		},
 		emits: ['input'],
 		watch: {
@@ -38,7 +38,10 @@
 		},
 		methods: {
 			onChange(value, mode) {
-				if (!this.isSeparated) return this.$emit('input', value);
+				if (!this.isSeparated) {
+					return this.$emit('input', value);
+				}
+
 				if (mode === 'in') {
 					this.$emit('input', [value, this.value[1]]);
 				} else {
