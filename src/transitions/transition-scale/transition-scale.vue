@@ -90,7 +90,7 @@
 					matrix[3] = axis === 'x' ? 1 : scale;
 				}
 
-				if (this.opacity) {
+				if (!this.noOpacity) {
 					element.style.setProperty('opacity', 0);
 				}
 

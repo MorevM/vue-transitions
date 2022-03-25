@@ -115,14 +115,14 @@ Default: `0`.
 
 ```ts
 {
-  opacity: boolean;
+  noOpacity: boolean;
 }
 ```
 
-Whether to animate the element opacity.\
+Whether to not animate the element opacity.\
 Does not affects the `transition-fade` transition.
 
-Default: `true`.
+Default: `false`.
 
 ### offset `(TransitionSlide)`
 

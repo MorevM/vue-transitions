@@ -72,7 +72,7 @@
 				const margin = elementVisual.margin[axis];
 				const padding = elementVisual.padding[axis];
 
-				if (this.opacity) {
+				if (!this.noOpacity) {
 					element.style.setProperty('opacity', 1);
 				}
 
@@ -89,7 +89,7 @@
 				const start = axis === 'x' ? 'left' : 'top';
 				const end = axis === 'x' ? 'right' : 'bottom';
 
-				if (this.opacity) {
+				if (!this.noOpacity) {
 					element.style.setProperty('opacity', 0);
 				}
 

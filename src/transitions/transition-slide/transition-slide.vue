@@ -89,7 +89,7 @@
 					matrix[5] = offsetY;
 				}
 
-				if (this.opacity) {
+				if (!this.noOpacity) {
 					element.style.setProperty('opacity', 0);
 				}
 
