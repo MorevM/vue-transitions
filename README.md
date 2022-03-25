@@ -242,6 +242,18 @@ Transition tag, in the case of using a `transition-group`.
 
 Default: `span`.
 
+### noMove
+
+```ts
+{
+  noMove: boolean;
+}
+```
+
+Whether to not animate elements positions changing, in the case of using a `transition-group`.
+
+Default: `false`.
+
 ### moveDuration
 
 ```ts
@@ -253,15 +265,3 @@ Default: `span`.
 Duration of animation of elements positions changing, in the case of using a `transition-group`.
 
 Default: `300`.
-
-### moveDisable
-
-```ts
-{
-  moveDisable: boolean;
-}
-```
-
-Whether to not animate elements positions changing, in the case of using a `transition-group`.
-
-Default: `false`.

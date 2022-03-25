@@ -11,7 +11,7 @@
 			"group",
 			"tag",
 			"move-duration",
-			"move-disable",
+			"no-move",
 			"axis"
 		]
 	},
@@ -26,7 +26,7 @@
 			"group",
 			"tag",
 			"move-duration",
-			"move-disable"
+			"no-move"
 		]
 	},
 	"transition-scale": {
@@ -41,7 +41,7 @@
 			"group",
 			"tag",
 			"move-duration",
-			"move-disable",
+			"no-move",
 			"axis",
 			"origin",
 			"scale"
@@ -59,7 +59,7 @@
 			"group",
 			"tag",
 			"move-duration",
-			"move-disable",
+			"no-move",
 			"offset"
 		]
 	}

@@ -31,13 +31,13 @@
 		"type": "string",
 		"description": "Transition tag, in the case of using a transition-group."
 	},
+	"transition-expand/no-move": {
+		"type": "boolean",
+		"description": "Whether to not animate elements positions changing, in the case of using a transition-group."
+	},
 	"transition-expand/move-duration": {
 		"type": "number",
 		"description": "Duration of animation of elements positions changing, in the case of using a transition-group."
-	},
-	"transition-expand/move-disable": {
-		"type": "boolean",
-		"description": "Whether to not animate elements positions changing, in the case of using a transition-group."
 	},
 	"transition-expand/axis": {
 		"type": "string|object",
@@ -71,13 +71,13 @@
 		"type": "string",
 		"description": "Transition tag, in the case of using a transition-group."
 	},
+	"transition-fade/no-move": {
+		"type": "boolean",
+		"description": "Whether to not animate elements positions changing, in the case of using a transition-group."
+	},
 	"transition-fade/move-duration": {
 		"type": "number",
 		"description": "Duration of animation of elements positions changing, in the case of using a transition-group."
-	},
-	"transition-fade/move-disable": {
-		"type": "boolean",
-		"description": "Whether to not animate elements positions changing, in the case of using a transition-group."
 	},
 	"transition-scale/duration": {
 		"type": "number|object",
@@ -111,13 +111,13 @@
 		"type": "string",
 		"description": "Transition tag, in the case of using a transition-group."
 	},
+	"transition-scale/no-move": {
+		"type": "boolean",
+		"description": "Whether to not animate elements positions changing, in the case of using a transition-group."
+	},
 	"transition-scale/move-duration": {
 		"type": "number",
 		"description": "Duration of animation of elements positions changing, in the case of using a transition-group."
-	},
-	"transition-scale/move-disable": {
-		"type": "boolean",
-		"description": "Whether to not animate elements positions changing, in the case of using a transition-group."
 	},
 	"transition-scale/axis": {
 		"type": "string|object",
@@ -163,13 +163,13 @@
 		"type": "string",
 		"description": "Transition tag, in the case of using a transition-group."
 	},
+	"transition-slide/no-move": {
+		"type": "boolean",
+		"description": "Whether to not animate elements positions changing, in the case of using a transition-group."
+	},
 	"transition-slide/move-duration": {
 		"type": "number",
 		"description": "Duration of animation of elements positions changing, in the case of using a transition-group."
-	},
-	"transition-slide/move-disable": {
-		"type": "boolean",
-		"description": "Whether to not animate elements positions changing, in the case of using a transition-group."
 	},
 	"transition-slide/offset": {
 		"type": "array|object",
