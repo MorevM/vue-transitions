@@ -17,11 +17,11 @@ describe('validateScaleOrigin', () => {
 		expect(validateScaleOrigin(123)).toBe(false);
 	});
 
-	it('Returns `true` if a given value is the object with keys `in` and `out` which values are valid', () => {
+	it('Returns `true` if a given value is the object with keys `enter` and `leave` which values are valid', () => {
 		expect(validateScaleOrigin({ enter: '25% 75%', leave: '75% 25%' })).toBe(true);
 	});
 
-	it('Returns `false` if a given value is the object with keys `in` and `out` which values are invalid', () => {
+	it('Returns `false` if a given value is the object with keys `enter` and `leave` which values are invalid', () => {
 		expect(validateScaleOrigin({ enter: '25% 75%', leave: 123 })).toBe(false);
 		expect(validateScaleOrigin({ enter: 123, leave: '75% 25%' })).toBe(false);
 		expect(validateScaleOrigin({ enter: 123, leave: 456 })).toBe(false);

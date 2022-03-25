@@ -73,13 +73,13 @@ Vue.use(MoreVueTransitions);
 
 ```ts
 {
-  duration: number
-  duration: {enter: number, leave: number}
+  duration: number;
+  duration: {enter: number, leave: number};
 }
 ```
 
 Transition animation duration, ms.\
-If an object given then `in` and `out` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
 Default: `300`.
 
@@ -87,13 +87,13 @@ Default: `300`.
 
 ```ts
 {
-  easing: string
-  easing: {enter: string, leave: string}
+  easing: string;
+  easing: {enter: string, leave: string};
 }
 ```
 
 Transition animation easing. Should be a valid CSS transition timing function.\
-If an object given then `in` and `out` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
 Default: `ease-in-out`.
 
@@ -101,41 +101,54 @@ Default: `ease-in-out`.
 
 ```ts
 {
-  delay: number
-  delay: {enter: number, leave: number}
+  delay: number;
+  delay: {enter: number, leave: number};
 }
 ```
 
 Transition animation delay, ms.\
-If an object given then `in` and `out` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
 Default: `0`.
+
+### opacity
+
+```ts
+{
+  noOpacity: boolean;
+}
+```
+
+Whether to not animate the element opacity.\
+Does not affects the `transition-fade` transition.
+
+Default: `false`.
 
 ### offset `(TransitionSlide)`
 
 ```ts
 {
-  offset: [number|string, number|string]
-  offset: {enter: [number|string, number|string], leave: [number|string, number|string]}
+  offset: [number|string, number|string];
+  offset: {enter: [number|string, number|string], leave: [number|string, number|string]};
 }
 ```
 
 The element offset by x and y axis before/after the transition. Should be an integer or a string representation of percentage value (e.g. `'100%'`).\
-If an object given then `in` and `out` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-Default: `[0, -30]`.
+Default: `[0, -16]`.
 
 ### axis `(TransitionExpand)`
 
 ```ts
 {
-  axis: 'x'|'y'
-  axis: {enter: 'x'|'y', leave: 'x'|'y'}
+  axis: 'x'|'y';
+  axis: {enter: 'x'|'y', leave: 'x'|'y'};
 }
 ```
 
 Axis by which the element should be expand.\
-If an object given then `in` and `out` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
 Default: `y`.
 
@@ -143,13 +156,13 @@ Default: `y`.
 
 ```ts
 {
-  axis: 'x'|'y'|'both'
-  axis: {enter: 'x'|'y'|'both', leave: 'x'|'y'|'both'}
+  axis: 'x'|'y'|'both';
+  axis: {enter: 'x'|'y'|'both', leave: 'x'|'y'|'both'};
 }
 ```
 
 Scale axis to be animated.\
-If an object given then `in` and `out` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
 Default: `both`.
 
@@ -157,21 +170,35 @@ Default: `both`.
 
 ```ts
 {
-  origin: string
-  origin: {enter: string, leave: string}
+  origin: string;
+  origin: {enter: string, leave: string};
 }
 ```
 
 Transform origin property. \
-If an object given then `in` and `out` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
 Default: `50% 50%`.
+
+### scale `(TransitionScale)`
+
+```ts
+{
+  scale: number;
+  scale: {enter: number, leave: number};
+}
+```
+
+The element scale value before/after the transition. Should be an number between `0` and `1`.\
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+
+Default: `0`.
 
 ### appear
 
 ```ts
 {
-  appear: boolean
+  appear: boolean;
 }
 ```
 
@@ -183,7 +210,7 @@ Default: `false`.
 
 ```ts
 {
-  mode?: 'out-in'|'in-out'
+  mode: 'out-in'|'in-out'|undefined;
 }
 ```
 
@@ -195,7 +222,7 @@ Default: `undefined`.
 
 ```ts
 {
-  group: boolean
+  group: boolean;
 }
 ```
 
@@ -207,7 +234,7 @@ Default: `false`.
 
 ```ts
 {
-  tag: string
+  tag: string;
 }
 ```
 
@@ -215,26 +242,26 @@ Transition tag, in the case of using a `transition-group`.
 
 Default: `span`.
 
-### moveDuration
+### noMove
 
 ```ts
 {
-  moveDuration: number
-}
-```
-
-Duration of animation of elements positions changing, in the case of using a `transition-group`.
-
-Default: `300`.
-
-### moveDisable
-
-```ts
-{
-  moveDisable: boolean
+  noMove: boolean;
 }
 ```
 
 Whether to not animate elements positions changing, in the case of using a `transition-group`.
 
 Default: `false`.
+
+### moveDuration
+
+```ts
+{
+  moveDuration: number;
+}
+```
+
+Duration of animation of elements positions changing, in the case of using a `transition-group`.
+
+Default: `300`.

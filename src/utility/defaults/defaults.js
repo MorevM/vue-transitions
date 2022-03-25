@@ -8,5 +8,6 @@ export const slideOffset = [0, -16];
 
 export const scaleAxis = 'both';
 export const scaleOrigin = '50% 50%';
+export const scaleValue = 0;
 
 export const moveDuration = transitionDuration;

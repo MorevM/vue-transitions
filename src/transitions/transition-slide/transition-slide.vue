@@ -39,7 +39,10 @@
 				element.offsetTop; // eslint-disable-line no-unused-expressions
 
 				this.setupTransition(element, 'enter');
-				this.$nextTick(() => element.style.removeProperty('transform'));
+				this.$nextTick(() => {
+					element.style.removeProperty('opacity');
+					element.style.removeProperty('transform');
+				});
 			},
 
 			async onLeave(element) {
@@ -85,10 +88,16 @@
 					matrix[4] = offsetX;
 					matrix[5] = offsetY;
 				}
+
+				if (!this.noOpacity) {
+					element.style.setProperty('opacity', 0);
+				}
+
 				element.style.setProperty('transform', `${matrixType}(${matrix})`);
 			},
 
 			resetElement(element) {
+				element.style.removeProperty('opacity');
 				element.style.removeProperty('transform');
 			},
 		},

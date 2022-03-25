@@ -1,5 +1,3 @@
-
-
 ### [0.0.2](https://github.com/MorevM/vue-transitions/compare/v0.0.1...v0.0.2) (2022-03-18)
 
 

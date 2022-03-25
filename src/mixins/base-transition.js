@@ -18,6 +18,10 @@ export const baseTransition = {
 			validator: validateDelay,
 			default: defaults.transitionDelay,
 		},
+		noOpacity: {
+			type: Boolean,
+			default: false,
+		},
 		appear: {
 			type: Boolean,
 			default: false,
@@ -34,13 +38,13 @@ export const baseTransition = {
 			type: String,
 			default: 'span',
 		},
+		noMove: {
+			type: Boolean,
+			default: false,
+		},
 		moveDuration: {
 			type: Number,
 			default: defaults.moveDuration,
-		},
-		moveDisable: {
-			type: Boolean,
-			default: false,
 		},
 	},
 	computed: {
@@ -101,7 +105,9 @@ export const baseTransition = {
 			element.style.removeProperty('transition-delay');
 		},
 		async initLeaving(element) {
-			if (!this.group || this.moveDisable) return element;
+			if (!this.group || this.noMove) {
+				return element;
+			}
 
 			const styles = getComputedStyle(element);
 			const { width, height } = styles;

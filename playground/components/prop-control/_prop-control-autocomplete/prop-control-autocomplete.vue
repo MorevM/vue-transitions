@@ -45,7 +45,10 @@
 		},
 		methods: {
 			onChange(value, mode) {
-				if (!this.isSeparated) return this.$emit('input', value);
+				if (!this.isSeparated) {
+					return this.$emit('input', value);
+				}
+
 				if (mode === 'in') {
 					this.$emit('input', [value, this.value[1]]);
 				} else {

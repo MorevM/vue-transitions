@@ -1,19 +1,9 @@
 @use '../../mixins/base-transition.scss';
 
-.expand-enter,
-.expand-leave-to {
-	// no rules
-}
-
 .expand-enter-active,
 .expand-leave-active {
 	overflow: hidden;
-	transition-property: width, height, margin, padding !important;
-}
-
-.expand-leave,
-.expand-enter-to {
-	// no rules
+	transition-property: opacity, width, height, margin, padding !important;
 }
 
 .expand-move {

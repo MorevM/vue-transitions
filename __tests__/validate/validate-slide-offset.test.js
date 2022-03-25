@@ -41,12 +41,12 @@ describe('validateSlideOffset', () => {
 		expect(validateSlideOffset([])).toBe(false);
 	});
 
-	it('Returns `true` if a given value is the object with keys `in` and `out` which values are valid', () => {
+	it('Returns `true` if a given value is the object with keys `enter` and `leave` which values are valid', () => {
 		expect(validateSlideOffset({ enter: [0, -30], leave: [0, 30] })).toBe(true);
 		expect(validateSlideOffset({ enter: ['0%', '-100%'], leave: ['0%', '100%'] })).toBe(true);
 	});
 
-	it('Returns `false` if a given value is the object with keys `in` and `out` which values are invalid', () => {
+	it('Returns `false` if a given value is the object with keys `enter` and `leave` which values are invalid', () => {
 		expect(validateSlideOffset({ enter: [0, -30], leave: 'foo' })).toBe(false);
 		expect(validateSlideOffset({ enter: 'foo', leave: [0, 30] })).toBe(false);
 		expect(validateSlideOffset({ enter: 'foo', leave: 'bar' })).toBe(false);

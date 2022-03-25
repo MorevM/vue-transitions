@@ -64,9 +64,21 @@
 				<!-- Options -->
 				<transition-slide v-bem:controls-options v-bind="{ group: true, tag: 'div' }">
 					<!-- Duration -->
-					<prop-control key="prop-duration" v-model="duration" v-bind="{ isSeparated }" label="Duration, ms" />
+					<prop-control
+						key="prop-duration"
+						v-model="duration"
+						v-bind="{ isSeparated }"
+						label="Duration, ms"
+					/>
+
 					<!-- Delay -->
-					<prop-control key="prop-delay" v-model="delay" v-bind="{ isSeparated }" label="Delay, ms" />
+					<prop-control
+						key="prop-delay"
+						v-model="delay"
+						v-bind="{ isSeparated }"
+						label="Delay, ms"
+					/>
+
 					<!-- Easing -->
 					<prop-control
 						key="prop-easing"
@@ -96,6 +108,18 @@
 						v-bind="{ isSeparated }"
 						label="Origin"
 						type="text"
+					/>
+
+					<!-- Value (scale) -->
+					<prop-control
+						v-if="previewTransition === 'transition-scale'"
+						key="prop-value"
+						v-model="scale"
+						v-bind="{ isSeparated }"
+						label="Value"
+						:min="0"
+						:max="1"
+						:step="0.05"
 					/>
 
 					<!-- Offset (slide) -->
@@ -167,6 +191,7 @@
 			easing: defaults.transitionEasing,
 			axis: defaults.expandAxis,
 			origin: defaults.scaleOrigin,
+			scale: defaults.scaleValue,
 			offset: defaults.slideOffset,
 			moveDuration: defaults.moveDuration,
 		}),
@@ -186,6 +211,7 @@
 				const delay = withEnterLeave(this.delay);
 				const axis = withEnterLeave(this.axis);
 				const origin = withEnterLeave(this.origin);
+				const scale = withEnterLeave(this.scale);
 				const offset = Array.isArray(this.offset[0])
 					? { enter: this.offset[0], leave: this.offset[1] }
 					: this.offset;
@@ -199,6 +225,7 @@
 					offset,
 					axis,
 					origin,
+					scale,
 					moveDuration,
 				};
 			},

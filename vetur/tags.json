@@ -5,12 +5,13 @@
 			"duration",
 			"easing",
 			"delay",
+			"no-opacity",
 			"appear",
 			"mode",
 			"group",
 			"tag",
 			"move-duration",
-			"move-disable",
+			"no-move",
 			"axis"
 		]
 	},
@@ -25,7 +26,7 @@
 			"group",
 			"tag",
 			"move-duration",
-			"move-disable"
+			"no-move"
 		]
 	},
 	"transition-scale": {
@@ -34,14 +35,16 @@
 			"duration",
 			"easing",
 			"delay",
+			"no-opacity",
 			"appear",
 			"mode",
 			"group",
 			"tag",
 			"move-duration",
-			"move-disable",
+			"no-move",
 			"axis",
-			"origin"
+			"origin",
+			"scale"
 		]
 	},
 	"transition-slide": {
@@ -50,12 +53,13 @@
 			"duration",
 			"easing",
 			"delay",
+			"no-opacity",
 			"appear",
 			"mode",
 			"group",
 			"tag",
 			"move-duration",
-			"move-disable",
+			"no-move",
 			"offset"
 		]
 	}

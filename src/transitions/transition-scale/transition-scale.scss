@@ -1,18 +1,8 @@
 @use '../../mixins/base-transition.scss';
 
-.scale-enter,
-.scale-leave-to {
-	opacity: 0;
-}
-
 .scale-enter-active,
 .scale-leave-active {
 	transition-property: opacity, transform !important;
-}
-
-.scale-leave,
-.scale-enter-to {
-	opacity: 1;
 }
 
 .scale-move {

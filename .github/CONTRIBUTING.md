@@ -2,6 +2,7 @@
 
 [In English](#custom-prefix-english) | [На русском](#custom-prefix-russian)
 
+<!-- markdownlint-disable-next-line -->
 <div id="custom-prefix-english"></div>
 
 Thank you for thinking of contributing to this project! 👏
@@ -18,6 +19,7 @@ English is preferred as it's more widely used, but feel free to use Russian if y
 
 Please use the provided issue/PR templates where possible. \
 There are various templates for asking a question, reporting a bug or requesting a new feature.
+
 * [Create an issue](https://github.com/MorevM/vue-transitions/issues/new)
 * [Guide: Creating a pull request](https://help.github.com/articles/creating-a-pull-request/)
 
@@ -41,6 +43,7 @@ There are various templates for asking a question, reporting a bug or requesting
 <br />
 <br />
 
+<!-- markdownlint-disable-next-line -->
 <div id="custom-prefix-russian"></div>
 
 Спасибо, что решили внести свой вклад! 👏
@@ -51,12 +54,14 @@ There are various templates for asking a question, reporting a bug or requesting
 ## 🏳️ Язык
 
 Пожалуйста, используйте английский или русский. \
-Английский предпочтительнее, так как более широко используется, но не стесняйтесь использовать русский, если вы не можете выразить мысль на английском достаточно явно.
+Английский предпочтительнее, так как более широко используется,
+но не стесняйтесь использовать русский, если вы не можете выразить мысль на английском достаточно явно.
 
 ## 💌 Шаблоны
 
 Пожалуйста, используйте шаблоны для создания `issue` и `PR`, где это возможно. \
 Используются разные шаблоны для того, чтобы задать вопрос, сообщить о баге или предложить новую функциональность.
+
 * [Задать вопрос / Сообщить о баге / Предложить новую функциональность](https://github.com/MorevM/vue-transitions/issues/new)
 * [Гайд: Создание пул-реквеста [EN]](https://help.github.com/articles/creating-a-pull-request/)
 

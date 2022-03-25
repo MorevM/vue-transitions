@@ -35,11 +35,11 @@ describe('validateDelay', () => {
 		expect(validateDelay('foo')).toBe(false);
 	});
 
-	it('Returns `true` if a given value is the object with keys `in` and `out` which values are valid', () => {
+	it('Returns `true` if a given value is the object with keys `enter` and `leave` which values are valid', () => {
 		expect(validateDelay({ enter: 100, leave: 200 })).toBe(true);
 	});
 
-	it('Returns `false` if a given value is the object with keys `in` and `out` which values are invalid', () => {
+	it('Returns `false` if a given value is the object with keys `enter` and `leave` which values are invalid', () => {
 		expect(validateDelay({ enter: 100, leave: 'foo' })).toBe(false);
 		expect(validateDelay({ enter: 'foo', leave: 200 })).toBe(false);
 		expect(validateDelay({ enter: 'foo', leave: 'bar' })).toBe(false);
