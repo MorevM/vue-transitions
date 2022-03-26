@@ -912,10 +912,10 @@
   dependencies:
     "@morev/helpers" "^0.5.0"
 
-"@morev/stylelint-config@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@morev/stylelint-config/-/stylelint-config-1.0.2.tgz#a7585ef7c341f00f57fa97971dd8b2307fdc8546"
-  integrity sha512-i2dRJ57o6LE0U2NVrOk56MVgMxKwJci+2CZ/b5XSGt54Jnsp73/kN2XjioY6fuzbEzyrzluF9R1jwCeQwfcWkg==
+"@morev/stylelint-config@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@morev/stylelint-config/-/stylelint-config-1.0.3.tgz#029406680f51ff8e2ca19969c36351268f403148"
+  integrity sha512-Kbn/3dNY/KOTvkMXv3afZ3ZFGTOxT8hPss3n+d/zmJuCohiVKuNJIuxTfqRh9WZ0VG5395heSl0f6m3EQvWVwQ==
   dependencies:
     lodash.mergewith "^4.6.2"
     postcss "^8.4.8"
