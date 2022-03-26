@@ -68,7 +68,7 @@
 		"@babel/eslint-parser": "^7.17.0",
 		"@babel/plugin-syntax-jsx": "^7.16.7",
 		"@babel/plugin-transform-modules-commonjs": "^7.17.7",
-		"@morev/commitlint-config": "^0.1.0",
+		"@morev/commitlint-config": "^0.1.1",
 		"@morev/eslint-config": "^10.0.2",
 		"@morev/stylelint-config": "^1.0.2",
 		"@morev/v-bem-transformer": "^0.0.4",
