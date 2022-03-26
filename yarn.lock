@@ -931,13 +931,13 @@
     stylelint-selector-tag-no-without-class "^2.0.5"
     stylelint-use-nesting "^3.0.0"
 
-"@morev/v-bem-transformer@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@morev/v-bem-transformer/-/v-bem-transformer-0.0.4.tgz#91ab6623054194b23e69041407e2022a1ffe12c6"
-  integrity sha512-oDaQ75Pk2irM5eEVRRM0cDNQV+9XffSsypXk9rmQBnn8NHIpoagT3LZCmeRMcezXXkbzydFUH1SuMqsRsInb5w==
+"@morev/v-bem-transformer@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@morev/v-bem-transformer/-/v-bem-transformer-0.0.5.tgz#5a97db5017d3adb9000c21706072b7d0c4abcdcd"
+  integrity sha512-MdbjF4VYEO8ilmzYXJspMEyyhoUVosg/6KtG1tBmzQtjTo6T4nZH4DAmWPCrIpofYGYncblVdOb6HuHz3QKyhw==
   dependencies:
     "@morev/more-bem-classnames" "^1.0.2"
-    unplugin "^0.4.0"
+    unplugin "^0.6.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -7320,12 +7320,13 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
-unplugin@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.4.0.tgz#43a923f0267f8834118a926c406131d1d84a1358"
-  integrity sha512-4ScITEmzlz1iZW3tkz+3L1V5k/xMQ6kjgm4lEXKxH0ozd8/OUWfiSA7RMRyrawsvq/t50JIzPpp1UyuSL/AXkA==
+unplugin@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.6.0.tgz#bc5c8becdafca8a47e40cb51b2be59c3b1ad9533"
+  integrity sha512-CzXJyV3cTzxcuD6kRN4SXtNA5iDJOBZpz/RjfxNRyvytXSVmtpQKVu+snacS+kYanu6gxLgASXGDhd8+4XezLw==
   dependencies:
     chokidar "^3.5.3"
+    webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.4.3"
 
 update-notifier@5.1.0:
@@ -7545,6 +7546,11 @@ webidl-conversions@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-6.1.0.tgz#9111b4d7ea80acd40f5270d666621afa78b69514"
   integrity sha512-qBIvFLGiBpLjfwmYAaHPXsn+ho5xZnGvyGvsarywGNc8VyQJUMHJ8OBKGGrPER0okBeMDaan4mNBlgBROxuI8w==
+
+webpack-sources@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
+  integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
 webpack-virtual-modules@^0.4.3:
   version "0.4.3"
