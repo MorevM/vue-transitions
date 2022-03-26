@@ -58,7 +58,7 @@
 		"test:dev": "jest --watch"
 	},
 	"peerDependencies": {
-		"vue": "^2.6.14"
+		"vue": "^3.2.31"
 	},
 	"dependencies": {
 		"@morev/helpers": "^0.8.1"
@@ -85,7 +85,7 @@
 		"stylelint": "^14.6.1",
 		"vite": "^2.8.6",
 		"vite-plugin-vue2": "^1.9.3",
-		"vue": "^2.6.14",
+		"vue": "^3.2.31",
 		"vue-template-compiler": "^2.6.14",
 		"vue-types": "^4.1.1"
 	},
