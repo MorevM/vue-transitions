@@ -79,7 +79,7 @@
 		"husky": "^7.0.4",
 		"jest": "^27.5.1",
 		"lint-staged": "^12.3.7",
-		"more-sass": "^1.0.5",
+		"more-sass": "^1.0.7",
 		"release-it": "^14.13.1",
 		"sass": "^1.49.9",
 		"stylelint": "^14.6.1",
