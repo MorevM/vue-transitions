@@ -3,7 +3,7 @@
 .expand-enter-active,
 .expand-leave-active {
 	overflow: hidden;
-	transition-property: opacity, width, height, margin, padding !important;
+	transition-property: opacity, width, height, margin, padding, transform !important;
 }
 
 .expand-move {
