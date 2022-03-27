@@ -52,18 +52,19 @@ export const baseTransition = {
 			return this.group ? 'transition-group' : 'transition';
 		},
 		cAttrs() {
-			const { appear, mode, tag } = this;
-			return { appear, mode, tag };
+			const { appear, mode, tag, duration } = this;
+			return { appear, mode, tag, duration };
 		},
 		cHooks() {
 			return {
 				...this.$listeners,
 				beforeEnter: (...args) => {
-					this.onBegin?.(...args);
+					this.reduceTransition(...args);
 					this.$emit('before-enter', ...args);
 				},
 				beforeLeave: (...args) => {
-					this.onBegin?.(...args);
+					this.reduceTransition(...args);
+					this.initLeaving?.(...args);
 					this.$emit('before-leave', ...args);
 				},
 				enter: (...args) => {
@@ -75,11 +76,13 @@ export const baseTransition = {
 					this.$emit('leave', ...args);
 				},
 				afterEnter: (...args) => {
-					this.onDone?.(...args);
+					this.resetTransition(...args);
+					this.resetElement?.(...args);
 					this.$emit('after-enter', ...args);
 				},
 				afterLeave: (...args) => {
-					this.onDone?.(...args);
+					this.resetTransition(...args);
+					this.resetElement?.(...args);
 					this.$emit('after-leave', ...args);
 				},
 			};
@@ -95,19 +98,20 @@ export const baseTransition = {
 			element.style.setProperty('transition-timing-function', `${easing}`, 'important');
 			element.style.setProperty('transition-delay', `${delay}ms`, 'important');
 		},
+
 		reduceTransition(element) {
 			element.style.setProperty('transition-duration', '0ms', 'important');
 			element.style.setProperty('transition-delay', '0ms', 'important');
 		},
+
 		resetTransition(element) {
 			element.style.removeProperty('transition-duration');
 			element.style.removeProperty('transition-timing-function');
 			element.style.removeProperty('transition-delay');
 		},
-		async initLeaving(element) {
-			if (!this.group || this.noMove) {
-				return element;
-			}
+
+		initLeaving(element) {
+			if (!this.group || this.noMove) return element;
 
 			const styles = getComputedStyle(element);
 			const { width, height } = styles;

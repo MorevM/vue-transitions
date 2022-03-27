@@ -21,10 +21,6 @@
 		data: () => ({}),
 		computed: {},
 		methods: {
-			onBegin(element) {
-				this.reduceTransition(element);
-			},
-
 			onEnter(element) {
 				this.fadeElement(element, 'enter');
 				element.offsetTop; // eslint-disable-line no-unused-expressions
@@ -33,16 +29,9 @@
 				this.$nextTick(() => element.style.removeProperty('opacity'));
 			},
 
-			async onLeave(element) {
-				await this.initLeaving(element);
-
+			onLeave(element) {
 				this.setupTransition(element, 'leave');
 				this.fadeElement(element, 'leave');
-			},
-
-			onDone(element) {
-				this.resetTransition(element);
-				this.resetElement(element);
 			},
 
 			fadeElement(element, event = 'enter') {

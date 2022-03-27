@@ -30,31 +30,18 @@
 		data: () => ({}),
 		computed: {},
 		methods: {
-			onBegin(element) {
-				this.reduceTransition(element);
-			},
-
 			onEnter(element) {
 				this.slideElement(element, 'enter');
 				element.offsetTop; // eslint-disable-line no-unused-expressions
 
 				this.setupTransition(element, 'enter');
-				this.$nextTick(() => {
-					element.style.removeProperty('opacity');
-					element.style.removeProperty('transform');
-				});
+				element.style.removeProperty('opacity');
+				element.style.removeProperty('transform');
 			},
 
-			async onLeave(element) {
-				await this.initLeaving(element);
-
+			onLeave(element) {
 				this.setupTransition(element, 'leave');
 				this.slideElement(element, 'leave');
-			},
-
-			onDone(element) {
-				this.resetTransition(element);
-				this.resetElement(element);
 			},
 
 			slideElement(element, event = 'enter') {
@@ -64,12 +51,12 @@
 				let [offsetX, offsetY] = offset;
 
 				if (!isNumeric(offsetX)) {
-					const val = parseFloat(offsetX.slice(0, -1));
-					offsetX = parseFloat(width) * val / 100;
+					const val = offsetX.endsWith('%') ? parseFloat(offsetX.slice(0, -1)) : parseFloat(offsetX);
+					offsetX = parseFloat(width) * (val || 0) / 100;
 				}
 
 				if (!isNumeric(offsetY)) {
-					const val = parseFloat(offsetY.slice(0, -1));
+					const val = offsetY.endsWith('%') ? parseFloat(offsetY.slice(0, -1)) : parseFloat(offsetY);
 					offsetY = parseFloat(height) * val / 100;
 				}
 

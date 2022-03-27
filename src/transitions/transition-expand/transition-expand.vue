@@ -33,10 +33,6 @@
 		data: () => ({}),
 		computed: {},
 		methods: {
-			onBegin(element) {
-				this.reduceTransition(element);
-			},
-
 			onEnter(element) {
 				this.getSizes(element);
 				this.collapseElement(element, 'enter');
@@ -47,20 +43,13 @@
 				this.$nextTick(() => this.expandElement(element, 'enter'));
 			},
 
-			async onLeave(element) {
+			onLeave(element) {
 				this.getSizes(element);
 				this.expandElement(element, 'leave');
-
 				element.offsetTop; // eslint-disable-line no-unused-expressions
-				await this.initLeaving(element);
 
 				this.setupTransition(element, 'leave');
 				this.collapseElement(element, 'leave');
-			},
-
-			onDone(element) {
-				this.resetTransition(element);
-				this.resetElement(element);
 			},
 
 			expandElement(element, event = 'enter') {

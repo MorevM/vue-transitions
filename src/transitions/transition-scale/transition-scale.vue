@@ -40,10 +40,6 @@
 		data: () => ({}),
 		computed: {},
 		methods: {
-			onBegin(element) {
-				this.reduceTransition(element);
-			},
-
 			onEnter(element) {
 				this.scaleElement(element, 'enter');
 				element.offsetTop; // eslint-disable-line no-unused-expressions
@@ -55,16 +51,9 @@
 				});
 			},
 
-			async onLeave(element) {
-				await this.initLeaving(element);
-
+			onLeave(element) {
 				this.setupTransition(element, 'leave');
 				this.scaleElement(element, 'leave');
-			},
-
-			onDone(element) {
-				this.resetTransition(element);
-				this.resetElement(element);
 			},
 
 			scaleElement(element, event = 'enter') {
