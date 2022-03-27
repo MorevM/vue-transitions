@@ -125,9 +125,10 @@ export const baseTransition = {
 
 			return element;
 		},
+
 		setMoveDuration() {
-			if (this.group) {
-				this.$el.style.setProperty('--move-duration', `${this.moveDuration}ms`);
+			if (this.group && this.$el) {
+				this.$el.style?.setProperty('--move-duration', `${this.moveDuration}ms`);
 			}
 		},
 	},
@@ -136,7 +137,7 @@ export const baseTransition = {
 			this.setMoveDuration();
 		},
 		group() {
-			this.$el && this.setMoveDuration();
+			this.setMoveDuration();
 		},
 	},
 	mounted() {
