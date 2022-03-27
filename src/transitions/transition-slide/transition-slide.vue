@@ -51,13 +51,17 @@
 				let [offsetX, offsetY] = offset;
 
 				if (!isNumeric(offsetX)) {
-					const val = offsetX.endsWith('%') ? parseFloat(offsetX.slice(0, -1)) : parseFloat(offsetX);
-					offsetX = parseFloat(width) * (val || 0) / 100;
+					const val = offsetX.endsWith('%')
+						? parseFloat(width) * (parseFloat(offsetX.slice(0, -1)) || 0) / 100
+						: parseFloat(offsetX);
+					offsetX = val;
 				}
 
 				if (!isNumeric(offsetY)) {
-					const val = offsetY.endsWith('%') ? parseFloat(offsetY.slice(0, -1)) : parseFloat(offsetY);
-					offsetY = parseFloat(height) * val / 100;
+					const val = offsetY.endsWith('%')
+						? parseFloat(height) * (parseFloat(offsetY.slice(0, -1)) || 0) / 100
+						: parseFloat(offsetY);
+					offsetY = val;
 				}
 
 				const [matrixType, matrix] = getMatrix(transform);
