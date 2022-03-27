@@ -3,5 +3,6 @@ dist
 build
 tmp
 node_modules
+playground-bundle
 
 .more-sass

@@ -8,6 +8,7 @@ dist
 build
 tmp
 node_modules
+playground-bundle
 
 LICENSE.md
 CHANGELOG.md
