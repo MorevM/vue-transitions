@@ -91,13 +91,13 @@ export const baseTransition = {
 			const easing = this.easing?.[event] ?? this.easing;
 			const delay = this.delay?.[event] ?? this.delay;
 
-			element.style.setProperty('transition-duration', `${duration}ms`);
-			element.style.setProperty('transition-timing-function', `${easing}`);
-			element.style.setProperty('transition-delay', `${delay}ms`);
+			element.style.setProperty('transition-duration', `${duration}ms`, 'important');
+			element.style.setProperty('transition-timing-function', `${easing}`, 'important');
+			element.style.setProperty('transition-delay', `${delay}ms`, 'important');
 		},
 		reduceTransition(element) {
-			element.style.setProperty('transition-duration', '0ms');
-			element.style.setProperty('transition-delay', '0ms');
+			element.style.setProperty('transition-duration', '0ms', 'important');
+			element.style.setProperty('transition-delay', '0ms', 'important');
 		},
 		resetTransition(element) {
 			element.style.removeProperty('transition-duration');
@@ -113,11 +113,11 @@ export const baseTransition = {
 			const { width, height } = styles;
 			const { marginLeft, marginTop } = styles;
 
-			element.style.setProperty('left', `${element.offsetLeft - parseFloat(marginLeft)}px`);
-			element.style.setProperty('top', `${element.offsetTop - parseFloat(marginTop)}px`);
+			element.style.setProperty('left', `${element.offsetLeft - parseFloat(marginLeft)}px`, 'important');
+			element.style.setProperty('top', `${element.offsetTop - parseFloat(marginTop)}px`, 'important');
 			element.style.setProperty('width', `${parseFloat(width)}px`, 'important');
 			element.style.setProperty('height', `${parseFloat(height)}px`, 'important');
-			element.style.setProperty('position', 'absolute');
+			element.style.setProperty('position', 'absolute', 'important');
 
 			return element;
 		},

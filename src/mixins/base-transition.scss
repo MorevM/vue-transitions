@@ -1,9 +1,9 @@
 @use '../utility/defaults/defaults.scss';
 
 %base-move {
-	transition-property: transform;
-	transition-duration: defaults.$transition-duration;
-	transition-duration: var(--move-duration, defaults.$transition-duration);
-	transition-timing-function: defaults.$transition-easing;
-	transition-delay: 0ms;
+	transition-property: transform !important;
+	transition-duration: defaults.$transition-duration !important;
+	transition-duration: var(--move-duration, defaults.$transition-duration) !important;
+	transition-timing-function: defaults.$transition-easing !important;
+	transition-delay: 0ms !important;
 }
