@@ -13,6 +13,7 @@ export default defineConfig({
 	],
 	server: {
 		port: 3000,
+		open: true,
 	},
 	define: {},
 	css: {
@@ -23,22 +24,13 @@ export default defineConfig({
 		},
 	},
 	build: {
+		assetsDir: 'vue-transitions',
 		minify: 'terser',
-		lib: {
-			entry: '../src/index.js',
-			formats: ['es', 'cjs', 'umd'],
-			name: 'vueTransitions',
-			fileName: (format) => `vue-transitions.${format}.js`,
-		},
-		cssCodeSplit: true,
 		rollupOptions: {
-			external: ['vue'],
 			output: {
-				dir: 'dist',
-				globals: {
-					vue: 'Vue',
-				},
+				dir: 'playground-bundle',
 			},
+			input: './playground/index.html',
 		},
 	},
 });

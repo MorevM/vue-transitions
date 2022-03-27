@@ -42,8 +42,9 @@
 	"module": "./dist/vue-transitions.es.js",
 	"browser": "./dist/vue-transitions.umd.js",
 	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
+		"dev": "vite --config vite/vite-dev.config.js",
+		"build:playground": "vite build --config vite/vite-dev.config.js",
+		"build:lib": "vite build --config vite/vite-lib.config.js",
 		"prepare": "husky install ./.husky && yarn more-sass-clone",
 		"vscode-settings": "cp .vscode/settings.template.json .vscode/settings.json",
 		"more-sass-clone": "rm -rf .more-sass && cp -r ./node_modules/more-sass ./.more-sass",

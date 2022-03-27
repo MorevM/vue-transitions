@@ -2,6 +2,7 @@
 dist
 build
 tmp
+playground-bundle
 
 # Editors
 .idea
