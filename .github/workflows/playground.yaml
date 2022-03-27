@@ -1,0 +1,33 @@
+name: Playground
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - playground/**
+  # workflow_dispatch: {}
+
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build playground
+        run: yarn build:playground
+
+      - name: Publish to GH pages
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages
+          folder: playground-bundle
