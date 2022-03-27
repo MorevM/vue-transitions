@@ -4,6 +4,7 @@ import { vitePlugin } from '@morev/v-bem-transformer';
 
 export default defineConfig({
 	root: 'playground',
+	base: '/vue-transitions/',
 	plugins: [
 		vitePlugin({
 			directiveName: 'v-bem',
@@ -24,7 +25,6 @@ export default defineConfig({
 		},
 	},
 	build: {
-		assetsDir: 'vue-transitions',
 		minify: 'terser',
 		rollupOptions: {
 			output: {
