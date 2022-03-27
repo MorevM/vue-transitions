@@ -13,12 +13,6 @@
 	import { baseTransition } from '../../mixins/base-transition.js';
 	import { validateExpandAxis } from '../../utility/validate/validate-expand-axis.js';
 
-	const elementVisual = {
-		size: { x: 0, y: 0 },
-		padding: { x: [0, 0], y: [0, 0] },
-		margin: { x: [0, 0], y: [0, 0] },
-	};
-
 	export default {
 		name: 'transition-expand',
 		mixins: [
@@ -57,13 +51,14 @@
 				const start = axis === 'x' ? 'left' : 'top';
 				const end = axis === 'x' ? 'right' : 'bottom';
 
-				const size = elementVisual.size[axis];
-				const margin = elementVisual.margin[axis];
-				const padding = elementVisual.padding[axis];
+				const size = element.visual.size[axis];
+				const margin = element.visual.margin[axis];
+				const padding = element.visual.padding[axis];
 
 				if (!this.noOpacity) {
-					element.style.setProperty('opacity', 1);
+					element.style.setProperty('opacity', element.visual.opacity);
 				}
+				delete element.visual;
 
 				element.style.setProperty(axis === 'x' ? 'width' : 'height', `${parseFloat(size)}px`);
 				element.style.setProperty(`padding-${start}`, `${parseFloat(padding[0])}px`);
@@ -105,17 +100,17 @@
 
 			getSizes(element) {
 				const styles = getComputedStyle(element);
-
+				const { opacity } = styles;
 				const { width, height } = styles;
 				const { paddingTop, paddingRight, paddingBottom, paddingLeft } = styles;
 				const { marginTop, marginRight, marginBottom, marginLeft } = styles;
 
-				elementVisual.size.x = width;
-				elementVisual.size.y = height;
-				elementVisual.padding.x = [paddingLeft, paddingRight];
-				elementVisual.padding.y = [paddingTop, paddingBottom];
-				elementVisual.margin.x = [marginLeft, marginRight];
-				elementVisual.margin.y = [marginTop, marginBottom];
+				element.visual = {
+					opacity,
+					size: { x: width, y: height },
+					padding: { x: [paddingLeft, paddingRight], y: [paddingTop, paddingBottom] },
+					margin: { x: [marginLeft, marginRight], y: [marginTop, marginBottom] },
+				};
 			},
 		},
 	};
