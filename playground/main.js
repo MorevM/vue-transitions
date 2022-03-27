@@ -4,8 +4,6 @@ import ElementUI from 'element-ui';
 import MoreVueTransitions from '../src/index.js';
 import App from './app.vue';
 
-import 'element-ui/lib/theme-chalk/index.css';
-
 Vue.use(MoreVueTransitions);
 Vue.use(ElementUI);
 Vue.use(vuePlugin({

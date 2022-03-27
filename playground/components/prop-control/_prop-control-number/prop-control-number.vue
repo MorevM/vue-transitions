@@ -14,7 +14,7 @@
 			v-bem:value
 			key="out"
 			:min="0"
-			:step="50"
+			:step="step"
 			:value="value[1]"
 			@change="(v) => onChange(v, 'out')"
 		/>

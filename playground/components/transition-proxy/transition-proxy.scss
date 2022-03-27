@@ -15,6 +15,24 @@
 		max-width: 480px;
 	}
 
+	&__preview-hint {
+		@include font('14px/1.5');
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 88px;
+		margin-bottom: 24px;
+		padding: 16px;
+		color: #005281;
+		text-align: center;
+		background: rgba(#0081cc, .05);
+		border-radius: 8px;
+
+		@media (min-width: 360px) {
+			@include font('16px');
+		}
+	}
+
 	&__preview-wrapper {
 		@include aspect-ratio(300, 180);
 		display: flex;
@@ -34,7 +52,7 @@
 			transition: opacity .3s;
 
 			@include parent-state('--mode-group') {
-				opacity: 0;
+				@include hidden-element(-1);
 			}
 		}
 
@@ -44,7 +62,7 @@
 	}
 
 	&__preview-single {
-		@include pos-abs(24px);
+		@include pos-abs(16px);
 		@include font('500 18px/1');
 		display: flex;
 		justify-content: center;
@@ -52,32 +70,86 @@
 		color: #ffffff;
 		background: #0081cc;
 		border-radius: 4px;
+
+		@media (min-width: 480px) {
+			@include pos-abs(24px);
+		}
 	}
 
 	&__preview-group {
-		@include pos-abs(24px);
+		@include pos-abs(16px);
 		@include font('500 18px/1');
 		display: grid;
 		grid-template-rows: repeat(3, 1fr);
-		grid-template-columns: repeat(5, 1fr);
-		gap: 32px;
+		grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr;
+		gap: 16px 0;
+
+		@media (min-width: 480px) {
+			@include pos-abs(24px);
+			grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr 32px 1fr;
+			gap: 32px 0;
+		}
 	}
 
 	&__preview-group-item {
+		@include reset-button;
 		@include aspect-ratio(1, 1);
 		border-radius: 4px;
+		transition-property: box-shadow, opacity, transform;
+		transition-duration: .1s;
+		cursor: pointer;
+
+		&::after {
+			@include pseudo;
+			@include box(16px, 2px);
+			@include pos-abs(50% n n 50%);
+			@include margin(-1px n n -8px);
+			background: #ffffff;
+			opacity: 0;
+			transform: translateY(4px);
+			transition-property: transform, opacity;
+			transition-duration: .2s;
+
+			@include parent-state(':hover') {
+				@media (hover: hover) {
+					opacity: 1;
+					transform: none;
+				}
+			}
+
+			@include parent-state('--disabled') {
+				display: none;
+			}
+		}
+
+		&--disabled {
+			pointer-events: none;
+		}
 	}
 
 	&__preview-group-item-add {
-		@include pos-abs(0 n 0 100%);
+		@include reset-button;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 32px;
+		width: 24px;
 		opacity: .2;
+		transition-property: opacity, visibility;
+		transition-duration: .2s;
+		cursor: pointer;
+
+		@media (min-width: 480px) {
+			width: 32px;
+		}
 
 		&:hover {
-			opacity: 1;
+			@media (hover: hover) {
+				opacity: 1;
+			}
+		}
+
+		&--hidden {
+			@include hidden-element;
 		}
 	}
 
@@ -92,7 +164,7 @@
 		gap: 16px;
 	}
 
-	&__controls-separate {
+	&__controls-checkbox {
 		grid-column: span 2;
 	}
 

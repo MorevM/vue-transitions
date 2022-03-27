@@ -1,6 +1,16 @@
 <template>
 	<div v-bem>
 		<div v-bem:container>
+			<!-- Hint -->
+			<transition-slide v-bem:preview-hint tag="div" group :offset="{ enter: [0, '-50%'], leave: [0, 0] }">
+				<div v-if="isSinglePreview" v-bem:preview-hint-inner key="single-hint">
+					Click to the element area to trigger the animation.
+				</div>
+				<div v-if="isGroupPreview" v-bem:preview-hint-inner key="group-hint">
+					Click to a plus button to insert new item. <br />
+					Click to an item itself to remove it.
+				</div>
+			</transition-slide>
 			<!-- Preview -->
 			<div
 				v-bem:preview-wrapper="{ mode: previewMode }"
@@ -8,9 +18,11 @@
 			>
 				<!-- Single -->
 				<template v-if="isSinglePreview">
-					<component :is="previewTransition" appear v-bind="cOptions">
-						<div v-if="previewActive" v-bem:preview-single>{{ cTransitionLabel }}</div>
-					</component>
+					<div v-bem:preview-single-wrapper>
+						<component :is="previewTransition" appear v-bind="cOptions">
+							<div v-if="previewActive" v-bem:preview-single>{{ cTransitionLabel }}</div>
+						</component>
+					</div>
 				</template>
 
 				<!-- Group -->
@@ -19,17 +31,29 @@
 						:is="previewTransition"
 						v-bem:preview-group
 						v-bind="cOptions"
+						tag="div"
 						group
 					>
-						<div
-							v-for="(item, index) in previewItems"
-							v-bem:preview-group-item
-							:key="item.hash"
-							:style="item.styles"
-							@click.self="removeItem($event, index);"
-						>
-							<div v-bem:preview-group-item-add>+</div>
-						</div>
+						<template v-for="(item, index) in previewItems">
+							<button
+								v-bem:preview-group-item="{ disabled: previewItems.length === 1 }"
+								:key="item.hash + '-item'"
+								type="button"
+								aria-label="Remove an item"
+								:style="item.styles"
+								@click.self="removeItem(index);"
+							></button>
+							<button
+								v-if="(index + 1) % 5 !== 0"
+								v-bem:preview-group-item-add="{ hidden: previewItems.length === 15 }"
+								:key="item.hash + '-add'"
+								type="button"
+								aria-label="Add an item"
+								@click="addItem(index + 1)"
+							>
+								+
+							</button>
+						</template>
 					</component>
 				</template>
 			</div>
@@ -38,21 +62,31 @@
 			<div v-bem:controls-wrapper>
 				<div v-bem:controls>
 					<!-- Transition -->
-					<el-select v-bem:controls-selector v-model="previewTransition">
+					<el-select v-bem:controls-selector v-model="previewTransitionControl">
 						<el-option v-for="option in $options.TRANSITIONS_LIST" :key="option.value" :value="option.value">
 							{{ option.label }}
 						</el-option>
 					</el-select>
-					<!-- Type @TODO: -->
-					<!-- <el-radio-group v-bem:controls-type v-model="previewMode">
+
+					<!-- Type -->
+					<el-radio-group v-bem:controls-type v-model="previewModeControl">
 						<el-radio-button label="single">Single</el-radio-button>
 						<el-radio-button label="group">Group</el-radio-button>
-						</el-radio-group> -->
+					</el-radio-group>
+
 					<!-- Separate values -->
 					<el-checkbox
-						v-bem:controls-separate
+						v-bem:controls-checkbox
 						v-model="isSeparated"
 						label="Separate values for enter and leave animation"
+					/>
+
+					<!-- Disable opacity -->
+					<el-checkbox
+						v-if="previewTransition !== 'transition-fade'"
+						v-bem:controls-checkbox
+						v-model="noOpacity"
+						label="Turn off the opacity transition"
 					/>
 				</div>
 			</div>
@@ -116,10 +150,10 @@
 						key="prop-value"
 						v-model="scale"
 						v-bind="{ isSeparated }"
-						label="Value"
+						label="Scale value"
 						:min="0"
 						:max="1"
-						:step="0.05"
+						:step=".05"
 					/>
 
 					<!-- Offset (slide) -->
@@ -181,10 +215,13 @@
 		},
 		data: () => ({
 			previewTransition: 'transition-slide',
+			previewTransitionControl: 'transition-slide',
+
 			previewMode: 'single',
+			previewModeControl: 'single',
 			previewActive: true,
 			previewItems: [],
-			isSeparated: false,
+			isSeparated: true,
 
 			duration: defaults.transitionDuration,
 			delay: defaults.transitionDelay,
@@ -194,6 +231,8 @@
 			scale: defaults.scaleValue,
 			offset: defaults.slideOffset,
 			moveDuration: defaults.moveDuration,
+			noOpacity: defaults.noOpacity,
+			noMove: defaults.noMove,
 		}),
 		computed: {
 			isSinglePreview() {
@@ -216,7 +255,7 @@
 					? { enter: this.offset[0], leave: this.offset[1] }
 					: this.offset;
 
-				const moveDuration = this.optionMoveDuration;
+				const { moveDuration, noMove, noOpacity } = this;
 
 				return {
 					duration,
@@ -227,30 +266,79 @@
 					origin,
 					scale,
 					moveDuration,
+					noMove,
+					noOpacity,
 				};
 			},
 		},
 		watch: {
-			cTransition() {
-				this.switchPreview();
+			previewTransition() {
+				this.setData();
 			},
-			cGroup() {
-				this.switchPreview();
+			previewTransitionControl(to) {
+				if (this.previewMode === 'group') {
+					return (this.previewTransition = to);
+				}
+				const delay = this.previewActive ? (isArray(this.duration) ? this.duration[0] : this.duration) : -100;
+				this.previewActive = false;
+				setTimeout(() => {
+					this.previewTransition = to;
+					this.previewActive = true;
+				}, delay + 100);
+			},
+			previewModeControl(to) {
+				let delay = isArray(this.duration) ? this.duration[0] : this.duration;
+				if (this.previewMode === 'single') {
+					if (!this.previewActive) delay = -100;
+					this.previewActive = false;
+				} else {
+					this.previewItems = [];
+					this.previewActive = true;
+				}
+				setTimeout(() => {
+					this.previewMode = to;
+					if (to === 'group') {
+						this.addItem();
+					}
+				}, delay + 100);
 			},
 		},
 		methods: {
+			setData() {
+				const propsToSet = [
+					'duration',
+					'delay',
+					'easing',
+					'axis',
+					'origin',
+					'scale',
+					'offset',
+				];
+
+				propsToSet.forEach(prop => {
+					const [toCheck, toSet] = prop === 'offset'
+						? [this.offset[0], this.isSeparated ? this.offset : this.offset[0]]
+						: [this[prop], this[prop]];
+					if (this.isSeparated && !isArray(toCheck)) {
+						this[prop] = [toSet, toSet];
+					}
+					if (!this.isSeparated && isArray(toCheck)) {
+						this[prop] = toSet;
+					}
+				});
+			},
+
 			switchPreview() {
 				const delay = (this.previewActive ? this.optionDurationOut : 0) + 20;
 				this.previewActive = false;
 
 				setTimeout(() => {
-					this.previewTransition = this.cTransition;
 					this.previewMode = this.previewMode === 'single' ? 'group' : 'single';
 					this.previewActive = true;
 				}, delay);
 			},
-			addItem() {
-				const index = randomInteger(0, this.previewItems.length);
+
+			addItem(index = 0) {
 				this.previewItems.splice(index, 0, {
 					hash: randomString(),
 					styles: {
@@ -262,15 +350,13 @@
 					},
 				});
 			},
-			removeItem(e, index) {
-				const random = randomInteger(0, this.previewItems.length - 1);
-				this.previewItems.splice(index ?? random, 1);
+
+			removeItem(index) {
+				this.previewItems.splice(index, 1);
 			},
 		},
-		created() {
-			for (let i = 0; i < 7; i++) {
-				this.addItem();
-			}
+		mounted() {
+			this.setData();
 		},
 	};
 </script>
