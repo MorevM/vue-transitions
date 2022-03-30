@@ -198,6 +198,7 @@
 	const scaleAxisOptions = ['both', 'x', 'y'];
 
 	const withEnterLeave = (v) => (isArray(v) ? { enter: v[0], leave: v[1] } : v);
+	const formatOffsetValue = (values) => values.map(v => (['-', ' '].includes(v.toString().trim()) ? 0 : v));
 
 	export default {
 		TRANSITIONS_LIST,
@@ -252,8 +253,11 @@
 				const origin = withEnterLeave(this.origin);
 				const scale = withEnterLeave(this.scale);
 				const offset = Array.isArray(this.offset[0])
-					? { enter: this.offset[0], leave: this.offset[1] }
-					: this.offset;
+					? {
+						enter: formatOffsetValue(this.offset[0]),
+						leave: formatOffsetValue(this.offset[1]),
+					}
+					: formatOffsetValue(this.offset);
 
 				const { moveDuration, noMove, noOpacity } = this;
 

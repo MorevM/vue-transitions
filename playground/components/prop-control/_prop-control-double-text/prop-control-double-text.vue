@@ -47,7 +47,9 @@
 		methods: {
 			onChange(value, index, mode) {
 				if (!this.isSeparated) {
-					value = value.includes('%') ? value : parseFloat(value);
+					value = value.includes('%')
+						? value
+						: isNaN(parseFloat(value)) ? '' : parseFloat(value);
 					if (index === 0) {
 						this.$emit('input', [value, this.value[1]]);
 					} else {
