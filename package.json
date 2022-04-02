@@ -81,7 +81,7 @@
 		"jest": "^27.5.1",
 		"lint-staged": "^12.3.7",
 		"more-sass": "^1.0.7",
-		"release-it": "^14.13.1",
+		"release-it": "^14.14.0",
 		"sass": "^1.49.11",
 		"stylelint": "^14.6.1",
 		"vite": "^2.8.6",
