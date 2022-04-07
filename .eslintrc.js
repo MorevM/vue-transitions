@@ -15,5 +15,11 @@ module.exports = {
 				'import/no-named-as-default-member': ['off'],
 			},
 		},
+		{
+			files: ['*.md'],
+			rules: {
+				'markdownlint/md046': ['off'],
+			},
+		},
 	],
 };
