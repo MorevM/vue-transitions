@@ -1,6 +1,36 @@
 
 
-## [1.1.0](https://github.com/MorevM/vue-transitions/compare/v1.0.0...v1.1.0) (2022-03-27)
+## [2.0.0](https://github.com/MorevM/vue-transitions/compare/v1.1.0...v2.0.0) (2022-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Build mechanics have changed significantly with the introduction of the version for Vue 3.
+Although there shouldn't be any problems (the default export should work the same as before), the update is marked as a major to avoid embarrassment.
+
+### Features
+
+* Vue 3 version of components ([c094554](https://github.com/MorevM/vue-transitions/commit/c094554797d3025c9a3f6da2e0ae0ae303d396de))
+
+
+### Documentation
+
+* Correct playground config `base` to fit GH pages ([98ff165](https://github.com/MorevM/vue-transitions/commit/98ff1654392d856bd4f6ee76c526a8780a15fa32))
+* Fix playground `offset` control ([0a3e3dd](https://github.com/MorevM/vue-transitions/commit/0a3e3ddf1055657760a16ddee712da5e27570083))
+* Update `README.md` ([230be83](https://github.com/MorevM/vue-transitions/commit/230be83c2edaabbf1348756b9ff6fecc06750d87))
+
+
+### Tests
+
+* Rename `validators` directory ([fb61dfe](https://github.com/MorevM/vue-transitions/commit/fb61dfe3cfea45bc450234b526a41aef552fde91))
+
+
+### Chores
+
+* bump release-it from 14.13.1 to 14.14.0 ([#11](https://github.com/MorevM/vue-transitions/issues/11)) ([ed9295d](https://github.com/MorevM/vue-transitions/commit/ed9295d12626d38d3e54ee30ef32f95226a6093d))
+* bump sass from 1.49.9 to 1.49.11 ([#12](https://github.com/MorevM/vue-transitions/issues/12)) ([721ee2a](https://github.com/MorevM/vue-transitions/commit/721ee2af3b122fec6765db1a248d84ba076737cb))
+* bump vite from 2.8.6 to 2.9.1 ([#10](https://github.com/MorevM/vue-transitions/issues/10)) ([7419f16](https://github.com/MorevM/vue-transitions/commit/7419f166695f152d621aa2346da37a7f0c2646ef))
+* **vscode:** Add setting to validate `json` files ([9f7c13c](https://github.com/MorevM/vue-transitions/commit/9f7c13cf074368c2b23c2accc9b9ea3f37029d3b))## [1.1.0](https://github.com/MorevM/vue-transitions/compare/v1.0.0...v1.1.0) (2022-03-27)
 
 
 ### Features
