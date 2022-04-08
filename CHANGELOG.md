@@ -1,6 +1,21 @@
 
 
-### [2.0.1](https://github.com/MorevM/vue-transitions/compare/v2.0.0...v2.0.1) (2022-04-08)
+### [2.0.2](https://github.com/MorevM/vue-transitions/compare/v2.0.1...v2.0.2) (2022-04-08)
+
+
+### CI improvements
+
+* Remove mentions of workspaces before publishing ([8e48f2f](https://github.com/MorevM/vue-transitions/commit/8e48f2fdf6b6a828af0281e7c75119ddb8a78454))
+
+
+### Refactoring
+
+* Better `bin` command names ([465d823](https://github.com/MorevM/vue-transitions/commit/465d8237f67423201f5bccda0d50d464b41cb49e))
+
+
+### Documentation
+
+* Add note about version switching ([31afd94](https://github.com/MorevM/vue-transitions/commit/31afd94fbee7199d29cd4290e099274c1794b612))### [2.0.1](https://github.com/MorevM/vue-transitions/compare/v2.0.0...v2.0.1) (2022-04-08)
 
 
 ### CI improvements
