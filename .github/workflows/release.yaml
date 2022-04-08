@@ -25,6 +25,9 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Make public and configure postinstall hook
+        run: yarn prepack
+
       - name: Create release
         uses: softprops/action-gh-release@v1
         env:
