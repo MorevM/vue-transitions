@@ -73,7 +73,12 @@ Underhood, it utilized the [postinstall](https://docs.npmjs.com/cli/v8/using-npm
 After installing the package, the script will start to check the installed Vue version
 and redirect the exports to based on the local Vue version.
 
-> It feels pretty robust, but if you're worried about, prefer an explicit named import according to the version you're using.
+It feels pretty robust, but if you're worried about, prefer an explicit named import according to the version you're using.
+
+> By the way, you can change default export after installation: just run the command `vue-transitions-version-switch <version>`
+>
+> * Example using `yarn`: `yarn vue-transitions-version-switch 2`
+> * Example using `npx`: `npx vue-transitions-version-switch 3`
 
 ### Global registration
 
