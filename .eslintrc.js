@@ -21,5 +21,19 @@ module.exports = {
 				'markdownlint/md046': ['off'],
 			},
 		},
+		{
+			files: ['**/builders/**/*.js', '**/playground/main.js'],
+			rules: {
+				'import/no-extraneous-dependencies': 'off',
+				'node/no-extraneous-import': 'off',
+			},
+		},
+		{
+			files: ['**/scripts/**/*.js'],
+			rules: {
+				'no-console': 'off',
+				'import/no-dynamic-require': 'off',
+			},
+		},
 	],
 };

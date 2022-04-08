@@ -2,7 +2,10 @@
 	"name": "@morev/vue-transitions",
 	"description": "Shareable Vue transitions library",
 	"version": "1.1.0",
-	"private": false,
+	"private": true,
+	"workspaces": [
+		"builders/*"
+	],
 	"license": "MIT",
 	"publishConfig": {
 		"access": "public",
@@ -29,12 +32,26 @@
 	],
 	"files": [
 		"dist",
-		"vetur"
+		"vetur",
+		"bin",
+		"scripts"
 	],
+	"bin": {
+		"fix": "bin/fix.js",
+		"switch": "bin/switch.js"
+	},
 	"exports": {
 		".": {
 			"import": "./dist/vue-transitions.es.js",
 			"require": "./dist/vue-transitions.cjs.js"
+		},
+		"./vue2": {
+			"import": "./dist/vue2/vue-transitions.es.js",
+			"require": "./dist/vue2/vue-transitions.cjs.js"
+		},
+		"./vue3": {
+			"import": "./dist/vue3/vue-transitions.es.js",
+			"require": "./dist/vue3/vue-transitions.cjs.js"
 		},
 		"./styles": "./dist/index.css"
 	},
@@ -42,9 +59,13 @@
 	"module": "./dist/vue-transitions.es.js",
 	"browser": "./dist/vue-transitions.umd.js",
 	"scripts": {
-		"dev": "vite --config vite/vite-dev.config.js",
-		"build:playground": "vite build --config vite/vite-dev.config.js",
-		"build:lib": "vite build --config vite/vite-lib.config.js",
+		"prepack": "node ./scripts/prepack.js",
+		"postpublish": "node ./scripts/postpublish.js",
+		"dev": "yarn workspace vue2-builder dev",
+		"build:playground": "yarn workspace vue2-builder playground",
+		"build:vue2": "yarn workspace vue2-builder build",
+		"build:vue3": "yarn workspace vue3-builder build",
+		"build": "yarn build:playground && yarn build:vue2 && yarn build:vue3",
 		"prepare": "husky install ./.husky && yarn more-sass-clone",
 		"vscode-settings": "cp .vscode/settings.template.json .vscode/settings.json",
 		"more-sass-clone": "rm -rf .more-sass && cp -r ./node_modules/more-sass ./.more-sass",
@@ -59,7 +80,7 @@
 		"test:dev": "jest --watch"
 	},
 	"peerDependencies": {
-		"vue": "^2.6.14"
+		"vue": "^2.6.14 || >=3"
 	},
 	"dependencies": {
 		"@morev/helpers": "^0.8.1"
@@ -72,22 +93,16 @@
 		"@morev/commitlint-config": "^0.1.1",
 		"@morev/eslint-config": "^10.0.3",
 		"@morev/stylelint-config": "^1.0.3",
-		"@morev/v-bem-transformer": "^0.0.5",
 		"@release-it/conventional-changelog": "^4.2.2",
 		"@types/jest": "^27.4.1",
-		"element-ui": "^2.15.6",
 		"eslint": "^8.12.0",
 		"husky": "^7.0.4",
 		"jest": "^27.5.1",
 		"lint-staged": "^12.3.7",
-		"more-sass": "^1.0.7",
 		"release-it": "^14.14.0",
 		"sass": "^1.49.11",
 		"stylelint": "^14.6.1",
 		"vite": "^2.9.1",
-		"vite-plugin-vue2": "^1.9.3",
-		"vue": "^2.6.14",
-		"vue-template-compiler": "^2.6.14",
 		"vue-types": "^4.1.1"
 	},
 	"vetur": {

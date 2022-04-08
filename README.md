@@ -7,9 +7,7 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/morevm/vue-transitions)
 ![Keywords](https://img.shields.io/github/package-json/keywords/morevm/vue-transitions)
 
-> Vue 3 version coming soon
-
-Reusable transitions for Vue 2 with no CSS needed ❤️.
+Universal reusable transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 
 Originally inspired by the [vue2-transitions](https://github.com/BinarCode/vue2-transitions)
 it goes much further and provides more features with a simpler API.
@@ -64,6 +62,18 @@ pnpm add @morev/vue-transitions
 
 
 ## Usage
+
+Package exports two versions of components:
+
+* Version for `Vue2` available with named export `/vue2`
+* Version for `Vue3` available with named export `/vue3`
+
+However, there is also a default export mapped to local version of Vue being used. \
+Underhood, it utilized the [postinstall](https://docs.npmjs.com/cli/v8/using-npm/scripts) npm hook. \
+After installing the package, the script will start to check the installed Vue version
+and redirect the exports to based on the local Vue version.
+
+> It feels pretty robust, but if you're worried about, prefer an explicit named import according to the version you're using.
 
 ### Global registration
 

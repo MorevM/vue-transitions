@@ -6,7 +6,7 @@ export default defineConfig({
 	build: {
 		minify: 'terser',
 		lib: {
-			entry: './src/index.js',
+			entry: '../../src/index.js',
 			formats: ['es', 'cjs', 'umd'],
 			name: 'vueTransitions',
 			fileName: (format) => `vue-transitions.${format}.js`,
@@ -15,7 +15,7 @@ export default defineConfig({
 		rollupOptions: {
 			external: ['vue'],
 			output: {
-				dir: 'dist',
+				dir: '../../dist/vue2',
 				globals: {
 					vue: 'Vue',
 				},

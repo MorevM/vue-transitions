@@ -3,6 +3,8 @@ import { validateEasing } from '../utility/validate/validate-easing.js';
 import { validateDelay } from '../utility/validate/validate-delay.js';
 import * as defaults from '../utility/defaults/defaults.js';
 
+// BUILD-TIME: TRANSITIONS IMPORT FOR VUE 3
+
 export const baseTransition = {
 	inheritAttrs: false,
 	props: {

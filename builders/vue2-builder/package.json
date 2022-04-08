@@ -1,0 +1,19 @@
+{
+	"name": "vue2-builder",
+	"version": "1.0.0",
+	"private": true,
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite --config vite-dev.config.js",
+		"playground": "vite build --config vite-dev.config.js",
+		"build": "vite build --config vite-lib.config.js"
+	},
+	"devDependencies": {
+		"@morev/v-bem-transformer": "^0.0.5",
+		"element-ui": "^2.15.6",
+		"more-sass": "^1.0.7",
+		"vite-plugin-vue2": "^1.9.3",
+		"vue": "^2.6.14",
+		"vue-template-compiler": "^2.6.14"
+	}
+}

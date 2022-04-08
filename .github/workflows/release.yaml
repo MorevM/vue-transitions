@@ -23,7 +23,7 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: yarn build:lib
+        run: yarn build
 
       - name: Create release
         uses: softprops/action-gh-release@v1

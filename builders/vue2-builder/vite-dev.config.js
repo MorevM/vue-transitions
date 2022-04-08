@@ -3,7 +3,7 @@ import { createVuePlugin } from 'vite-plugin-vue2';
 import { vitePlugin } from '@morev/v-bem-transformer';
 
 export default defineConfig({
-	root: 'playground',
+	root: '../../playground',
 	base: '/vue-transitions/',
 	plugins: [
 		vitePlugin({
@@ -28,9 +28,9 @@ export default defineConfig({
 		minify: 'terser',
 		rollupOptions: {
 			output: {
-				dir: 'playground-bundle',
+				dir: '../../playground-bundle',
 			},
-			input: './playground/index.html',
+			input: '../../playground/index.html',
 		},
 	},
 });

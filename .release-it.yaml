@@ -39,8 +39,7 @@ plugins:
 hooks:
   before:init:
     - yarn lint:fix
-    - yarn build:lib
-    - yarn build:playground
+    - yarn build
   after:init:
     - yarn lint
     - yarn test
