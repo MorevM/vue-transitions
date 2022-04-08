@@ -37,8 +37,8 @@
 		"scripts"
 	],
 	"bin": {
-		"fix": "bin/fix.js",
-		"switch": "bin/switch.js"
+		"vue-transitions-version-fix": "bin/fix.js",
+		"vue-transitions-version-switch": "bin/switch.js"
 	},
 	"exports": {
 		".": {
