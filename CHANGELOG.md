@@ -1,6 +1,11 @@
 
 
-## [2.0.0](https://github.com/MorevM/vue-transitions/compare/v1.1.0...v2.0.0) (2022-04-08)
+### [2.0.1](https://github.com/MorevM/vue-transitions/compare/v2.0.0...v2.0.1) (2022-04-08)
+
+
+### CI improvements
+
+* Explicit call of `prepack` script before publising ([fb56a11](https://github.com/MorevM/vue-transitions/commit/fb56a11a3ae88232cda4aab9d670fa01bda56ce5))## [2.0.0](https://github.com/MorevM/vue-transitions/compare/v1.1.0...v2.0.0) (2022-04-08)
 
 
 ### ⚠ BREAKING CHANGES
