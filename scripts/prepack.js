@@ -6,5 +6,6 @@ fs.writeFileSync(
 	'package.json',
 	packageJsonContents
 		.replace('"private": true', '"private": false')
-		.replace('"scripts": {', '"scripts": {\n\t\t"postinstall": "node ./scripts/postinstall.js",'),
+		.replace('"scripts": {', '"scripts": {\n\t\t"postinstall": "node ./scripts/postinstall.js",')
+		.replace(/"workspaces": \[[^\]]*],\s*/gs, ''),
 );
