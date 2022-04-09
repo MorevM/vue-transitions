@@ -86,7 +86,7 @@
 		"@morev/helpers": "^0.8.1"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.17.8",
+		"@babel/core": "^7.17.9",
 		"@babel/eslint-parser": "^7.17.0",
 		"@babel/plugin-syntax-jsx": "^7.16.7",
 		"@babel/plugin-transform-modules-commonjs": "^7.17.7",
