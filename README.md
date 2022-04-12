@@ -465,6 +465,7 @@ Those properties are related to each transition:
 
   <details>
     <summary>👀 Show explanation</summary>
+    <br />
 
     ```html
     <!-- This way it can be set dynamically -->
@@ -484,7 +485,7 @@ Those properties are related to each transition:
 
   ```ts
   // Default: 300
-  export type TransitionMoveDuration = number | { enter: number, leave: number }
+  export type TransitionMoveDuration = number;
   ```
 
 </details>
