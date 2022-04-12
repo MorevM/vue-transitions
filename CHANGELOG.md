@@ -1,6 +1,34 @@
 
 
-### [2.0.2](https://github.com/MorevM/vue-transitions/compare/v2.0.1...v2.0.2) (2022-04-08)
+## [2.1.0](https://github.com/MorevM/vue-transitions/compare/v2.0.2...v2.1.0) (2022-04-12)
+
+
+### Features
+
+* Add types for plugin options ([6147a2a](https://github.com/MorevM/vue-transitions/commit/6147a2a3b241fdc36ec3b9cac52612c0f053c79e))
+* Change default `easing` value ([45cb956](https://github.com/MorevM/vue-transitions/commit/45cb956b713f614a4e251fda29b5804452df4912))
+* Plugin options to customize component names / default props ([78eb79c](https://github.com/MorevM/vue-transitions/commit/78eb79c1089618026430d887d2d98814e77b88fd))
+
+
+### Chores
+
+* bump @babel/plugin-transform-modules-commonjs ([#18](https://github.com/MorevM/vue-transitions/issues/18)) ([a4fe306](https://github.com/MorevM/vue-transitions/commit/a4fe306ae37cba4601df505fa378a54fcc6c0f65))
+* bump @morev/eslint-config from 10.0.3 to 11.0.0 ([#14](https://github.com/MorevM/vue-transitions/issues/14)) ([881a048](https://github.com/MorevM/vue-transitions/commit/881a048d80ce5071c3df75bc4ebad0f450b1f89d))
+* bump @morev/helpers from 0.8.1 to 0.9.0 ([#17](https://github.com/MorevM/vue-transitions/issues/17)) ([8ca3bfa](https://github.com/MorevM/vue-transitions/commit/8ca3bfabb82e5d20f6d5f3699d0865445f68b8b5))
+* bump eslint from 8.12.0 to 8.13.0 ([#16](https://github.com/MorevM/vue-transitions/issues/16)) ([d79de2b](https://github.com/MorevM/vue-transitions/commit/d79de2bc9839d68496c2c0725a21ef619bc282c0))
+* bump sass from 1.49.11 to 1.50.0 ([#13](https://github.com/MorevM/vue-transitions/issues/13)) ([5dff196](https://github.com/MorevM/vue-transitions/commit/5dff1961024a62553ef8307f49a01c75887a4b08))
+* Treat `@morev/helpers` as external dependency ([77ec89c](https://github.com/MorevM/vue-transitions/commit/77ec89c1fb6f56c81dd6f348917a825632fb208f))
+* Update rest dependencies ([7d6180c](https://github.com/MorevM/vue-transitions/commit/7d6180cd15a7e7f13379f1b6d7ba75c3f4a35eb0))
+
+
+### Bug fixes
+
+* Shared default `axis` prop value for `transition-expand` ([cd23e85](https://github.com/MorevM/vue-transitions/commit/cd23e857add9eb6839a24c595d51e70954b47738))
+
+
+### Documentation
+
+* Fix `move-duration` type ([a6704e8](https://github.com/MorevM/vue-transitions/commit/a6704e8cd7a5387e872bf1ffcc74203612bc198b))### [2.0.2](https://github.com/MorevM/vue-transitions/compare/v2.0.1...v2.0.2) (2022-04-08)
 
 
 ### CI improvements
