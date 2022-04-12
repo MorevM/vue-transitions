@@ -12,6 +12,7 @@
 <script>
 	import { baseTransition } from '../../mixins/base-transition.js';
 	import { validateExpandAxis } from '../../utility/validate/validate-expand-axis.js';
+	import { expandAxis } from '../../utility/defaults/defaults.js';
 
 	export default {
 		name: 'transition-expand',
@@ -21,7 +22,7 @@
 		props: {
 			axis: {
 				validator: validateExpandAxis,
-				default: 'y',
+				default: expandAxis,
 			},
 		},
 		data: () => ({}),
