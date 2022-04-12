@@ -1,6 +1,15 @@
 
 
-## [2.1.0](https://github.com/MorevM/vue-transitions/compare/v2.0.2...v2.1.0) (2022-04-12)
+### [2.1.1](https://github.com/MorevM/vue-transitions/compare/v2.1.0...v2.1.1) (2022-04-12)
+
+
+### Chores
+
+* bump @babel/plugin-transform-modules-commonjs ([#18](https://github.com/MorevM/vue-transitions/issues/18)) ([97b33a9](https://github.com/MorevM/vue-transitions/commit/97b33a9ce1270fd3c59388d1421c86600a85cca4))
+* bump @morev/eslint-config from 10.0.3 to 11.0.0 ([#14](https://github.com/MorevM/vue-transitions/issues/14)) ([15f2a1c](https://github.com/MorevM/vue-transitions/commit/15f2a1c9cccbeed9c6918a2cf7acce12afe50bf2))
+* bump @morev/helpers from 0.8.1 to 0.9.0 ([#17](https://github.com/MorevM/vue-transitions/issues/17)) ([0f07828](https://github.com/MorevM/vue-transitions/commit/0f07828a6834e1dccb8e0ad46dc3e1c6c954e462))
+* bump eslint from 8.12.0 to 8.13.0 ([#16](https://github.com/MorevM/vue-transitions/issues/16)) ([e234244](https://github.com/MorevM/vue-transitions/commit/e23424469b79d3c2653b12a477cc4b13f6c9424a))
+* bump sass from 1.49.11 to 1.50.0 ([#13](https://github.com/MorevM/vue-transitions/issues/13)) ([17aa796](https://github.com/MorevM/vue-transitions/commit/17aa7960b16971c3d8c2dfb05052d8bea0176c29))## [2.1.0](https://github.com/MorevM/vue-transitions/compare/v2.0.2...v2.1.0) (2022-04-12)
 
 
 ### Features
