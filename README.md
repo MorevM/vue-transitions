@@ -116,6 +116,9 @@ Vue.use(VueTransitions, {
 
 Custom options allows to change component names and default prop values.
 
+> It's recommended to use named export `plugin` instead of default export when setting custom options to get proper type information. \
+> See code examples below.
+
 <details>
   <summary><code>How to register globally only some transitions / change component names?</code></summary>
   <br />
@@ -127,17 +130,17 @@ Custom options allows to change component names and default prop values.
 
   ```js
   import Vue from 'vue';
-  import VueTransitions from '@morev/vue-transitions';
+  import { plugin as VueTransitions } from '@morev/vue-transitions';
   import '@morev/vue-transitions/styles';
 
   // Register globally only `<transition-fade>` and `<transition-slide>`,
   // also rename `<transition-slide>` to `<slide-transition>`
-  Vue.use(VueTransitions, {
+  Vue.use(VueTransitions({
     components: {
       TransitionFade: 'TransitionFade',
       TransitionSlide: 'slide-transition',
     }
-  });
+  }));
   ```
 
 </details>
@@ -153,10 +156,10 @@ Custom options allows to change component names and default prop values.
 
   ```js
   import Vue from 'vue';
-  import VueTransitions from '@morev/vue-transitions';
+  import { plugin as VueTransitions } from '@morev/vue-transitions';
   import '@morev/vue-transitions/styles';
 
-  Vue.use(VueTransitions, {
+  Vue.use(VueTransitions({
     // Default duration for all transitions now is `200`
     defaultProps: {
       duration: 200,
@@ -167,7 +170,7 @@ Custom options allows to change component names and default prop values.
         duration: 500,
       }
     }
-  });
+  }));
   ```
 
 </details>

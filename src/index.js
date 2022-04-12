@@ -52,13 +52,17 @@ if (typeof window !== 'undefined' && window.Vue) {
 	window.Vue.use({ install });
 }
 
-export default {
-	install,
-};
-
 export {
 	TransitionExpand,
 	TransitionFade,
 	TransitionScale,
 	TransitionSlide,
 };
+
+export const plugin = (pluginOptions) => ({
+	install(Vue, options) {
+		install(Vue, pluginOptions);
+	},
+});
+
+export default { install };

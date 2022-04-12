@@ -33,6 +33,7 @@
 	"files": [
 		"dist",
 		"vetur",
+		"types",
 		"bin",
 		"scripts"
 	],
@@ -58,6 +59,7 @@
 	"main": "./dist/vue-transitions.cjs.js",
 	"module": "./dist/vue-transitions.es.js",
 	"browser": "./dist/vue-transitions.umd.js",
+	"types": "types/index.d.ts",
 	"scripts": {
 		"prepack": "node ./scripts/prepack.js",
 		"postpublish": "node ./scripts/postpublish.js",
@@ -102,6 +104,7 @@
 		"release-it": "^14.14.2",
 		"sass": "^1.50.0",
 		"stylelint": "^14.6.1",
+		"typescript": "^4.6.3",
 		"vite": "^2.9.1",
 		"vue-types": "^4.1.1"
 	},
