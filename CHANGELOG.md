@@ -1,6 +1,11 @@
 
 
-### [2.1.1](https://github.com/MorevM/vue-transitions/compare/v2.1.0...v2.1.1) (2022-04-12)
+### [2.1.2](https://github.com/MorevM/vue-transitions/compare/v2.1.1...v2.1.2) (2022-04-12)
+
+
+### Bug fixes
+
+* **types:** Correct `defaultProps` key ([a5778f7](https://github.com/MorevM/vue-transitions/commit/a5778f77d5f55fcdf93f20f71cc549a1cc803541))### [2.1.1](https://github.com/MorevM/vue-transitions/compare/v2.1.0...v2.1.1) (2022-04-12)
 
 
 ### Chores
