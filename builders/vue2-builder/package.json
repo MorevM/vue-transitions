@@ -9,7 +9,7 @@
 		"build": "vite build --config vite-lib.config.js"
 	},
 	"devDependencies": {
-		"@morev/v-bem-transformer": "^0.0.5",
+		"@morev/v-bem-transformer": "^1.0.0",
 		"element-ui": "^2.15.6",
 		"more-sass": "^1.0.7",
 		"vite-plugin-vue2": "^1.9.3",

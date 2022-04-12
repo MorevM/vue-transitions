@@ -83,7 +83,7 @@
 		"vue": "^2.6.14 || >=3"
 	},
 	"dependencies": {
-		"@morev/helpers": "^0.9.0"
+		"@morev/helpers": "^0.10.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.8",
@@ -91,7 +91,7 @@
 		"@babel/plugin-syntax-jsx": "^7.16.7",
 		"@babel/plugin-transform-modules-commonjs": "^7.17.9",
 		"@morev/commitlint-config": "^0.1.1",
-		"@morev/eslint-config": "^11.0.0",
+		"@morev/eslint-config": "^11.1.0",
 		"@morev/stylelint-config": "^1.0.3",
 		"@release-it/conventional-changelog": "^4.2.2",
 		"@types/jest": "^27.4.1",
@@ -99,7 +99,7 @@
 		"husky": "^7.0.4",
 		"jest": "^27.5.1",
 		"lint-staged": "^12.3.7",
-		"release-it": "^14.14.0",
+		"release-it": "^14.14.2",
 		"sass": "^1.50.0",
 		"stylelint": "^14.6.1",
 		"vite": "^2.9.1",
