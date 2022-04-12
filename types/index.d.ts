@@ -59,10 +59,10 @@ type PluginOptions = Partial<{
 	 * Key is the prop name, value is desired prop value. \
 	 * IMPORTANT: Those props are not validated, so make sure you are using the right values.
 	 */
-	defaults: Partial<CommonProps>;
+	defaultProps: Partial<CommonProps>;
 	/**
 	 * An object allows to change default prop values per-component. \
-	 * Key is the original transition name written in PascalCase, value is object same as `defaults`.
+	 * Key is the original transition name written in PascalCase, value is object same as `defaultProps`.
 	 */
 	componentDefaultProps: DeepPartial<ComponentProps>;
 }>;
