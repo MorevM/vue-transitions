@@ -14,7 +14,7 @@ export const baseTransition = {
 		},
 		easing: {
 			validator: validateEasing,
-			default: defaults.transitionEasing,
+			default: () => defaults.transitionEasing,
 		},
 		delay: {
 			validator: validateDelay,

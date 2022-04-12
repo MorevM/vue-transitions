@@ -539,7 +539,7 @@ Those properties are related to each transition:
   If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
   ```ts
-  export type TransitionEasing = string; // Default: 'ease-in-out'
+  export type TransitionEasing = string; // Default: 'cubic-bezier(.25, .8, .5, 1)'
   ```
 
   **Example:**
