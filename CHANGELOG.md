@@ -1,6 +1,17 @@
 
 
-### [2.1.2](https://github.com/MorevM/vue-transitions/compare/v2.1.1...v2.1.2) (2022-04-12)
+### [2.1.3](https://github.com/MorevM/vue-transitions/compare/v2.1.2...v2.1.3) (2022-04-17)
+
+
+### Chores
+
+* bump @morev/eslint-config from 11.1.0 to 11.1.1 ([#19](https://github.com/MorevM/vue-transitions/issues/19)) ([5378923](https://github.com/MorevM/vue-transitions/commit/5378923ff65dca06740f5f018cce40092635f52b))
+* bump @morev/helpers from 0.10.0 to 0.14.1 ([#24](https://github.com/MorevM/vue-transitions/issues/24)) ([acaaa42](https://github.com/MorevM/vue-transitions/commit/acaaa42c63bc708c45c8d21f124b89686d2b8c02))
+* bump @release-it/conventional-changelog from 4.2.2 to 4.3.0 ([#25](https://github.com/MorevM/vue-transitions/issues/25)) ([bf78d0f](https://github.com/MorevM/vue-transitions/commit/bf78d0f39a3892bf42f2d39ef1e92f1f10625a76))
+* bump element-ui from 2.15.6 to 2.15.8 ([#21](https://github.com/MorevM/vue-transitions/issues/21)) ([f641551](https://github.com/MorevM/vue-transitions/commit/f641551bd05b2c3c3fe134a3b0254f5096164dfa))
+* bump lint-staged from 12.3.7 to 12.3.8 ([#23](https://github.com/MorevM/vue-transitions/issues/23)) ([c950d0e](https://github.com/MorevM/vue-transitions/commit/c950d0e2eb23545b54e5122fc91561c5d87e9b52))
+* bump stylelint from 14.6.1 to 14.7.0 ([#22](https://github.com/MorevM/vue-transitions/issues/22)) ([ef418ef](https://github.com/MorevM/vue-transitions/commit/ef418ef595cfbe9e835caec9f2ce484afa7a4551))
+* bump vite from 2.9.1 to 2.9.5 ([#20](https://github.com/MorevM/vue-transitions/issues/20)) ([7e64ba1](https://github.com/MorevM/vue-transitions/commit/7e64ba1f28c44c5e6998deaccf368f16d2fc8703))### [2.1.2](https://github.com/MorevM/vue-transitions/compare/v2.1.1...v2.1.2) (2022-04-12)
 
 
 ### Bug fixes
