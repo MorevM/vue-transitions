@@ -344,6 +344,7 @@
 			},
 
 			addItem(index = 0) {
+				if (this.previewItems.length === 15) return;
 				this.previewItems.splice(index, 0, {
 					hash: randomString(),
 					styles: {
