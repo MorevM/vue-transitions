@@ -85,7 +85,7 @@
 		"vue": "^2.6.14 || >=3"
 	},
 	"dependencies": {
-		"@morev/helpers": "^0.14.1"
+		"@morev/helpers": "^0.16.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.8",
