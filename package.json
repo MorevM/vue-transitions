@@ -102,7 +102,7 @@
 		"jest": "^27.5.1",
 		"lint-staged": "^12.4.0",
 		"release-it": "^14.14.2",
-		"sass": "^1.50.0",
+		"sass": "^1.50.1",
 		"stylelint": "^14.7.1",
 		"typescript": "^4.6.3",
 		"vite": "^2.9.5",
