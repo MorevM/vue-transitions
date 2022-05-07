@@ -1,6 +1,6 @@
 module.exports = {
 	moduleFileExtensions: ['js'],
-	testEnvironment: 'jsdom',
+	testEnvironment: 'node',
 	verbose: true,
 	restoreMocks: true,
 	cacheDirectory: './tmp/jest/cache',
