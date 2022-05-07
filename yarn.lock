@@ -985,10 +985,10 @@
     vue-eslint-parser "^8.1.0"
     yaml-eslint-parser "^0.5.0"
 
-"@morev/helpers@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-0.16.0.tgz#39014a59086785315b2e4ae13e3ddb65adf05e8a"
-  integrity sha512-oAJGrL8FmxrfyjTTuHcx4B4mBvlAIqIy/YTtcsRVncVl47ahiTbFw00Xg92MRb62JTlNu4i2NY2/e+UUfveCdg==
+"@morev/helpers@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-0.16.1.tgz#5ea45a4c86bb0ed81fb76cb5fe85e065cb2844ad"
+  integrity sha512-oOs0RB3NL5xPa4hLgNiq1/xKQcrbUy0xhx+c8TcjMUdd9XjDd2lAXF5N8UNJ5ugJKcVR+UGyX8xQqAfG/XPEuQ==
 
 "@morev/helpers@^0.5.0":
   version "0.5.0"
