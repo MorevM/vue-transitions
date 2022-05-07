@@ -101,7 +101,7 @@
 		"husky": "^7.0.4",
 		"jest": "^27.5.1",
 		"lint-staged": "^12.4.0",
-		"release-it": "^14.14.2",
+		"release-it": "^14.14.3",
 		"sass": "^1.51.0",
 		"stylelint": "^14.8.2",
 		"typescript": "^4.6.4",
