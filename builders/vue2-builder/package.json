@@ -12,7 +12,7 @@
 		"@morev/v-bem-transformer": "^1.0.0",
 		"element-ui": "^2.15.8",
 		"more-sass": "^1.0.7",
-		"vite-plugin-vue2": "^2.0.0",
+		"vite-plugin-vue2": "^2.0.1",
 		"vue": "^2.6.14",
 		"vue-template-compiler": "^2.6.14"
 	}
