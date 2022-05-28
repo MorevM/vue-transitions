@@ -89,7 +89,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.18.2",
-		"@babel/eslint-parser": "^7.17.0",
+		"@babel/eslint-parser": "^7.18.2",
 		"@babel/plugin-syntax-jsx": "^7.17.12",
 		"@babel/plugin-transform-modules-commonjs": "^7.18.0",
 		"@morev/commitlint-config": "^0.1.1",
