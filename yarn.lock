@@ -1021,14 +1021,14 @@
   dependencies:
     "@morev/helpers" "^0.5.0"
 
-"@morev/stylelint-config@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@morev/stylelint-config/-/stylelint-config-1.0.3.tgz#029406680f51ff8e2ca19969c36351268f403148"
-  integrity sha512-Kbn/3dNY/KOTvkMXv3afZ3ZFGTOxT8hPss3n+d/zmJuCohiVKuNJIuxTfqRh9WZ0VG5395heSl0f6m3EQvWVwQ==
+"@morev/stylelint-config@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@morev/stylelint-config/-/stylelint-config-1.1.0.tgz#03a21fdceeae15c549063bc80d128fa26f180123"
+  integrity sha512-c8FXdlk2be/N2Jzb9DLy3woes2C9grkgPaUPbt7oKUiFONfqEiJ/a1MUMy+TXVKmmd0PqoZ6I5FDhPOWPh9krA==
   dependencies:
     lodash.mergewith "^4.6.2"
-    postcss "^8.4.8"
-    postcss-scss "^4.0.3"
+    postcss "^8.4.14"
+    postcss-scss "^4.0.4"
     stylelint-8-point-grid "^2.1.0"
     stylelint-at-rule-no-children "^0.3.1"
     stylelint-declaration-block-no-ignored-properties "^2.5.0"
@@ -6607,10 +6607,10 @@ postcss-scss@^2.1.1:
   dependencies:
     postcss "^7.0.6"
 
-postcss-scss@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-4.0.3.tgz#36c23c19a804274e722e83a54d20b838ab4767ac"
-  integrity sha512-j4KxzWovfdHsyxwl1BxkUal/O4uirvHgdzMKS1aWJBAV0qh2qj5qAZqpeBfVUYGWv+4iK9Az7SPyZ4fyNju1uA==
+postcss-scss@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-4.0.4.tgz#aa8f60e19ee18259bc193db9e4b96edfce3f3b1f"
+  integrity sha512-aBBbVyzA8b3hUL0MGrpydxxXKXFZc5Eqva0Q3V9qsBOLEMsjb6w49WfpsoWzpEgcqJGW4t7Rio8WXVU9Gd8vWg==
 
 postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.5, postcss-selector-parser@^6.0.6, postcss-selector-parser@^6.0.9:
   version "6.0.10"
@@ -6643,7 +6643,7 @@ postcss@^7.0.14, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.26, postcss@^7.0.
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.1.10, postcss@^8.3.11, postcss@^8.4.13, postcss@^8.4.14, postcss@^8.4.8:
+postcss@^8.1.10, postcss@^8.3.11, postcss@^8.4.13, postcss@^8.4.14:
   version "8.4.14"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.14.tgz#ee9274d5622b4858c1007a74d76e42e56fd21caf"
   integrity sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==
