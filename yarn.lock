@@ -1010,22 +1010,12 @@
   resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-0.19.2.tgz#e8a5d31ca641ef4534d298379efb44f8503e9ae3"
   integrity sha512-uEeNAYpP8Zzaa6JSbdqAK5CrFvW8nlc8Jk5xq6z9N4cVGZ8rl5ectxNl9+wPp/yNjbQoiaZT9A3oH9HBU7KYJQ==
 
-"@morev/helpers@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-0.5.0.tgz#6727ba435915f8e3a5b841bf4b8c7949a28eed1a"
-  integrity sha512-GrFxyLQdqMj4d6A//yEyBQDZ8gW6lQ1YvWOKcPC1eVIgRuw9ZUM1w0ZoggxyVWFBFssQdWWxhwkVtmrJLpo4SQ==
-
-"@morev/helpers@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-0.9.0.tgz#abcd81d0f59e93d037ce4a7ff297dec2f1b97559"
-  integrity sha512-5vqO60clQ5Uk3yY+6fSY+OD0mWmtR1l+7VulKh6/l4vSCLn0IV2H6ZfOHRLT6pc/lPWVf3gp43hzrq50dy2+dw==
-
-"@morev/more-bem-classnames@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@morev/more-bem-classnames/-/more-bem-classnames-1.0.2.tgz#3b315cb0d427950d1a7314d540baab8573e0bc5e"
-  integrity sha512-ntLs/dX7ORRg0AYMsldRYWx/CnV07Ri8AIxCb8r0Zn8Kl65DWNJd4OSA6aSWBp8caysQFjyyksR6ceNUIfJVcQ==
+"@morev/more-bem-classnames@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@morev/more-bem-classnames/-/more-bem-classnames-1.0.3.tgz#8df5dae1a33a87a6b15b6fbd16e1c31a393d83d1"
+  integrity sha512-oen77cdQ8tgw3FlcLszQzTzysbuY8SgnKbDtYN685otj3RlNodlKdNhfJU2GDu+GL5EzaZExVxbUf8MyrNmNgA==
   dependencies:
-    "@morev/helpers" "^0.5.0"
+    "@morev/helpers" "^0.19.2"
 
 "@morev/stylelint-config@^1.1.0":
   version "1.1.0"
@@ -1046,15 +1036,15 @@
     stylelint-selector-tag-no-without-class "^2.0.5"
     stylelint-use-nesting "^3.0.0"
 
-"@morev/v-bem-transformer@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@morev/v-bem-transformer/-/v-bem-transformer-1.0.0.tgz#841b44734e27c85442c71f3f93bff23d495fa2ff"
-  integrity sha512-SdwRV2TIgpdYjBoV54w1RAS6X9y4j3tq+L1v5wV1GASN+JZNHsth/WyjOHNDPE/bXanjVdJNQsIb1g86uKMtHA==
+"@morev/v-bem-transformer@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@morev/v-bem-transformer/-/v-bem-transformer-1.0.1.tgz#7cbe590d42aa84ca77e57a132a9c4a7b361f09f6"
+  integrity sha512-zDStv1DBgVVdk5Sx5Yc2XI0teJfUNugp5PfjtODDdQN4NmKzhjKonYa1Idzfzo74IsZRhHGJt55bA7ePzkwk6w==
   dependencies:
-    "@morev/helpers" "^0.9.0"
-    "@morev/more-bem-classnames" "^1.0.2"
+    "@morev/helpers" "^0.19.2"
+    "@morev/more-bem-classnames" "^1.0.3"
     "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
-    unplugin "^0.6.1"
+    unplugin "^0.7.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -8153,6 +8143,16 @@ unplugin@^0.6.1:
   resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.6.1.tgz#86da55d7a0d67629734dbe5e25efa9951422e64e"
   integrity sha512-cQqRCgQ2v/Q4fPIWNVZ6sNIDdl5v8JXOnlsUOsGzT4fblTONoPWaytiYSpu5qJ9lvSDZYAQN6BRVo3XQoZMfUQ==
   dependencies:
+    chokidar "^3.5.3"
+    webpack-sources "^3.2.3"
+    webpack-virtual-modules "^0.4.3"
+
+unplugin@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.7.0.tgz#8c8e28a7ca454a13313483ddd4c1f9cc1809d966"
+  integrity sha512-OsiFrgybmqm5bGuaodvbLYhqUrvGuRHRMZDhddKEXTDbuQ1x+hR7M1WpQguXj03whVYjEYChhFo738cZH5RNig==
+  dependencies:
+    acorn "^8.7.1"
     chokidar "^3.5.3"
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.4.3"
