@@ -1017,10 +1017,10 @@
   dependencies:
     "@morev/helpers" "^0.19.2"
 
-"@morev/stylelint-config@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@morev/stylelint-config/-/stylelint-config-1.1.0.tgz#03a21fdceeae15c549063bc80d128fa26f180123"
-  integrity sha512-c8FXdlk2be/N2Jzb9DLy3woes2C9grkgPaUPbt7oKUiFONfqEiJ/a1MUMy+TXVKmmd0PqoZ6I5FDhPOWPh9krA==
+"@morev/stylelint-config@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@morev/stylelint-config/-/stylelint-config-1.2.0.tgz#d54f1783d237edc55a0c8bc0ee5b4d1ce68f7021"
+  integrity sha512-oNPKjKyK1Q/PBbUznBXgSsfczrkn/i0GHqZS5HavYDWMwPBImnkf8rJXIPdPJQdK8JwYAsfH82/tQmgS55H/Fw==
   dependencies:
     lodash.mergewith "^4.6.2"
     postcss "^8.4.14"
@@ -1032,7 +1032,7 @@
     stylelint-no-nested-media "^0.1.0"
     stylelint-order "^5.0.0"
     stylelint-scss "^4.2.0"
-    stylelint-selector-no-empty "^1.0.8"
+    stylelint-selector-no-empty "^1.0.9"
     stylelint-selector-tag-no-without-class "^2.0.5"
     stylelint-use-nesting "^3.0.0"
 
@@ -7577,12 +7577,10 @@ stylelint-scss@^4.2.0:
     postcss-selector-parser "^6.0.6"
     postcss-value-parser "^4.1.0"
 
-stylelint-selector-no-empty@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/stylelint-selector-no-empty/-/stylelint-selector-no-empty-1.0.8.tgz#d3707d9913a9754abb6c7db707e9bfac26d631d6"
-  integrity sha512-nFahJOA3443Eh3lA8DfVEoy5CRtXgc088STrv2Gb0Sbcj3H9zcJL1teKwBWn7rbCd8P3P0gVCRzAyy2NXWw3/g==
-  dependencies:
-    stylelint "^13.8.0"
+stylelint-selector-no-empty@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/stylelint-selector-no-empty/-/stylelint-selector-no-empty-1.0.9.tgz#e12308f918db40cfff3c98beca7c7f4274e4ea3a"
+  integrity sha512-MmtOZNOj0dr/PFBxiSBZHtKq+rCTtdkU54E+AkzfHH0wegKKSihMax89PymBXGFboREHu8WaJL9xhh2ttPgkEQ==
 
 stylelint-selector-tag-no-without-class@^2.0.5:
   version "2.0.5"
@@ -7596,7 +7594,7 @@ stylelint-use-nesting@^3.0.0:
   resolved "https://registry.yarnpkg.com/stylelint-use-nesting/-/stylelint-use-nesting-3.0.0.tgz#3215e3a2d4578b68331d5e250a63610604d02eac"
   integrity sha512-BMzhXWbK5DdAYtZMQULn7VmWZXpy8Rwlx2PgeNYqKInQrKTJWM/TFKPScc+xvsGUc/6JPiUDeQQij9gFnOo8Kg==
 
-stylelint@^13.3.2, stylelint@^13.8.0:
+stylelint@^13.3.2:
   version "13.13.1"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.13.1.tgz#fca9c9f5de7990ab26a00f167b8978f083a18f3c"
   integrity sha512-Mv+BQr5XTUrKqAXmpqm6Ddli6Ief+AiPZkRsIrAoUKFuq/ElkUh9ZMYxXD0iQNZ5ADghZKLOWz1h7hTClB7zgQ==
