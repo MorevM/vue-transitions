@@ -91,7 +91,7 @@
 		"@babel/core": "^7.18.6",
 		"@babel/eslint-parser": "^7.18.2",
 		"@babel/plugin-syntax-jsx": "^7.18.6",
-		"@babel/plugin-transform-modules-commonjs": "^7.18.2",
+		"@babel/plugin-transform-modules-commonjs": "^7.18.6",
 		"@morev/commitlint-config": "^0.1.1",
 		"@morev/eslint-config": "^12.2.0",
 		"@morev/stylelint-config": "^1.2.0",
