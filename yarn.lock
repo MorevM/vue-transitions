@@ -8230,10 +8230,10 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue-types@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/vue-types/-/vue-types-4.1.1.tgz#7d7a4e4a01249a51b6da3faa301248c2ea5f5b97"
-  integrity sha512-Jq2GZ/w6rExJbLA/h7nHBFLciu+YNekgox0DB64wN1snZ4IIJMq+qnqp1/vE4fc7vEjZcP5KGhLzkkSjIHLRzw==
+vue-types@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/vue-types/-/vue-types-4.2.0.tgz#db054e242a099f006c84d62fd4ab831767accf18"
+  integrity sha512-iMllg63ZQ61DP7C2ZR1Ez7D6hqcP5/pcNP9SgXg6Nmrt82r2Mx06+xEw7GRrrysR6Sfoh3w+TLLflMTk6I/D0A==
   dependencies:
     is-plain-object "5.0.0"
 
