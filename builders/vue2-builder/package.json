@@ -11,7 +11,7 @@
 	"devDependencies": {
 		"@morev/v-bem-transformer": "^1.0.1",
 		"element-ui": "^2.15.9",
-		"more-sass": "^1.0.7",
+		"more-sass": "^1.0.8",
 		"vite-plugin-vue2": "^2.0.2",
 		"vue": "^2.7.8",
 		"vue-template-compiler": "^2.7.8"
