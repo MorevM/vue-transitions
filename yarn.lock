@@ -1052,7 +1052,7 @@
   resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-0.19.2.tgz#e8a5d31ca641ef4534d298379efb44f8503e9ae3"
   integrity sha512-uEeNAYpP8Zzaa6JSbdqAK5CrFvW8nlc8Jk5xq6z9N4cVGZ8rl5ectxNl9+wPp/yNjbQoiaZT9A3oH9HBU7KYJQ==
 
-"@morev/helpers@^1.1.0":
+"@morev/helpers@^1.0.1", "@morev/helpers@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-1.1.0.tgz#16b42ac9371d4152f1a92abbe73ecb71c746b2cb"
   integrity sha512-SjcXAFjfOfiZf9Nc1pEr3KdjaeEzO4zFMA4fEYFE9N8TkIoJjgo/sOYzGAewyNxID40crqmLRFw2kPhTLha06w==
@@ -1083,15 +1083,15 @@
     stylelint-selector-tag-no-without-class "^2.0.5"
     stylelint-use-nesting "^4.0.0"
 
-"@morev/v-bem-transformer@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@morev/v-bem-transformer/-/v-bem-transformer-1.0.1.tgz#7cbe590d42aa84ca77e57a132a9c4a7b361f09f6"
-  integrity sha512-zDStv1DBgVVdk5Sx5Yc2XI0teJfUNugp5PfjtODDdQN4NmKzhjKonYa1Idzfzo74IsZRhHGJt55bA7ePzkwk6w==
+"@morev/v-bem-transformer@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@morev/v-bem-transformer/-/v-bem-transformer-1.0.4.tgz#8bbea5f713cb72bc8491bc5d321571fa43c661b8"
+  integrity sha512-hAfUGndGfM0IBHpirZqUpU1xsa4unreUdRMmR6nuWexizeAD+loQi1aY33rG3TuhqMVnOEX0J73LHc43PqzuZw==
   dependencies:
-    "@morev/helpers" "^0.19.2"
+    "@morev/helpers" "^1.0.1"
     "@morev/more-bem-classnames" "^1.0.3"
     "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
-    unplugin "^0.7.0"
+    unplugin "^0.8.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1883,11 +1883,6 @@ acorn@^8.4.1, acorn@^8.5.0, acorn@^8.7.0:
   version "8.7.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.0.tgz#90951fde0f8f09df93549481e5fc141445b791cf"
   integrity sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==
-
-acorn@^8.7.1:
-  version "8.7.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.1.tgz#0197122c843d1bf6d0a5e83220a788f278f63c30"
-  integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
 
 acorn@^8.8.0:
   version "8.8.0"
@@ -8118,15 +8113,15 @@ unplugin@^0.6.1:
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.4.3"
 
-unplugin@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.7.0.tgz#8c8e28a7ca454a13313483ddd4c1f9cc1809d966"
-  integrity sha512-OsiFrgybmqm5bGuaodvbLYhqUrvGuRHRMZDhddKEXTDbuQ1x+hR7M1WpQguXj03whVYjEYChhFo738cZH5RNig==
+unplugin@^0.8.0:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.8.1.tgz#4517b6a8ec3d944e838f9c346921d9777cd159e1"
+  integrity sha512-o7rUZoPLG1fH4LKinWgb77gDtTE6mw/iry0Pq0Z5UPvZ9+HZ1/4+7fic7t58s8/CGkPrDpGq+RltO+DmswcR4g==
   dependencies:
-    acorn "^8.7.1"
+    acorn "^8.8.0"
     chokidar "^3.5.3"
     webpack-sources "^3.2.3"
-    webpack-virtual-modules "^0.4.3"
+    webpack-virtual-modules "^0.4.4"
 
 untyped@^0.4.4:
   version "0.4.4"
@@ -8378,6 +8373,11 @@ webpack-virtual-modules@^0.4.3:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.4.3.tgz#cd597c6d51d5a5ecb473eea1983a58fa8a17ded9"
   integrity sha512-5NUqC2JquIL2pBAAo/VfBP6KuGkHIZQXW/lNKupLPfhViwh8wNsu0BObtl09yuKZszeEUfbXz8xhrHvSG16Nqw==
+
+webpack-virtual-modules@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.4.4.tgz#a19fcf371923c59c4712d63d7d194b1e4d8262cc"
+  integrity sha512-h9atBP/bsZohWpHnr+2sic8Iecb60GxftXsWNLLLSqewgIsGzByd2gcIID4nXcG+3tNe4GQG3dLcff3kXupdRA==
 
 whatwg-url@^5.0.0:
   version "5.0.0"
