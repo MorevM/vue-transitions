@@ -97,7 +97,7 @@
 		"@morev/stylelint-config": "^2.0.0",
 		"@release-it/conventional-changelog": "^5.0.0",
 		"@types/jest": "^28.1.6",
-		"eslint": "^8.22.0",
+		"eslint": "^8.23.0",
 		"husky": "^8.0.1",
 		"jest": "^28.1.3",
 		"lint-staged": "^13.0.3",
