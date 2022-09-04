@@ -70,5 +70,5 @@ type PluginOptions = Partial<{
 
 declare const vueTransitions: () => PluginObject<PluginOptions>;
 
-export const plugin: (options: PluginOptions) => PluginObject<PluginOptions>;
+export const plugin: (options?: PluginOptions) => PluginObject<PluginOptions>;
 export default vueTransitions;
