@@ -138,14 +138,14 @@
 		transition-duration: .2s;
 		cursor: pointer;
 
-		@media (min-width: 480px) {
-			width: 32px;
-		}
-
 		&:hover {
 			@media (hover: hover) {
 				opacity: 1;
 			}
+		}
+
+		@media (min-width: 480px) {
+			width: 32px;
 		}
 
 		&--hidden {
