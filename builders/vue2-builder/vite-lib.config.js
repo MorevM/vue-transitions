@@ -5,6 +5,7 @@ export default defineConfig({
 	plugins: [createVuePlugin()],
 	build: {
 		minify: 'terser',
+		assetsDir: '',
 		lib: {
 			entry: '../../src/index.js',
 			formats: ['es', 'cjs', 'umd'],
@@ -19,6 +20,7 @@ export default defineConfig({
 				globals: {
 					vue: 'Vue',
 				},
+				assetFileNames: '[name].[ext]',
 			},
 		},
 	},

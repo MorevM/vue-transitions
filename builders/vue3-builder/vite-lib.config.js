@@ -27,6 +27,7 @@ export default defineConfig({
 	],
 	build: {
 		minify: 'terser',
+		assetsDir: '',
 		lib: {
 			entry: '../../src/index.js',
 			formats: ['es', 'cjs', 'umd'],
@@ -38,6 +39,7 @@ export default defineConfig({
 			external: ['vue', '@morev/helpers'],
 			output: {
 				dir: '../../dist/vue3',
+				assetFileNames: '[name].[ext]',
 				globals: {
 					vue: 'Vue',
 				},
