@@ -7,5 +7,6 @@ fs.writeFileSync(
 	packageJsonContents
 		.replace('"private": true', '"private": false')
 		.replace('"scripts": {', '"scripts": {\n\t\t"postinstall": "node ./scripts/postinstall.js",')
-		.replace(/"workspaces": \[[^\]]*],\s*/gs, ''),
+		// eslint-disable-next-line regexp/strict
+		.replace(/"workspaces": \[[^\]]*],\s*/g, ''),
 );
