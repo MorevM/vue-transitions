@@ -1,3 +1,4 @@
+/* eslint-disable import/exports-last */
 import type { PluginObject } from 'vue';
 
 // Helpers
@@ -81,6 +82,83 @@ type CommonProps = {
 	noMove: boolean;
 };
 
+export type Emits = {
+	/**
+	 * Called before the element is inserted into the DOM.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns        Nothing.
+	 */
+	 onBeforeEnter: (el: HTMLElement) => void;
+
+	/**
+	 * Called one frame after the element is inserted.
+	 *
+	 * @param   el     Animated element(s).
+	 * @param   done   Callback function used to indicate transition end.
+	 *
+	 * @returns          Nothing.
+	 */
+	 onEnter: (el: HTMLElement, done: () => void) => void;
+
+	/**
+	 * Called when the enter transition has finished.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns        Nothing.
+	 */
+	 onAfterEnter: (el: HTMLElement) => void;
+
+	/**
+	 * Called if the enter transition was cancelled.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns        Nothing.
+	 */
+	 onEnterCancelled: (el: HTMLElement) => void;
+
+	/**
+	 * Called before the leave hook.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns        Nothing.
+	 */
+	 onBeforeLeave: (el: HTMLElement) => void;
+
+	/**
+	 * Called when the leave transition starts.
+	 *
+	 * @param   el     Animated element(s).
+	 * @param   done   Callback function used to indicate transition end.
+	 *
+	 * @returns          Nothing.
+	 */
+	 onLeave: (el: HTMLElement, done: () => void) => void;
+
+	/**
+	 * Called when the leave transition has finished and the element has been removed from the DOM.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns        Nothing.
+	 */
+	 onAfterLeave: (el: HTMLElement) => void;
+
+	/**
+	 * Called if the leave transition was cancelled. \
+	 * Only available with `v-show` transitions
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns        Nothing.
+	 */
+	 onLeaveCancelled: (el: HTMLElement) => void;
+};
+
 // Unique props
 type PropExpandAxisValue = 'x' | 'y';
 type PropSlideOffsetValue = [number | string, number | string];
@@ -134,11 +212,18 @@ type UniqueProps = {
 	};
 };
 
-type ComponentProps = {
+export type ComponentProps = {
 	TransitionFade: CommonProps;
 	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'];
 	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'];
 	TransitionScale: CommonProps & UniqueProps['TransitionScale'];
+};
+
+export type ComponentPropsAndEmits = {
+	TransitionFade: CommonProps & Emits;
+	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'] & Emits;
+	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'] & Emits;
+	TransitionScale: CommonProps & UniqueProps['TransitionScale'] & Emits;
 };
 
 type PluginOptions = Partial<{
