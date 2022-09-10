@@ -212,19 +212,19 @@ type UniqueProps = {
 	};
 };
 
-export type ComponentProps = {
+export type ComponentProps = DeepPartial<{
 	TransitionFade: CommonProps;
 	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'];
 	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'];
 	TransitionScale: CommonProps & UniqueProps['TransitionScale'];
-};
+}>;
 
-export type ComponentPropsAndEmits = {
+export type ComponentPropsAndEmits = DeepPartial<{
 	TransitionFade: CommonProps & Emits;
 	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'] & Emits;
 	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'] & Emits;
 	TransitionScale: CommonProps & UniqueProps['TransitionScale'] & Emits;
-};
+}>;
 
 type PluginOptions = Partial<{
 	/**
