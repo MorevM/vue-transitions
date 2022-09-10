@@ -1196,10 +1196,10 @@
     conventional-changelog-conventionalcommits "^4.6.3"
     lodash.clonedeep "^4.5.0"
 
-"@morev/eslint-config@^16.0.0":
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/@morev/eslint-config/-/eslint-config-16.0.0.tgz#117b23dfc523be33739f8adf7ba74cec741d92cd"
-  integrity sha512-FKaavr0hG9yirzVLnaekksUBMXaAQ9H3hCFeR4Hlaod6HBcO3SIRwmuYVAP2JuNYiHCVk7nmNTP66Xe1QZrS7Q==
+"@morev/eslint-config@^17.0.1":
+  version "17.0.1"
+  resolved "https://registry.yarnpkg.com/@morev/eslint-config/-/eslint-config-17.0.1.tgz#bb14d25950e84015a3bcee9cb52a10d6212476e8"
+  integrity sha512-9Hs8qbyjFWKT/ip4J+vUD32qOyMofrkRR5k8PnS20vNZXQWsHOXMZmfMmdlm3070gR/5QlF84oBgT+2fsPA15A==
   dependencies:
     "@babel/core" "^7.18.13"
     "@babel/eslint-parser" "^7.18.9"
@@ -1220,6 +1220,7 @@
     eslint-plugin-no-autofix "^1.2.3"
     eslint-plugin-no-secrets "^0.8.9"
     eslint-plugin-node "^11.1.0"
+    eslint-plugin-regexp "^1.9.0"
     eslint-plugin-sonarjs "^0.15.0"
     eslint-plugin-unicorn "^43.0.2"
     eslint-plugin-vue "^9.4.0"
@@ -2828,7 +2829,7 @@ commander@^9.3.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-9.3.0.tgz#f619114a5a2d2054e0d9ff1b31d5ccf89255e26b"
   integrity sha512-hv95iU5uXPbK83mjrJKuZyFM/LBAoCV/XhVGkS5Je6tl7sxr6A0ITMw5WoRV46/UaJ46Nllm3Xt7IaJhXTIkzw==
 
-comment-parser@1.3.1:
+comment-parser@1.3.1, comment-parser@^1.1.2:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-1.3.1.tgz#3d7ea3adaf9345594aedee6563f422348f165c1b"
   integrity sha512-B52sN2VNghyq5ofvUsqZjmk6YkihBX5vMSChmSK9v4ShjKf3Vk5Xcmgpw4o+iIgtrnM/u5FiMpz9VKb8lpBveA==
@@ -3813,6 +3814,20 @@ eslint-plugin-node@^11.1.0:
     minimatch "^3.0.4"
     resolve "^1.10.1"
     semver "^6.1.0"
+
+eslint-plugin-regexp@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-regexp/-/eslint-plugin-regexp-1.9.0.tgz#692476a4f620e16634f747bf5c4bfbcd480ff6d9"
+  integrity sha512-Che49IZ07w9KcKvrMiqfwBYv44VBunA4NqUo+UTLluYbCos9Du3+pnhkPTLTAx6ZoZ1Rmz7u7o2iC6g6qCuvxw==
+  dependencies:
+    comment-parser "^1.1.2"
+    eslint-utils "^3.0.0"
+    grapheme-splitter "^1.0.4"
+    jsdoctypeparser "^9.0.0"
+    refa "^0.9.0"
+    regexp-ast-analysis "^0.5.1"
+    regexpp "^3.2.0"
+    scslre "^0.1.6"
 
 eslint-plugin-sonarjs@^0.15.0:
   version "0.15.0"
@@ -5595,6 +5610,11 @@ jsdoc-type-pratt-parser@~3.1.0:
   resolved "https://registry.yarnpkg.com/jsdoc-type-pratt-parser/-/jsdoc-type-pratt-parser-3.1.0.tgz#a4a56bdc6e82e5865ffd9febc5b1a227ff28e67e"
   integrity sha512-MgtD0ZiCDk9B+eI73BextfRrVQl0oyzRG8B2BjORts6jbunj4ScKPcyXGTbB6eXL4y9TzxCm6hyeLq/2ASzNdw==
 
+jsdoctypeparser@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/jsdoctypeparser/-/jsdoctypeparser-9.0.0.tgz#8c97e2fb69315eb274b0f01377eaa5c940bd7b26"
+  integrity sha512-jrTA2jJIL6/DAEILBEh2/w9QxCuwmvNXIry39Ay/HVfhE3o2yVV0U44blYkqdHA/OKloJEqvJy0xU+GSdE2SIw==
+
 jsesc@^2.5.1:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
@@ -7118,10 +7138,33 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
+refa@^0.9.0:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/refa/-/refa-0.9.1.tgz#12731fce378d235731b1f73182b20083c8a75ca8"
+  integrity sha512-egU8LgFq2VXlAfUi8Jcbr5X38wEOadMFf8tCbshgcpVCYlE7k84pJOSlnvXF+muDB4igkdVMq7Z/kiNPqDT9TA==
+  dependencies:
+    regexpp "^3.2.0"
+
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
+
+regexp-ast-analysis@^0.2.3:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/regexp-ast-analysis/-/regexp-ast-analysis-0.2.4.tgz#a497a7c8bfbba51438693821e4b0e3ed43e20f1b"
+  integrity sha512-8L7kOZQaKPxKKAwGuUZxTQtlO3WZ+tiXy4s6G6PKL6trbOXcZoumwC3AOHHFtI/xoSbNxt7jgLvCnP1UADLWqg==
+  dependencies:
+    refa "^0.9.0"
+    regexpp "^3.2.0"
+
+regexp-ast-analysis@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/regexp-ast-analysis/-/regexp-ast-analysis-0.5.1.tgz#f7c94e6199d6752f3430ae7a1d7a5978114197fb"
+  integrity sha512-Ca/g9gaTNuMewLuu+mBIq4vCrGRSO8AE9bP32NMQjJ/wBTdWq0g96qLkBb0NbGwEbp7S/q+NQF3o7veeuRfg0g==
+  dependencies:
+    refa "^0.9.0"
+    regexpp "^3.2.0"
 
 regexp-tree@^0.1.24, regexp-tree@~0.1.1:
   version "0.1.24"
@@ -7381,6 +7424,15 @@ sass@^1.54.9:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
+
+scslre@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/scslre/-/scslre-0.1.6.tgz#71a2832e4bf3a9254973a04fbed90aec94f75757"
+  integrity sha512-JORxVRlQTfjvlOAaiQKebgFElyAm5/W8b50lgaZ0OkEnKnagJW2ufDh3xRfU75UD9z3FGIu1gL1IyR3Poa6Qmw==
+  dependencies:
+    refa "^0.9.0"
+    regexp-ast-analysis "^0.2.3"
+    regexpp "^3.2.0"
 
 scule@^0.3.2:
   version "0.3.2"
