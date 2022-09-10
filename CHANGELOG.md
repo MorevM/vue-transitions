@@ -1,5 +1,12 @@
 
 
+### [2.2.1](https://github.com/MorevM/vue-transitions/compare/v2.2.0...v2.2.1) (2022-09-10)
+
+
+### Bug fixes
+
+* **build:** Correct filename and path of resulting CSS file ([bf65edd](https://github.com/MorevM/vue-transitions/commit/bf65edd2870eb234d2dd790878296da56ee23ca4))
+
 ## [2.2.0](https://github.com/MorevM/vue-transitions/compare/v2.1.4...v2.2.0) (2022-09-10)
 
 
