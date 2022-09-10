@@ -25,6 +25,7 @@ it goes much further and provides more features with a simpler API.
   * [Using `yarn`](#using-yarn)
   * [Using `npm`](#using-npm)
   * [Using `pnpm`](#using-pnpm)
+* [IntelliSense](#intellisense)
 * [Usage](#usage)
   * [Global registration](#global-registration)
     * [Custom options](#custom-options)
@@ -196,6 +197,54 @@ Custom options allows to change component names and default prop values.
   };
 </script>
 ```
+
+## IntelliSense
+
+> This section only applies to [VSCode](https://code.visualstudio.com/) setup and global registration of components.
+>
+> I have no idea how to make it universal across Vue2 and Vue3 using direct import of components
+> (since Vue2 doesn't provide type DefineComponent before version 2.7)
+
+### With Vue 2
+
+Using Vue 2 with [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+extension installed all components should provide hints as it, no actions required:
+
+![Example of IntelliSense with VSCode and Vetur](./.github/images/intellisense-vue2.jpg)
+
+### With Vue 3
+
+Using Vue 3 with [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension installed
+you can specify global component types by configuring `compilerOptions.types` in `tsconfig.json`:
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    // ...
+    "types": ["@morev/vue-transitions/types/volar"]
+  }
+}
+```
+
+If you are using renamed versions of components or using only part of them, you may configure global types yourself
+by creating custom type definition file which re-exports needed information:
+
+```ts
+import type { DefineComponent } from 'vue';
+import type { ComponentPropsAndEmits } from '@morev/vue-transitions';
+
+declare module 'vue' {
+  export interface GlobalComponents {
+    MyTransitionFade: DefineComponent<ComponentPropsAndEmits['TransitionFade']>;
+    MyTransitionExpand: DefineComponent<ComponentPropsAndEmits['TransitionExpand']>;
+    MyTransitionScale: DefineComponent<ComponentPropsAndEmits['TransitionScale']>;
+    MyTransitionSlide: DefineComponent<ComponentPropsAndEmits['TransitionSlide']>;
+  }
+}
+```
+
+![Example of IntelliSense with VSCode and Volar](./.github/images/intellisense-vue3.jpg)
 
 ## List of transitions
 
