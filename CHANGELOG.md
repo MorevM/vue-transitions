@@ -1,5 +1,50 @@
 
 
+## [2.2.0](https://github.com/MorevM/vue-transitions/compare/v2.1.4...v2.2.0) (2022-09-10)
+
+
+### Features
+
+* **types:** Add inline documentation for `d.ts` file ([51864f3](https://github.com/MorevM/vue-transitions/commit/51864f3ae458a86691c2a61c751575f8a421159f))
+* **types:** Expose component props and emit types ([e7f1ce1](https://github.com/MorevM/vue-transitions/commit/e7f1ce1a2854898d88e516d5d54d73fd2ce13b55))
+* **types:** Typings for global components using Volar ([cfcd7b4](https://github.com/MorevM/vue-transitions/commit/cfcd7b4164ae0ba32346cc0836fbe9653a9351b1))
+
+
+### Bug fixes
+
+* **types:** Make plugin options optional ([5bb681a](https://github.com/MorevM/vue-transitions/commit/5bb681ad1449d15b7db5b1132606ac3515c4179c))
+
+
+### Documentation
+
+* Add info about TS/Intellisense support ([0ef0821](https://github.com/MorevM/vue-transitions/commit/0ef0821d1e99d6f7f92889b0c08efd6edcf009c0))
+
+
+### Chores
+
+* bump @babel/core from 7.18.2 to 7.19.0 ([e12b424](https://github.com/MorevM/vue-transitions/commit/e12b42444084ddbd0e1ea53fe81cfc67bb2975b7))
+* bump @babel/eslint-parser from 7.18.2 to 7.18.9 ([#117](https://github.com/MorevM/vue-transitions/issues/117)) ([97f0973](https://github.com/MorevM/vue-transitions/commit/97f097388f32415d34057b2cadf70b0dc93bfb84))
+* bump @babel/plugin-syntax-jsx from 7.17.12 to 7.18.6 ([#99](https://github.com/MorevM/vue-transitions/issues/99)) ([4774dda](https://github.com/MorevM/vue-transitions/commit/4774dda4d2807b11f1a4d7c8456808754016dea5))
+* bump @babel/plugin-transform-modules-commonjs ([#98](https://github.com/MorevM/vue-transitions/issues/98)) ([2ff0b4c](https://github.com/MorevM/vue-transitions/commit/2ff0b4cd9c322af61e0b8f6ca84081e63c794bd2))
+* bump @morev/eslint-config from 12.2.0 to 17.0.1 ([3d2d46d](https://github.com/MorevM/vue-transitions/commit/3d2d46d97ff162b329393c3de5a0f31d48499f35))
+* bump @morev/helpers from 0.19.2 1.4.1 ([889348b](https://github.com/MorevM/vue-transitions/commit/889348b77c9027709215c14058ca15307e038973))
+* bump @morev/stylelint-config from 1.1.0 to 2.0.0 ([#139](https://github.com/MorevM/vue-transitions/issues/139)) ([496eda9](https://github.com/MorevM/vue-transitions/commit/496eda9bafde6b4ebcbbd141db613fee9c81cc7c))
+* bump @types/jest from 28.1.1 to 28.1.3 ([#86](https://github.com/MorevM/vue-transitions/issues/86)) ([5896c25](https://github.com/MorevM/vue-transitions/commit/5896c25c65a8806a40677582f8146e78a796cc3e))
+* bump @vitejs/plugin-vue from 2.3.3 to 3.0.1 ([28e5e4d](https://github.com/MorevM/vue-transitions/commit/28e5e4d61b03001cff9557aa9c54c260e6d8094d))
+* bump `vue` and `vue-template-compiler` from 2.6.14 to 2.7.8 ([9e5fa9e](https://github.com/MorevM/vue-transitions/commit/9e5fa9e9d5c27d14be9d57e0866377538e21a258))
+* bump eslint from 8.17.0 to 8.22.0 ([#144](https://github.com/MorevM/vue-transitions/issues/144)) ([e431bb7](https://github.com/MorevM/vue-transitions/commit/e431bb76a54bf4cc564ae68bc35bc5962299ad45))
+* bump jest and @types/jest ([#109](https://github.com/MorevM/vue-transitions/issues/109)) ([d177775](https://github.com/MorevM/vue-transitions/commit/d177775564365834e5162836839fb65bb3a36b94))
+* bump lint-staged from 13.0.1 to 13.0.3 ([#83](https://github.com/MorevM/vue-transitions/issues/83)) ([b531a69](https://github.com/MorevM/vue-transitions/commit/b531a69b3acfcc4f592a06c40d0bbc4ce29376d0))
+* bump more-sass from 1.0.7 to 1.0.8 ([#122](https://github.com/MorevM/vue-transitions/issues/122)) ([e293c0e](https://github.com/MorevM/vue-transitions/commit/e293c0e373ce3edb1d862042c7ad2064a936d15f))
+* bump release-it from 15.0.0 15.3.0 ([#136](https://github.com/MorevM/vue-transitions/issues/136)) ([407478a](https://github.com/MorevM/vue-transitions/commit/407478a5e862b3581618aa12f819f43951403fbd))
+* bump sass from 1.52.3 to 1.54.9 ([7c7c54d](https://github.com/MorevM/vue-transitions/commit/7c7c54dacd158db657cc11f7bd63c2ade755cd2c))
+* bump stylelint from 14.9.1 to 14.10.0 ([#132](https://github.com/MorevM/vue-transitions/issues/132)) ([748eef8](https://github.com/MorevM/vue-transitions/commit/748eef8ac0f4d7f1c33ff26644bbb8863b3f6046))
+* bump typescript from 4.7.3 to 4.8.3 ([295849c](https://github.com/MorevM/vue-transitions/commit/295849c12e2de4575031dc1b67cc6d8777047cb9))
+* bump vite from 2.9.12 to 3.1.0 ([43be17f](https://github.com/MorevM/vue-transitions/commit/43be17f62ddc232df2da1e7422288eb4e96c5aca))
+* bump vite-plugin-vue2 from 2.0.1 to 2.0.2 ([#110](https://github.com/MorevM/vue-transitions/issues/110)) ([8eeb338](https://github.com/MorevM/vue-transitions/commit/8eeb338bd9bc968690c93a773374658606fd1699))
+* bump vue and @vitejs/plugin-vue to latest ([11f8664](https://github.com/MorevM/vue-transitions/commit/11f866444a649947a7018b1950847afb559e6610))
+* bump vue-types from 4.1.1 to 4.2.1 ([#129](https://github.com/MorevM/vue-transitions/issues/129)) ([5a901bb](https://github.com/MorevM/vue-transitions/commit/5a901bb144960150f98ab307c7000f5a22d97c7c))
+
 ### [2.1.4](https://github.com/MorevM/vue-transitions/compare/v2.1.3...v2.1.4) (2022-06-11)
 
 
