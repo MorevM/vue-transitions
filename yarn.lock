@@ -1237,15 +1237,10 @@
   resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-0.19.2.tgz#e8a5d31ca641ef4534d298379efb44f8503e9ae3"
   integrity sha512-uEeNAYpP8Zzaa6JSbdqAK5CrFvW8nlc8Jk5xq6z9N4cVGZ8rl5ectxNl9+wPp/yNjbQoiaZT9A3oH9HBU7KYJQ==
 
-"@morev/helpers@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-1.4.0.tgz#d4dfd822be30e98a88edf984da26f74dd611d25f"
-  integrity sha512-8B0RHlta9XjVhSkc29l1DoLOcuKHRIpOrl487jvOseb0Oa6TigIkoDnSVafA+uOOsg8F80svccBmOOxO1A0HyA==
-
-"@morev/helpers@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-1.4.1.tgz#e1ca35ce0014e75921ed8faee976b5bcd0462c54"
-  integrity sha512-YRcw8Fmv8jGqd79It71Lhj05oUx0U9RxuExKqi2y09HdPHMb5Y87e5XztCAFnb3LAlfUspRZF1SIXKdGoTbjmQ==
+"@morev/helpers@^1.4.0", "@morev/helpers@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-1.4.2.tgz#a169fb0f1ac239420394cee9801064df2e6ac4f4"
+  integrity sha512-zYnNPWFgLCtZpXsvMFuXCjyRB0NNWAD9N4nGh/OHSFOEtIpvUbwONjiC6aNrXm+kXZvnmqnCgMKjhZeuvBW0Aw==
 
 "@morev/more-bem-classnames@^1.0.3":
   version "1.0.3"
