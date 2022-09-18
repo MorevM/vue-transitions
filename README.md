@@ -217,7 +217,7 @@ extension installed all components should provide hints as it, no actions requir
 Using Vue 3 with [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension installed
 you can specify global component types by configuring `compilerOptions.types` in `tsconfig.json`:
 
-```json
+```jsonc
 // tsconfig.json
 {
   "compilerOptions": {
