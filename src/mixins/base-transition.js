@@ -55,7 +55,9 @@ export const baseTransition = {
 		},
 		cAttrs() {
 			const { appear, mode, tag, duration } = this;
-			return { appear, mode, tag, duration };
+			return this.group
+				? { appear, tag, duration }
+				: { appear, mode, duration };
 		},
 		cHooks() {
 			return {
