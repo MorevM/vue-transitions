@@ -1090,14 +1090,14 @@
   dependencies:
     "@morev/helpers" "^0.19.2"
 
-"@morev/stylelint-config@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@morev/stylelint-config/-/stylelint-config-2.0.0.tgz#f484ed5312d0acdf08dfb550e5081b592711df70"
-  integrity sha512-TY03LDK2SKKgOwoNqIa/MICxy6/LPg6B93rcn3Z3NXKqU2y1KmItTYEGhOsx9Duhyfs90eUUklJcTRgLhKEdtA==
+"@morev/stylelint-config@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@morev/stylelint-config/-/stylelint-config-2.1.0.tgz#44545ea3717bb0fced657890264f719bfd6f6227"
+  integrity sha512-+V0xzS+/IiWolqxUhZ8vjs+dITKTMv8dvyHMpTdGRuXRiBjm5KG7PClqQrBFRGUsiGN2HMub8epmdG4N4DRKfA==
   dependencies:
     lodash.mergewith "^4.6.2"
-    postcss "^8.4.16"
-    postcss-scss "^4.0.4"
+    postcss "^8.4.17"
+    postcss-scss "^4.0.5"
     stylelint-8-point-grid "^2.1.0"
     stylelint-at-rule-no-children "^0.3.1"
     stylelint-declaration-block-no-ignored-properties "^2.5.0"
@@ -6620,10 +6620,10 @@ postcss-scss@^2.1.1:
   dependencies:
     postcss "^7.0.6"
 
-postcss-scss@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-4.0.4.tgz#aa8f60e19ee18259bc193db9e4b96edfce3f3b1f"
-  integrity sha512-aBBbVyzA8b3hUL0MGrpydxxXKXFZc5Eqva0Q3V9qsBOLEMsjb6w49WfpsoWzpEgcqJGW4t7Rio8WXVU9Gd8vWg==
+postcss-scss@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-4.0.5.tgz#8ee33c1dda8d9d4753b565ec79014803dc6edabf"
+  integrity sha512-F7xpB6TrXyqUh3GKdyB4Gkp3QL3DDW1+uI+gxx/oJnUt/qXI4trj5OGlp9rOKdoABGULuqtqeG+3HEVQk4DjmA==
 
 postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.5, postcss-selector-parser@^6.0.6, postcss-selector-parser@^6.0.9:
   version "6.0.10"
@@ -6656,10 +6656,10 @@ postcss@^7.0.14, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.26, postcss@^7.0.
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.1.10, postcss@^8.3.11, postcss@^8.4.14, postcss@^8.4.16:
-  version "8.4.16"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.16.tgz#33a1d675fac39941f5f445db0de4db2b6e01d43c"
-  integrity sha512-ipHE1XBvKzm5xI7hiHCZJCSugxvsdq2mPnsq5+UF+VHCjiBvtDrlxJfMBToWaP9D5XlgNmcFGqoHmUn0EYEaRQ==
+postcss@^8.1.10, postcss@^8.3.11, postcss@^8.4.14, postcss@^8.4.16, postcss@^8.4.17:
+  version "8.4.17"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.17.tgz#f87863ec7cd353f81f7ab2dec5d67d861bbb1be5"
+  integrity sha512-UNxNOLQydcOFi41yHNMcKRZ39NeXlr8AxGuZJsdub8vIb12fHzcq37DTU/QtbI6WLxNg2gF9Z+8qtRwTj1UI1Q==
   dependencies:
     nanoid "^3.3.4"
     picocolors "^1.0.0"
