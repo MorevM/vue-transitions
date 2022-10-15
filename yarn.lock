@@ -1078,10 +1078,10 @@
   resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-0.19.2.tgz#e8a5d31ca641ef4534d298379efb44f8503e9ae3"
   integrity sha512-uEeNAYpP8Zzaa6JSbdqAK5CrFvW8nlc8Jk5xq6z9N4cVGZ8rl5ectxNl9+wPp/yNjbQoiaZT9A3oH9HBU7KYJQ==
 
-"@morev/helpers@^1.11.0", "@morev/helpers@^1.4.2":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-1.11.0.tgz#0bd010f51afda0a30e12532dc22437b6af210ef7"
-  integrity sha512-ev55XQmKDWcQo2qz5nmu4n7zRv42EI1+r+Zl/YSda0L1LBsJtumg3e8g0Wm6dDWR55mv8lcT/XG/nw3KR9cjmA==
+"@morev/helpers@^1.12.0", "@morev/helpers@^1.4.2":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@morev/helpers/-/helpers-1.12.0.tgz#88ab1c35e8822b77c2a2e4e962d5d43a79b351ac"
+  integrity sha512-KcC73DTMZ9BJ342RjALZblfi8L6CxTRTEWyhLtZxBmgS23cc7IkMDK+CI683k9FiRujPTeYFpkessHvU66+2iQ==
 
 "@morev/more-bem-classnames@^1.0.3":
   version "1.0.3"
