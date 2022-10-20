@@ -13,7 +13,7 @@
 		"element-ui": "^2.15.10",
 		"more-sass": "^1.2.1",
 		"vite-plugin-vue2": "^2.0.2",
-		"vue": "^2.7.10",
-		"vue-template-compiler": "^2.7.10"
+		"vue": "^2.7.13",
+		"vue-template-compiler": "^2.7.13"
 	}
 }
