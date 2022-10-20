@@ -1,5 +1,12 @@
 
 
+### [2.2.2](https://github.com/MorevM/vue-transitions/compare/v2.2.1...v2.2.2) (2022-10-20)
+
+### Bug fixes
+
+* Don't pass `mode` attribute to `transition-group` element ([42f9ccd](https://github.com/MorevM/vue-transitions/commit/42f9ccd48cc858466a0f5d0b573a5101e8d20fc3))
+* **transition-expand:** Wait an extra tick before element size resolving ([7b3d845](https://github.com/MorevM/vue-transitions/commit/7b3d84500fd63bf7c02500e1f827704635003750))
+
 ### [2.2.1](https://github.com/MorevM/vue-transitions/compare/v2.2.0...v2.2.1) (2022-09-10)
 
 
