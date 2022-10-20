@@ -28,14 +28,16 @@
 		data: () => ({}),
 		computed: {},
 		methods: {
-			onEnter(element) {
+			async onEnter(element) {
+				await this.$nextTick();
+				await this.$nextTick();
+
 				this.getSizes(element);
 				this.collapseElement(element, 'enter');
-
 				element.offsetTop; // eslint-disable-line no-unused-expressions -- Intentionally
 
 				this.setupTransition(element, 'enter');
-				this.$nextTick(() => this.expandElement(element, 'enter'));
+				this.expandElement(element, 'enter');
 			},
 
 			onLeave(element) {
