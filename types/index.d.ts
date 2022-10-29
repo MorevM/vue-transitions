@@ -88,7 +88,7 @@ export type Emits = {
 	 *
 	 * @param   el   Animated element(s).
 	 *
-	 * @returns        Nothing.
+	 * @returns      Nothing.
 	 */
 	 onBeforeEnter: (el: HTMLElement) => void;
 
@@ -98,7 +98,7 @@ export type Emits = {
 	 * @param   el     Animated element(s).
 	 * @param   done   Callback function used to indicate transition end.
 	 *
-	 * @returns          Nothing.
+	 * @returns        Nothing.
 	 */
 	 onEnter: (el: HTMLElement, done: () => void) => void;
 
@@ -107,7 +107,7 @@ export type Emits = {
 	 *
 	 * @param   el   Animated element(s).
 	 *
-	 * @returns        Nothing.
+	 * @returns      Nothing.
 	 */
 	 onAfterEnter: (el: HTMLElement) => void;
 
@@ -116,7 +116,7 @@ export type Emits = {
 	 *
 	 * @param   el   Animated element(s).
 	 *
-	 * @returns        Nothing.
+	 * @returns      Nothing.
 	 */
 	 onEnterCancelled: (el: HTMLElement) => void;
 
@@ -125,7 +125,7 @@ export type Emits = {
 	 *
 	 * @param   el   Animated element(s).
 	 *
-	 * @returns        Nothing.
+	 * @returns      Nothing.
 	 */
 	 onBeforeLeave: (el: HTMLElement) => void;
 
@@ -135,7 +135,7 @@ export type Emits = {
 	 * @param   el     Animated element(s).
 	 * @param   done   Callback function used to indicate transition end.
 	 *
-	 * @returns          Nothing.
+	 * @returns        Nothing.
 	 */
 	 onLeave: (el: HTMLElement, done: () => void) => void;
 
@@ -144,7 +144,7 @@ export type Emits = {
 	 *
 	 * @param   el   Animated element(s).
 	 *
-	 * @returns        Nothing.
+	 * @returns      Nothing.
 	 */
 	 onAfterLeave: (el: HTMLElement) => void;
 
@@ -154,7 +154,7 @@ export type Emits = {
 	 *
 	 * @param   el   Animated element(s).
 	 *
-	 * @returns        Nothing.
+	 * @returns      Nothing.
 	 */
 	 onLeaveCancelled: (el: HTMLElement) => void;
 };
