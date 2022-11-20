@@ -226,7 +226,7 @@ export type ComponentPropsAndEmits = DeepPartial<{
 	TransitionScale: CommonProps & UniqueProps['TransitionScale'] & Emits;
 }>;
 
-type PluginOptions = Partial<{
+export type PluginOptions = Partial<{
 	/**
 	 * Components for global registration. \
 	 * Key is an original transition name written in PascalCase like `TransitionExpand`. \
