@@ -7,14 +7,15 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/morevm/vue-transitions)
 ![Keywords](https://img.shields.io/github/package-json/keywords/morevm/vue-transitions)
 
-Universal reusable transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
+Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 
 Originally inspired by the [vue2-transitions](https://github.com/BinarCode/vue2-transitions)
 it goes much further and provides more features with a simpler API.
 
-✔️ Highly customizable via props \
-✔️ Correctly works with grid/flex layouts in `group` mode \
-✔️ Considers initial styles of animated elements such as `transform` or `opacity`
+✔️ Highly customizable via props; \
+✔️ Correctly works with grid/flex layouts in `group` mode; \
+✔️ Considers initial styles of animated elements such as `transform` or `opacity`; \
+✔️ Even more easy-to-use with universal `Nuxt 2` and `Nuxt 3` module.
 
 [DEMO / Playground](https://morevm.github.io/vue-transitions/)
 
@@ -29,6 +30,7 @@ it goes much further and provides more features with a simpler API.
   * [Global registration](#global-registration)
     * [Custom options](#custom-options)
   * [Direct import of components](#direct-import-of-components)
+  * [Usage with Nuxt](#usage-with-nuxt)
 * [IntelliSense](#intellisense)
 * [List of transitions](#list-of-transitions)
   * [TransitionFade](#transitionfade)
@@ -43,6 +45,9 @@ it goes much further and provides more features with a simpler API.
 * [Events](#events)
 
 ## Installation
+
+> Nuxt version included in the main package and available via named export `/nuxt`. \
+> [Go to "Usage with Nuxt" section](#usage-with-nuxt).
 
 ### Using `yarn`
 
@@ -65,6 +70,9 @@ pnpm add @morev/vue-transitions
 ---
 
 ## Usage
+
+> You may skip the following paragraphs if you are going to use the library with Nuxt. \
+> [Go to "Usage with Nuxt" section](#usage-with-nuxt).
 
 Package exports two versions of components:
 
@@ -198,12 +206,35 @@ Custom options allows to change component names and default prop values.
 </script>
 ```
 
+### Usage with Nuxt
+
+The library exports a ready-to-use universal module for Nuxt 2 and 3 via named export `/nuxt`. \
+Using Nuxt, it's recommended to use the module instead of manual installation because:
+
+1. Nuxt allows to auto-import components on demand instead of global registration, which is a more performant option.
+1. It's just faster to do :)
+
+To use, add `@morev/vue-transitions/nuxt` to the `modules` section of your `nuxt.config.ts` / `nuxt.config.js`:
+
+```ts
+export default defineNuxtConfig({
+  modules: [
+    '@morev/vue-transitions/nuxt',
+  ],
+  vueTransitions: {
+    // The same options as in the plugin itself.
+    // You will get an autocomplete using Nuxt 3.
+  }
+});
+```
+
+Enjoy you transition components! 🎉
+
 ## IntelliSense
 
-> This section only applies to [VSCode](https://code.visualstudio.com/) setup and global registration of components.
+> **You may skip this section using Nuxt module - it does it for you.**
 >
-> I have no idea how to make it universal across Vue2 and Vue3 using direct import of components
-> (since Vue2 doesn't provide type DefineComponent before version 2.7)
+> This section only applies to [VSCode](https://code.visualstudio.com/) setup and global registration of components.
 
 ### With Vue 2
 
