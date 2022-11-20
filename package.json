@@ -28,7 +28,8 @@
 	},
 	"keywords": [
 		"vue",
-		"transition"
+		"transition",
+		"animation"
 	],
 	"files": [
 		"dist",
