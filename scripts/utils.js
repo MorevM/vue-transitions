@@ -29,7 +29,6 @@ const switchVersion = (version) => {
 	copy('index.css', version);
 };
 
-
 module.exports.loadModule = loadModule;
 module.exports.switchVersion = switchVersion;
 module.exports.ERROR_PREFIX = '[@morev/vue-transitions]';
