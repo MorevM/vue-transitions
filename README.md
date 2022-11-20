@@ -1,4 +1,4 @@
-# @morev/vue-transitions
+![Promo image of @morev/vue-transitions package](./.github/images/header.svg)
 
 ![Stability of "master" branch](https://img.shields.io/github/workflow/status/MorevM/vue-transitions/Build/master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,6 +6,8 @@
 ![Release version](https://img.shields.io/github/v/release/morevm/vue-transitions?include_prereleases)
 ![GitHub Release Date](https://img.shields.io/github/release-date/morevm/vue-transitions)
 ![Keywords](https://img.shields.io/github/package-json/keywords/morevm/vue-transitions)
+
+# @morev/vue-transitions
 
 Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 

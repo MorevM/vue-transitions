@@ -19,6 +19,7 @@ module.exports = {
 			files: ['*.md'],
 			rules: {
 				'markdownlint/md046': ['off'],
+				'markdownlint/md041': ['off'],
 			},
 		},
 		{
