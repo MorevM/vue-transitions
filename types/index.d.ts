@@ -1,5 +1,5 @@
 /* eslint-disable import/exports-last */
-import type { PluginObject } from 'vue';
+import type { PluginObject, DefineComponent } from 'vue';
 
 // Helpers
 type DeepPartial<T> = T extends object ? { [P in keyof T]?: DeepPartial<T[P]> } : T;
@@ -248,8 +248,14 @@ type PluginOptions = Partial<{
 	componentDefaultProps: DeepPartial<ComponentProps>;
 }>;
 
-
-declare const vueTransitions: () => PluginObject<PluginOptions>;
+/* eslint-disable @typescript-eslint/naming-convention */
+export declare const TransitionExpand: DefineComponent<ComponentPropsAndEmits['TransitionExpand']>;
+export declare const TransitionFade: DefineComponent<ComponentPropsAndEmits['TransitionFade']>;
+export declare const TransitionScale: DefineComponent<ComponentPropsAndEmits['TransitionScale']>;
+export declare const TransitionSlide: DefineComponent<ComponentPropsAndEmits['TransitionSlide']>;
+/* eslint-enable @typescript-eslint/naming-convention */
 
 export const plugin: (options?: PluginOptions) => PluginObject<PluginOptions>;
+
+declare const vueTransitions: () => PluginObject<PluginOptions>;
 export default vueTransitions;
