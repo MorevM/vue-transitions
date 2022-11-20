@@ -22,7 +22,7 @@ module.exports = {
 			},
 		},
 		{
-			files: ['**/builders/**/*.js', '**/playground/main.js'],
+			files: ['**/builders/**/*.js', '**/playground/main.js', 'nuxt-module/**/*'],
 			rules: {
 				'import/no-extraneous-dependencies': 'off',
 				'node/no-extraneous-import': 'off',

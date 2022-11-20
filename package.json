@@ -35,7 +35,8 @@
 		"vetur",
 		"types",
 		"bin",
-		"scripts"
+		"scripts",
+		"nuxt"
 	],
 	"bin": {
 		"vue-transitions-version-fix": "bin/fix.js",
@@ -67,7 +68,8 @@
 		"build:playground": "yarn workspace vue2-builder playground",
 		"build:vue2": "yarn workspace vue2-builder build",
 		"build:vue3": "yarn workspace vue3-builder build",
-		"build": "yarn build:playground && yarn build:vue2 && yarn build:vue3",
+		"build:nuxt": "node ./scripts/nuxt-module-build.mjs",
+		"build": "yarn build:playground && yarn build:vue2 && yarn build:vue3 && yarn build:nuxt",
 		"prepare": "husky install ./.husky && yarn more-sass-clone",
 		"vscode-settings": "cp .vscode/settings.template.json .vscode/settings.json",
 		"more-sass-clone": "rm -rf .more-sass && cp -r ./node_modules/more-sass ./.more-sass",
@@ -85,7 +87,8 @@
 		"vue": "^2.6.14 || >=3"
 	},
 	"dependencies": {
-		"@morev/helpers": "^1.12.0"
+		"@morev/helpers": "^1.12.0",
+		"@nuxt/kit": "^3.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.19.6",
@@ -95,6 +98,7 @@
 		"@morev/commitlint-config": "^0.1.1",
 		"@morev/eslint-config": "^18.0.0",
 		"@morev/stylelint-config": "^2.1.0",
+		"@nuxt/schema": "^3.0.0",
 		"@release-it/conventional-changelog": "^5.1.1",
 		"@types/jest": "^29.2.0",
 		"eslint": "^8.26.0",
@@ -106,6 +110,7 @@
 		"stylelint": "^14.14.0",
 		"terser": "^5.15.1",
 		"typescript": "^4.8.4",
+		"unbuild": "^1.0.1",
 		"vite": "^3.2.1",
 		"vue-types": "^4.2.1"
 	},

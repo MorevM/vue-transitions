@@ -9,7 +9,12 @@ build
 tmp
 node_modules
 playground-bundle
+nuxt
 
 LICENSE.md
 CHANGELOG.md
 .more-sass
+
+# Files that use Lodash templates
+nuxt-module/template.d.ts
+nuxt-module/template.vue
