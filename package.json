@@ -1,7 +1,7 @@
 {
 	"name": "@morev/vue-transitions",
 	"description": "Shareable Vue transitions library",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"private": true,
 	"workspaces": [
 		"builders/*"

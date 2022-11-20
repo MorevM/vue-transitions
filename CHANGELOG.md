@@ -1,5 +1,12 @@
 
 
+### [2.3.1](https://github.com/MorevM/vue-transitions/compare/v2.3.0...v2.3.1) (2022-11-20)
+
+
+### Bug fixes
+
+* Note `./nuxt` export in the main `package.json` ([97bf252](https://github.com/MorevM/vue-transitions/commit/97bf25296796ddc77b9e266bc43a4999cb76a5db))
+
 ## [2.3.0](https://github.com/MorevM/vue-transitions/compare/v2.2.2...v2.3.0) (2022-11-20)
 
 
