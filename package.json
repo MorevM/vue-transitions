@@ -56,6 +56,10 @@
 			"import": "./dist/vue3/vue-transitions.es.js",
 			"require": "./dist/vue3/vue-transitions.cjs.js"
 		},
+		"./nuxt": {
+			"import": "./nuxt/module.mjs",
+			"require": "./nuxt/module.cjs"
+		},
 		"./styles": "./dist/index.css"
 	},
 	"main": "./dist/vue-transitions.cjs.js",
