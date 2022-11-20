@@ -1,5 +1,23 @@
 
 
+## [2.3.0](https://github.com/MorevM/vue-transitions/compare/v2.2.2...v2.3.0) (2022-11-20)
+
+
+### Features
+
+* Add Nuxt module ([dc1dd75](https://github.com/MorevM/vue-transitions/commit/dc1dd75503aa15b1ca0c3c09f1048fdbb1af5e94))
+
+
+### Bug fixes
+
+* **types:** Export individual transition types ([a21ca94](https://github.com/MorevM/vue-transitions/commit/a21ca94cb97c7ca464f545495cbfebd711eddf77))
+
+
+### Documentation
+
+* Add info about Nuxt module usage ([7293760](https://github.com/MorevM/vue-transitions/commit/7293760322410c3df88f5bce28220523a998ef62))
+* Correct order of sections in TOC ([2586e10](https://github.com/MorevM/vue-transitions/commit/2586e1053a4cd22f5b1fefcac147dfefdfad94d5))
+
 ### [2.2.2](https://github.com/MorevM/vue-transitions/compare/v2.2.1...v2.2.2) (2022-10-20)
 
 ### Bug fixes
