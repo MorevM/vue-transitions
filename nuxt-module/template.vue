@@ -9,6 +9,7 @@
 
 	export default {
 		name: '<%= options.neededName %>',
+		inheritAttrs: false,
 		components: { TheTransition },
 	};
 </script>
