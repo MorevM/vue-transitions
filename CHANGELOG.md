@@ -1,5 +1,12 @@
 
 
+### [2.3.3](https://github.com/MorevM/vue-transitions/compare/v2.3.2...v2.3.3) (2022-11-24)
+
+
+### Bug fixes
+
+* **nuxt:** Take account of newly created transitions on the first run ([bb850ad](https://github.com/MorevM/vue-transitions/commit/bb850adef9737493942b7f783d8d6b14b3cf128b))
+
 ### [2.3.2](https://github.com/MorevM/vue-transitions/compare/v2.3.1...v2.3.2) (2022-11-24)
 
 
