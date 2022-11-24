@@ -1,5 +1,5 @@
-import type { ObjectEntries } from '@morev/helpers';
-import { mergeObjects, isEmpty, kebabCase } from '@morev/helpers';
+import { existsSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { tsObject, mergeObjects, isEmpty, kebabCase } from '@morev/helpers';
 import { addTemplate, defineNuxtModule, createResolver, addComponentsDir } from '@nuxt/kit';
 import type { PluginOptions } from '../types';
 
@@ -27,13 +27,24 @@ export default defineNuxtModule<PluginOptions>({
 		nuxt.options.css ??= [];
 		nuxt.options.css.push(`@morev/vue-transitions/styles`);
 
-		(Object.entries(entries) as ObjectEntries<Required<typeof entries>>)
+		const templateContents = readFileSync(resolver.resolve('template.vue'), { encoding: 'utf8' });
+		const componentsDir = buildResolver.resolve('vue-transitions');
+
+		// Make sure there is no cache from previous runs.
+		try {
+			existsSync(componentsDir) && unlinkSync(componentsDir);
+		} catch {}
+
+		mkdirSync(componentsDir, { recursive: true });
+
+		tsObject.entries(entries)
 			.forEach(([originalPascalName, neededName]) => {
 				const customProps = mergeObjects(
-					options.defaultProps,
+					options.defaultProps ?? {},
 					options.componentDefaultProps?.[originalPascalName],
 				);
 
+				const neededKebabName = kebabCase(neededName);
 				const propsDeclaration = isEmpty(customProps)
 					? '$attrs'
 					: JSON.stringify(customProps)
@@ -43,17 +54,27 @@ export default defineNuxtModule<PluginOptions>({
 				// Create inline component mappings.
 				// It's important to create it for redefining default props globally or per component,
 				// also to support auto-import of renamed components.
-				const originalKebabName = kebabCase(originalPascalName);
 				addTemplate({
-					filename: `vue-transitions/${originalKebabName}.vue`,
+					filename: `vue-transitions/${neededKebabName}.vue`,
 					src: resolver.resolve('template.vue'),
 					write: true,
 					options: { originalPascalName, neededName, propsDeclaration },
 				});
+
+				// It's important to create it this way as well as `addTemplate` because
+				// `addTemplate` doesn't create files at once, it adds them to the queue,
+				// but when we call `addComponentsDir` files should be in place already.
+				writeFileSync(
+					buildResolver.resolve(`vue-transitions/${neededKebabName}.vue`),
+					templateContents
+						.replace(/<%= options\.propsDeclaration %>/g, propsDeclaration)
+						.replace(/<%= options\.originalPascalName %>/g, originalPascalName)
+						.replace(/<%= options\.neededName %>/g, neededName),
+				);
 			});
 
 		addComponentsDir({
-			path: buildResolver.resolve('vue-transitions'),
+			path: componentsDir,
 			pathPrefix: false,
 		});
 
