@@ -1,5 +1,14 @@
 
 
+### [2.3.2](https://github.com/MorevM/vue-transitions/compare/v2.3.1...v2.3.2) (2022-11-24)
+
+
+### Bug fixes
+
+* **nuxt:** Don't inherit attrs for component mappings ([e541b4d](https://github.com/MorevM/vue-transitions/commit/e541b4da64a3afd5df53a6820ff190c5732a59ab))
+* **nuxt:** Use `addComponentsDir` instead of individual `addComponent` ([403983a](https://github.com/MorevM/vue-transitions/commit/403983a7e85a94f8c326d4e9a7b81b2ca63ee8bc))
+
+
 ### [2.3.1](https://github.com/MorevM/vue-transitions/compare/v2.3.0...v2.3.1) (2022-11-20)
 
 
