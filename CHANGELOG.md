@@ -1,5 +1,12 @@
 
 
+### [2.3.4](https://github.com/MorevM/vue-transitions/compare/v2.3.3...v2.3.4) (2022-12-02)
+
+
+### Bug fixes
+
+* **nuxt:** Fix production build using Nuxt 3 ([aacf876](https://github.com/MorevM/vue-transitions/commit/aacf87676f434ce4e5c73f2b406d0d6027ec0b9d))
+
 ### [2.3.3](https://github.com/MorevM/vue-transitions/compare/v2.3.2...v2.3.3) (2022-11-24)
 
 
