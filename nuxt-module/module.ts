@@ -17,8 +17,8 @@ export default defineNuxtModule<PluginOptions>({
 	},
 	defaults: {},
 	async setup(options, nuxt) {
+		const DIRECTORY_NAME = 'vue-transitions';
 		const resolver = createResolver(import.meta.url);
-		const buildResolver = createResolver(nuxt.options.buildDir);
 		const entries = options.components ?? ALL_COMPONENTS;
 
 		// If there is no components to register.
@@ -28,9 +28,9 @@ export default defineNuxtModule<PluginOptions>({
 		nuxt.options.css.push(`@morev/vue-transitions/styles`);
 
 		const templateContents = readFileSync(resolver.resolve('template.vue'), { encoding: 'utf8' });
-		const componentsDir = buildResolver.resolve('vue-transitions');
+		const componentsDir = resolver.resolve(DIRECTORY_NAME);
 
-		// Make sure there is no cache from previous runs.
+		// Make sure there are no cache from previous runs.
 		try {
 			existsSync(componentsDir) && unlinkSync(componentsDir);
 		} catch {}
@@ -51,21 +51,11 @@ export default defineNuxtModule<PluginOptions>({
 						.replace(/}$/, ',...$$attrs}')
 						.replace(/"/g, "'");
 
-				// Create inline component mappings.
-				// It's important to create it for redefining default props globally or per component,
-				// also to support auto-import of renamed components.
-				addTemplate({
-					filename: `vue-transitions/${neededKebabName}.vue`,
-					src: resolver.resolve('template.vue'),
-					write: true,
-					options: { originalPascalName, neededName, propsDeclaration },
-				});
-
-				// It's important to create it this way as well as `addTemplate` because
+				// It's important to create it this way instead of using `addTemplate` because
 				// `addTemplate` doesn't create files at once, it adds them to the queue,
 				// but when we call `addComponentsDir` files should be in place already.
 				writeFileSync(
-					buildResolver.resolve(`vue-transitions/${neededKebabName}.vue`),
+					resolver.resolve(`${DIRECTORY_NAME}/${neededKebabName}.vue`),
 					templateContents
 						.replace(/<%= options\.propsDeclaration %>/g, propsDeclaration)
 						.replace(/<%= options\.originalPascalName %>/g, originalPascalName)
@@ -76,6 +66,7 @@ export default defineNuxtModule<PluginOptions>({
 		addComponentsDir({
 			path: componentsDir,
 			pathPrefix: false,
+			watch: false,
 		});
 
 		const typeMappings = Object.entries(entries).reduce<string[]>((acc, [originalName, neededName]) => {
