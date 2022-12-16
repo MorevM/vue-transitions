@@ -1,5 +1,12 @@
 
 
+### [2.3.5](https://github.com/MorevM/vue-transitions/compare/v2.3.4...v2.3.5) (2022-12-16)
+
+
+### Bug fixes
+
+* Preserve custom attributes in `<transition-group>` element ([b09a153](https://github.com/MorevM/vue-transitions/commit/b09a1534e8349922c7172c085af784ce47952ebb))
+
 ### [2.3.4](https://github.com/MorevM/vue-transitions/compare/v2.3.3...v2.3.4) (2022-12-02)
 
 
