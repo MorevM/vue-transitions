@@ -1,6 +1,6 @@
 ![Promo image of @morev/vue-transitions package](./.github/images/header.svg)
 
-![Stability of "master" branch](https://img.shields.io/github/workflow/status/MorevM/vue-transitions/Build/master)
+![Stability of "master" branch](https://img.shields.io/github/actions/workflow/status/MorevM/vue-transitions/build.yaml?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Last commit](https://img.shields.io/github/last-commit/morevm/vue-transitions)
 ![Release version](https://img.shields.io/github/v/release/morevm/vue-transitions?include_prereleases)
