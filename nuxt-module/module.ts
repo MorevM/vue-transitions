@@ -27,6 +27,8 @@ export default defineNuxtModule<PluginOptions>({
 		nuxt.options.css ??= [];
 		nuxt.options.css.push(`@morev/vue-transitions/styles`);
 
+		nuxt.options.build.transpile.push('@morev/utils');
+
 		const templateContents = readFileSync(resolver.resolve('template.vue'), { encoding: 'utf8' });
 		const componentsDir = resolver.resolve(DIRECTORY_NAME);
 
