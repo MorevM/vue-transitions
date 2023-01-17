@@ -1,5 +1,5 @@
 import { existsSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
-import { tsObject, mergeObjects, isEmpty, kebabCase } from '@morev/helpers';
+import { tsObject, mergeObjects, isEmpty, kebabCase } from '@morev/utils';
 import { addTemplate, defineNuxtModule, createResolver, addComponentsDir } from '@nuxt/kit';
 import type { PluginOptions } from '../types';
 
@@ -21,7 +21,7 @@ export default defineNuxtModule<PluginOptions>({
 		const resolver = createResolver(import.meta.url);
 		const entries = options.components ?? ALL_COMPONENTS;
 
-		// If there is no components to register.
+		// If there are no components to register.
 		if (!Object.values(entries).filter(Boolean).length) return;
 
 		nuxt.options.css ??= [];

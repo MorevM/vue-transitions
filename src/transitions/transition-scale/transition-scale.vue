@@ -10,7 +10,7 @@
 </template>
 
 <script>
-	import { clamp } from '@morev/helpers';
+	import { clamp } from '@morev/utils';
 	import { baseTransition } from '../../mixins/base-transition.js';
 	import { validateScaleAxis } from '../../utility/validate/validate-scale-axis.js';
 	import { validateScaleOrigin } from '../../utility/validate/validate-scale-origin.js';

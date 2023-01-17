@@ -180,7 +180,7 @@
 </template>
 
 <script>
-	import { randomString, randomInteger, isArray, isObject } from '@morev/helpers';
+	import { randomString, randomInteger, isArray, isObject } from '@morev/utils';
 	import { TransitionFade, TransitionExpand, TransitionSlide, TransitionScale } from '../../../src/index.js';
 	import * as defaults from '../../../src/utility/defaults/defaults.js';
 	import OptionsGroup from '../options-group/options-group.vue';

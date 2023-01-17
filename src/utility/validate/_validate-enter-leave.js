@@ -1,4 +1,4 @@
-import { isObject } from '@morev/helpers';
+import { isObject } from '@morev/utils';
 
 export const validateEnterLeave = (value, validator) => {
 	if (validator(value)) return true;

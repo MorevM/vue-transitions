@@ -1,4 +1,4 @@
-import { kebabCase, isArray, isObject, pascalCase } from '@morev/helpers';
+import { kebabCase, isArray, isObject, pascalCase } from '@morev/utils';
 import TransitionExpand from './transitions/transition-expand/transition-expand.vue';
 import TransitionFade from './transitions/transition-fade/transition-fade.vue';
 import TransitionScale from './transitions/transition-scale/transition-scale.vue';

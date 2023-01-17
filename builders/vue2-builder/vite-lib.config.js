@@ -14,7 +14,7 @@ export default defineConfig({
 		},
 		cssCodeSplit: true,
 		rollupOptions: {
-			external: ['vue', '@morev/helpers'],
+			external: ['vue', '@morev/utils'],
 			output: {
 				dir: '../../dist/vue2',
 				globals: {

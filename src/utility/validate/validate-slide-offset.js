@@ -1,4 +1,4 @@
-import { isArray, isInteger, isString } from '@morev/helpers';
+import { isArray, isInteger, isString } from '@morev/utils';
 import { validateEnterLeave } from './_validate-enter-leave.js';
 
 export const validateSlideOffset = (value) => validateEnterLeave(value, (val) => {

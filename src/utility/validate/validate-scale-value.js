@@ -1,4 +1,4 @@
-import { isNumeric } from '@morev/helpers';
+import { isNumeric } from '@morev/utils';
 import { validateEnterLeave } from './_validate-enter-leave.js';
 
 export const validateScaleValue = (value) => validateEnterLeave(value, (val) => {

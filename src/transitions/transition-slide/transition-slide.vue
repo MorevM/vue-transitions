@@ -10,7 +10,7 @@
 </template>
 
 <script>
-	import { isNumeric } from '@morev/helpers';
+	import { isNumeric } from '@morev/utils';
 	import { baseTransition } from '../../mixins/base-transition.js';
 	import { validateSlideOffset } from '../../utility/validate/validate-slide-offset.js';
 	import { slideOffset } from '../../utility/defaults/defaults.js';

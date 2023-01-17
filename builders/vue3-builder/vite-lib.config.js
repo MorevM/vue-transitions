@@ -36,7 +36,7 @@ export default defineConfig({
 		},
 		cssCodeSplit: true,
 		rollupOptions: {
-			external: ['vue', '@morev/helpers'],
+			external: ['vue', '@morev/utils'],
 			output: {
 				dir: '../../dist/vue3',
 				assetFileNames: '[name].[ext]',
