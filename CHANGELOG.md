@@ -1,5 +1,11 @@
 
 
+### [2.3.6](https://github.com/MorevM/vue-transitions/compare/v2.3.5...v2.3.6) (2023-01-17)
+
+### Bug fixes
+
+* **nuxt:** Automatically transpile shared utility library ([6dc4273](https://github.com/MorevM/vue-transitions/commit/6dc4273ef3bce461ddfa840b720d0e0fcbd6fc7d))
+
 ### [2.3.5](https://github.com/MorevM/vue-transitions/compare/v2.3.4...v2.3.5) (2022-12-16)
 
 
