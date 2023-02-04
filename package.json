@@ -92,7 +92,7 @@
 		"vue": "^2.6.14 || >=3"
 	},
 	"dependencies": {
-		"@morev/utils": "^2.0.3",
+		"@morev/utils": "^2.0.4",
 		"@nuxt/kit": "^3.0.0"
 	},
 	"devDependencies": {
