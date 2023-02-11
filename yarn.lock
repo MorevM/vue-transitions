@@ -1056,15 +1056,15 @@
     stylelint-selector-tag-no-without-class "^2.0.5"
     stylelint-use-nesting "^4.0.0"
 
-"@morev/utils@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@morev/utils/-/utils-2.0.3.tgz#e336d51adadf7d8a94115e2c7db7351e87a07516"
-  integrity sha512-U5Z0eZpzWvgVLj2WTqGUWUX+/GCJRYudimokSYQoegcbJCEuzDkTSYpK5ENGYdNAcXqpZ46Yr13aL1cEkrtCgA==
+"@morev/utils@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@morev/utils/-/utils-2.0.5.tgz#af030718edba51f8996017453dbbaae82bc4e54c"
+  integrity sha512-vO1UrNllQL0vKCBOw3pPbV2252Sku7iENsArpwJgTyBFjwNOyO8dtg/5WthQb8YMHnV3FZ+QnRPnmFJOh95VjA==
   dependencies:
     fast-copy "^3.0.0"
     fast-equals "^4.0.3"
     ohash "^1.0.0"
-    type-fest "^3.5.2"
+    type-fest "^3.5.5"
 
 "@morev/v-bem-transformer@^1.2.1":
   version "1.2.1"
@@ -8267,10 +8267,10 @@ type-fest@^2.13.0, type-fest@^2.5.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
   integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
 
-type-fest@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.5.2.tgz#16ff97c5dc1fd6bd6d50ef3c6ba92cc9c1add859"
-  integrity sha512-Ph7S4EhXzWy0sbljEuZo0tTNoLl+K2tPauGrQpcwUWrOVneLePTuhVzcuzVJJ6RU5DsNwQZka+8YtkXXU4z9cA==
+type-fest@^3.5.5:
+  version "3.5.7"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.5.7.tgz#1ee9efc9a172f4002c40b896689928a7bba537f2"
+  integrity sha512-6J4bYzb4sdkcLBty4XW7F18VPI66M4boXNE+CY40532oq2OJe6AVMB5NmjOp6skt/jw5mRjz/hLRpuglz0U+FA==
 
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"
