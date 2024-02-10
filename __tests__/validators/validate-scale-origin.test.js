@@ -1,4 +1,5 @@
-const { validateScaleOrigin } = require('../../src/utility/validate/validate-scale-origin.js');
+import { describe, it, expect } from 'vitest';
+import { validateScaleOrigin } from '../../src/utility/validate/validate-scale-origin.js';
 
 describe('validateScaleOrigin', () => {
 	it('Returns `true` if a given value is a not empty string', () => {

@@ -1,4 +1,5 @@
-const { validateScaleAxis } = require('../../src/utility/validate/validate-scale-axis.js');
+import { describe, it, expect } from 'vitest';
+import { validateScaleAxis } from '../../src/utility/validate/validate-scale-axis.js';
 
 describe('validateScaleAxis', () => {
 	it('Returns `true` if a given value is one of the strings: `x`, `y` or `both`', () => {

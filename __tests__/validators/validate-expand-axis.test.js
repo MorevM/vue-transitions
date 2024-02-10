@@ -1,4 +1,5 @@
-const { validateExpandAxis } = require('../../src/utility/validate/validate-expand-axis.js');
+import { describe, it, expect } from 'vitest';
+import { validateExpandAxis } from '../../src/utility/validate/validate-expand-axis.js';
 
 describe('validateExpandAxis', () => {
 	it('Returns `true` if a given value is `x` or `y`', () => {

@@ -1,4 +1,5 @@
-const { validateDelay } = require('../../src/utility/validate/validate-delay.js');
+import { describe, it, expect } from 'vitest';
+import { validateDelay } from '../../src/utility/validate/validate-delay.js';
 
 describe('validateDelay', () => {
 	it('Returns `true` if a given value is a positive integer number', () => {

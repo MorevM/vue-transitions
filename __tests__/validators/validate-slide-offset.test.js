@@ -1,4 +1,5 @@
-const { validateSlideOffset } = require('../../src/utility/validate/validate-slide-offset.js');
+import { describe, it, expect } from 'vitest';
+import { validateSlideOffset } from '../../src/utility/validate/validate-slide-offset.js';
 
 describe('validateSlideOffset', () => {
 	it('Returns `true` if a given value is the array of two integer numbers', () => {

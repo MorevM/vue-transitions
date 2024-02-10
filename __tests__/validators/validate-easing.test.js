@@ -1,4 +1,5 @@
-const { validateEasing } = require('../../src/utility/validate/validate-easing.js');
+import { describe, it, expect } from 'vitest';
+import { validateEasing } from '../../src/utility/validate/validate-easing.js';
 
 describe('validateEasing', () => {
 	it('Returns `true` if a given value is a not empty string', () => {

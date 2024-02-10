@@ -1,4 +1,5 @@
-const { validateDuration } = require('../../src/utility/validate/validate-duration.js');
+import { describe, it, expect } from 'vitest';
+import { validateDuration } from '../../src/utility/validate/validate-duration.js';
 
 describe('validateDuration', () => {
 	it('Returns `true` if a given value is a positive integer number', () => {

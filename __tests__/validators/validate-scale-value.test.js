@@ -1,4 +1,5 @@
-const { validateScaleValue } = require('../../src/utility/validate/validate-scale-value.js');
+import { describe, it, expect } from 'vitest';
+import { validateScaleValue } from '../../src/utility/validate/validate-scale-value.js';
 
 describe('validateScaleAxis', () => {
 	it('Returns `true` if a given value is a number between `0` and `1`', () => {
