@@ -28,6 +28,7 @@ it goes much further and provides more features with a simpler API.
   * [Using `yarn`](#using-yarn)
   * [Using `npm`](#using-npm)
   * [Using `pnpm`](#using-pnpm)
+  * [Using `bun`](#using-bun)
 * [Usage](#usage)
   * [Global registration](#global-registration)
     * [Custom options](#custom-options)
@@ -48,14 +49,13 @@ it goes much further and provides more features with a simpler API.
 
 ## Installation
 
-> Nuxt version included in the main package and available via named export `/nuxt`. \
-> [Go to "Usage with Nuxt" section](#usage-with-nuxt).
-
 ### Using `yarn`
 
 ```bash
 yarn add @morev/vue-transitions
 ```
+
+---
 
 ### Using `npm`
 
@@ -63,10 +63,32 @@ yarn add @morev/vue-transitions
 npm install @morev/vue-transitions
 ```
 
+---
+
 ### Using `pnpm`
 
 ```bash
 pnpm add @morev/vue-transitions
+```
+
+---
+
+### Using `bun`
+
+```bash
+bun add @morev/vue-transitions
+```
+
+❗ **Important note for `Bun` users**
+
+The package relies on `postinstall` hook to determine the Vue version and provide proper components. \
+By default, [Bun does not execute lifecycle hooks](https://bun.sh/docs/cli/install#lifecycle-scripts),
+so to make it work you need to manually add the package to the `trustedDependencies` after installing and run `bun install` again.
+
+```json
+{
+  "trustedDependencies": ["@morev/vue-transitions"]
+}
 ```
 
 ---
