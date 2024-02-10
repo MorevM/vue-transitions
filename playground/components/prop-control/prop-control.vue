@@ -48,13 +48,10 @@
 		data: (vm) => ({}),
 		computed: {
 			modelValue: {
-				get() {
-					return this.value;
-				},
-				set(v) {
-					this.$emit('input', v);
-				},
+				get() { return this.value; },
+				set(v) { this.$emit('input', v); },
 			},
+
 			cComponent() {
 				switch (this.type) {
 					case 'autocomplete':
@@ -69,6 +66,7 @@
 						return 'prop-control-number';
 				}
 			},
+
 			cAttrs() {
 				const { min, max, step } = this;
 				const { options } = this;

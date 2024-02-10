@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { vuePlugin } from '@morev/v-bem-transformer/vue'; // eslint-disable-line import/no-unresolved
+import { vuePlugin } from '@morev/v-bem-transformer/vue';
 import ElementUI from 'element-ui';
 import MoreVueTransitions from '../src/index.js';
 import App from './app.vue';

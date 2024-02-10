@@ -51,7 +51,7 @@ export default defineNuxtModule<PluginOptions>({
 					? '$attrs'
 					: JSON.stringify(customProps)
 						.replace(/}$/, ',...$$attrs}')
-						.replace(/"/g, "'");
+						.replaceAll('"', "'");
 
 				// It's important to create it this way instead of using `addTemplate` because
 				// `addTemplate` doesn't create files at once, it adds them to the queue,
@@ -59,9 +59,9 @@ export default defineNuxtModule<PluginOptions>({
 				writeFileSync(
 					resolver.resolve(`${DIRECTORY_NAME}/${neededKebabName}.vue`),
 					templateContents
-						.replace(/<%= options\.propsDeclaration %>/g, propsDeclaration)
-						.replace(/<%= options\.originalPascalName %>/g, originalPascalName)
-						.replace(/<%= options\.neededName %>/g, neededName),
+						.replaceAll('<%= options.propsDeclaration %>', propsDeclaration)
+						.replaceAll('<%= options.originalPascalName %>', originalPascalName)
+						.replaceAll('<%= options.neededName %>', neededName),
 				);
 			});
 

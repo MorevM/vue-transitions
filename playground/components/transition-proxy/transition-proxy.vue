@@ -240,12 +240,15 @@
 			isSinglePreview() {
 				return this.previewMode === 'single';
 			},
+
 			isGroupPreview() {
 				return this.previewMode === 'group';
 			},
+
 			cTransitionLabel() {
 				return TRANSITIONS_LIST.find(t => t.value === this.previewTransition).label;
 			},
+
 			cOptions() {
 				const duration = withEnterLeave(this.duration);
 				const easing = withEnterLeave(this.easing);

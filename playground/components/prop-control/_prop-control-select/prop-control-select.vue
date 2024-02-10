@@ -69,6 +69,7 @@
 					this.$emit('input', [this.value[0], value]);
 				}
 			},
+
 			fetchSuggestions(query, cb) {
 				return cb(this.options.map(value => ({ value })));
 			},

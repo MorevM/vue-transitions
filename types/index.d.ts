@@ -171,11 +171,11 @@ type UniqueProps = {
 		 * The element offset by x and y axis before/after the transition. \
 		 * Should be an integer or a string representation of percentage value.
 		 *
-		 * @default [0, -16]
-		 *
 		 * @example
 		 * :offset="[0, 8]"
 		 * :offset="['-100%', 24]"
+		 *
+		 * @default [0, -16]
 		 */
 		offset: PropSlideOffsetValue | { enter: PropSlideOffsetValue; leave: PropSlideOffsetValue };
 	};
