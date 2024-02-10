@@ -95,7 +95,7 @@
 	},
 	"dependencies": {
 		"@morev/utils": "^3.6.0",
-		"@nuxt/kit": "^3.0.0"
+		"@nuxt/kit": "^3.10.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.20.2",
