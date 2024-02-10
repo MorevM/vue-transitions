@@ -76,7 +76,6 @@
 		"build:nuxt": "node ./scripts/nuxt-module-build.mjs",
 		"build": "yarn build:playground && yarn build:vue2 && yarn build:vue3 && yarn build:nuxt",
 		"prepare": "lefthook install && yarn more-sass-clone",
-		"vscode-settings": "cp .vscode/settings.template.json .vscode/settings.json",
 		"more-sass-clone": "rm -rf .more-sass && cp -r ./node_modules/more-sass ./.more-sass",
 		"release": "release-it --disable-metrics",
 		"lint": "yarn lint:eslint && yarn lint:stylelint",
