@@ -26,6 +26,7 @@ export default defineConfig({
 		vue(),
 	],
 	build: {
+		emptyOutDir: true,
 		minify: 'terser',
 		assetsDir: '',
 		lib: {

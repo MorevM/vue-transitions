@@ -6,6 +6,7 @@ export default defineConfig({
 	build: {
 		minify: 'terser',
 		assetsDir: '',
+		emptyOutDir: true,
 		lib: {
 			entry: '../../src/index.js',
 			formats: ['es', 'cjs', 'umd'],
