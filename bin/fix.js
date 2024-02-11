@@ -1,3 +1,2 @@
 #!/usr/bin/env node
-
-require('../scripts/postinstall.js');
+import '../scripts/postinstall.js';

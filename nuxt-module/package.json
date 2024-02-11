@@ -1,5 +1,6 @@
 {
 	"name": "@morev/vue-modals-nuxt",
+	"type": "module",
 	"private": "true",
 	"exports": {
 		".": {

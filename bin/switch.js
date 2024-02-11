@@ -1,3 +1,2 @@
 #!/usr/bin/env node
-
-require('../scripts/switch-cli.js');
+import '../scripts/switch-cli.js';

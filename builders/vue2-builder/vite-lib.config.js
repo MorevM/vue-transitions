@@ -11,7 +11,12 @@ export default defineConfig({
 			entry: '../../src/index.js',
 			formats: ['es', 'cjs', 'umd'],
 			name: 'vueTransitions',
-			fileName: (format) => `vue-transitions.${format}.js`,
+			fileName: (format) => {
+				const extension = format === 'cjs' ? 'cjs' : 'js';
+				const prefix = format === 'umd' ? 'umd' : null;
+
+				return ['vue-transitions', prefix, extension].filter(Boolean).join('.');
+			},
 		},
 		cssCodeSplit: true,
 		rollupOptions: {

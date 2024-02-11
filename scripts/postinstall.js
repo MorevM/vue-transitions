@@ -1,6 +1,6 @@
-const { switchVersion, loadModule, ERROR_PREFIX } = require('./utils.js');
+import { switchVersion, loadModule, ERROR_PREFIX } from './utils.js';
 
-const Vue = loadModule('vue');
+const Vue = await loadModule('vue');
 
 if (!Vue || typeof Vue.version !== 'string') {
 	console.warn(`${ERROR_PREFIX} Vue is not found. Please run "npm install vue" to install.`);

@@ -1,34 +1,36 @@
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, writeFileSync, unlinkSync } from 'node:fs';
+import { dirname, resolve, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const dir = path.resolve(__dirname);
+const dir = resolve(dirname(fileURLToPath(import.meta.url)));
 
-const loadModule = (name) => {
+const copy = (name, version) => {
+	const source = join(dir, '..', 'dist', `vue${version}`, name);
+	const destination = join(dir, '..', 'dist', name);
+
+	const content = readFileSync(source, 'utf8');
+
+	// unlink for pnpm, @see https://github.com/vueuse/vue-demi/issues/92
+	try { unlinkSync(destination); } catch {}
+
+	writeFileSync(destination, content, 'utf8');
+};
+
+export const ERROR_PREFIX = '[@morev/vue-transitions]';
+
+export const loadModule = async (name) => {
 	try {
-		return require(name);
+		return import(name);
 	} catch {
 		return undefined;
 	}
 };
 
-const copy = (name, version) => {
-	const src = path.join(dir, '..', 'dist', `vue${version}`, name);
-	const dest = path.join(dir, '..', 'dist', name);
-	const content = fs.readFileSync(src, 'utf8');
-	// unlink for pnpm, @see https://github.com/vueuse/vue-demi/issues/92
-	try {
-		fs.unlinkSync(dest);
-	} catch {}
-	fs.writeFileSync(dest, content, 'utf8');
-};
-
-const switchVersion = (version) => {
-	copy('vue-transitions.cjs.js', version);
-	copy('vue-transitions.es.js', version);
+export const switchVersion = (version, vueEntry = 'vue') => {
+	copy('vue-transitions.cjs', version);
+	copy('vue-transitions.js', version);
 	copy('vue-transitions.umd.js', version);
 	copy('index.css', version);
-};
 
-module.exports.loadModule = loadModule;
-module.exports.switchVersion = switchVersion;
-module.exports.ERROR_PREFIX = '[@morev/vue-transitions]';
+	console.log(`${ERROR_PREFIX} Switched for Vue ${version} (entry: '${vueEntry}')`);
+};

@@ -1,6 +1,7 @@
 {
 	"name": "@morev/vue-transitions",
 	"description": "Shareable Vue transitions library",
+	"type": "module",
 	"version": "2.3.6",
 	"private": true,
 	"workspaces": [
@@ -48,16 +49,34 @@
 	},
 	"exports": {
 		".": {
-			"import": "./dist/vue-transitions.es.js",
-			"require": "./dist/vue-transitions.cjs.js"
+			"import": {
+				"types": "./types/index.d.ts",
+				"default": "./dist/vue-transitions.js"
+			},
+			"require": {
+				"types": "./types/index.d.cts",
+				"default": "./dist/vue-transitions.cjs"
+			}
 		},
 		"./vue2": {
-			"import": "./dist/vue2/vue-transitions.es.js",
-			"require": "./dist/vue2/vue-transitions.cjs.js"
+			"import": {
+				"types": "./types/index.d.ts",
+				"default": "./dist/vue2/vue-transitions.js"
+			},
+			"require": {
+				"types": "./types/index.d.cts",
+				"default": "./dist/vue2/vue-transitions.cjs"
+			}
 		},
 		"./vue3": {
-			"import": "./dist/vue3/vue-transitions.es.js",
-			"require": "./dist/vue3/vue-transitions.cjs.js"
+			"import": {
+				"types": "./types/index.d.ts",
+				"default": "./dist/vue3/vue-transitions.js"
+			},
+			"require": {
+				"types": "./types/index.d.cts",
+				"default": "./dist/vue3/vue-transitions.cjs"
+			}
 		},
 		"./nuxt": {
 			"import": "./nuxt/module.mjs",
@@ -65,10 +84,10 @@
 		},
 		"./styles": "./dist/index.css"
 	},
-	"main": "./dist/vue-transitions.cjs.js",
-	"module": "./dist/vue-transitions.es.js",
+	"main": "./dist/vue-transitions.cjs",
+	"module": "./dist/vue-transitions.js",
 	"browser": "./dist/vue-transitions.umd.js",
-	"types": "types/index.d.ts",
+	"types": "./types/index.d.ts",
 	"scripts": {
 		"prepack": "node ./scripts/prepack.js",
 		"postpublish": "node ./scripts/postpublish.js",
@@ -76,7 +95,7 @@
 		"build:playground": "yarn workspace vue2-builder playground",
 		"build:vue2": "yarn workspace vue2-builder build",
 		"build:vue3": "yarn workspace vue3-builder build",
-		"build:nuxt": "node ./scripts/nuxt-module-build.mjs",
+		"build:nuxt": "node ./scripts/nuxt-module-build.js",
 		"build": "yarn build:playground && yarn build:vue2 && yarn build:vue3 && yarn build:nuxt",
 		"prepare": "lefthook install && yarn more-sass-clone",
 		"more-sass-clone": "rm -rf .more-sass && cp -r ./node_modules/more-sass ./.more-sass",

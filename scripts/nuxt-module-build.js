@@ -1,6 +1,6 @@
-import { copyFileSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { copyFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { build } from 'unbuild';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -10,8 +10,9 @@ const copyNuxtFile = (name) => copyFileSync(
 	join(__dirname, '..', 'nuxt', name),
 );
 
-build('.', false, {
+await build('.', false, {
 	outDir: './nuxt',
+	clean: true,
 	entries: [
 		{
 			input: './nuxt-module/module.ts',
