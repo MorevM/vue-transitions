@@ -5,10 +5,10 @@
 </template>
 
 <script>
-	import { <%= options.originalPascalName %> as TheTransition } from '@morev/vue-transitions';
+	import { <%= options.componentName %> as TheTransition } from '@morev/vue-transitions';
 
 	export default {
-		name: '<%= options.neededName %>',
+		name: '<%= options.componentName %>',
 		inheritAttrs: false,
 		components: { TheTransition },
 	};

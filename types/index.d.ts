@@ -228,13 +228,6 @@ export type ComponentPropsAndEmits = DeepPartial<{
 
 export type PluginOptions = Partial<{
 	/**
-	 * Components for global registration. \
-	 * Key is an original transition name written in PascalCase like `TransitionExpand`. \
-	 * Value is transition name you want to use in your code. It's recommended to not override those names.
-	 */
-	components: Partial<{ [key in TransitionComponents]: string }>;
-
-	/**
 	 * An object allows to change plugin default prop values. \
 	 * Key is the prop name, value is desired prop value. \
 	 * IMPORTANT: Those props are not validated, so make sure you are using the right values.

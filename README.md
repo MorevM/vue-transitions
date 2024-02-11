@@ -157,70 +157,34 @@ Vue.use(vueTransitionsPlugin, {
 
 #### Custom options
 
-Custom options allows to change component names and default prop values.
+> It's recommended to use the named export `plugin` instead of default export when setting custom options to get proper type information.
 
-> It's recommended to use the named export `plugin` instead of default export when setting custom options to get proper type information. \
-> See code examples below.
+Custom options allows to change default property values. \
+To change the defaults, pass the `defaultProps` key to the plugin settings, listing the key-value pairs of desired props. \
+You may also change default props per-component, to do so just pass the `componentDefaultProps` key to plugin settings.
 
-<details>
-  <summary><code>How to register globally only some transitions / change component names?</code></summary>
-  <br />
+> **Important**: these props are not validated, so make sure you define them with right values.
 
-  To achieve this, pass the `components` key in the plugin options, listing the key-value pairs of the desired components,
-  where the `key` is original component name written in `PascalCase`, and value is desired component name written in any case you like.
+```js
+import { createApp } from 'vue';
+import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
+import '@morev/vue-transitions/styles';
 
-  > It's recommended to keep component names unchanged because they are forming a good namespace :)
+const app = createApp(App);
 
-  ```js
-  import { createApp } from 'vue';
-  import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
-  import '@morev/vue-transitions/styles';
-
-  const app = createApp(App);
-
-  // Register globally only `<transition-fade>` and `<transition-slide>`,
-  // also rename `<transition-slide>` to `<slide-transition>`
-  app.use(vueTransitionsPlugin({
-    components: {
-      TransitionFade: 'TransitionFade',
-      TransitionSlide: 'slide-transition',
+app.use(vueTransitionsPlugin({
+  // Default duration for all transitions now is `200`
+  defaultProps: {
+    duration: 200,
+  },
+  // But for `<transition-expand>` default duration is `500`
+  componentDefaultProps: {
+    TransitionExpand: {
+      duration: 500,
     }
-  }));
-  ```
-
-</details>
-
-<details>
-  <summary><code>How to change default prop values?</code></summary>
-  <br />
-
-  To achieve this, you need to pass the `defaultProps` key to plugin settings, listing the key-value pairs of desired props. \
-  You may also change default props per-component, to do so just pass the `componentDefaultProps` key to plugin settings.
-
-  > **Important**: those props are not validated, so make sure you define them with right values.
-
-  ```js
-  import { createApp } from 'vue';
-  import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
-  import '@morev/vue-transitions/styles';
-
-  const app = createApp(App);
-
-  Vue.use(vueTransitionsPlugin({
-    // Default duration for all transitions now is `200`
-    defaultProps: {
-      duration: 200,
-    },
-    // But for `<transition-expand>` default duration is `500`
-    componentDefaultProps: {
-      TransitionExpand: {
-        duration: 500,
-      }
-    }
-  }));
-  ```
-
-</details>
+  }
+}));
+```
 
 ---
 
