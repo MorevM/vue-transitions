@@ -1,8 +1,6 @@
 /* eslint-disable import/exports-last */
+import type { PartialDeep } from '@morev/utils';
 import type { PluginObject, DefineComponent } from 'vue';
-
-// Helpers
-type DeepPartial<T> = T extends object ? { [P in keyof T]?: DeepPartial<T[P]> } : T;
 
 // All components
 type TransitionComponents =
@@ -212,14 +210,14 @@ type UniqueProps = {
 	};
 };
 
-export type ComponentProps = DeepPartial<{
+export type ComponentProps = PartialDeep<{
 	TransitionFade: CommonProps;
 	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'];
 	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'];
 	TransitionScale: CommonProps & UniqueProps['TransitionScale'];
 }>;
 
-export type ComponentPropsAndEmits = DeepPartial<{
+export type ComponentPropsAndEmits = PartialDeep<{
 	TransitionFade: CommonProps & Emits;
 	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'] & Emits;
 	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'] & Emits;
@@ -238,7 +236,7 @@ export type PluginOptions = Partial<{
 	 * An object allows to change default prop values per-component. \
 	 * Key is the original transition name written in PascalCase, value is object same as `defaultProps`.
 	 */
-	componentDefaultProps: DeepPartial<ComponentProps>;
+	componentDefaultProps: PartialDeep<ComponentProps>;
 }>;
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -252,3 +250,12 @@ export const plugin: (options?: PluginOptions) => PluginObject<PluginOptions>;
 
 declare const vueTransitions: () => PluginObject<PluginOptions>;
 export default vueTransitions;
+
+declare module 'vue' {
+	export interface GlobalComponents {
+		TransitionFade: typeof TransitionFade;
+		TransitionExpand: typeof TransitionExpand;
+		TransitionScale: typeof TransitionScale;
+		TransitionSlide: typeof TransitionSlide;
+	}
+}
