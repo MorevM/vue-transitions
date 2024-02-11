@@ -11,9 +11,6 @@
 
 Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 
-Originally inspired by the [vue2-transitions](https://github.com/BinarCode/vue2-transitions)
-it goes much further and provides more features with a simpler API.
-
 ✔️ Highly customizable via props; \
 ✔️ Correctly works with grid/flex layouts in `group` mode; \
 ✔️ Considers initial styles of animated elements such as `transform` or `opacity`; \
@@ -117,12 +114,28 @@ It feels pretty robust, but if you're worried about, prefer an explicit named im
 
 ### Global registration
 
+#### Using `Vue3`
+
 ```js
-import Vue from 'vue';
-import VueTransitions from '@morev/vue-transitions';
+import { createApp } from 'vue';
+import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
 import '@morev/vue-transitions/styles';
 
-Vue.use(VueTransitions, {
+const app = createApp(App);
+
+app.use(vueTransitionsPlugin({
+  // Plugin options (optional, described below)
+}));
+```
+
+#### Using `Vue2`
+
+```js
+import Vue from 'vue';
+import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
+import '@morev/vue-transitions/styles';
+
+Vue.use(vueTransitionsPlugin, {
   // Plugin options (optional, described below)
 });
 ```
@@ -133,12 +146,9 @@ Vue.use(VueTransitions, {
   For environments that can't resolve `exports` field (such as [Nuxt 2](https://nuxtjs.org/))
   just replace styles import with direct path to file:
 
-  ```js
-  import Vue from 'vue';
-  import VueTransitions from '@morev/vue-transitions';
-  import '@morev/vue-transitions/dist/index.css';
-
-  Vue.use(VueTransitions);
+  ```diff
+  - import '@morev/vue-transitions/styles';
+  + import '@morev/vue-transitions/dist/index.css';
   ```
 
 </details>
@@ -149,7 +159,7 @@ Vue.use(VueTransitions, {
 
 Custom options allows to change component names and default prop values.
 
-> It's recommended to use named export `plugin` instead of default export when setting custom options to get proper type information. \
+> It's recommended to use the named export `plugin` instead of default export when setting custom options to get proper type information. \
 > See code examples below.
 
 <details>
@@ -157,18 +167,20 @@ Custom options allows to change component names and default prop values.
   <br />
 
   To achieve this, pass the `components` key in the plugin options, listing the key-value pairs of the desired components,
-  where `key` is original component name written in `PascalCase`, and value is desired component name written in any case you like.
+  where the `key` is original component name written in `PascalCase`, and value is desired component name written in any case you like.
 
   > It's recommended to keep component names unchanged because they are forming a good namespace :)
 
   ```js
-  import Vue from 'vue';
-  import { plugin as VueTransitions } from '@morev/vue-transitions';
+  import { createApp } from 'vue';
+  import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
   import '@morev/vue-transitions/styles';
+
+  const app = createApp(App);
 
   // Register globally only `<transition-fade>` and `<transition-slide>`,
   // also rename `<transition-slide>` to `<slide-transition>`
-  Vue.use(VueTransitions({
+  app.use(vueTransitionsPlugin({
     components: {
       TransitionFade: 'TransitionFade',
       TransitionSlide: 'slide-transition',
@@ -188,11 +200,13 @@ Custom options allows to change component names and default prop values.
   > **Important**: those props are not validated, so make sure you define them with right values.
 
   ```js
-  import Vue from 'vue';
-  import { plugin as VueTransitions } from '@morev/vue-transitions';
+  import { createApp } from 'vue';
+  import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
   import '@morev/vue-transitions/styles';
 
-  Vue.use(VueTransitions({
+  const app = createApp(App);
+
+  Vue.use(vueTransitionsPlugin({
     // Default duration for all transitions now is `200`
     defaultProps: {
       duration: 200,
@@ -269,35 +283,8 @@ extension installed all components should provide hints as it, no actions requir
 
 ### With Vue 3
 
-Using Vue 3 with [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension installed
-you can specify global component types by configuring `compilerOptions.types` in `tsconfig.json`:
-
-```jsonc
-// tsconfig.json
-{
-  "compilerOptions": {
-    // ...
-    "types": ["@morev/vue-transitions/types/volar"]
-  }
-}
-```
-
-If you are using renamed versions of components or using only part of them, you may configure global types yourself
-by creating custom type definition file which re-exports needed information:
-
-```ts
-import type { DefineComponent } from 'vue';
-import type { ComponentPropsAndEmits } from '@morev/vue-transitions';
-
-declare module 'vue' {
-  export interface GlobalComponents {
-    MyTransitionFade: DefineComponent<ComponentPropsAndEmits['TransitionFade']>;
-    MyTransitionExpand: DefineComponent<ComponentPropsAndEmits['TransitionExpand']>;
-    MyTransitionScale: DefineComponent<ComponentPropsAndEmits['TransitionScale']>;
-    MyTransitionSlide: DefineComponent<ComponentPropsAndEmits['TransitionSlide']>;
-  }
-}
-```
+Using Vue 3 with [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+extension installed all components should provide hints as it, no actions required:
 
 ![Example of IntelliSense with VSCode and Volar](./.github/images/intellisense-vue3.jpg)
 
