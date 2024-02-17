@@ -29,7 +29,6 @@ export const loadModule = async (name) => {
 export const switchVersion = (version, vueEntry = 'vue') => {
 	copy('vue-transitions.cjs', version);
 	copy('vue-transitions.js', version);
-	copy('vue-transitions.umd.js', version);
 	copy('index.css', version);
 
 	console.log(`${ERROR_PREFIX} Switched for Vue ${version} (entry: '${vueEntry}')`);

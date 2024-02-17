@@ -34,11 +34,6 @@ const install = function (Vue, options = {}) {
 	});
 };
 
-// Automatic installation if Vue has been added to the global scope.
-if (typeof window !== 'undefined' && window.Vue) {
-	window.Vue.use({ install });
-}
-
 export const plugin = (pluginOptions) => ({
 	install(Vue, options) {
 		install(Vue, pluginOptions);

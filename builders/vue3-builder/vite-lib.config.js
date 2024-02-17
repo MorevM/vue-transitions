@@ -31,13 +31,11 @@ export default defineConfig({
 		assetsDir: '',
 		lib: {
 			entry: '../../src/index.js',
-			formats: ['es', 'cjs', 'umd'],
+			formats: ['es', 'cjs'],
 			name: 'vueTransitions',
 			fileName: (format) => {
 				const extension = format === 'cjs' ? 'cjs' : 'js';
-				const prefix = format === 'umd' ? 'umd' : null;
-
-				return ['vue-transitions', prefix, extension].filter(Boolean).join('.');
+				return `vue-transitions.${extension}`;
 			},
 		},
 		cssCodeSplit: true,
