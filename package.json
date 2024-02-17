@@ -87,7 +87,6 @@
 	},
 	"main": "./dist/vue-transitions.cjs",
 	"module": "./dist/vue-transitions.js",
-	"browser": "./dist/vue-transitions.umd.js",
 	"types": "./types/index.d.ts",
 	"scripts": {
 		"prepack": "node ./scripts/prepack.js",
