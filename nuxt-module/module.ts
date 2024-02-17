@@ -1,11 +1,16 @@
 import { existsSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import { mergeObjects, isEmpty, isArray } from '@morev/utils';
 import { defineNuxtModule, createResolver, addComponentsDir, isNuxt2 } from '@nuxt/kit';
 import type { PluginOptions } from '../types';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const COMPONENTS = ['TransitionExpand', 'TransitionFade', 'TransitionScale', 'TransitionSlide'] as const;
 const BABEL_PLUGIN_NAME = '@babel/plugin-transform-logical-assignment-operators';
-const MODULE_NAME = '@morev/vue-transitions';
+const SCOPE = '@morev';
+const MODULE_NAME = `${SCOPE}/vue-transitions`;
 
 export default defineNuxtModule<PluginOptions>({
 	meta: {
@@ -20,7 +25,9 @@ export default defineNuxtModule<PluginOptions>({
 		defaultProps: {},
 	},
 	async setup(options, nuxt) {
-		const DIRECTORY_NAME = 'vue-transitions';
+		const NODE_MODULES_PATH = __dirname.replace(new RegExp(`${SCOPE}.*`), '');
+		const COMPONENTS_DIRECTORY = join(NODE_MODULES_PATH, '.vue-transitions');
+
 		const resolver = createResolver(import.meta.url);
 
 		nuxt.options.css ??= [];
@@ -45,14 +52,13 @@ export default defineNuxtModule<PluginOptions>({
 		}
 
 		const templateContents = readFileSync(resolver.resolve('template.vue'), { encoding: 'utf8' });
-		const componentsDir = resolver.resolve(DIRECTORY_NAME);
 
 		// Make sure there are no cache from previous runs.
 		try {
-			existsSync(componentsDir) && unlinkSync(componentsDir);
+			existsSync(COMPONENTS_DIRECTORY) && unlinkSync(COMPONENTS_DIRECTORY);
 		} catch {}
 
-		mkdirSync(componentsDir, { recursive: true });
+		mkdirSync(COMPONENTS_DIRECTORY, { recursive: true });
 
 		COMPONENTS.forEach((componentName) => {
 			const customProps = mergeObjects(
@@ -70,7 +76,7 @@ export default defineNuxtModule<PluginOptions>({
 			// `addTemplate` doesn't create files at once, it adds them to queue,
 			// but when we call `addComponentsDir` files should be in place already.
 			writeFileSync(
-				resolver.resolve(`${DIRECTORY_NAME}/${componentName}.vue`),
+				join(COMPONENTS_DIRECTORY, `${componentName}.vue`),
 				templateContents
 					.replaceAll('<%= options.propsDeclaration %>', propsDeclaration)
 					.replaceAll('<%= options.componentName %>', componentName),
@@ -78,7 +84,7 @@ export default defineNuxtModule<PluginOptions>({
 		});
 
 		addComponentsDir({
-			path: componentsDir,
+			path: COMPONENTS_DIRECTORY,
 			pathPrefix: false,
 			watch: false,
 		});
