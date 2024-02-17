@@ -22,6 +22,7 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 
 * [Demo](https://morevm.github.io/vue-transitions/)
 * [Installation](#installation)
+  * [Requirements](#-requirements)
   * [Using `yarn`](#using-yarn)
   * [Using `npm`](#using-npm)
   * [Using `pnpm`](#using-pnpm)
@@ -45,6 +46,15 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 * [Events](#events)
 
 ## Installation
+
+### ❗ Requirements
+
+* Node version: `>= 16.10.0`
+* Nuxt version (if used): `>= 2.17.0 || >= 3.5.0`
+
+**The plugin will not work if you are using a Node or Nuxt version less than the specified ones.**
+
+---
 
 ### Using `yarn`
 
