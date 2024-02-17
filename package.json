@@ -80,8 +80,14 @@
 			}
 		},
 		"./nuxt": {
-			"import": "./nuxt/module.mjs",
-			"require": "./nuxt/module.cjs"
+			"import": {
+				"types": "./nuxt/module.mts",
+				"default": "./nuxt/module.mjs"
+			},
+			"require": {
+				"types": "./nuxt/module.cts",
+				"default": "./nuxt/module.cjs"
+			}
 		},
 		"./styles": "./dist/index.css"
 	},

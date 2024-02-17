@@ -19,6 +19,8 @@ await build('.', false, {
 			name: 'module',
 		},
 	],
+	declaration: 'compatible',
+	externals: ['@nuxt/schema', '@morev/utils', 'type-fest'],
 	failOnWarn: false,
 	rollup: {
 		emitCJS: true,
@@ -31,9 +33,9 @@ await build('.', false, {
 					context.warnings.delete(w);
 				}
 			});
+
 			// Move static files.
-			['template.d.ts', 'template.vue', 'types.d.ts', 'package.json']
-				.forEach(file => copyNuxtFile(file));
+			['template.vue', 'package.json'].forEach(file => copyNuxtFile(file));
 		},
 	},
 });
