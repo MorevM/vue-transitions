@@ -3,6 +3,7 @@
 	"description": "Shareable Vue transitions library",
 	"type": "module",
 	"version": "2.3.6",
+	"sideEffects": ["*.css"],
 	"private": true,
 	"workspaces": [
 		"builders/*"
