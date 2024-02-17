@@ -8,7 +8,10 @@ module.exports = {
 		'@morev/eslint-config/preset/assistive',
 		'@morev/eslint-config/preset/vue2',
 	],
-	rules: {},
+	rules: {
+		// TODO: Should be fixed in the config itself
+		'import/no-unresolved': 'off',
+	},
 	overrides: [
 		{
 			files: ['*.vue'],
