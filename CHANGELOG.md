@@ -1,5 +1,9 @@
 
 
+## [3.0.1](https://github.com/MorevM/vue-transitions/compare/v3.0.0...v3.0.1) (2024-02-18)
+
+Clarifications for the previous release, [see v3.0.0 notes](#300-2024-02-18).
+
 ## [3.0.0](https://github.com/MorevM/vue-transitions/compare/v2.3.6...v3.0.0) (2024-02-18)
 
 
