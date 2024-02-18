@@ -1,5 +1,74 @@
 
 
+## [3.0.0](https://github.com/MorevM/vue-transitions/compare/v2.3.6...v3.0.0) (2024-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Node**: \
+  The minimum supported Node version is now 16.10.0.
+
+  Node 14 has reached EOL on April 11, 2023. It's time to move forward.
+
+* **Nuxt**: \
+  Minimal supported Nuxt version now is 2.17.0.
+
+  As the module uses supporting utilities library that is not transpiled, additional transpilation step is required on the Nuxt side. \
+  Nuxt < 2.17.0 has some intrinsic limitations that are impractical to solve.
+
+* **Plugin and Nuxt module options**: \
+  The plugin option `components` used for partial import or renaming of transition components no longer exists.
+
+  There is very little overhead from importing all components (none at all in the case of Nuxt), and this action simplifies package support and type generation. \
+  Also, I originally wanted to add maximum flexibility, now giving too much flexibility doesn't seem like a good idea to me.
+
+* **Typescript**: \
+  Global component types via the `/types/volar.d.ts` file no longer exists and required.
+
+  Since there is now no longer functionality to rename components, it is safe to register them globally at the package level.
+
+  If you used this before, remove the string `"@morev/vue-transitions/types/volar"` from your `tsconfig.json > compilerOptions > types`.
+
+* **Package**: \
+  The repository and the package is now marked as ESM.
+
+  From the end-use perspective this shouldn't cause any problems itself, but if you run into any issues, keep this in mind.
+
+
+### Features
+
+* **nuxt:** Make sure the module runs with no compilation errors using Nuxt 2 ([a6fa38f](https://github.com/MorevM/vue-transitions/commit/a6fa38f1f3cd08c2209a96e74bbc73eefd127fc7))
+
+
+### Documentation
+
+* Add a note about using the package with Bun ([#254](https://github.com/MorevM/vue-transitions/issues/254)) ([7658512](https://github.com/MorevM/vue-transitions/commit/7658512d901c031dcd7763baa677fd0b8b0ef04e))
+* Make the README.md more vue3-oriented ([d4815e5](https://github.com/MorevM/vue-transitions/commit/d4815e58196deabb75c6db231a4c2f2af8f3a002))
+* Note the package requirements ([c2760ff](https://github.com/MorevM/vue-transitions/commit/c2760ffa550aef4b0e8ad56d031c55b298821e6d))
+
+
+### Bug fixes
+
+* **nuxt:** Fix Nuxt module typings for config autocompletion ([5ef094b](https://github.com/MorevM/vue-transitions/commit/5ef094b6dbc4e19390f17dbd21ede94911762ac1))
+* **nuxt:** Store mapped transitions in a temp directory in the root of `node_modules` ([32a4bc9](https://github.com/MorevM/vue-transitions/commit/32a4bc9e06884c3af847ef1ef7dfa46debb63e91))
+
+
+### Refactoring
+
+* Get rid of separate `volar.d.ts` ([3d020f1](https://github.com/MorevM/vue-transitions/commit/3d020f1eb45ef06127efde8ca5668edf7b896598))
+* Get rid of UMD version ([1b1f0e6](https://github.com/MorevM/vue-transitions/commit/1b1f0e6d83d46cd34c5767cc7caf8c599a6e81fd))
+* Migrate repository to ESM ([aef2179](https://github.com/MorevM/vue-transitions/commit/aef2179305a35732164d8e075e2e6663df307206))
+* Remove `components` plugin option ([af1875f](https://github.com/MorevM/vue-transitions/commit/af1875ffbfda1f4677ac1cfb83847b7b97cab1ca))
+
+
+### Chores
+
+* Bump `@morev/utils` to latest ([2867e0f](https://github.com/MorevM/vue-transitions/commit/2867e0f7dcf2e85ea14a3b78ddfae0080542d38a))
+* Bump `@nuxt/kit` to latest ([984e3f0](https://github.com/MorevM/vue-transitions/commit/984e3f0b4e052959c4e15d349b909919e0405a2c))
+* Mark the package as side-effects free (note only `css` is a side-effect) ([f6be14b](https://github.com/MorevM/vue-transitions/commit/f6be14b5d4c978f7c1e33be2f582d95a26d27847))
+* Update linter/builder related packages to latest ([36abda9](https://github.com/MorevM/vue-transitions/commit/36abda9cbb9625203150eac2bac4b67b1a6e4de7))
+* Upgrade vue3 builder to latest ([6121d98](https://github.com/MorevM/vue-transitions/commit/6121d983b2e0a6845fb8c5cac7e2f7fea437832c))
+
 ### [2.3.6](https://github.com/MorevM/vue-transitions/compare/v2.3.5...v2.3.6) (2023-01-17)
 
 ### Bug fixes
