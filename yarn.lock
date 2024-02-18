@@ -2305,26 +2305,7 @@ bundle-name@^4.1.0:
   dependencies:
     run-applescript "^7.0.0"
 
-c12@^1.4.1:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/c12/-/c12-1.7.0.tgz#c276fa9ba3cc0019c2be2f17b8a1dd78268f9e9b"
-  integrity sha512-luqIHUs5S5s4vcSa1TVIGxSC1dH8mBT8cxzRvrlHN/iZs+G/PkxsOb300ODuAdvRzUopyXYqg7cmdOGpcYaxwg==
-  dependencies:
-    chokidar "^3.5.3"
-    defu "^6.1.4"
-    dotenv "^16.3.2"
-    giget "^1.2.1"
-    jiti "^1.21.0"
-    json5 "^2.2.3"
-    jsonc-parser "^3.2.1"
-    mlly "^1.5.0"
-    ohash "^1.1.3"
-    pathe "^1.1.2"
-    perfect-debounce "^1.0.0"
-    pkg-types "^1.0.3"
-    rc9 "^2.1.1"
-
-c12@^1.7.0:
+c12@^1.4.1, c12@^1.7.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/c12/-/c12-1.8.0.tgz#6be4c9540782f624cfb41820460ce36534f0ee35"
   integrity sha512-93U6RndoaAwFQPBcS9F/6lwtgBfrWh4695sQ/ChILkbj0C7zOZVptOU3Sxp0I/9xvfW/lzBWD90AXDQz4muSkA==

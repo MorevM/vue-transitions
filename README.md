@@ -49,7 +49,7 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 
 ### ❗ Requirements
 
-* Node version: `>= 16.10.0`
+* Node version: `>= 18.0.0`
 * Nuxt version (if used): `>= 2.17.0 || >= 3.5.0`
 
 **The plugin will not work if you are using a Node or Nuxt version less than the specified ones.**

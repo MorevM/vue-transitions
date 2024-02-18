@@ -6,9 +6,10 @@
 ### ⚠ BREAKING CHANGES
 
 * **Node**: \
-  The minimum supported Node version is now 16.10.0.
+  The minimum supported Node version is now 18.0.0.
 
-  Node 14 has reached EOL on April 11, 2023. It's time to move forward.
+  Node 14 has reached EOL on April 11, 2023. Node 16 has reached EOL on September 11, 2023. \
+  It's time to move forward.
 
 * **Nuxt**: \
   Minimal supported Nuxt version now is 2.17.0.
