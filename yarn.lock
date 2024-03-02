@@ -1024,13 +1024,13 @@
     unimport "^3.0.6"
     untyped "^1.3.2"
 
-"@nuxt/kit@^3.10.2":
-  version "3.10.2"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.10.2.tgz#90f271f4e667027db23cbac1343a45cac214e859"
-  integrity sha512-Bua7taY9CIm7HCTpHXqFyM1xlZkrUl6HOqWrkGjLLQg9eeWAdKT7ppT0iEMiGnb9f+5T0uL5Ec3TvuR5J8P9WA==
+"@nuxt/kit@^3.10.3":
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.10.3.tgz#911bc431d9b7541a7269e9e63333f70c8ecb5fd6"
+  integrity sha512-PUjYB9Mvx0qD9H1QZBwwtY4fLlCLET+Mm9BVqUOtXCaGoXd6u6BE4e/dGFPk2UEKkIcDGrUMSbqkHYvsEuK9NQ==
   dependencies:
-    "@nuxt/schema" "3.10.2"
-    c12 "^1.7.0"
+    "@nuxt/schema" "3.10.3"
+    c12 "^1.9.0"
     consola "^3.2.3"
     defu "^6.1.4"
     globby "^14.0.1"
@@ -1038,7 +1038,7 @@
     ignore "^5.3.1"
     jiti "^1.21.0"
     knitwork "^1.0.0"
-    mlly "^1.5.0"
+    mlly "^1.6.0"
     pathe "^1.1.2"
     pkg-types "^1.0.3"
     scule "^1.3.0"
@@ -1048,10 +1048,10 @@
     unimport "^3.7.1"
     untyped "^1.4.2"
 
-"@nuxt/schema@3.10.2", "@nuxt/schema@^3.10.2":
-  version "3.10.2"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.10.2.tgz#355abc40bc96ffcfff145dc63e452eaa232bae82"
-  integrity sha512-hHVnMlPKYR6AVK889gvcYVgewB1885/KPZW6uYhVWkeKGc63JzNCILq8ykTqG/t8LpG1ZJpwxo5KtDk9nIZrfA==
+"@nuxt/schema@3.10.3", "@nuxt/schema@^3.10.2":
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.10.3.tgz#b9bdcced298b64f280f12936e518fe4f32c90328"
+  integrity sha512-a4cYbeskEVBPazgAhvUGkL/j7ho/iPWMK3vCEm6dRMjSqHVEITRosrj0aMfLbRrDpTrMjlRs0ZitxiaUfE/p5Q==
   dependencies:
     "@nuxt/ui-templates" "^1.3.1"
     consola "^3.2.3"
@@ -2305,18 +2305,17 @@ bundle-name@^4.1.0:
   dependencies:
     run-applescript "^7.0.0"
 
-c12@^1.4.1, c12@^1.7.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/c12/-/c12-1.8.0.tgz#6be4c9540782f624cfb41820460ce36534f0ee35"
-  integrity sha512-93U6RndoaAwFQPBcS9F/6lwtgBfrWh4695sQ/ChILkbj0C7zOZVptOU3Sxp0I/9xvfW/lzBWD90AXDQz4muSkA==
+c12@^1.4.1, c12@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/c12/-/c12-1.9.0.tgz#a98b3d16b5010667983df70794a332d6b9865ec3"
+  integrity sha512-7KTCZXdIbOA2hLRQ+1KzJ15Qp9Wn58one74dkihMVp2H6EzKTa3OYBy0BSfS1CCcmxYyqeX8L02m40zjQ+dstg==
   dependencies:
     chokidar "^3.5.3"
+    confbox "^0.1.3"
     defu "^6.1.4"
     dotenv "^16.3.2"
     giget "^1.2.1"
     jiti "^1.21.0"
-    json5 "^2.2.3"
-    jsonc-parser "^3.2.1"
     mlly "^1.5.0"
     ohash "^1.1.3"
     pathe "^1.1.2"
@@ -2623,6 +2622,11 @@ concat-stream@^2.0.0:
     inherits "^2.0.3"
     readable-stream "^3.0.2"
     typedarray "^0.0.6"
+
+confbox@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/confbox/-/confbox-0.1.3.tgz#121eaeb7ec916215afe351449895290a2a270434"
+  integrity sha512-eH3ZxAihl1PhKfpr4VfEN6/vUd87fmgb6JkldHgg/YR6aEBhW63qUDgzP2Y6WM0UumdsYp5H3kibalXAdHfbgg==
 
 config-chain@^1.1.11:
   version "1.1.13"
@@ -5279,7 +5283,7 @@ jsonc-eslint-parser@^2.0.4, jsonc-eslint-parser@^2.4.0:
     espree "^9.0.0"
     semver "^7.3.5"
 
-jsonc-parser@^3.2.0, jsonc-parser@^3.2.1:
+jsonc-parser@^3.2.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.2.1.tgz#031904571ccf929d7670ee8c547545081cb37f1a"
   integrity sha512-AilxAyFOAcK5wA1+LeaySVBrHsGQvUFCDWXKpZjzaL0PqW+xfBOttn8GNtWKFWqneyMZj41MWF9Kl6iPWLwgOA==
@@ -5934,10 +5938,10 @@ mkdist@^1.3.0:
     postcss "^8.4.26"
     postcss-nested "^6.0.1"
 
-mlly@^1.2.0, mlly@^1.2.1, mlly@^1.4.0, mlly@^1.4.2, mlly@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/mlly/-/mlly-1.5.0.tgz#8428a4617d54cc083d3009030ac79739a0e5447a"
-  integrity sha512-NPVQvAY1xr1QoVeG0cy8yUYC7FQcOx6evl/RjT1wL5FvzPnzOysoqB/jmx/DhssT2dYa8nxECLAaFI/+gVLhDQ==
+mlly@^1.2.0, mlly@^1.2.1, mlly@^1.4.0, mlly@^1.4.2, mlly@^1.5.0, mlly@^1.6.0:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/mlly/-/mlly-1.6.1.tgz#0983067dc3366d6314fc5e12712884e6978d028f"
+  integrity sha512-vLgaHvaeunuOXHSmEbZ9izxPx3USsk8KCQ8iC+aTlp5sKRSoZvwhHh5L9VbKSaVC6sJDqbyohIS76E2VmHIPAA==
   dependencies:
     acorn "^8.11.3"
     pathe "^1.1.2"

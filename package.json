@@ -122,7 +122,7 @@
 	},
 	"dependencies": {
 		"@morev/utils": "^3.6.0",
-		"@nuxt/kit": "^3.10.2"
+		"@nuxt/kit": "^3.10.3"
 	},
 	"devDependencies": {
 		"@morev/commitlint-config": "^0.2.2",
