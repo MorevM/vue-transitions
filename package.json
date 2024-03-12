@@ -83,11 +83,11 @@
 		},
 		"./nuxt": {
 			"import": {
-				"types": "./nuxt/module.mts",
+				"types": "./nuxt/module.d.mts",
 				"default": "./nuxt/module.mjs"
 			},
 			"require": {
-				"types": "./nuxt/module.cts",
+				"types": "./nuxt/module.d.cts",
 				"default": "./nuxt/module.cjs"
 			}
 		},
