@@ -1,5 +1,11 @@
 
 
+## [3.0.2](https://github.com/MorevM/vue-transitions/compare/v3.0.1...v3.0.2) (2024-03-12)
+
+### Bug fixes
+
+* **nuxt:** Pass `$listeners` to generated transitions using Nuxt 2 ([5b736a1](https://github.com/MorevM/vue-transitions/commit/5b736a1aade2d50b7bbf8f862a6742b1bf277638))
+
 ## [3.0.1](https://github.com/MorevM/vue-transitions/compare/v3.0.0...v3.0.1) (2024-02-18)
 
 Clarifications for the previous release, [see v3.0.0 notes](#300-2024-02-18).
