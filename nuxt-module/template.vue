@@ -1,5 +1,5 @@
 <template>
-	<the-transition v-bind="<%= options.propsDeclaration %>">
+	<the-transition v-bind="<%= options.propsDeclaration %>"<%= options.listenersDeclaration %>>
 		<slot></slot>
 	</the-transition>
 </template>

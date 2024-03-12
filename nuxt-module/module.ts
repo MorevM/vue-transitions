@@ -79,6 +79,7 @@ export default defineNuxtModule<PluginOptions>({
 				join(COMPONENTS_DIRECTORY, `${componentName}.vue`),
 				templateContents
 					.replaceAll('<%= options.propsDeclaration %>', propsDeclaration)
+					.replaceAll('<%= options.listenersDeclaration %>', isNuxt2() ? ' v-on="$listeners"' : '')
 					.replaceAll('<%= options.componentName %>', componentName),
 			);
 		});
