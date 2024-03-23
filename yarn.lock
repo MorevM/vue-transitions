@@ -1000,7 +1000,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nuxt/kit@3.10.3", "@nuxt/kit@^3.10.3":
+"@nuxt/kit@3.10.3":
   version "3.10.3"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.10.3.tgz#911bc431d9b7541a7269e9e63333f70c8ecb5fd6"
   integrity sha512-PUjYB9Mvx0qD9H1QZBwwtY4fLlCLET+Mm9BVqUOtXCaGoXd6u6BE4e/dGFPk2UEKkIcDGrUMSbqkHYvsEuK9NQ==
@@ -1024,7 +1024,31 @@
     unimport "^3.7.1"
     untyped "^1.4.2"
 
-"@nuxt/schema@3.10.3", "@nuxt/schema@^3.10.3":
+"@nuxt/kit@^3.11.1":
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.11.1.tgz#342335f1cbf7422a3e65be67f3ff975e6075decf"
+  integrity sha512-8VVlhaY4N+wipgHmSXP+gLM+esms9TEBz13I/J++PbOUJuf2cJlUUTyqMoRVL0xudVKK/8fJgSndRkyidy1m2w==
+  dependencies:
+    "@nuxt/schema" "3.11.1"
+    c12 "^1.10.0"
+    consola "^3.2.3"
+    defu "^6.1.4"
+    globby "^14.0.1"
+    hash-sum "^2.0.0"
+    ignore "^5.3.1"
+    jiti "^1.21.0"
+    knitwork "^1.0.0"
+    mlly "^1.6.1"
+    pathe "^1.1.2"
+    pkg-types "^1.0.3"
+    scule "^1.3.0"
+    semver "^7.6.0"
+    ufo "^1.5.2"
+    unctx "^2.3.1"
+    unimport "^3.7.1"
+    untyped "^1.4.2"
+
+"@nuxt/schema@3.10.3":
   version "3.10.3"
   resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.10.3.tgz#b9bdcced298b64f280f12936e518fe4f32c90328"
   integrity sha512-a4cYbeskEVBPazgAhvUGkL/j7ho/iPWMK3vCEm6dRMjSqHVEITRosrj0aMfLbRrDpTrMjlRs0ZitxiaUfE/p5Q==
@@ -1038,6 +1062,23 @@
     scule "^1.3.0"
     std-env "^3.7.0"
     ufo "^1.4.0"
+    unimport "^3.7.1"
+    untyped "^1.4.2"
+
+"@nuxt/schema@3.11.1", "@nuxt/schema@^3.10.3":
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.11.1.tgz#1f9e59be77d8c08904c06a26d9570c9c687bcfd6"
+  integrity sha512-XyGlJsf3DtkouBCvBHlvjz+xvN4vza3W7pY3YBNMnktxlMQtfFiF3aB3A2NGLmBnJPqD3oY0j7lljraELb5hkg==
+  dependencies:
+    "@nuxt/ui-templates" "^1.3.1"
+    consola "^3.2.3"
+    defu "^6.1.4"
+    hookable "^5.5.3"
+    pathe "^1.1.2"
+    pkg-types "^1.0.3"
+    scule "^1.3.0"
+    std-env "^3.7.0"
+    ufo "^1.5.2"
     unimport "^3.7.1"
     untyped "^1.4.2"
 
@@ -2324,7 +2365,7 @@ bundle-name@^4.1.0:
   dependencies:
     run-applescript "^7.0.0"
 
-c12@^1.9.0:
+c12@^1.10.0, c12@^1.9.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/c12/-/c12-1.10.0.tgz#e1936baa26fd03a9427875554aa6aeb86077b7fb"
   integrity sha512-0SsG7UDhoRWcuSvKWHaXmu5uNjDCDN3nkQLRL4Q42IlFy+ze58FcCoI3uPwINXinkz7ZinbhEgyzYFw9u9ZV8g==
@@ -5905,17 +5946,7 @@ mkdist@^1.3.0:
     postcss "^8.4.26"
     postcss-nested "^6.0.1"
 
-mlly@^1.2.0, mlly@^1.4.0, mlly@^1.4.2:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/mlly/-/mlly-1.5.0.tgz#8428a4617d54cc083d3009030ac79739a0e5447a"
-  integrity sha512-NPVQvAY1xr1QoVeG0cy8yUYC7FQcOx6evl/RjT1wL5FvzPnzOysoqB/jmx/DhssT2dYa8nxECLAaFI/+gVLhDQ==
-  dependencies:
-    acorn "^8.11.3"
-    pathe "^1.1.2"
-    pkg-types "^1.0.3"
-    ufo "^1.3.2"
-
-mlly@^1.6.0, mlly@^1.6.1:
+mlly@^1.2.0, mlly@^1.4.0, mlly@^1.4.2, mlly@^1.6.0, mlly@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/mlly/-/mlly-1.6.1.tgz#0983067dc3366d6314fc5e12712884e6978d028f"
   integrity sha512-vLgaHvaeunuOXHSmEbZ9izxPx3USsk8KCQ8iC+aTlp5sKRSoZvwhHh5L9VbKSaVC6sJDqbyohIS76E2VmHIPAA==
@@ -8209,10 +8240,10 @@ uc.micro@^1.0.1, uc.micro@^1.0.5:
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
   integrity sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
 
-ufo@^1.3.2, ufo@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.4.0.tgz#39845b31be81b4f319ab1d99fd20c56cac528d32"
-  integrity sha512-Hhy+BhRBleFjpJ2vchUNN40qgkh0366FWJGqVLYBHev0vpHTrXSA0ryT+74UiW6KWsldNurQMKGqCm1M2zBciQ==
+ufo@^1.3.2, ufo@^1.4.0, ufo@^1.5.2:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.5.3.tgz#3325bd3c977b6c6cd3160bf4ff52989adc9d3344"
+  integrity sha512-Y7HYmWaFwPUmkoQCUIAYpKqkOf+SbVj/2fJJZ4RJMCfZp0rTGwRbzQD+HghfnhKOjL9E01okqz+ncJskGYfBNw==
 
 uglify-js@^3.1.4:
   version "3.17.4"
