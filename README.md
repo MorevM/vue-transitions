@@ -59,7 +59,7 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 ### Using `yarn`
 
 ```bash
-yarn add @morev/vue-transitions
+npx nuxi@latest module add vue-transitions
 ```
 
 ---
@@ -67,7 +67,7 @@ yarn add @morev/vue-transitions
 ### Using `npm`
 
 ```bash
-npm install @morev/vue-transitions
+npx nuxi@latest module add vue-transitions
 ```
 
 ---
@@ -75,7 +75,7 @@ npm install @morev/vue-transitions
 ### Using `pnpm`
 
 ```bash
-pnpm add @morev/vue-transitions
+npx nuxi@latest module add vue-transitions
 ```
 
 ---
@@ -83,7 +83,7 @@ pnpm add @morev/vue-transitions
 ### Using `bun`
 
 ```bash
-bun add @morev/vue-transitions
+npx nuxi@latest module add vue-transitions
 ```
 
 ❗ **Important note for `Bun` users**
