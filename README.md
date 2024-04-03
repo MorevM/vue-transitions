@@ -56,35 +56,10 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 
 ---
 
-### Using `yarn`
-
 ```bash
 npx nuxi@latest module add vue-transitions
 ```
 
----
-
-### Using `npm`
-
-```bash
-npx nuxi@latest module add vue-transitions
-```
-
----
-
-### Using `pnpm`
-
-```bash
-npx nuxi@latest module add vue-transitions
-```
-
----
-
-### Using `bun`
-
-```bash
-npx nuxi@latest module add vue-transitions
-```
 
 ❗ **Important note for `Bun` users**
 
