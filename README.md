@@ -60,7 +60,6 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 npx nuxi@latest module add vue-transitions
 ```
 
-
 ❗ **Important note for `Bun` users**
 
 The package relies on `postinstall` hook to determine the Vue version and provide proper components. \
