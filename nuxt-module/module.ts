@@ -24,6 +24,11 @@ export default defineNuxtModule<PluginOptions>({
 		componentDefaultProps: {},
 		defaultProps: {},
 	},
+	hooks: {
+		'prepare:types': ({ declarations }) => {
+			declarations.push('import type {} from "@morev/vue-transitions";');
+		},
+	},
 	async setup(options, nuxt) {
 		const NODE_MODULES_PATH = __dirname.replace(new RegExp(`${SCOPE}.*`), '');
 		const COMPONENTS_DIRECTORY = join(NODE_MODULES_PATH, '.vue-transitions');
