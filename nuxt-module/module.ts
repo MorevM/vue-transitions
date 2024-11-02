@@ -2,7 +2,7 @@ import { existsSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from '
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { mergeObjects, isEmpty, isArray } from '@morev/utils';
-import { defineNuxtModule, createResolver, addComponentsDir, isNuxt2 } from '@nuxt/kit';
+import { defineNuxtModule, createResolver, addComponentsDir, isNuxtMajorVersion } from '@nuxt/kit';
 import type { PluginOptions } from '../types';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -35,7 +35,7 @@ export default defineNuxtModule<PluginOptions>({
 
 		// This is necessary because the package uses utilities
 		// that use modern syntax and have not been transpiled.
-		if (isNuxt2()) {
+		if (isNuxtMajorVersion(2, nuxt)) {
 			nuxt.options.build.transpile.push('@morev/utils', 'ohash', MODULE_NAME);
 
 			/* @ts-expect-error -- Lack of compatibility with Nuxt 2 */
@@ -79,7 +79,7 @@ export default defineNuxtModule<PluginOptions>({
 				join(COMPONENTS_DIRECTORY, `${componentName}.vue`),
 				templateContents
 					.replaceAll('<%= options.propsDeclaration %>', propsDeclaration)
-					.replaceAll('<%= options.listenersDeclaration %>', isNuxt2() ? ' v-on="$listeners"' : '')
+					.replaceAll('<%= options.listenersDeclaration %>', isNuxtMajorVersion(2, nuxt) ? ' v-on="$listeners"' : '')
 					.replaceAll('<%= options.componentName %>', componentName),
 			);
 		});
