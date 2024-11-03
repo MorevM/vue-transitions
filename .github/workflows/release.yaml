@@ -28,10 +28,21 @@ jobs:
       - name: Make public and configure postinstall hook
         run: yarn prepack
 
+      - name: Getting latest changelog entry
+        uses: actions/github-script@v7
+        id: latest-changelog-entry
+        with:
+          result-encoding: string
+          script: |
+            const extractLatestChangelogEntry = require('./.github/extract-latest-changelog-entry.cjs');
+            return extractLatestChangelogEntry();
+
       - name: Create release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          body: ${{steps.latest-changelog-entry.outputs.result}}
 
       - name: Publish package
         run: yarn publish --access public
