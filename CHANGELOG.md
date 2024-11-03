@@ -1,5 +1,19 @@
 
 
+## [3.0.3](https://github.com/MorevM/vue-transitions/compare/v3.0.2...v3.0.3) (2024-11-03)
+
+### Bug fixes
+
+* The `package.json` file now contains only one `postinstall` script, thanks [@pisandelli](https://github.com/pisandelli) for noticing; \
+  Closes the issue [#265](https://github.com/MorevM/vue-transitions/issues/265).
+* Now the component type is correctly displayed when using VSCode and Nuxt 3, thanks [@BayBreezy](https://github.com/BayBreezy) for contribution; \
+  Closes the issue [#266](https://github.com/MorevM/vue-transitions/issues/266).
+
+### CI improvements
+
+* The latest changelog entry is now added to the Github Release description;
+
+
 ## [3.0.2](https://github.com/MorevM/vue-transitions/compare/v3.0.1...v3.0.2) (2024-03-12)
 
 ### Bug fixes

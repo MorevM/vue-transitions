@@ -2,7 +2,7 @@
 	"name": "@morev/vue-transitions",
 	"description": "Shareable Vue transitions library",
 	"type": "module",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"sideEffects": [
 		"*.css"
 	],
