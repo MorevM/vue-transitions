@@ -6,7 +6,7 @@ let newContents = packageJsonContents
 	.replace('"private": true', '"private": false')
 	.replaceAll(/"workspaces": \[[^\]]*],\s*/g, '');
 
-if (!newContents.includes('postinstall')) {
+if (!newContents.includes('"postinstall"')) {
 	newContents = packageJsonContents
 		.replace('"scripts": {', '"scripts": {\n\t\t"postinstall": "node ./scripts/postinstall.js",');
 }
