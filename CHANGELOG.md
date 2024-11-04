@@ -1,11 +1,11 @@
 
 
-## [3.0.4](https://github.com/MorevM/vue-transitions/compare/v3.0.3...v3.0.4) (2024-11-04)
-
+## [3.0.5](https://github.com/MorevM/vue-transitions/compare/v3.0.4...v3.0.5) (2024-11-04)
 
 ### Bug fixes
 
 * Fixed a script responsible for switching Vue2/Vue3 versions that was accidentally broken during the last release.
+
 
 ## [3.0.3](https://github.com/MorevM/vue-transitions/compare/v3.0.2...v3.0.3) (2024-11-03)
 
