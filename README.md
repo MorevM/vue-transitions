@@ -78,6 +78,34 @@ npm install @morev/vue-transitions
 pnpm add @morev/vue-transitions
 ```
 
+❗ **Important note for `pnpm>=10.0.0` users**
+
+The package relies on `postinstall` hook to determine the Vue version and provide proper components. \
+By default, [pnpm@10.0.0 does not execute lifecycle hooks](https://github.com/pnpm/pnpm/releases/tag/v10.0.0),
+so to make it work you need to add the package to the [`pnpm.onlyBuiltDependencies`](https://pnpm.io/package_json#pnpmonlybuiltdependencies)
+field in your `package.json` before installing:
+
+```json
+{
+  "pnpm": {
+    "onlyBuiltDependencies": ["@morev/vue-transitions"]
+  }
+}
+```
+
+If you install the package before adding the entry, you have to set Vue version you are using manually using the command
+`vue-transitions-version-switch`:
+
+```sh
+# set Vue 3
+pnpm vue-transitions-version-switch 3
+
+# Set Vue 2
+pnpm vue-transitions-version-switch 2
+```
+
+*Even with the command launched, it's important to add the `pnpm.onlyBuiltDependencies` field so that everything works well in future installations.*
+
 ---
 
 ### Using `bun`
