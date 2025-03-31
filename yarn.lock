@@ -947,25 +947,15 @@
     ohash "^1.1.3"
     type-fest "^4.3.1"
 
-"@morev/utils@^3.11.1":
-  version "3.11.1"
-  resolved "https://registry.yarnpkg.com/@morev/utils/-/utils-3.11.1.tgz#7d6827f6b5412ae9586af09e46f68a21788bb23f"
-  integrity sha512-BRcTAlQkkNgMvVMDGaJFsoeCs8vLokq/FRQXY8wHw/FvZftbbwdlhy/VrqPKOYL2Ni4vgfF8rgbXKV4ikAUAfg==
+"@morev/utils@^3.12.1", "@morev/utils@^3.6.0":
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/@morev/utils/-/utils-3.12.1.tgz#bba66a6cb5de52ad0cc0da8d1695c2d26806b5df"
+  integrity sha512-Qkj3ZP6KvEOYEx2GkM7Pffq7uHwgF6kOzVMLb8JTjV4Tb+qTLsZHk/2XF7lrm9VUZIDN17d7pXpZC6BzlR3ryw==
   dependencies:
     fast-copy "^3.0.2"
     fast-equals "^5.0.1"
-    ohash "^1.1.3"
-    type-fest "^4.18.3"
-
-"@morev/utils@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@morev/utils/-/utils-3.6.0.tgz#09206326ef2f7d6f1d8c518cd54106c6805c8db3"
-  integrity sha512-eTah9plhk18SFiMriOEOmBCYW9LhDlDWqbO0/hc+wpIzH1OXGz2Ei5VlairgSTEFTaSk9MyhrlaWby0jUzjx4A==
-  dependencies:
-    fast-copy "^3.0.1"
-    fast-equals "^5.0.1"
-    ohash "^1.1.3"
-    type-fest "^4.10.2"
+    ohash "^1.1.4"
+    type-fest "^4.26.1"
 
 "@morev/v-bem-transformer@^1.2.5":
   version "1.2.5"
@@ -4048,12 +4038,7 @@ external-editor@^3.1.0:
     iconv-lite "^0.4.24"
     tmp "^0.0.33"
 
-fast-copy@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-3.0.1.tgz#9e89ef498b8c04c1cd76b33b8e14271658a732aa"
-  integrity sha512-Knr7NOtK3HWRYGtHoJrjkaWepqT8thIVGAwt0p0aUs1zqkAzXZV4vo9fFNwyb5fcqK1GKYFYxldQdIDVKhUAfA==
-
-fast-copy@^3.0.2:
+fast-copy@^3.0.1, fast-copy@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-3.0.2.tgz#59c68f59ccbcac82050ba992e0d5c389097c9d35"
   integrity sha512-dl0O9Vhju8IrcLndv2eU4ldt1ftXMqqfgN4H1cpmGV7P6jeB9FwpN9a2c8DPGE1Ys88rNUJVYDHq73CGAGOPfQ==
@@ -6346,10 +6331,10 @@ object.values@^1.1.7:
     define-properties "^1.2.0"
     es-abstract "^1.22.1"
 
-ohash@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/ohash/-/ohash-1.1.3.tgz#f12c3c50bfe7271ce3fd1097d42568122ccdcf07"
-  integrity sha512-zuHHiGTYTA1sYJ/wZN+t5HKZaH23i4yI1HMwbuXm24Nid7Dv0KcuRlKoNKS9UNfAVSBlnGLcuQrnOKWOZoEGaw==
+ohash@^1.1.3, ohash@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/ohash/-/ohash-1.1.4.tgz#ae8d83014ab81157d2c285abf7792e2995fadd72"
+  integrity sha512-FlDryZAahJmEF3VR3w1KogSEdWX3WhA5GPakFx4J81kEAiHyLMpdLLElS8n8dfNadMgAne/MywcvmogzscVt4g==
 
 once@^1.3.0, once@^1.4.0:
   version "1.4.0"
@@ -8407,15 +8392,10 @@ type-fest@^3.8.0:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.13.1.tgz#bb744c1f0678bea7543a2d1ec24e83e68e8c8706"
   integrity sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==
 
-type-fest@^4.10.2, type-fest@^4.2.0, type-fest@^4.3.1:
-  version "4.10.2"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.10.2.tgz#3abdb144d93c5750432aac0d73d3e85fcab45738"
-  integrity sha512-anpAG63wSpdEbLwOqH8L84urkL6PiVIov3EMmgIhhThevh9aiMQov+6Btx0wldNcvm4wV+e2/Rt1QdDwKHFbHw==
-
-type-fest@^4.18.3:
-  version "4.26.1"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.26.1.tgz#a4a17fa314f976dd3e6d6675ef6c775c16d7955e"
-  integrity sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==
+type-fest@^4.2.0, type-fest@^4.26.1, type-fest@^4.3.1:
+  version "4.30.2"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.30.2.tgz#d94429edde1f7deacf554741650aab394197a4cc"
+  integrity sha512-UJShLPYi1aWqCdq9HycOL/gwsuqda1OISdBO3t8RlXQC4QvtuIz4b5FCfe2dQIWEpmlRExKmcTBfP1r9bhY7ig==
 
 typed-array-buffer@^1.0.0:
   version "1.0.1"
