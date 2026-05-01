@@ -95,7 +95,10 @@
 				"default": "./nuxt/module.cjs"
 			}
 		},
-		"./styles": "./dist/index.css"
+		"./styles": {
+			"types": "./dist/index.css.d.ts",
+			"default": "./dist/index.css"
+		}
 	},
 	"main": "./dist/vue-transitions.cjs",
 	"module": "./dist/vue-transitions.js",
