@@ -41,7 +41,6 @@
 			max: _prop.number.def(undefined),
 			step: _prop.number.def(50),
 			options: _prop.array,
-			single: _prop.bool.def(false),
 			isSeparated: _prop.bool.def(false),
 		},
 		emits: ['input'],
