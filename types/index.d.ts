@@ -246,7 +246,7 @@ export declare const TransitionScale: DefineComponent<ComponentPropsAndEmits['Tr
 export declare const TransitionSlide: DefineComponent<ComponentPropsAndEmits['TransitionSlide']>;
 /* eslint-enable @typescript-eslint/naming-convention */
 
-export const plugin: (options?: PluginOptions) => PluginObject<PluginOptions>;
+export declare const plugin: (options?: PluginOptions) => PluginObject<PluginOptions>;
 
 declare const vueTransitions: () => PluginObject<PluginOptions>;
 export default vueTransitions;
