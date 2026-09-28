@@ -11,22 +11,25 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: yarn
+          cache: pnpm
           scope: '@morev'
           registry-url: https://registry.npmjs.org/
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: yarn build
+        run: pnpm run build
 
       - name: Make public and configure postinstall hook
-        run: yarn prepack
+        run: pnpm run prepack
 
       - name: Getting latest changelog entry
         uses: actions/github-script@v7
@@ -45,6 +48,6 @@ jobs:
           body: ${{steps.latest-changelog-entry.outputs.result}}
 
       - name: Publish package
-        run: yarn publish --access public
+        run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

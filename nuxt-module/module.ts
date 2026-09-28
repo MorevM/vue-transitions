@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { mergeObjects, isEmpty, isArray } from '@morev/utils';
 import { defineNuxtModule, createResolver, addComponentsDir, isNuxtMajorVersion } from '@nuxt/kit';
+import type { NuxtModule } from '@nuxt/schema';
 import type { PluginOptions } from '../types';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -12,7 +13,7 @@ const BABEL_PLUGIN_NAME = '@babel/plugin-transform-logical-assignment-operators'
 const SCOPE = '@morev';
 const MODULE_NAME = `${SCOPE}/vue-transitions`;
 
-export default defineNuxtModule<PluginOptions>({
+const module: NuxtModule<PluginOptions> = defineNuxtModule<PluginOptions>({
 	meta: {
 		name: `${MODULE_NAME}/nuxt`,
 		configKey: 'vueTransitions',
@@ -96,3 +97,5 @@ export default defineNuxtModule<PluginOptions>({
 		});
 	},
 });
+
+export default module;

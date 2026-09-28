@@ -3,6 +3,7 @@
 	"description": "Shareable Vue transitions library",
 	"type": "module",
 	"version": "3.0.5",
+	"packageManager": "pnpm@10.12.4",
 	"sideEffects": [
 		"*.css"
 	],
@@ -11,7 +12,7 @@
 		"builders/*"
 	],
 	"engines": {
-		"node": ">= 18.0.0"
+		"node": ">= 18.12.0"
 	},
 	"license": "MIT",
 	"publishConfig": {
@@ -106,17 +107,17 @@
 	"scripts": {
 		"prepack": "node ./scripts/prepack.js",
 		"postpublish": "node ./scripts/postpublish.js",
-		"dev": "yarn workspace vue2-builder dev",
-		"build:playground": "yarn workspace vue2-builder playground",
-		"build:vue2": "yarn workspace vue2-builder build",
-		"build:vue3": "yarn workspace vue3-builder build",
+		"dev": "pnpm --filter vue2-builder dev",
+		"build:playground": "pnpm --filter vue2-builder playground",
+		"build:vue2": "pnpm --filter vue2-builder build",
+		"build:vue3": "pnpm --filter vue3-builder build",
 		"build:nuxt": "node ./scripts/nuxt-module-build.js",
-		"build": "yarn build:playground && yarn build:vue2 && yarn build:vue3 && yarn build:nuxt && node ./scripts/postinstall.js",
-		"prepare": "lefthook install && yarn more-sass-clone",
-		"more-sass-clone": "rm -rf .more-sass && cp -r ./node_modules/more-sass ./.more-sass",
+		"build": "pnpm run build:playground && pnpm run build:vue2 && pnpm run build:vue3 && pnpm run build:nuxt && node ./scripts/postinstall.js",
+		"prepare": "lefthook install && pnpm run more-sass-clone",
+		"more-sass-clone": "node ./scripts/more-sass-clone.js",
 		"release": "release-it --disable-metrics",
-		"lint": "yarn lint:eslint && yarn lint:stylelint",
-		"lint:fix": "yarn lint:eslint:fix && yarn lint:stylelint:fix",
+		"lint": "pnpm run lint:eslint && pnpm run lint:stylelint",
+		"lint:fix": "pnpm run lint:eslint:fix && pnpm run lint:stylelint:fix",
 		"lint:eslint": "eslint \"**/*.{js,ts,vue,json,json5,jsonc,yml,yaml,md}\"",
 		"lint:eslint:fix": "eslint \"**/*.{js,ts,vue,json,json5,jsonc,yml,yaml}\" --fix",
 		"lint:stylelint": "stylelint \"**/*.{css,scss}\" --allow-empty-input",
@@ -132,13 +133,17 @@
 		"@nuxt/kit": "^3.13.2"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^17.8.1",
 		"@morev/commitlint-config": "^0.2.2",
 		"@morev/eslint-config": "^29.0.0",
 		"@morev/stylelint-config": "^5.3.0",
+		"@morev/v-bem-transformer": "^1.2.5",
 		"@nuxt/schema": "^3.13.2",
 		"@release-it/conventional-changelog": "^8.0.1",
+		"element-ui": "^2.15.14",
 		"eslint": "^8.57.1",
 		"lefthook": "^1.8.2",
+		"more-sass": "^2.1.2",
 		"postcss": "^8.4.47",
 		"release-it": "^17.1.1",
 		"sass": "^1.71.1",
@@ -148,10 +153,18 @@
 		"unbuild": "^2.0.0",
 		"vite": "^5.1.6",
 		"vitest": "^1.6.0",
+		"vue": "^2.7.16",
 		"vue-types": "^4.2.1"
 	},
 	"vetur": {
 		"tags": "vetur/tags.json",
 		"attributes": "vetur/attributes.json"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"core-js",
+			"esbuild",
+			"lefthook"
+		]
 	}
 }

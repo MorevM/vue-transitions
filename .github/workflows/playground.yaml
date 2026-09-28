@@ -14,17 +14,20 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: yarn
+          cache: pnpm
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install --frozen-lockfile
 
       - name: Build playground
-        run: yarn build:playground
+        run: pnpm run build:playground
 
       - name: Publish to GH pages
         uses: JamesIves/github-pages-deploy-action@v4.2.5

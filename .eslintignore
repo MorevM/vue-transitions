@@ -13,6 +13,7 @@ nuxt
 
 LICENSE.md
 CHANGELOG.md
+pnpm-lock.yaml
 .more-sass
 
 # Files that use Lodash templates
