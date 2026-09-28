@@ -2,9 +2,6 @@
 @use '../../assets/styles/patterns/inputs.scss';
 
 .transition-proxy {
-	$b: #{&};
-	$preview-block-inner: #{&}__preview-block-inner;
-
 	flex: 0 0 auto;
 	width: 100%;
 	padding: 50px 15px;

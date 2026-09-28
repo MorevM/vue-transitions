@@ -1,4 +1,4 @@
-/* eslint-disable import/exports-last */
+/* eslint-disable import-x/exports-last */
 import type { PartialDeep } from '@morev/utils';
 import type { PluginObject, DefineComponent } from 'vue';
 

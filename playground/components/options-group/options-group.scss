@@ -1,8 +1,6 @@
 @use '../../assets/styles/patterns/inputs.scss';
 
 .options-group {
-	$b: #{&};
-
 	@include padding(10px null);
 
 	&__label {

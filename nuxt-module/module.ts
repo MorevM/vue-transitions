@@ -84,9 +84,9 @@ const module: NuxtModule<PluginOptions> = defineNuxtModule<PluginOptions>({
 			writeFileSync(
 				join(COMPONENTS_DIRECTORY, `${componentName}.vue`),
 				templateContents
-					.replaceAll('<%= options.propsDeclaration %>', propsDeclaration)
-					.replaceAll('<%= options.listenersDeclaration %>', isNuxtMajorVersion(2, nuxt) ? ' v-on="$listeners"' : '')
-					.replaceAll('<%= options.componentName %>', componentName),
+					.replaceAll('<%= options.propsDeclaration %>', () => propsDeclaration)
+					.replaceAll('<%= options.listenersDeclaration %>', () => isNuxtMajorVersion(2, nuxt) ? ' v-on="$listeners"' : '')
+					.replaceAll('<%= options.componentName %>', () => componentName),
 			);
 		});
 

@@ -24,7 +24,7 @@
 </template>
 
 <script>
-	/* eslint-disable no-lonely-if */
+	/* eslint-disable no-lonely-if -- Nested branches mirror the paired value shape. */
 	import _prop from 'vue-types';
 
 	export default {
@@ -74,4 +74,5 @@
 			},
 		},
 	};
+	/* eslint-enable no-lonely-if */
 </script>
