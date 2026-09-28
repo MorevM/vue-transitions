@@ -7,7 +7,7 @@
 		"*.css"
 	],
 	"version": "3.0.5",
-	"packageManager": "pnpm@10.12.4",
+	"packageManager": "pnpm@12.6.0",
 	"workspaces": [
 		"builders/*"
 	],
@@ -159,12 +159,5 @@
 	"vetur": {
 		"tags": "vetur/tags.json",
 		"attributes": "vetur/attributes.json"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"core-js",
-			"esbuild",
-			"lefthook"
-		]
 	}
 }

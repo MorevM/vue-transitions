@@ -1,2 +1,9 @@
 packages:
   - builders/*
+
+allowBuilds:
+  '@parcel/watcher': true
+  core-js: true
+  esbuild: true
+  lefthook: true
+  unrs-resolver: true
