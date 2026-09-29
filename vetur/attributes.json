@@ -23,6 +23,10 @@
 		"type": "string",
 		"description": "Transition mode ('out-in'|'in-out')."
 	},
+	"transition-expand/motion": {
+		"type": "string",
+		"description": "Motion policy ('system'|'enabled'|'disabled')."
+	},
 	"transition-expand/group": {
 		"type": "boolean",
 		"description": "Whether the component should be a transition-group component."
@@ -63,6 +67,10 @@
 		"type": "string",
 		"description": "Transition mode ('out-in'|'in-out')."
 	},
+	"transition-fade/motion": {
+		"type": "string",
+		"description": "Motion policy ('system'|'enabled'|'disabled')."
+	},
 	"transition-fade/group": {
 		"type": "boolean",
 		"description": "Whether the component should be a transition-group component."
@@ -102,6 +110,10 @@
 	"transition-scale/mode": {
 		"type": "string",
 		"description": "Transition mode ('out-in'|'in-out')."
+	},
+	"transition-scale/motion": {
+		"type": "string",
+		"description": "Motion policy ('system'|'enabled'|'disabled')."
 	},
 	"transition-scale/group": {
 		"type": "boolean",
@@ -154,6 +166,10 @@
 	"transition-slide/mode": {
 		"type": "string",
 		"description": "Transition mode ('out-in'|'in-out')."
+	},
+	"transition-slide/motion": {
+		"type": "string",
+		"description": "Motion policy ('system'|'enabled'|'disabled')."
 	},
 	"transition-slide/group": {
 		"type": "boolean",

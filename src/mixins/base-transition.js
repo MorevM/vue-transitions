@@ -1,13 +1,27 @@
+import { isClient, isFunction, isNull } from '@morev/utils';
 import * as defaults from '../utility/defaults/defaults.js';
 import { validateDelay } from '../utility/validate/validate-delay.js';
 import { validateDuration } from '../utility/validate/validate-duration.js';
 import { validateEasing } from '../utility/validate/validate-easing.js';
+import { validateMotion } from '../utility/validate/validate-motion.js';
 
 // BUILD-TIME: TRANSITIONS IMPORT FOR VUE 3
 
 const activeTransitions = new WeakMap();
 const cancelledTransitions = new WeakMap();
 const temporaryStyles = new WeakMap();
+let reducedMotionPreference = null;
+
+const getPrefersReducedMotion = () => {
+	if (!isNull(reducedMotionPreference)) return reducedMotionPreference;
+	if (!isClient()) return false;
+
+	reducedMotionPreference = isFunction(window.matchMedia)
+		&& window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	return reducedMotionPreference;
+};
+
 const transitionEvents = [
 	'before-enter',
 	'enter',
@@ -51,6 +65,10 @@ export const baseTransition = {
 			type: String,
 			default: undefined,
 		},
+		motion: {
+			validator: validateMotion,
+			default: defaults.motion,
+		},
 		group: {
 			type: Boolean,
 			default: false,
@@ -74,9 +92,17 @@ export const baseTransition = {
 		},
 		cAttrs() {
 			const { appear, mode, tag } = this;
-			return this.group
+			const attrs = this.group
 				? { appear, tag, ...this.$attrs }
 				: { appear, mode };
+
+			if (this.cMotionDisabled) attrs.css = false;
+
+			return attrs;
+		},
+		cMotionDisabled() {
+			return this.motion === 'disabled'
+				|| (this.motion === 'system' && getPrefersReducedMotion());
 		},
 		cHooks() {
 			const hooks = {
@@ -85,18 +111,18 @@ export const baseTransition = {
 					this.$emit('before-enter', ...args);
 				},
 				beforeLeave: (...args) => {
-					this.prepareTransition('leave', ...args);
-					this.initLeaving?.(...args);
+					const transition = this.prepareTransition('leave', ...args);
+					if (!transition?.isMotionDisabled) this.initLeaving?.(...args);
 					this.$emit('before-leave', ...args);
 				},
 				enter: (...args) => {
-					this.prepareTransition('enter', ...args);
-					this.onEnter?.(...args);
+					const transition = this.prepareTransition('enter', ...args);
+					if (!transition?.isMotionDisabled) this.onEnter?.(...args);
 					this.$emit('enter', ...args);
 				},
 				leave: (...args) => {
-					this.prepareTransition('leave', ...args);
-					this.onLeave?.(...args);
+					const transition = this.prepareTransition('leave', ...args);
+					if (!transition?.isMotionDisabled) this.onLeave?.(...args);
 					this.$emit('leave', ...args);
 				},
 				afterEnter: (...args) => {
@@ -128,8 +154,8 @@ export const baseTransition = {
 					this.$emit('before-appear', ...args);
 				},
 				appear: (...args) => {
-					this.prepareTransition('enter', ...args);
-					this.onEnter?.(...args);
+					const transition = this.prepareTransition('enter', ...args);
+					if (!transition?.isMotionDisabled) this.onEnter?.(...args);
 					this.$emit('appear', ...args);
 				},
 				afterAppear: (...args) => {
@@ -151,10 +177,10 @@ export const baseTransition = {
 			if (activeTransition?.event === event) return activeTransition;
 			if (activeTransition) return undefined;
 
-			const transition = { event };
+			const transition = { event, isMotionDisabled: this.cMotionDisabled };
 
 			activeTransitions.set(element, transition);
-			this.reduceTransition(element);
+			if (!transition.isMotionDisabled) this.reduceTransition(element);
 
 			return transition;
 		},
@@ -270,13 +296,17 @@ export const baseTransition = {
 			if (!this.$el?.style) return;
 
 			if (this.group) {
-				this.setTemporaryStyle(this.$el, '--move-duration', `${this.moveDuration}ms`);
+				const duration = this.cMotionDisabled ? 0 : this.moveDuration;
+				this.setTemporaryStyle(this.$el, '--move-duration', `${duration}ms`);
 			} else {
 				this.restoreTemporaryStyle(this.$el, '--move-duration');
 			}
 		},
 	},
 	watch: {
+		cMotionDisabled() {
+			this.setMoveDuration();
+		},
 		moveDuration() {
 			this.setMoveDuration();
 		},

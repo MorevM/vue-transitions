@@ -532,6 +532,35 @@ export type TransitionMode = 'in-out' | 'out-in' | undefined; // Default: undefi
 </details>
 
 <details>
+  <summary><code>motion</code></summary>
+  <br />
+
+Controls whether transitions are animated:
+
+- `system` disables animations when `prefers-reduced-motion: reduce` matches.
+- `enabled` always animates, ignoring the system preference.
+- `disabled` always performs transitions without animation or delay.
+
+Lifecycle events still fire when animations are disabled. The system preference is read once in the browser and
+refreshed after a page reload. Changes to an explicit `motion` prop apply to transitions started after the change.
+
+```ts
+export type MotionPolicy = 'system' | 'enabled' | 'disabled'; // Default: 'system'
+```
+
+**Example:**
+
+```vue
+<template>
+  <transition-slide :motion="animationsEnabled ? 'enabled' : 'disabled'">
+    <div v-if="isVisible">...</div>
+  </transition-slide>
+</template>
+```
+
+</details>
+
+<details>
   <summary><code>duration</code></summary>
   <br />
 

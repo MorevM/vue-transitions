@@ -5,6 +5,11 @@ import type { PartialDeep } from '@morev/utils';
 type TransitionComponents =
 	'TransitionFade' | 'TransitionSlide' | 'TransitionExpand' | 'TransitionScale';
 
+/**
+ * Policy controlling whether transitions are animated.
+ */
+export type MotionPolicy = 'system' | 'enabled' | 'disabled';
+
 // Common props
 type CommonProps = {
 	/**
@@ -34,6 +39,14 @@ type CommonProps = {
 	 * @default undefined
 	 */
 	mode: 'in-out' | 'out-in' | undefined;
+
+	/**
+	 * Controls whether transitions are animated. `system` disables motion when
+	 * `prefers-reduced-motion: reduce` matches.
+	 *
+	 * @default 'system'
+	 */
+	motion: MotionPolicy;
 
 	/**
 	 * Transition animation duration, ms.

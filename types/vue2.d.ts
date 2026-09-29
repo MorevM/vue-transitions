@@ -21,5 +21,5 @@ declare module 'vue' {
 }
 
 export { plugin, TransitionExpand, TransitionFade, TransitionScale, TransitionSlide };
-export type { ComponentProps, ComponentPropsAndEmits, Emits, PluginOptions } from './index.js';
+export type { ComponentProps, ComponentPropsAndEmits, Emits, MotionPolicy, PluginOptions } from './index.js';
 export default vueTransitions;

@@ -37,7 +37,7 @@
 						<template v-for="(item, index) in previewItems">
 							<button
 								v-bem:preview-group-item="{ disabled: previewItems.length === 1 }"
-								:key="item.hash + '-item'"
+								:key="`${item.hash}-item`"
 								type="button"
 								aria-label="Remove an item"
 								:style="item.styles"
@@ -46,7 +46,7 @@
 							<button
 								v-if="(index + 1) % 5 !== 0"
 								v-bem:preview-group-item-add="{ hidden: previewItems.length === 15 }"
-								:key="item.hash + '-add'"
+								:key="`${item.hash}-add`"
 								type="button"
 								aria-label="Add an item"
 								@click="addItem(index + 1)"
@@ -97,6 +97,15 @@
 			<div v-bem:controls>
 				<!-- Options -->
 				<transition-slide v-bem:controls-options v-bind="{ group: true, tag: 'div' }">
+					<!-- Motion -->
+					<prop-control
+						key="prop-motion"
+						v-model="motion"
+						label="Motion policy"
+						type="select"
+						:options="$options.motionOptions"
+					/>
+
 					<!-- Duration -->
 					<prop-control
 						key="prop-duration"
@@ -194,6 +203,7 @@
 	];
 
 	const easingAutocompleteOptions = ['ease', 'ease-in', 'ease-in-out', 'ease-out', 'linear'];
+	const motionOptions = ['system', 'enabled', 'disabled'];
 	const axisOptions = ['x', 'y'];
 	const scaleAxisOptions = ['both', 'x', 'y'];
 
@@ -204,6 +214,7 @@
 	export default {
 		TRANSITIONS_LIST,
 		easingAutocompleteOptions,
+		motionOptions,
 		axisOptions,
 		scaleAxisOptions,
 		name: 'transition-proxy',
@@ -225,6 +236,7 @@
 			previewItems: [],
 			isSeparated: true,
 
+			motion: defaults.motion,
 			duration: toDataDefault(defaults.transitionDuration),
 			delay: toDataDefault(defaults.transitionDelay),
 			easing: toDataDefault(defaults.transitionEasing),
@@ -263,9 +275,10 @@
 					}
 					: formatOffsetValue(this.offset);
 
-				const { moveDuration, noMove, noOpacity } = this;
+				const { motion, moveDuration, noMove, noOpacity } = this;
 
 				return {
+					motion,
 					duration,
 					easing,
 					delay,

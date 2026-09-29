@@ -1,6 +1,7 @@
 export const transitionDuration = 300;
 export const transitionEasing = 'cubic-bezier(.25, .8, .5, 1)';
 export const transitionDelay = 0;
+export const motion = 'system';
 
 export const expandAxis = 'y';
 
