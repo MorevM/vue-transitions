@@ -12,11 +12,11 @@
 <script>
 	import { clamp } from '@morev/utils';
 	import { baseTransition } from '../../mixins/base-transition.js';
+	import { scaleAxis, scaleOrigin, scaleValue } from '../../utility/defaults/defaults.js';
+	import { getMatrix } from '../../utility/helpers.js';
 	import { validateScaleAxis } from '../../utility/validate/validate-scale-axis.js';
 	import { validateScaleOrigin } from '../../utility/validate/validate-scale-origin.js';
 	import { validateScaleValue } from '../../utility/validate/validate-scale-value.js';
-	import { scaleAxis, scaleOrigin, scaleValue } from '../../utility/defaults/defaults.js';
-	import { getMatrix } from '../../utility/helpers.js';
 
 	export default {
 		name: 'transition-scale',
@@ -41,13 +41,17 @@
 		computed: {},
 		methods: {
 			onEnter(element) {
+				const transition = this.getActiveTransition(element);
+
 				this.scaleElement(element, 'enter');
-				element.offsetTop; // eslint-disable-line no-unused-expressions
+				element.offsetTop; // eslint-disable-line no-unused-expressions -- Force layout recalculation
 
 				this.setupTransition(element, 'enter');
 				this.$nextTick(() => {
-					element.style.removeProperty('opacity');
-					element.style.removeProperty('transform');
+					if (!this.isTransitionActive(element, transition)) return;
+
+					this.restoreTemporaryStyle(element, 'opacity');
+					this.restoreTemporaryStyle(element, 'transform');
 				});
 			},
 
@@ -80,17 +84,11 @@
 				}
 
 				if (!this.noOpacity) {
-					element.style.setProperty('opacity', 0);
+					this.setTemporaryStyle(element, 'opacity', 0);
 				}
 
-				element.style.setProperty('transform', `${matrixType}(${matrix})`);
-				element.style.setProperty('transform-origin', `${origin}`);
-			},
-
-			resetElement(element) {
-				element.style.removeProperty('opacity');
-				element.style.removeProperty('transform');
-				element.style.removeProperty('transform-origin');
+				this.setTemporaryStyle(element, 'transform', `${matrixType}(${matrix})`);
+				this.setTemporaryStyle(element, 'transform-origin', origin);
 			},
 		},
 	};

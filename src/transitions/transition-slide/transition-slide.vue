@@ -12,9 +12,9 @@
 <script>
 	import { isNumeric } from '@morev/utils';
 	import { baseTransition } from '../../mixins/base-transition.js';
-	import { validateSlideOffset } from '../../utility/validate/validate-slide-offset.js';
 	import { slideOffset } from '../../utility/defaults/defaults.js';
 	import { getMatrix } from '../../utility/helpers.js';
+	import { validateSlideOffset } from '../../utility/validate/validate-slide-offset.js';
 
 	export default {
 		name: 'transition-slide',
@@ -32,11 +32,11 @@
 		methods: {
 			onEnter(element) {
 				this.slideElement(element, 'enter');
-				element.offsetTop; // eslint-disable-line no-unused-expressions
+				element.offsetTop; // eslint-disable-line no-unused-expressions -- Force layout recalculation
 
 				this.setupTransition(element, 'enter');
-				element.style.removeProperty('opacity');
-				element.style.removeProperty('transform');
+				this.restoreTemporaryStyle(element, 'opacity');
+				this.restoreTemporaryStyle(element, 'transform');
 			},
 
 			onLeave(element) {
@@ -51,17 +51,17 @@
 				let [offsetX, offsetY] = offset;
 
 				if (!isNumeric(offsetX)) {
-					const val = offsetX.endsWith('%')
+					const value = offsetX.endsWith('%')
 						? parseFloat(width) * (parseFloat(offsetX.slice(0, -1)) || 0) / 100
 						: parseFloat(offsetX);
-					offsetX = val;
+					offsetX = value;
 				}
 
 				if (!isNumeric(offsetY)) {
-					const val = offsetY.endsWith('%')
+					const value = offsetY.endsWith('%')
 						? parseFloat(height) * (parseFloat(offsetY.slice(0, -1)) || 0) / 100
 						: parseFloat(offsetY);
-					offsetY = val;
+					offsetY = value;
 				}
 
 				const [matrixType, matrix] = getMatrix(transform);
@@ -81,15 +81,10 @@
 				}
 
 				if (!this.noOpacity) {
-					element.style.setProperty('opacity', 0);
+					this.setTemporaryStyle(element, 'opacity', 0);
 				}
 
-				element.style.setProperty('transform', `${matrixType}(${matrix})`);
-			},
-
-			resetElement(element) {
-				element.style.removeProperty('opacity');
-				element.style.removeProperty('transform');
+				this.setTemporaryStyle(element, 'transform', `${matrixType}(${matrix})`);
 			},
 		},
 	};

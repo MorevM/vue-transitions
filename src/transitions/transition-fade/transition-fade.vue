@@ -22,11 +22,17 @@
 		computed: {},
 		methods: {
 			onEnter(element) {
+				const transition = this.getActiveTransition(element);
+
 				this.fadeElement(element, 'enter');
-				element.offsetTop; // eslint-disable-line no-unused-expressions
+				element.offsetTop; // eslint-disable-line no-unused-expressions -- Force layout recalculation
 
 				this.setupTransition(element, 'enter');
-				this.$nextTick(() => element.style.removeProperty('opacity'));
+				this.$nextTick(() => {
+					if (!this.isTransitionActive(element, transition)) return;
+
+					this.restoreTemporaryStyle(element, 'opacity');
+				});
 			},
 
 			onLeave(element) {
@@ -35,11 +41,7 @@
 			},
 
 			fadeElement(element, event = 'enter') {
-				element.style.setProperty('opacity', 0);
-			},
-
-			resetElement(element) {
-				element.style.removeProperty('opacity');
+				this.setTemporaryStyle(element, 'opacity', 0);
 			},
 		},
 	};
