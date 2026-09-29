@@ -80,12 +80,4 @@ export default combine([
 			'markdown-preferences/prefer-fenced-code-blocks': 'off',
 		},
 	},
-	{
-		name: 'project/version-switch-output',
-		files: ['scripts/utils.js'],
-		rules: {
-			// The CLI helper intentionally reports a successful version switch to stdout.
-			'no-console': 'off',
-		},
-	},
 ]);

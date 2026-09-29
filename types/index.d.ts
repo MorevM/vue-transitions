@@ -1,6 +1,5 @@
 /* eslint-disable import-x/exports-last */
 import type { PartialDeep } from '@morev/utils';
-import type { PluginObject, DefineComponent } from 'vue';
 
 // All components
 type TransitionComponents =
@@ -88,7 +87,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onBeforeEnter: (el: HTMLElement) => void;
+	onBeforeEnter: (el: HTMLElement) => void;
 
 	/**
 	 * Called one frame after the element is inserted.
@@ -98,7 +97,7 @@ export type Emits = {
 	 *
 	 * @returns        Nothing.
 	 */
-	 onEnter: (el: HTMLElement, done: () => void) => void;
+	onEnter: (el: HTMLElement, done: () => void) => void;
 
 	/**
 	 * Called when the enter transition has finished.
@@ -107,7 +106,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onAfterEnter: (el: HTMLElement) => void;
+	onAfterEnter: (el: HTMLElement) => void;
 
 	/**
 	 * Called if the enter transition was cancelled.
@@ -116,7 +115,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onEnterCancelled: (el: HTMLElement) => void;
+	onEnterCancelled: (el: HTMLElement) => void;
 
 	/**
 	 * Called before the leave hook.
@@ -125,7 +124,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onBeforeLeave: (el: HTMLElement) => void;
+	onBeforeLeave: (el: HTMLElement) => void;
 
 	/**
 	 * Called when the leave transition starts.
@@ -135,7 +134,7 @@ export type Emits = {
 	 *
 	 * @returns        Nothing.
 	 */
-	 onLeave: (el: HTMLElement, done: () => void) => void;
+	onLeave: (el: HTMLElement, done: () => void) => void;
 
 	/**
 	 * Called when the leave transition has finished and the element has been removed from the DOM.
@@ -144,7 +143,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onAfterLeave: (el: HTMLElement) => void;
+	onAfterLeave: (el: HTMLElement) => void;
 
 	/**
 	 * Called if the leave transition was cancelled. \
@@ -154,7 +153,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onLeaveCancelled: (el: HTMLElement) => void;
+	onLeaveCancelled: (el: HTMLElement) => void;
 };
 
 // Unique props
@@ -238,24 +237,3 @@ export type PluginOptions = Partial<{
 	 */
 	componentDefaultProps: PartialDeep<ComponentProps>;
 }>;
-
-/* eslint-disable @typescript-eslint/naming-convention */
-export declare const TransitionExpand: DefineComponent<ComponentPropsAndEmits['TransitionExpand']>;
-export declare const TransitionFade: DefineComponent<ComponentPropsAndEmits['TransitionFade']>;
-export declare const TransitionScale: DefineComponent<ComponentPropsAndEmits['TransitionScale']>;
-export declare const TransitionSlide: DefineComponent<ComponentPropsAndEmits['TransitionSlide']>;
-/* eslint-enable @typescript-eslint/naming-convention */
-
-export declare const plugin: (options?: PluginOptions) => PluginObject<PluginOptions>;
-
-declare const vueTransitions: () => PluginObject<PluginOptions>;
-export default vueTransitions;
-
-declare module 'vue' {
-	export interface GlobalComponents {
-		TransitionFade: typeof TransitionFade;
-		TransitionExpand: typeof TransitionExpand;
-		TransitionScale: typeof TransitionScale;
-		TransitionSlide: typeof TransitionSlide;
-	}
-}

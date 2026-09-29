@@ -2,7 +2,7 @@
 	"name": "@morev/vue-transitions",
 	"description": "Shareable Vue transitions library",
 	"type": "module",
-	"private": true,
+	"private": false,
 	"sideEffects": [
 		"*.css"
 	],
@@ -44,26 +44,21 @@
 		"animation"
 	],
 	"files": [
-		"dist",
+		"dist/vue2",
+		"dist/vue3",
 		"vetur",
 		"types",
-		"bin",
-		"scripts",
 		"nuxt"
 	],
-	"bin": {
-		"vue-transitions-version-fix": "bin/fix.js",
-		"vue-transitions-version-switch": "bin/switch.js"
-	},
 	"exports": {
 		".": {
 			"import": {
-				"types": "./types/index.d.ts",
-				"default": "./dist/vue-transitions.js"
+				"types": "./types/vue3.d.ts",
+				"default": "./dist/vue3/vue-transitions.js"
 			},
 			"require": {
-				"types": "./types/index.d.cts",
-				"default": "./dist/vue-transitions.cjs"
+				"types": "./types/vue3.d.cts",
+				"default": "./dist/vue3/vue-transitions.cjs"
 			}
 		},
 		"./nuxt": {
@@ -77,42 +72,41 @@
 			}
 		},
 		"./styles": {
-			"types": "./dist/index.css.d.ts",
-			"default": "./dist/index.css"
+			"types": "./types/styles.d.ts",
+			"default": "./dist/vue3/index.css"
 		},
 		"./vue2": {
 			"import": {
-				"types": "./types/index.d.ts",
+				"types": "./types/vue2.d.ts",
 				"default": "./dist/vue2/vue-transitions.js"
 			},
 			"require": {
-				"types": "./types/index.d.cts",
+				"types": "./types/vue2.d.cts",
 				"default": "./dist/vue2/vue-transitions.cjs"
 			}
 		},
 		"./vue3": {
 			"import": {
-				"types": "./types/index.d.ts",
+				"types": "./types/vue3.d.ts",
 				"default": "./dist/vue3/vue-transitions.js"
 			},
 			"require": {
-				"types": "./types/index.d.cts",
+				"types": "./types/vue3.d.cts",
 				"default": "./dist/vue3/vue-transitions.cjs"
 			}
 		}
 	},
-	"main": "./dist/vue-transitions.cjs",
-	"module": "./dist/vue-transitions.js",
-	"types": "./types/index.d.ts",
+	"main": "./dist/vue3/vue-transitions.cjs",
+	"module": "./dist/vue3/vue-transitions.js",
+	"types": "./types/vue3.d.ts",
 	"scripts": {
-		"prepack": "node ./scripts/prepack.js",
-		"postpublish": "node ./scripts/postpublish.js",
 		"dev": "pnpm --filter vue2-builder dev",
 		"build:playground": "pnpm --filter vue2-builder playground",
 		"build:vue2": "pnpm --filter vue2-builder build",
 		"build:vue3": "pnpm --filter vue3-builder build",
+		"build:styles": "node ./scripts/verify-shared-styles.js",
 		"build:nuxt": "node ./scripts/nuxt-module-build.js",
-		"build": "pnpm run build:playground && pnpm run build:vue2 && pnpm run build:vue3 && pnpm run build:nuxt && node ./scripts/postinstall.js",
+		"build": "pnpm run build:playground && pnpm run build:vue2 && pnpm run build:vue3 && pnpm run build:styles && pnpm run build:nuxt",
 		"prepare": "lefthook install && pnpm run more-sass-clone",
 		"more-sass-clone": "node ./scripts/more-sass-clone.js",
 		"release": "release-it --disable-metrics",
