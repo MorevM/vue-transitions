@@ -1,9 +1,11 @@
+import * as defaults from '../utility/defaults/defaults.js';
+import { validateDelay } from '../utility/validate/validate-delay.js';
 import { validateDuration } from '../utility/validate/validate-duration.js';
 import { validateEasing } from '../utility/validate/validate-easing.js';
-import { validateDelay } from '../utility/validate/validate-delay.js';
-import * as defaults from '../utility/defaults/defaults.js';
 
 // BUILD-TIME: TRANSITIONS IMPORT FOR VUE 3
+
+const cancelledTransitions = new WeakMap();
 
 export const baseTransition = {
 	inheritAttrs: false,
@@ -54,10 +56,10 @@ export const baseTransition = {
 			return this.group ? 'transition-group' : 'transition';
 		},
 		cAttrs() {
-			const { appear, mode, tag, duration } = this;
+			const { appear, mode, tag } = this;
 			return this.group
-				? { appear, tag, duration, ...this.$attrs }
-				: { appear, mode, duration };
+				? { appear, tag, ...this.$attrs }
+				: { appear, mode };
 		},
 		cHooks() {
 			return {
@@ -89,6 +91,14 @@ export const baseTransition = {
 					this.resetElement?.(...args);
 					this.$emit('after-leave', ...args);
 				},
+				enterCancelled: (...args) => {
+					this.markTransitionCancelled('enter', ...args);
+					this.$emit('enter-cancelled', ...args);
+				},
+				leaveCancelled: (...args) => {
+					this.markTransitionCancelled('leave', ...args);
+					this.$emit('leave-cancelled', ...args);
+				},
 			};
 		},
 	},
@@ -96,11 +106,19 @@ export const baseTransition = {
 		setupTransition(element, event = 'enter') {
 			const duration = this.duration?.[event] ?? this.duration;
 			const easing = this.easing?.[event] ?? this.easing;
-			const delay = this.delay?.[event] ?? this.delay;
+			const cancelledEvent = event === 'enter' ? 'leave' : 'enter';
+			const isReversed = cancelledTransitions.get(element) === cancelledEvent;
+			const delay = isReversed ? 0 : (this.delay?.[event] ?? this.delay);
+
+			cancelledTransitions.delete(element);
 
 			element.style.setProperty('transition-duration', `${duration}ms`, 'important');
-			element.style.setProperty('transition-timing-function', `${easing}`, 'important');
+			element.style.setProperty('transition-timing-function', easing, 'important');
 			element.style.setProperty('transition-delay', `${delay}ms`, 'important');
+		},
+
+		markTransitionCancelled(event, element) {
+			cancelledTransitions.set(element, event);
 		},
 
 		reduceTransition(element) {
