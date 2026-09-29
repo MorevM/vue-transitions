@@ -180,8 +180,8 @@
 </template>
 
 <script>
-	import { randomString, randomInteger, isArray, isObject } from '@morev/utils';
-	import { TransitionFade, TransitionExpand, TransitionSlide, TransitionScale } from '../../../src/index.js';
+	import { isArray, isObject, randomInteger, randomString } from '@morev/utils';
+	import { TransitionExpand, TransitionFade, TransitionScale, TransitionSlide } from '../../../src/index.js';
 	import * as defaults from '../../../src/utility/defaults/defaults.js';
 	import OptionsGroup from '../options-group/options-group.vue';
 	import PropControl from '../prop-control/prop-control.vue';
@@ -199,7 +199,7 @@
 
 	const toDataDefault = (v) => (isObject(v) ? [v.enter, v.leave] : v);
 	const withEnterLeave = (v) => (isArray(v) ? { enter: v[0], leave: v[1] } : v);
-	const formatOffsetValue = (values) => values.map(v => (['-', ' '].includes(v.toString().trim()) ? 0 : v));
+	const formatOffsetValue = (values) => values.map((v) => (['-', ' '].includes(v.toString().trim()) ? 0 : v));
 
 	export default {
 		TRANSITIONS_LIST,
@@ -246,7 +246,7 @@
 			},
 
 			cTransitionLabel() {
-				return TRANSITIONS_LIST.find(t => t.value === this.previewTransition).label;
+				return TRANSITIONS_LIST.find((t) => t.value === this.previewTransition).label;
 			},
 
 			cOptions() {
@@ -323,7 +323,7 @@
 					'offset',
 				];
 
-				propsToSet.forEach(prop => {
+				propsToSet.forEach((prop) => {
 					const [toCheck, toSet] = prop === 'offset'
 						? [this.offset[0], this.isSeparated ? this.offset : this.offset[0]]
 						: [this[prop], this[prop]];
