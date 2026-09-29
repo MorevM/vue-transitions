@@ -8,9 +8,24 @@ import { validateEasing } from '../utility/validate/validate-easing.js';
 const activeTransitions = new WeakMap();
 const cancelledTransitions = new WeakMap();
 const temporaryStyles = new WeakMap();
+const transitionEvents = [
+	'before-enter',
+	'enter',
+	'after-enter',
+	'enter-cancelled',
+	'before-leave',
+	'leave',
+	'after-leave',
+	'leave-cancelled',
+	'before-appear',
+	'appear',
+	'after-appear',
+	'appear-cancelled',
+];
 
 export const baseTransition = {
 	inheritAttrs: false,
+	emits: transitionEvents,
 	props: {
 		duration: {
 			validator: validateDuration,
@@ -65,7 +80,6 @@ export const baseTransition = {
 		},
 		cHooks() {
 			const hooks = {
-				...this.$listeners,
 				beforeEnter: (...args) => {
 					this.prepareTransition('enter', ...args);
 					this.$emit('before-enter', ...args);

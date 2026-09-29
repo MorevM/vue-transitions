@@ -18,7 +18,7 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 
 [DEMO / Playground]
 
-## Table of contents:
+## Table of contents
 
 - [Demo][DEMO / Playground]
 - [Installation](#installation)
@@ -45,18 +45,12 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
   - [Unique props of `TransitionScale`]
 - [Events](#events)
 
-[Unique props of `TransitionScale`]: #unique-props-of-transitionscale
-
-[Unique props of `TransitionExpand`]: #unique-props-of-transitionexpand
-
-[Unique props of `TransitionSlide`]: #unique-props-of-transitionslide
-
 ## Installation
 
 ### ❗ Requirements
 
-* Node version: `>= 18.12.0`
-* Nuxt version (if used): `>= 2.17.0 || >= 3.5.0`
+- Node version: `>= 18.12.0`
+- Nuxt version (if used): `>= 2.17.0 || >= 3.5.0`
 
 **The plugin will not work if you are using a Node or Nuxt version less than the specified ones.**
 
@@ -64,7 +58,7 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 
 ### Using `yarn`
 
-```bash
+```sh
 yarn add @morev/vue-transitions
 ```
 
@@ -72,7 +66,7 @@ yarn add @morev/vue-transitions
 
 ### Using `npm`
 
-```bash
+```sh
 npm install @morev/vue-transitions
 ```
 
@@ -80,7 +74,7 @@ npm install @morev/vue-transitions
 
 ### Using `pnpm`
 
-```bash
+```sh
 pnpm add @morev/vue-transitions
 ```
 
@@ -88,7 +82,7 @@ pnpm add @morev/vue-transitions
 
 ### Using `bun`
 
-```bash
+```sh
 bun add @morev/vue-transitions
 ```
 
@@ -97,12 +91,12 @@ bun add @morev/vue-transitions
 ## Usage
 
 > You may skip the following paragraphs if you are going to use the library with Nuxt. \
-> [Go to "Usage with Nuxt" section](#usage-with-nuxt).
+> [Go to "Usage with Nuxt" section][Usage with Nuxt].
 
 The package provides dedicated entrypoints for both Vue versions:
 
-- `@morev/vue-transitions` targets Vue 3.
-- `@morev/vue-transitions/vue3` is an explicit alias for the Vue 3 entrypoint.
+- `@morev/vue-transitions` targets Vue 3. \
+  `@morev/vue-transitions/vue3` is an explicit alias for the Vue 3 entrypoint.
 - `@morev/vue-transitions/vue2` targets Vue 2.
 - `@morev/vue-transitions/styles` provides the shared stylesheet.
 
@@ -145,6 +139,7 @@ For environments that cannot resolve package exports, import the physical shared
 ```
 
 The Vue 2 and Vue 3 builds produce the same stylesheet.
+
 </details>
 
 ---
@@ -285,7 +280,7 @@ If you are old enough you may know this transition as jQuery [`slideUp/slideDown
 It also can work with `X` axis like `slideLeft` and `slideRight`
 (although it's hard for me to come up with a scenario where it will really be needed).
 
-Has [unique prop](#unique-props-of-transitionexpand): `axis`
+Has [unique prop][Unique props of `TransitionExpand`]: `axis`
 
 ---
 
@@ -373,7 +368,7 @@ It's very useful, for example, when you are trying to make centered dropdown.
 
 </details>
 
-Has [unique prop](#unique-props-of-transitionslide): `offset`
+Has [unique prop][Unique props of `TransitionSlide`]: `offset`
 
 ---
 
@@ -847,7 +842,7 @@ export type TransitionScaleAxis = ScaleAxisValue | { enter: ScaleAxisValue, leav
   <summary><code>origin</code></summary>
   <br />
 
-`transform-origin` CSS property applied to element(s). \
+`transform-origin` CSS property applied to element(s).
 
 If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
@@ -885,8 +880,7 @@ export type TransitionScaleScale = number | { enter: number, leave: number }
 
 ## Events
 
-Components do not provide any special events,
-but trigger [all standard transition events](https://ru.vuejs.org/v2/guide/transitions.html#JavaScript-%D1%85%D1%83%D0%BA%D0%B8):
+Components expose the standard transition lifecycle events:
 
 - `before-enter`
 - `enter`
@@ -895,12 +889,17 @@ but trigger [all standard transition events](https://ru.vuejs.org/v2/guide/trans
 - `before-leave`
 - `leave`
 - `after-leave`
-- `enter-leave`
-
-[TransitionSlide]: #transitionslide
+- `leave-cancelled`
+- `before-appear`
+- `appear`
+- `after-appear`
+- `appear-cancelled`
 
 [DEMO / Playground]: https://morevm.github.io/vue-transitions/
-
 [TransitionScale]: #transitionscale
+[TransitionSlide]: #transitionslide
+[Unique props of `TransitionExpand`]: #unique-props-of-transitionexpand
+[Unique props of `TransitionScale`]: #unique-props-of-transitionscale
+[Unique props of `TransitionSlide`]: #unique-props-of-transitionslide
 [Usage with Nuxt]: #usage-with-nuxt
 [`transition-group`]: https://v2.vuejs.org/v2/guide/transitions.html#List-Transitions

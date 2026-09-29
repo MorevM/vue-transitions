@@ -1,4 +1,4 @@
-/* eslint-disable import-x/exports-last */
+/* eslint-disable import-x/exports-last -- Shared public types are declared before their exports. */
 import type { PartialDeep } from '@morev/utils';
 
 // All components
@@ -79,6 +79,9 @@ type CommonProps = {
 	noMove: boolean;
 };
 
+/**
+ * Lifecycle listeners exposed by transition components.
+ */
 export type Emits = {
 	/**
 	 * Called before the element is inserted into the DOM.
@@ -116,6 +119,43 @@ export type Emits = {
 	 * @returns      Nothing.
 	 */
 	onEnterCancelled: (el: HTMLElement) => void;
+
+	/**
+	 * Called before the initial appear transition starts.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns      Nothing.
+	 */
+	onBeforeAppear: (el: HTMLElement) => void;
+
+	/**
+	 * Called when the initial appear transition starts.
+	 *
+	 * @param   el     Animated element(s).
+	 * @param   done   Callback function used to indicate transition end.
+	 *
+	 * @returns        Nothing.
+	 */
+	onAppear: (el: HTMLElement, done: () => void) => void;
+
+	/**
+	 * Called when the initial appear transition has finished.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns      Nothing.
+	 */
+	onAfterAppear: (el: HTMLElement) => void;
+
+	/**
+	 * Called if the initial appear transition was cancelled.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns      Nothing.
+	 */
+	onAppearCancelled: (el: HTMLElement) => void;
 
 	/**
 	 * Called before the leave hook.
