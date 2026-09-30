@@ -97,6 +97,17 @@
 			<div v-bem:controls>
 				<!-- Options -->
 				<transition-slide v-bem:controls-options v-bind="{ group: true, tag: 'div' }">
+					<!-- Presets (combined) -->
+					<prop-control
+						v-if="previewTransition === 'transition-combined'"
+						key="prop-preset"
+						v-model="combinedPresets"
+						label="Preset"
+						type="select"
+						is-separated
+						:options="$options.presetOptions"
+					/>
+
 					<!-- Motion -->
 					<prop-control
 						key="prop-motion"
@@ -190,13 +201,20 @@
 
 <script>
 	import { isArray, isObject, randomInteger, randomString } from '@morev/utils';
-	import { TransitionExpand, TransitionFade, TransitionScale, TransitionSlide } from '../../../src/index.js';
+	import {
+		TransitionCombined,
+		TransitionExpand,
+		TransitionFade,
+		TransitionScale,
+		TransitionSlide,
+	} from '../../../src/index.js';
 	import * as defaults from '../../../src/utility/defaults/defaults.js';
 	import OptionsGroup from '../options-group/options-group.vue';
 	import PropControl from '../prop-control/prop-control.vue';
 
 	const TRANSITIONS_LIST = [
 		{ value: 'transition-fade', label: '<transition-fade />' },
+		{ value: 'transition-combined', label: '<transition-combined />' },
 		{ value: 'transition-expand', label: '<transition-expand />' },
 		{ value: 'transition-slide', label: '<transition-slide />' },
 		{ value: 'transition-scale', label: '<transition-scale />' },
@@ -204,6 +222,7 @@
 
 	const easingAutocompleteOptions = ['ease', 'ease-in', 'ease-in-out', 'ease-out', 'linear'];
 	const motionOptions = ['system', 'enabled', 'disabled'];
+	const presetOptions = ['fade', 'expand', 'slide', 'scale'];
 	const axisOptions = ['x', 'y'];
 	const scaleAxisOptions = ['both', 'x', 'y'];
 
@@ -215,11 +234,13 @@
 		TRANSITIONS_LIST,
 		easingAutocompleteOptions,
 		motionOptions,
+		presetOptions,
 		axisOptions,
 		scaleAxisOptions,
 		name: 'transition-proxy',
 		components: {
 			OptionsGroup,
+			TransitionCombined,
 			TransitionFade,
 			TransitionExpand,
 			TransitionSlide,
@@ -235,6 +256,7 @@
 			previewActive: true,
 			previewItems: [],
 			isSeparated: true,
+			combinedPresets: ['scale', 'slide'],
 
 			motion: defaults.motion,
 			duration: toDataDefault(defaults.transitionDuration),
@@ -277,19 +299,25 @@
 
 				const { motion, moveDuration, noMove, noOpacity } = this;
 
-				return {
+				const commonOptions = {
 					motion,
 					duration,
 					easing,
 					delay,
-					offset,
-					axis,
-					origin,
-					scale,
 					moveDuration,
 					noMove,
 					noOpacity,
 				};
+
+				if (this.previewTransition === 'transition-combined') {
+					return {
+						...commonOptions,
+						enter: { preset: this.combinedPresets[0] },
+						leave: { preset: this.combinedPresets[1] },
+					};
+				}
+
+				return { ...commonOptions, offset, axis, origin, scale };
 			},
 		},
 		watch: {
