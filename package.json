@@ -117,6 +117,7 @@
 		"lint:stylelint": "stylelint \"**/*.{css,scss}\" --allow-empty-input",
 		"lint:stylelint:fix": "stylelint \"**/*.{css,scss}\" --fix --allow-empty-input",
 		"test": "vitest",
+		"test:consumers": "pnpm run build && node ./scripts/test-consumers.mjs",
 		"test:dev": "vitest --watch"
 	},
 	"peerDependencies": {

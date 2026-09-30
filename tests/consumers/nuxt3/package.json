@@ -1,0 +1,17 @@
+{
+	"name": "@morev/vue-transitions-consumer-nuxt3",
+	"type": "module",
+	"private": true,
+	"version": "0.0.0",
+	"engines": {
+		"node": ">=20.19.0"
+	},
+	"license": "MIT",
+	"scripts": {
+		"check": "nuxt build"
+	},
+	"dependencies": {
+		"@morev/vue-transitions": "file:./package.tgz",
+		"nuxt": "3.21.11"
+	}
+}

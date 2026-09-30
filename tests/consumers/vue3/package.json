@@ -1,0 +1,21 @@
+{
+	"name": "@morev/vue-transitions-consumer-vue3",
+	"type": "module",
+	"private": true,
+	"version": "0.0.0",
+	"engines": {
+		"node": ">=20.19.0"
+	},
+	"license": "MIT",
+	"scripts": {
+		"check": "tsc --noEmit && node ./esm.mjs && node ./cjs.cjs"
+	},
+	"dependencies": {
+		"@morev/vue-transitions": "file:./package.tgz",
+		"vue": "3.5.22"
+	},
+	"devDependencies": {
+		"@types/node": "20.19.43",
+		"typescript": "5.9.3"
+	}
+}

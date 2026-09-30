@@ -73,6 +73,49 @@ export default combine([
 		},
 	},
 	{
+		name: 'project/consumer-fixtures',
+		files: ['tests/consumers/**/*.{cjs,cts,js,mjs,mts,ts,vue}'],
+		languageOptions: {
+			parserOptions: {
+				projectService: {
+					allowDefaultProject: ['tests/consumers/nuxt3/nuxt.config.ts'],
+				},
+			},
+		},
+		rules: {
+			// Fixture dependencies exist only in the temporary consumer installations.
+			'import-x/no-unresolved': 'off',
+			// Fixture dependencies exist only in the temporary consumer installations.
+			'n/no-missing-import': 'off',
+			// Fixture dependencies exist only in the temporary consumer installations.
+			'n/no-missing-require': 'off',
+		},
+	},
+	{
+		name: 'project/consumer-commonjs-types',
+		files: ['tests/consumers/**/*.cts'],
+		rules: {
+			// The fixtures intentionally exercise package declarations selected by require().
+			'@typescript-eslint/no-require-imports': 'off',
+		},
+	},
+	{
+		name: 'project/consumer-nuxt-components',
+		files: ['tests/consumers/nuxt*/**/*.vue'],
+		rules: {
+			// The package module registers transition components through Nuxt auto-imports.
+			'vue/no-undef-components': ['error', { ignorePatterns: ['^transition-'] }],
+		},
+	},
+	{
+		name: 'project/consumer-nuxt-pages',
+		files: ['tests/consumers/nuxt2/pages/**/*.vue'],
+		rules: {
+			// Nuxt uses index.vue as the conventional root route filename.
+			'vue/multi-word-component-names': 'off',
+		},
+	},
+	{
 		name: 'project/readme-nested-details',
 		files: ['README.md'],
 		rules: {
