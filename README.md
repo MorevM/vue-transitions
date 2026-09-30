@@ -35,6 +35,7 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 - [IntelliSense](#intellisense)
 - [List of transitions](#list-of-transitions)
   - [TransitionFade](#transitionfade)
+  - [TransitionCombined](#transitioncombined)
   - [TransitionExpand](#transitionexpand)
   - [TransitionSlide]
   - [TransitionScale]
@@ -408,6 +409,65 @@ Has [unique props][Unique props of `TransitionScale`]: `scale`, `axis`, `origin`
 ```
 
 </details>
+
+
+---
+
+### TransitionCombined
+
+Transition that uses independently configured presets when an element enters and leaves.
+The component supports the same common props and lifecycle events as the other transitions.
+
+The `enter` and `leave` props are required objects with a `preset` property.
+Preset-specific options are declared inside the corresponding object.
+
+```vue
+<template>
+  <transition-combined
+    :enter="{
+      preset: 'scale',
+      scale: 0.8,
+      origin: '50% 50%',
+    }"
+    :leave="{
+      preset: 'slide',
+      offset: [0, '100%'],
+    }"
+    :duration="{
+      enter: 180,
+      leave: 240,
+    }"
+  >
+    <div v-if="isVisible">...</div>
+  </transition-combined>
+</template>
+
+<script>
+  import { TransitionCombined } from '@morev/vue-transitions';
+
+  export default {
+    components: { TransitionCombined },
+  };
+</script>
+```
+
+Available descriptors:
+
+```ts
+type TransitionPreset =
+  | { preset: 'fade' }
+  | { preset: 'expand'; axis?: 'x' | 'y' }
+  | {
+      preset: 'scale';
+      axis?: 'x' | 'y' | 'both';
+      origin?: string;
+      scale?: number;
+    }
+  | {
+      preset: 'slide';
+      offset?: [number | string, number | string];
+    };
+```
 
 ## Props
 

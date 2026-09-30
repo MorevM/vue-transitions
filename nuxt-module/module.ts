@@ -1,6 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 import { isArray, isEmpty, mergeObjects } from '@morev/utils';
 import { addComponentsDir, createResolver, defineNuxtModule, isNuxtMajorVersion } from '@nuxt/kit';
 import type { NuxtModule } from '@nuxt/schema';
@@ -8,7 +7,13 @@ import type { PluginOptions } from '../types';
 
 const __dirname = import.meta.dirname;
 
-const COMPONENTS = ['TransitionExpand', 'TransitionFade', 'TransitionScale', 'TransitionSlide'] as const;
+const COMPONENTS = [
+	'TransitionCombined',
+	'TransitionExpand',
+	'TransitionFade',
+	'TransitionScale',
+	'TransitionSlide',
+] as const;
 const BABEL_PLUGIN_NAME = '@babel/plugin-transform-logical-assignment-operators';
 const SCOPE = '@morev';
 const MODULE_NAME = `${SCOPE}/vue-transitions`;

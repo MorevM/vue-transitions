@@ -1,4 +1,22 @@
 {
+	"transition-combined": {
+		"description": "Transition with independently configured enter and leave presets",
+		"attributes": [
+			"enter",
+			"leave",
+			"duration",
+			"easing",
+			"delay",
+			"no-opacity",
+			"appear",
+			"mode",
+			"motion",
+			"group",
+			"tag",
+			"move-duration",
+			"no-move"
+		]
+	},
 	"transition-expand": {
 		"description": "Expand transition",
 		"attributes": [

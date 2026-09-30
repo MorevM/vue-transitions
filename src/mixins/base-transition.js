@@ -90,11 +90,16 @@ export const baseTransition = {
 		cComponent() {
 			return this.group ? 'transition-group' : 'transition';
 		},
+		// Default extension point for components
+		// that customize Vue transition classes
+		cTransitionClasses() {
+			return {};
+		},
 		cAttrs() {
 			const { appear, mode, tag } = this;
 			const attrs = this.group
-				? { appear, tag, ...this.$attrs }
-				: { appear, mode };
+				? { appear, tag, ...this.$attrs, ...this.cTransitionClasses }
+				: { appear, mode, ...this.cTransitionClasses };
 
 			if (this.cMotionDisabled) attrs.css = false;
 
@@ -198,7 +203,7 @@ export const baseTransition = {
 
 			activeTransitions.delete(element);
 			this.restoreTemporaryStyles(element);
-			this.resetElement?.(element);
+			this.resetElement?.(element, event);
 		},
 
 		setTemporaryStyle(element, property, value, priority = '') {

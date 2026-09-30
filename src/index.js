@@ -1,10 +1,17 @@
 import { isArray, isObject } from '@morev/utils';
+import TransitionCombined from './transitions/transition-combined/transition-combined.vue';
 import TransitionExpand from './transitions/transition-expand/transition-expand.vue';
 import TransitionFade from './transitions/transition-fade/transition-fade.vue';
 import TransitionScale from './transitions/transition-scale/transition-scale.vue';
 import TransitionSlide from './transitions/transition-slide/transition-slide.vue';
 
-const components = { TransitionExpand, TransitionFade, TransitionScale, TransitionSlide };
+const components = {
+	TransitionCombined,
+	TransitionExpand,
+	TransitionFade,
+	TransitionScale,
+	TransitionSlide,
+};
 
 const setProp = (component, prop, value) => {
 	component.props ??= {};
@@ -40,5 +47,5 @@ export const plugin = (pluginOptions) => ({
 	},
 });
 
-export { TransitionExpand, TransitionFade, TransitionScale, TransitionSlide };
+export { TransitionCombined, TransitionExpand, TransitionFade, TransitionScale, TransitionSlide };
 export default { install };

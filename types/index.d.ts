@@ -3,7 +3,7 @@ import type { PartialDeep } from '@morev/utils';
 
 // All components
 type TransitionComponents =
-	'TransitionFade' | 'TransitionSlide' | 'TransitionExpand' | 'TransitionScale';
+	'TransitionCombined' | 'TransitionFade' | 'TransitionSlide' | 'TransitionExpand' | 'TransitionScale';
 
 /**
  * Policy controlling whether transitions are animated.
@@ -214,6 +214,87 @@ type PropExpandAxisValue = 'x' | 'y';
 type PropSlideOffsetValue = [number | string, number | string];
 type PropScaleAxisValue = 'x' | 'y' | 'both';
 
+type TransitionFadePreset = {
+	/**
+	 * Preset used for this transition phase.
+	 */
+	preset: 'fade';
+};
+
+type TransitionSlidePreset = {
+	/**
+	 * Preset used for this transition phase.
+	 */
+	preset: 'slide';
+
+	/**
+	 * Element offset by the x and y axes.
+	 *
+	 * @default [0, -16]
+	 */
+	offset?: PropSlideOffsetValue;
+};
+
+type TransitionExpandPreset = {
+	/**
+	 * Preset used for this transition phase.
+	 */
+	preset: 'expand';
+
+	/**
+	 * Axis by which the element is expanded.
+	 *
+	 * @default 'y'
+	 */
+	axis?: PropExpandAxisValue;
+};
+
+type TransitionScalePreset = {
+	/**
+	 * Preset used for this transition phase.
+	 */
+	preset: 'scale';
+
+	/**
+	 * Scale axis to animate.
+	 *
+	 * @default 'both'
+	 */
+	axis?: PropScaleAxisValue;
+
+	/**
+	 * CSS transform origin.
+	 *
+	 * @default '50% 50%'
+	 */
+	origin?: string;
+
+	/**
+	 * Scale value between `0` and `1`.
+	 *
+	 * @default 0
+	 */
+	scale?: number;
+};
+
+/**
+ * Configuration of one enter or leave transition phase.
+ */
+export type TransitionPreset =
+	TransitionFadePreset | TransitionSlidePreset | TransitionExpandPreset | TransitionScalePreset;
+
+type TransitionCombinedProps = Partial<CommonProps> & {
+	/**
+	 * Preset used when an element enters.
+	 */
+	enter: TransitionPreset;
+
+	/**
+	 * Preset used when an element leaves.
+	 */
+	leave: TransitionPreset;
+};
+
 type UniqueProps = {
 	TransitionFade: never;
 	TransitionSlide: {
@@ -262,19 +343,27 @@ type UniqueProps = {
 	};
 };
 
-export type ComponentProps = PartialDeep<{
+type PresetComponentProps = {
 	TransitionFade: CommonProps;
 	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'];
 	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'];
 	TransitionScale: CommonProps & UniqueProps['TransitionScale'];
-}>;
+};
 
-export type ComponentPropsAndEmits = PartialDeep<{
+type PresetComponentPropsAndEmits = {
 	TransitionFade: CommonProps & Emits;
 	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'] & Emits;
 	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'] & Emits;
 	TransitionScale: CommonProps & UniqueProps['TransitionScale'] & Emits;
-}>;
+};
+
+export type ComponentProps = PartialDeep<PresetComponentProps> & {
+	TransitionCombined: TransitionCombinedProps;
+};
+
+export type ComponentPropsAndEmits = PartialDeep<PresetComponentPropsAndEmits> & {
+	TransitionCombined: TransitionCombinedProps & Partial<Emits>;
+};
 
 export type PluginOptions = Partial<{
 	/**

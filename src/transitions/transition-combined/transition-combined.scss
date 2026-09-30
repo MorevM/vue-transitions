@@ -1,0 +1,5 @@
+@use '../../mixins/base-transition';
+
+.combined-move {
+	@extend %base-move;
+}
