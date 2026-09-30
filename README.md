@@ -100,6 +100,8 @@ The package provides dedicated entrypoints for both Vue versions:
 - `@morev/vue-transitions/vue2` targets Vue 2.
 - `@morev/vue-transitions/styles` provides the shared stylesheet.
 
+> **Important:** Import the shared stylesheet once, including when importing components directly.
+
 ### Global registration
 
 #### Using `Vue3`
@@ -190,6 +192,7 @@ app.use(vueTransitionsPlugin({
 
 <script>
   import { TransitionFade } from '@morev/vue-transitions';
+  import '@morev/vue-transitions/styles';
 
   export default {
     components: { TransitionFade },
