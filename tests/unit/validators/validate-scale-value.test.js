@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { validateScaleValue } from '../../src/utility/validate/validate-scale-value.js';
+import { describe, expect, it } from 'vitest';
+import { validateScaleValue } from '../../../src/utility/validate/validate-scale-value.js';
 
-describe('validateScaleAxis', () => {
+describe(validateScaleValue, () => {
 	it('Returns `true` if a given value is a number between `0` and `1`', () => {
 		expect(validateScaleValue(0)).toBe(true);
 		expect(validateScaleValue(0.5)).toBe(true);

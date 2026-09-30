@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { validateTransitionPreset } from '../../src/utility/validate/validate-transition-preset.js';
+import { validateTransitionPreset } from '../../../src/utility/validate/validate-transition-preset.js';
 
 describe(validateTransitionPreset, () => {
 	it('Returns `true` for every preset without optional properties', () => {

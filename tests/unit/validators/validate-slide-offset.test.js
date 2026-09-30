@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { validateSlideOffset } from '../../src/utility/validate/validate-slide-offset.js';
+import { describe, expect, it } from 'vitest';
+import { validateSlideOffset } from '../../../src/utility/validate/validate-slide-offset.js';
 
-describe('validateSlideOffset', () => {
+describe(validateSlideOffset, () => {
 	it('Returns `true` if a given value is the array of two integer numbers', () => {
 		expect(validateSlideOffset([0, -30])).toBe(true);
 	});

@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { validateScaleOrigin } from '../../src/utility/validate/validate-scale-origin.js';
+import { describe, expect, it } from 'vitest';
+import { validateScaleOrigin } from '../../../src/utility/validate/validate-scale-origin.js';
 
-describe('validateScaleOrigin', () => {
+describe(validateScaleOrigin, () => {
 	it('Returns `true` if a given value is a not empty string', () => {
 		expect(validateScaleOrigin('25% 75%')).toBe(true);
 	});

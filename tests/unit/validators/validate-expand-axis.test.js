@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { validateExpandAxis } from '../../src/utility/validate/validate-expand-axis.js';
+import { describe, expect, it } from 'vitest';
+import { validateExpandAxis } from '../../../src/utility/validate/validate-expand-axis.js';
 
-describe('validateExpandAxis', () => {
+describe(validateExpandAxis, () => {
 	it('Returns `true` if a given value is `x` or `y`', () => {
 		expect(validateExpandAxis('x')).toBe(true);
 		expect(validateExpandAxis('y')).toBe(true);

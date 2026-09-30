@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { validateDuration } from '../../src/utility/validate/validate-duration.js';
+import { describe, expect, it } from 'vitest';
+import { validateDuration } from '../../../src/utility/validate/validate-duration.js';
 
-describe('validateDuration', () => {
+describe(validateDuration, () => {
 	it('Returns `true` if a given value is a positive integer number', () => {
 		expect(validateDuration(100)).toBe(true);
 	});

@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { validateEasing } from '../../src/utility/validate/validate-easing.js';
+import { describe, expect, it } from 'vitest';
+import { validateEasing } from '../../../src/utility/validate/validate-easing.js';
 
-describe('validateEasing', () => {
+describe(validateEasing, () => {
 	it('Returns `true` if a given value is a not empty string', () => {
 		expect(validateEasing('ease-in-out')).toBe(true);
 	});

@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { validateScaleAxis } from '../../src/utility/validate/validate-scale-axis.js';
+import { describe, expect, it } from 'vitest';
+import { validateScaleAxis } from '../../../src/utility/validate/validate-scale-axis.js';
 
-describe('validateScaleAxis', () => {
+describe(validateScaleAxis, () => {
 	it('Returns `true` if a given value is one of the strings: `x`, `y` or `both`', () => {
 		expect(validateScaleAxis('x')).toBe(true);
 		expect(validateScaleAxis('y')).toBe(true);

@@ -16,9 +16,8 @@
 		},
 	},
 	"exclude": [
-		"__tests__",
 		"build",
-		"consumer-tests",
 		"dist",
+		"tests",
 	],
 }

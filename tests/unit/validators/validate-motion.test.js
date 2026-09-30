@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { validateMotion } from '../../src/utility/validate/validate-motion.js';
+import { validateMotion } from '../../../src/utility/validate/validate-motion.js';
 
 describe(validateMotion, () => {
 	it('Returns `true` for supported motion policies', () => {
