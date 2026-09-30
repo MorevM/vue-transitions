@@ -3,7 +3,7 @@
 		"target": "ES6",
 		"module": "ESNext",
 		"lib": ["ESNext"],
-		"moduleResolution": "Node",
+		"moduleResolution": "Bundler",
 		"esModuleInterop": true,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
@@ -11,14 +11,14 @@
 		"checkJs": false,
 		"allowJs": true,
 		"skipLibCheck": true,
-		"baseUrl": ".",
 		"paths": {
-			"type-fest": ["node_modules/type-fest/"]
-		}
+			"type-fest": ["./node_modules/type-fest/"],
+		},
 	},
 	"exclude": [
 		"__tests__",
 		"build",
-		"dist"
-	]
+		"consumer-tests",
+		"dist",
+	],
 }
