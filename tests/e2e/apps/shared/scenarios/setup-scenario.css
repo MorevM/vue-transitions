@@ -1,0 +1,31 @@
+.setup-scenario {
+	inline-size: 360px;
+	padding: 32px;
+	background: #ffffff;
+	border: 1px solid #c7d2fe;
+	border-radius: 16px;
+	box-shadow: 0 20px 45px rgb(79 70 229 / .14);
+}
+
+.setup-scenario__eyebrow {
+	margin: 0 0 8px;
+	color: #4f46e5;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+}
+
+.setup-scenario__title {
+	margin: 0;
+	font-size: 32px;
+	line-height: 1.15;
+}
+
+.setup-scenario__status {
+	margin: 24px 0 0;
+	padding-block-start: 16px;
+	color: #475569;
+	font-size: 16px;
+	border-block-start: 1px solid #e0e7ff;
+}
