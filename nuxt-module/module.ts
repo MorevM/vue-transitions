@@ -5,8 +5,6 @@ import { addComponentsDir, createResolver, defineNuxtModule, isNuxtMajorVersion 
 import type { NuxtModule } from '@nuxt/schema';
 import type { PluginOptions } from '../types';
 
-const __dirname = import.meta.dirname;
-
 const COMPONENTS = [
 	'TransitionCombined',
 	'TransitionExpand',
@@ -31,12 +29,14 @@ const module: NuxtModule<PluginOptions> = defineNuxtModule<PluginOptions>({
 		defaultProps: {},
 	},
 	async setup(options, nuxt) {
-		const NODE_MODULES_PATH = __dirname.replace(new RegExp(`${SCOPE}.*`), '');
-		const COMPONENTS_DIRECTORY = join(NODE_MODULES_PATH, '.vue-transitions');
+		const COMPONENTS_DIRECTORY = join(nuxt.options.rootDir, 'node_modules', '.vue-transitions');
 		const isNuxt2 = isNuxtMajorVersion(2, nuxt);
 		const packageEntrypoint = `${MODULE_NAME}/${isNuxt2 ? 'vue2' : 'vue3'}`;
 
 		const resolver = createResolver(import.meta.url);
+		const packageRuntimeEntrypoint = resolver.resolve(
+			`../dist/${isNuxt2 ? 'vue2' : 'vue3'}/vue-transitions.js`,
+		);
 		nuxt.hook('prepare:types', ({ declarations }) => {
 			declarations.push(`import type {} from "${packageEntrypoint}";`);
 		});
@@ -91,7 +91,7 @@ const module: NuxtModule<PluginOptions> = defineNuxtModule<PluginOptions>({
 				templateContents
 					.replaceAll('<%= options.propsDeclaration %>', () => propsDeclaration)
 					.replaceAll('<%= options.listenersDeclaration %>', () => isNuxt2 ? ' v-on="$listeners"' : '')
-					.replaceAll('<%= options.packageEntrypoint %>', () => packageEntrypoint)
+					.replaceAll('<%= options.packageEntrypoint %>', () => packageRuntimeEntrypoint)
 					.replaceAll('<%= options.componentName %>', () => componentName),
 			);
 		});
