@@ -1,0 +1,52 @@
+:root {
+	color: #172033;
+	font-family: Arial, sans-serif;
+	background: #eef2ff;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+.e2e-harness {
+	display: block grid;
+	min-block-size: 100vb;
+	padding: 32px;
+	place-items: center;
+}
+
+.e2e-harness__card {
+	inline-size: 360px;
+	padding: 32px;
+	background: #ffffff;
+	border: 1px solid #c7d2fe;
+	border-radius: 16px;
+	box-shadow: 0 20px 45px rgb(79 70 229 / .14);
+}
+
+.e2e-harness__eyebrow {
+	margin: 0 0 8px;
+	color: #4f46e5;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+}
+
+.e2e-harness__title {
+	margin: 0;
+	font-size: 32px;
+	line-height: 1.15;
+}
+
+.e2e-harness__status {
+	margin: 24px 0 0;
+	padding-block-start: 16px;
+	color: #475569;
+	font-size: 16px;
+	border-block-start: 1px solid #e0e7ff;
+}

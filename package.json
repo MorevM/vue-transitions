@@ -118,6 +118,10 @@
 		"lint:stylelint:fix": "stylelint \"**/*.{css,scss}\" --fix --allow-empty-input",
 		"test": "vitest",
 		"test:consumers": "pnpm run build && node ./scripts/test-consumers.mjs",
+		"test:e2e": "pnpm run typecheck:e2e && playwright test",
+		"test:e2e:update": "pnpm run typecheck:e2e && playwright test --update-snapshots",
+		"test:e2e:ui": "pnpm run typecheck:e2e && playwright test --ui",
+		"typecheck:e2e": "tsc --noEmit --project tests/e2e/tsconfig.json",
 		"test:dev": "vitest --watch"
 	},
 	"peerDependencies": {
@@ -134,7 +138,9 @@
 		"@morev/stylelint-config": "^9.0.2",
 		"@morev/v-bem-transformer": "^1.2.5",
 		"@nuxt/schema": "^3.13.2",
+		"@playwright/test": "~1.62.1",
 		"@release-it/conventional-changelog": "^8.0.1",
+		"@types/node": "^24.19.0",
 		"element-ui": "^2.15.14",
 		"eslint": "^10.11.0",
 		"lefthook": "^1.8.2",

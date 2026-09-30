@@ -23,6 +23,9 @@ export default combine([
 	defineConfiguration('markdown'),
 	defineConfiguration('yaml'),
 	defineConfiguration('vitest'),
+	defineConfiguration('playwright', {
+		files: ['tests/e2e/**/*.e2e.ts'],
+	}),
 	{
 		name: 'project/playground-vue-globals',
 		files: ['playground/**/*.vue'],
@@ -89,6 +92,16 @@ export default combine([
 			'n/no-missing-import': 'off',
 			// Fixture dependencies exist only in the temporary consumer installations.
 			'n/no-missing-require': 'off',
+		},
+	},
+	{
+		name: 'project/e2e-harness',
+		files: ['tests/e2e/apps/**/*.{js,vue}'],
+		rules: {
+			// The harness resolves the package entrypoints to version-specific build artifacts in Vite.
+			'import-x/no-unresolved': 'off',
+			// The harness uses fixed diagnostic copy instead of application localization.
+			'vue/no-bare-strings-in-template': 'off',
 		},
 	},
 	{

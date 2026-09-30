@@ -1,8 +1,8 @@
 {
 	"name": "vue2-builder",
 	"type": "module",
-	"version": "1.0.0",
 	"private": true,
+	"version": "1.0.0",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite --config vite-dev.config.js",
