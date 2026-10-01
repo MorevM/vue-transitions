@@ -1,22 +1,14 @@
 import { expect, test } from '@playwright/test';
 import {
+	FADE_ACTIVE_INLINE_STYLES,
+	FADE_RESTORED_INLINE_STYLES,
+} from './support/fade';
+import {
 	getAnimationCount,
 	pauseTransitionAt,
 	readInlineStyle,
 	resumeTransitions,
 } from './support/transitions';
-
-const RESTORED_INLINE_STYLES = [
-	'opacity:0.8 !important',
-	'transition-duration:17ms !important',
-].join(';');
-
-const ACTIVE_INLINE_STYLES = [
-	'opacity:0',
-	'transition-duration:2000ms !important',
-	'transition-timing-function:linear !important',
-	'transition-delay:200ms !important',
-].join(';');
 
 const getScreenshotPath = (projectName: string, name: string) => [
 	'fade',
@@ -42,7 +34,7 @@ test.describe('TransitionFade', () => {
 		await pauseTransitionAt(target, 1000);
 
 		await expect(target).toHaveClass(/fade-enter-active/);
-		await expect(scenario).toHaveAttribute('data-enter-styles', ACTIVE_INLINE_STYLES);
+		await expect(scenario).toHaveAttribute('data-enter-styles', FADE_ACTIVE_INLINE_STYLES);
 		expect(await readInlineStyle(target, 'transition-duration')).toStrictEqual({
 			priority: 'important',
 			value: '2000ms',
@@ -60,7 +52,10 @@ test.describe('TransitionFade', () => {
 
 		await resumeTransitions(target);
 		await expect(scenario).toHaveAttribute('data-events', 'before-enter,enter,after-enter');
-		await expect(scenario).toHaveAttribute('data-after-enter-styles', RESTORED_INLINE_STYLES);
+		await expect(scenario).toHaveAttribute(
+			'data-after-enter-styles',
+			FADE_RESTORED_INLINE_STYLES,
+		);
 		await expect.poll(() => getAnimationCount(target)).toBe(0);
 		await expect(target).toHaveClass('fade-scenario__target');
 		expect(Number(await target.evaluate((element) => getComputedStyle(element).opacity)))
@@ -86,7 +81,7 @@ test.describe('TransitionFade', () => {
 		await pauseTransitionAt(target, 1000);
 
 		await expect(target).toHaveClass(/fade-leave-active/);
-		await expect(scenario).toHaveAttribute('data-leave-styles', ACTIVE_INLINE_STYLES);
+		await expect(scenario).toHaveAttribute('data-leave-styles', FADE_ACTIVE_INLINE_STYLES);
 		expect(await readInlineStyle(target, 'opacity')).toStrictEqual({
 			priority: '',
 			value: '0',
@@ -101,7 +96,10 @@ test.describe('TransitionFade', () => {
 		await resumeTransitions(target);
 		await expect(target).toHaveCount(0);
 		await expect(scenario).toHaveAttribute('data-events', 'before-leave,leave,after-leave');
-		await expect(scenario).toHaveAttribute('data-after-leave-styles', RESTORED_INLINE_STYLES);
+		await expect(scenario).toHaveAttribute(
+			'data-after-leave-styles',
+			FADE_RESTORED_INLINE_STYLES,
+		);
 		await expect(stage).toHaveScreenshot(getScreenshotPath(projectName, '06-leave-after'));
 	});
 });

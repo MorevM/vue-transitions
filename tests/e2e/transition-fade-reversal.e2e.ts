@@ -1,5 +1,9 @@
 import { expect, test } from '@playwright/test';
 import {
+	FADE_RESTORED_INLINE_STYLES,
+	getFadeActiveInlineStyles,
+} from './support/fade';
+import {
 	getAnimationCount,
 	pauseTransitionAt,
 	pauseTransitionAtProgress,
@@ -7,17 +11,7 @@ import {
 	resumeTransitions,
 } from './support/transitions';
 
-const RESTORED_INLINE_STYLES = [
-	'opacity:0.8 !important',
-	'transition-duration:17ms !important',
-].join(';');
-
-const REVERSED_ACTIVE_INLINE_STYLES = [
-	'opacity:0',
-	'transition-duration:2000ms !important',
-	'transition-timing-function:linear !important',
-	'transition-delay:0ms !important',
-].join(';');
+const REVERSED_ACTIVE_INLINE_STYLES = getFadeActiveInlineStyles(0);
 
 const getScreenshotPath = (projectName: string, name: string) => [
 	'fade-reversal',
@@ -48,7 +42,7 @@ test.describe('TransitionFade reversal', () => {
 		);
 		await expect(scenario).toHaveAttribute(
 			'data-enter-cancelled-styles',
-			RESTORED_INLINE_STYLES,
+			FADE_RESTORED_INLINE_STYLES,
 		);
 		await expect(scenario).toHaveAttribute(
 			'data-leave-styles',
@@ -71,7 +65,10 @@ test.describe('TransitionFade reversal', () => {
 			'data-events',
 			'before-enter,enter,enter-cancelled,before-leave,leave,after-leave',
 		);
-		await expect(scenario).toHaveAttribute('data-after-leave-styles', RESTORED_INLINE_STYLES);
+		await expect(scenario).toHaveAttribute(
+			'data-after-leave-styles',
+			FADE_RESTORED_INLINE_STYLES,
+		);
 		await expect.poll(() => getAnimationCount(target)).toBe(0);
 		await expect(stage).toHaveScreenshot(
 			getScreenshotPath(projectName, '03-reversed-leave-after'),
@@ -101,7 +98,7 @@ test.describe('TransitionFade reversal', () => {
 		);
 		await expect(scenario).toHaveAttribute(
 			'data-leave-cancelled-styles',
-			RESTORED_INLINE_STYLES,
+			FADE_RESTORED_INLINE_STYLES,
 		);
 		await expect(scenario).toHaveAttribute(
 			'data-enter-styles',
@@ -123,7 +120,10 @@ test.describe('TransitionFade reversal', () => {
 			'data-events',
 			'before-leave,leave,leave-cancelled,before-enter,enter,after-enter',
 		);
-		await expect(scenario).toHaveAttribute('data-after-enter-styles', RESTORED_INLINE_STYLES);
+		await expect(scenario).toHaveAttribute(
+			'data-after-enter-styles',
+			FADE_RESTORED_INLINE_STYLES,
+		);
 		await expect.poll(() => getAnimationCount(target)).toBe(0);
 		await expect(target).toHaveClass('fade-scenario__target');
 		await expect(stage).toHaveScreenshot(
