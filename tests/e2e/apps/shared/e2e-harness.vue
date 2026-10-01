@@ -12,6 +12,12 @@
 			use-v-show
 			:initially-visible="isInitiallyVisible"
 		/>
+		<fade-scenario
+			v-else-if="scenario === 'fade-motion'"
+			key="fade-motion"
+			use-v-show
+			:motion="motion"
+		/>
 		<setup-scenario v-else :vue-major="vueMajor" />
 	</main>
 </template>
@@ -36,6 +42,7 @@
 			const searchParams = new URLSearchParams(window.location.search);
 			return {
 				isInitiallyVisible: searchParams.get('visible') === 'true',
+				motion: searchParams.get('motion') || 'system',
 				scenario: searchParams.get('scenario'),
 			};
 		},

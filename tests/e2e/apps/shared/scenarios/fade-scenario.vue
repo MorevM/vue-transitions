@@ -21,6 +21,7 @@
 					easing="linear"
 					:duration="2000"
 					:delay="200"
+					:motion="motion"
 					@before-enter="recordEvent('before-enter', $event)"
 					@enter="recordEvent('enter', $event)"
 					@after-enter="recordEvent('after-enter', $event)"
@@ -69,6 +70,10 @@
 			initiallyVisible: {
 				type: Boolean,
 				default: false,
+			},
+			motion: {
+				type: String,
+				default: 'system',
 			},
 			preserveEvents: {
 				type: Boolean,

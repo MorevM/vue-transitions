@@ -1,4 +1,4 @@
-import type { Locator } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 
 export const getAnimationCount = (locator: Locator) => locator.evaluate(
 	(element) => element.getAnimations().length,
@@ -44,3 +44,11 @@ export const resumeTransitions = (locator: Locator) => locator.evaluate((element
 		animation.play();
 	});
 });
+
+export const waitForAnimationFrames = (page: Page) => page.evaluate(
+	() => new Promise<void>((resolve) => {
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => resolve());
+		});
+	}),
+);
