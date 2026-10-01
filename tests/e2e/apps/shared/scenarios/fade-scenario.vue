@@ -4,6 +4,7 @@
 		class="fade-scenario"
 		data-testid="fade-scenario"
 		data-events=""
+		:data-motion="motion"
 	>
 		<header class="fade-scenario__header">
 			<p class="fade-scenario__eyebrow">TransitionFade</p>
@@ -13,6 +14,22 @@
 		<div class="fade-scenario__controls">
 			<button type="button" :disabled="isVisible" @click="showTarget">Show</button>
 			<button type="button" :disabled="!isVisible" @click="hideTarget">Hide</button>
+			<button
+				v-if="motionControls"
+				type="button"
+				:disabled="motion === 'enabled'"
+				@click="setMotion('enabled')"
+			>
+				Enable motion
+			</button>
+			<button
+				v-if="motionControls"
+				type="button"
+				:disabled="motion === 'disabled'"
+				@click="setMotion('disabled')"
+			>
+				Disable motion
+			</button>
 		</div>
 
 		<div class="fade-scenario__stage" data-testid="fade-stage">
@@ -75,6 +92,10 @@
 				type: String,
 				default: 'system',
 			},
+			motionControls: {
+				type: Boolean,
+				default: false,
+			},
 			preserveEvents: {
 				type: Boolean,
 				default: false,
@@ -84,6 +105,7 @@
 				default: false,
 			},
 		},
+		emits: ['motion-change'],
 		data() {
 			return {
 				isVisible: this.initiallyVisible,
@@ -124,6 +146,10 @@
 				delete dataset.leaveCancelledStyles;
 				delete dataset.afterEnterStyles;
 				delete dataset.afterLeaveStyles;
+			},
+
+			setMotion(motion) {
+				this.$emit('motion-change', motion);
 			},
 
 			showTarget() {

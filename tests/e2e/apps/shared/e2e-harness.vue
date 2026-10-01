@@ -17,6 +17,8 @@
 			key="fade-motion"
 			use-v-show
 			:motion="motion"
+			:motion-controls="motionControls"
+			@motion-change="setMotion"
 		/>
 		<setup-scenario v-else :vue-major="vueMajor" />
 	</main>
@@ -43,8 +45,14 @@
 			return {
 				isInitiallyVisible: searchParams.get('visible') === 'true',
 				motion: searchParams.get('motion') || 'system',
+				motionControls: searchParams.get('motion-controls') === 'true',
 				scenario: searchParams.get('scenario'),
 			};
+		},
+		methods: {
+			setMotion(motion) {
+				this.motion = motion;
+			},
 		},
 	};
 </script>

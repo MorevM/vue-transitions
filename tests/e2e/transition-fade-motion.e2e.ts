@@ -165,4 +165,96 @@ test.describe('TransitionFade motion policy', () => {
 			getScreenshotPath(projectName, '11-system-no-preference-leave-after'),
 		);
 	});
+
+	test('Enables animations despite reduced motion', async ({ page }, testInfo) => {
+		await page.emulateMedia({ reducedMotion: 'reduce' });
+		await page.goto('/?scenario=fade-motion&motion=enabled');
+
+		const scenario = page.getByTestId('fade-scenario');
+		const stage = page.getByTestId('fade-stage');
+		const target = page.getByTestId('fade-target');
+		const { name: projectName } = testInfo.project;
+
+		await expect(target).toBeHidden();
+		await expect(stage).toHaveScreenshot(
+			getScreenshotPath(projectName, '12-enabled-reduce-before'),
+		);
+
+		await page.getByRole('button', { name: 'Show' }).click();
+		await expect.poll(() => getAnimationCount(target)).toBeGreaterThan(0);
+		await pauseTransitionAt(target, 1000);
+		await expect(target).toHaveClass(/fade-enter-active/);
+		await expect(scenario).toHaveAttribute('data-enter-styles', FADE_ACTIVE_INLINE_STYLES);
+		expect(Number(await target.evaluate((element) => getComputedStyle(element).opacity)))
+			.toBeCloseTo(0.4, 2);
+		await expect(stage).toHaveScreenshot(
+			getScreenshotPath(projectName, '13-enabled-reduce-enter-1000ms'),
+			{ animations: 'allow' },
+		);
+
+		await resumeTransitions(target);
+		await expect(scenario).toHaveAttribute('data-events', 'before-enter,enter,after-enter');
+		await expect(scenario).toHaveAttribute(
+			'data-after-enter-styles',
+			FADE_RESTORED_INLINE_STYLES,
+		);
+		await expect.poll(() => getAnimationCount(target)).toBe(0);
+		await expect(stage).toHaveScreenshot(
+			getScreenshotPath(projectName, '14-enabled-reduce-enter-after'),
+		);
+	});
+
+	test('Applies changed motion policy to subsequent transitions', async ({ page }, testInfo) => {
+		await page.emulateMedia({ reducedMotion: 'reduce' });
+		await page.goto('/?scenario=fade-motion&motion=disabled&motion-controls=true');
+
+		const scenario = page.getByTestId('fade-scenario');
+		const stage = page.getByTestId('fade-stage');
+		const target = page.getByTestId('fade-target');
+		const { name: projectName } = testInfo.project;
+
+		await page.getByRole('button', { name: 'Show' }).click();
+		await waitForAnimationFrames(page);
+		expect(await getAnimationCount(target)).toBe(0);
+		await expect(target).toBeVisible();
+		await expect(scenario).toHaveAttribute('data-events', 'before-enter,enter,after-enter');
+
+		await page.getByRole('button', { name: 'Enable motion' }).click();
+		await expect(scenario).toHaveAttribute('data-motion', 'enabled');
+		await page.getByRole('button', { name: 'Hide' }).click();
+		await expect.poll(() => getAnimationCount(target)).toBeGreaterThan(0);
+		await pauseTransitionAt(target, 1000);
+		await expect(target).toHaveClass(/fade-leave-active/);
+		await expect(scenario).toHaveAttribute('data-leave-styles', FADE_ACTIVE_INLINE_STYLES);
+		expect(Number(await target.evaluate((element) => getComputedStyle(element).opacity)))
+			.toBeCloseTo(0.4, 2);
+		await expect(stage).toHaveScreenshot(
+			getScreenshotPath(projectName, '15-runtime-enabled-leave-1000ms'),
+			{ animations: 'allow' },
+		);
+
+		await resumeTransitions(target);
+		await expect(target).toBeHidden();
+		await expect(scenario).toHaveAttribute('data-events', 'before-leave,leave,after-leave');
+		await expect(scenario).toHaveAttribute(
+			'data-after-leave-styles',
+			FADE_RESTORED_INLINE_STYLES,
+		);
+		await expect.poll(() => getAnimationCount(target)).toBe(0);
+		await expect(stage).toHaveScreenshot(
+			getScreenshotPath(projectName, '16-runtime-enabled-leave-after'),
+		);
+
+		await page.getByRole('button', { name: 'Disable motion' }).click();
+		await expect(scenario).toHaveAttribute('data-motion', 'disabled');
+		await page.getByRole('button', { name: 'Show' }).click();
+		await waitForAnimationFrames(page);
+		expect(await getAnimationCount(target)).toBe(0);
+		await expect(target).toBeVisible();
+		await expect(scenario).toHaveAttribute('data-events', 'before-enter,enter,after-enter');
+		await expect(scenario).toHaveAttribute('data-enter-styles', FADE_RESTORED_INLINE_STYLES);
+		await expect(stage).toHaveScreenshot(
+			getScreenshotPath(projectName, '17-runtime-disabled-enter-after'),
+		);
+	});
 });
