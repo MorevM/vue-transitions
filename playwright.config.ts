@@ -6,6 +6,7 @@ const VUE_3_URL = 'http://127.0.0.1:4173';
 export default defineConfig({
 	testDir: './tests/e2e',
 	testMatch: '**/*.e2e.ts',
+	snapshotPathTemplate: '{testDir}/snapshots/{arg}{-platform}{ext}',
 	outputDir: './tmp/playwright/test-results',
 	fullyParallel: true,
 	forbidOnly: Boolean(process.env.CI),

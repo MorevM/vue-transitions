@@ -8,9 +8,13 @@ test.describe('E2E harness', () => {
 	test('Loads the matching Vue build', async ({ page }, testInfo) => {
 		const expectedVueMajor = String(testInfo.project.metadata.vueMajor);
 		const harness = page.getByTestId('harness');
+		const screenshotPath = [
+			'setup',
+			`${testInfo.project.name}-00-harness.png`,
+		];
 
 		await expect(harness).toHaveAttribute('data-vue-major', expectedVueMajor);
 		await expect(page.getByTestId('library-content')).toBeVisible();
-		await expect(page.getByTestId('harness-card')).toHaveScreenshot('harness.png');
+		await expect(page.getByTestId('harness-card')).toHaveScreenshot(screenshotPath);
 	});
 });
