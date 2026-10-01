@@ -24,20 +24,14 @@
 					@before-enter="recordEvent('before-enter', $event)"
 					@enter="recordEvent('enter', $event)"
 					@after-enter="recordEvent('after-enter', $event)"
+					@enter-cancelled="recordEvent('enter-cancelled', $event)"
 					@before-leave="recordEvent('before-leave', $event)"
 					@leave="recordEvent('leave', $event)"
 					@after-leave="recordEvent('after-leave', $event)"
+					@leave-cancelled="recordEvent('leave-cancelled', $event)"
 				>
-					<!-- eslint-disable vue/no-static-inline-styles -- Inline style restoration is under test. -->
-					<div
-						v-if="isVisible"
-						class="fade-scenario__target"
-						data-testid="fade-target"
-						style="opacity: 0.8 !important; transition-duration: 17ms !important;"
-					>
-						Fade target
-					</div>
-					<!-- eslint-enable vue/no-static-inline-styles -->
+					<fade-target v-if="useVShow" v-show="isVisible" key="v-show" />
+					<fade-target v-else-if="isVisible" key="v-if" />
 				</transition-fade>
 			</div>
 		</div>
@@ -46,6 +40,7 @@
 
 <script>
 	import { TransitionFade } from '@morev/vue-transitions';
+	import FadeTarget from './fade-target.vue';
 
 	const TRACKED_STYLE_PROPERTIES = [
 		'opacity',
@@ -67,14 +62,31 @@
 	export default {
 		name: 'fade-scenario',
 		components: {
+			FadeTarget,
 			TransitionFade,
 		},
-		data: () => ({
-			isVisible: false,
-		}),
+		props: {
+			initiallyVisible: {
+				type: Boolean,
+				default: false,
+			},
+			preserveEvents: {
+				type: Boolean,
+				default: false,
+			},
+			useVShow: {
+				type: Boolean,
+				default: false,
+			},
+		},
+		data() {
+			return {
+				isVisible: this.initiallyVisible,
+			};
+		},
 		methods: {
 			hideTarget() {
-				this.resetEventLog();
+				if (!this.preserveEvents) this.resetEventLog();
 				this.isVisible = false;
 			},
 
@@ -84,6 +96,12 @@
 
 				if (event === 'enter') scenario.dataset.enterStyles = serializeInlineStyles(element);
 				if (event === 'leave') scenario.dataset.leaveStyles = serializeInlineStyles(element);
+				if (event === 'enter-cancelled') {
+					scenario.dataset.enterCancelledStyles = serializeInlineStyles(element);
+				}
+				if (event === 'leave-cancelled') {
+					scenario.dataset.leaveCancelledStyles = serializeInlineStyles(element);
+				}
 				if (event === 'after-enter') {
 					scenario.dataset.afterEnterStyles = serializeInlineStyles(element);
 				}
@@ -97,12 +115,14 @@
 				dataset.events = '';
 				delete dataset.enterStyles;
 				delete dataset.leaveStyles;
+				delete dataset.enterCancelledStyles;
+				delete dataset.leaveCancelledStyles;
 				delete dataset.afterEnterStyles;
 				delete dataset.afterLeaveStyles;
 			},
 
 			showTarget() {
-				this.resetEventLog();
+				if (!this.preserveEvents) this.resetEventLog();
 				this.isVisible = true;
 			},
 		},

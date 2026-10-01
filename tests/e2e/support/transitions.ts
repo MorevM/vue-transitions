@@ -17,6 +17,19 @@ export const pauseTransitionAt = (locator: Locator, elapsedMs: number) => locato
 	elapsedMs,
 );
 
+export const pauseTransitionAtProgress = (locator: Locator, progress: number) => locator.evaluate(
+	(element, transitionProgress) => {
+		const [animation] = element.getAnimations();
+		const timing = animation?.effect?.getTiming();
+
+		if (!animation || !timing) throw new Error('No active transition found');
+
+		animation.pause();
+		animation.currentTime = Number(timing.delay) + (Number(timing.duration) * transitionProgress);
+	},
+	progress,
+);
+
 export const readInlineStyle = (locator: Locator, property: string) => locator.evaluate(
 	(element, styleProperty) => ({
 		priority: element.style.getPropertyPriority(styleProperty),

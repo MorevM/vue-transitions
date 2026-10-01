@@ -4,7 +4,14 @@
 		data-testid="harness"
 		:data-vue-major="vueMajor"
 	>
-		<fade-scenario v-if="scenario === 'fade'" />
+		<fade-scenario v-if="scenario === 'fade'" key="fade" />
+		<fade-scenario
+			v-else-if="scenario === 'fade-reversal'"
+			key="fade-reversal"
+			preserve-events
+			use-v-show
+			:initially-visible="isInitiallyVisible"
+		/>
 		<setup-scenario v-else :vue-major="vueMajor" />
 	</main>
 </template>
@@ -25,9 +32,13 @@
 				required: true,
 			},
 		},
-		data: () => ({
-			scenario: new URLSearchParams(window.location.search).get('scenario'),
-		}),
+		data: () => {
+			const searchParams = new URLSearchParams(window.location.search);
+			return {
+				isInitiallyVisible: searchParams.get('visible') === 'true',
+				scenario: searchParams.get('scenario'),
+			};
+		},
 	};
 </script>
 
