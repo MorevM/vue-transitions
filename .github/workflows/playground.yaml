@@ -5,32 +5,30 @@ on:
     branches: [master]
     paths:
       - playground/**
-  # workflow_dispatch: {}
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
 
 jobs:
   publish-docs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Setup environment
+        uses: ./.github/actions/setup
 
       - name: Build playground
-        run: pnpm run build:playground
+        run: pnpm build:playground
 
       - name: Publish to GH pages
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        uses: JamesIves/github-pages-deploy-action@830e6a4f7c81743c52f3fed0ac67428feff9620a # v4.2.5
         with:
           branch: gh-pages
           folder: playground-bundle
