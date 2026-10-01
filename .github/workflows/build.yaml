@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches: [master]
+    tags: [v*-rc.*]
   pull_request:
     branches: [master]
 

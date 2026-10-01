@@ -50,9 +50,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           body: ${{steps.latest-changelog-entry.outputs.result}}
+          prerelease: ${{ contains(github.ref_name, '-rc.') }}
 
       - name: Publish package
-        run: pnpm publish --provenance --access public --no-git-checks
+        run: pnpm publish --tag "${NPM_DIST_TAG}" --provenance --access public --no-git-checks
         env:
+          NPM_DIST_TAG: ${{ contains(github.ref_name, '-rc.') && 'rc' || 'latest' }}
           # Explicitly clear placeholder set by setup-node to enable OIDC
           NODE_AUTH_TOKEN: ''
