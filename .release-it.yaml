@@ -43,3 +43,5 @@ hooks:
   after:init:
     - pnpm lint
     - pnpm test
+    - pnpm test:consumers
+    - pnpm test:e2e
