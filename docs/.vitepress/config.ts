@@ -113,7 +113,7 @@ export default defineConfig({
 					{ text: 'TransitionExpand', link: '/transitions/expand' },
 					{ text: 'TransitionSlide', link: '/transitions/slide' },
 					{ text: 'TransitionScale', link: '/transitions/scale' },
-					{ text: 'TransitionCombined', link: '/transitions/combined' },
+					{ text: 'TransitionMixed', link: '/transitions/mixed' },
 				],
 			},
 			{

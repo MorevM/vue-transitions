@@ -2,9 +2,9 @@ import type { DefineComponent, Plugin } from 'vue';
 import type { ComponentPropsAndEmits, PluginOptions } from './index.js';
 
 /* eslint-disable @typescript-eslint/naming-convention -- Vue component names use PascalCase. */
-declare const TransitionCombined: DefineComponent<ComponentPropsAndEmits['TransitionCombined']>;
 declare const TransitionExpand: DefineComponent<ComponentPropsAndEmits['TransitionExpand']>;
 declare const TransitionFade: DefineComponent<ComponentPropsAndEmits['TransitionFade']>;
+declare const TransitionMixed: DefineComponent<ComponentPropsAndEmits['TransitionMixed']>;
 declare const TransitionScale: DefineComponent<ComponentPropsAndEmits['TransitionScale']>;
 declare const TransitionSlide: DefineComponent<ComponentPropsAndEmits['TransitionSlide']>;
 /* eslint-enable @typescript-eslint/naming-convention */
@@ -14,15 +14,15 @@ declare const vueTransitions: Plugin;
 
 declare module 'vue' {
 	export interface GlobalComponents {
-		TransitionCombined: typeof TransitionCombined;
 		TransitionFade: typeof TransitionFade;
 		TransitionExpand: typeof TransitionExpand;
+		TransitionMixed: typeof TransitionMixed;
 		TransitionScale: typeof TransitionScale;
 		TransitionSlide: typeof TransitionSlide;
 	}
 }
 
-export { plugin, TransitionCombined, TransitionExpand, TransitionFade, TransitionScale, TransitionSlide };
+export { plugin, TransitionExpand, TransitionFade, TransitionMixed, TransitionScale, TransitionSlide };
 export type {
 	ComponentProps,
 	ComponentPropsAndEmits,

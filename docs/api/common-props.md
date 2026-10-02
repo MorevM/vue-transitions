@@ -45,11 +45,11 @@ Durations and delays are integer milliseconds. Easing values must be non-empty C
 
 ## Visual behavior
 
-| Prop           | Type                                  | Default    | Purpose                                                                |
-| -------------- | ------------------------------------- | ---------- | ---------------------------------------------------------------------- |
-| `motion`       | `'system' \| 'enabled' \| 'disabled'` | `'system'` | Apply the [motion policy](/guide/accessibility).                       |
-| `noOpacity`    | `boolean`                             | `false`    | Keep opacity unchanged for expand, slide, scale, and combined presets. |
-| `moveDuration` | `number`                              | `300`      | Set list position-change duration in milliseconds.                     |
-| `noMove`       | `boolean`                             | `false`    | Disable list position changes.                                         |
+| Prop           | Type                                  | Default    | Purpose                                                            |
+| -------------- | ------------------------------------- | ---------- | ------------------------------------------------------------------ |
+| `motion`       | `'system' \| 'enabled' \| 'disabled'` | `'system'` | Apply the [motion policy](/guide/accessibility).                   |
+| `noOpacity`    | `boolean`                             | `false`    | Keep opacity unchanged for supported presets in `TransitionMixed`. |
+| `moveDuration` | `number`                              | `300`      | Set list position-change duration in milliseconds.                 |
+| `noMove`       | `boolean`                             | `false`    | Disable list position changes.                                     |
 
 See [List transitions](/guide/lists) for the group-only behavior.

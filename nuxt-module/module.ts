@@ -6,9 +6,9 @@ import type { NuxtModule } from '@nuxt/schema';
 import type { PluginOptions } from '../types';
 
 const COMPONENTS = [
-	'TransitionCombined',
 	'TransitionExpand',
 	'TransitionFade',
+	'TransitionMixed',
 	'TransitionScale',
 	'TransitionSlide',
 ] as const;

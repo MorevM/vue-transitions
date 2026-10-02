@@ -35,7 +35,7 @@ new Vue({
 :::
 
 All five components become available globally: `TransitionFade`, `TransitionExpand`, `TransitionSlide`,
-`TransitionScale`, and `TransitionCombined`.
+`TransitionScale`, and `TransitionMixed`.
 
 ## Direct imports
 

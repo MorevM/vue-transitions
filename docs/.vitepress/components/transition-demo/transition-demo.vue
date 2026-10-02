@@ -203,9 +203,9 @@
 <script setup lang="ts">
 	import { computed, ref, shallowRef, watch } from 'vue';
 	import {
-		TransitionCombined,
 		TransitionExpand,
 		TransitionFade,
+		TransitionMixed,
 		TransitionScale,
 		TransitionSlide,
 	} from '../../../../src/index.js';
@@ -228,7 +228,7 @@
 		| 'scale';
 	type Preset = 'expand' | 'fade' | 'scale' | 'slide';
 	type PreviewMode = 'group' | 'single';
-	type TransitionName = 'combined' | 'expand' | 'fade' | 'scale' | 'slide';
+	type TransitionName = 'expand' | 'fade' | 'mixed' | 'scale' | 'slide';
 
 	const $props = withDefaults(defineProps<{
 		controls?: Control[];
@@ -240,23 +240,23 @@
 	});
 
 	const transitionComponents = {
-		combined: TransitionCombined,
 		expand: TransitionExpand,
 		fade: TransitionFade,
+		mixed: TransitionMixed,
 		scale: TransitionScale,
 		slide: TransitionSlide,
 	};
 	const transitionLabels = {
-		combined: 'TransitionCombined',
 		expand: 'TransitionExpand',
 		fade: 'TransitionFade',
+		mixed: 'TransitionMixed',
 		scale: 'TransitionScale',
 		slide: 'TransitionSlide',
 	};
 	const transitionTags = {
-		combined: 'transition-combined',
 		expand: 'transition-expand',
 		fade: 'transition-fade',
+		mixed: 'transition-mixed',
 		scale: 'transition-scale',
 		slide: 'transition-slide',
 	};
@@ -340,7 +340,7 @@
 			tag: 'ul',
 		};
 
-		if ($props.transition === 'combined') {
+		if ($props.transition === 'mixed') {
 			return {
 				...commonOptions,
 				enter: getPreset(enterPreset.value),
@@ -372,7 +372,7 @@
 		if (hasControl('noMove') && isGroup.value && noMove.value) attributes.push('no-move');
 		if (hasControl('noOpacity') && noOpacity.value) attributes.push('no-opacity');
 
-		if ($props.transition === 'combined') {
+		if ($props.transition === 'mixed') {
 			attributes.push(
 				`:enter="{ preset: '${enterPreset.value}' }"`,
 				`:leave="{ preset: '${leavePreset.value}' }"`,

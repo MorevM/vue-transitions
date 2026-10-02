@@ -35,7 +35,7 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 - [IntelliSense](#intellisense)
 - [List of transitions](#list-of-transitions)
   - [TransitionFade](#transitionfade)
-  - [TransitionCombined](#transitioncombined)
+  - [TransitionMixed](#transitionmixed)
   - [TransitionExpand](#transitionexpand)
   - [TransitionSlide]
   - [TransitionScale]
@@ -405,7 +405,7 @@ Has [unique props][Unique props of `TransitionScale`]: `scale`, `axis`, `origin`
 
 ---
 
-### TransitionCombined
+### TransitionMixed
 
 Transition that uses independently configured presets when an element enters and leaves.
 The component supports the same common props and lifecycle events as the other transitions.
@@ -415,7 +415,7 @@ Preset-specific options are declared inside the corresponding object.
 
 ```vue
 <template>
-  <transition-combined
+  <transition-mixed
     :enter="{
       preset: 'scale',
       scale: 0.8,
@@ -431,14 +431,14 @@ Preset-specific options are declared inside the corresponding object.
     }"
   >
     <div v-if="isVisible">...</div>
-  </transition-combined>
+  </transition-mixed>
 </template>
 
 <script>
-  import { TransitionCombined } from '@morev/vue-transitions';
+  import { TransitionMixed } from '@morev/vue-transitions';
 
   export default {
-    components: { TransitionCombined },
+    components: { TransitionMixed },
   };
 </script>
 ```

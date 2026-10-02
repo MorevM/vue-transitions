@@ -1,5 +1,5 @@
 {
-	"transition-combined": {
+	"transition-mixed": {
 		"description": "Transition with independently configured enter and leave presets",
 		"attributes": [
 			"enter",

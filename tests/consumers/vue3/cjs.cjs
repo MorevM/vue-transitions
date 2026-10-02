@@ -7,5 +7,5 @@ assert.equal(vueTransitions.default, explicitVue3.default);
 
 const app = createApp({});
 app.use(vueTransitions.default);
-assert.equal(app.component('TransitionCombined'), vueTransitions.TransitionCombined);
+assert.equal(app.component('TransitionMixed'), vueTransitions.TransitionMixed);
 assert.equal(typeof vueTransitions.plugin, 'function');

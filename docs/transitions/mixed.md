@@ -1,11 +1,11 @@
-# TransitionCombined
+# TransitionMixed
 
-`TransitionCombined` uses independently configured presets for enter and leave. Both descriptors are required.
+`TransitionMixed` uses independently configured presets for enter and leave. Both descriptors are required.
 
-<transition-demo transition="combined" :controls="['enterPreset', 'leavePreset', 'noOpacity']" />
+<transition-demo transition="mixed" :controls="['enterPreset', 'leavePreset', 'noOpacity']" />
 
 ```vue
-<transition-combined
+<transition-mixed
   :enter="{
     preset: 'scale',
     scale: 0.8,
@@ -17,7 +17,7 @@
   }"
 >
   <div v-if="isVisible">Content</div>
-</transition-combined>
+</transition-mixed>
 ```
 
 ## Preset descriptors
@@ -42,13 +42,13 @@ Preset options inside a descriptor are single-phase values. Configure phase-spec
 `duration`, `delay`, and `easing` props:
 
 ```vue
-<transition-combined
+<transition-mixed
   :enter="{ preset: 'fade' }"
   :leave="{ preset: 'expand', axis: 'y' }"
   :duration="{ enter: 180, leave: 320 }"
 >
   <div v-if="isVisible">Content</div>
-</transition-combined>
+</transition-mixed>
 ```
 
 The enter preset is also used for an initial `appear` transition.

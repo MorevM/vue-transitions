@@ -1,7 +1,7 @@
 <template>
 	<component
 		:is="cComponent"
-		name="combined"
+		name="mixed"
 		v-bind="cAttrs"
 		v-on="cHooks"
 	>
@@ -15,7 +15,7 @@
 	import { validateTransitionPreset } from '../../utility/validate/validate-transition-preset.js';
 
 	export default {
-		name: 'transition-combined',
+		name: 'transition-mixed',
 		mixins: [
 			baseTransition,
 		],
@@ -39,7 +39,7 @@
 					enterActiveClass: `${enterPreset}-enter-active`,
 					appearActiveClass: `${enterPreset}-enter-active`,
 					leaveActiveClass: `${leavePreset}-leave-active`,
-					...(this.group && { moveClass: 'combined-move' }),
+					...(this.group && { moveClass: 'mixed-move' }),
 				};
 			},
 		},
@@ -70,4 +70,4 @@
 	};
 </script>
 
-<style lang="scss" src="./transition-combined.scss"></style>
+<style lang="scss" src="./transition-mixed.scss"></style>

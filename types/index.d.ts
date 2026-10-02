@@ -3,7 +3,7 @@ import type { PartialDeep } from '@morev/utils';
 
 // All components
 type TransitionComponents =
-	'TransitionCombined' | 'TransitionFade' | 'TransitionSlide' | 'TransitionExpand' | 'TransitionScale';
+	'TransitionMixed' | 'TransitionFade' | 'TransitionSlide' | 'TransitionExpand' | 'TransitionScale';
 
 /**
  * Policy controlling whether transitions are animated.
@@ -283,7 +283,7 @@ type TransitionScalePreset = {
 export type TransitionPreset =
 	TransitionFadePreset | TransitionSlidePreset | TransitionExpandPreset | TransitionScalePreset;
 
-type TransitionCombinedProps = Partial<CommonProps> & {
+type TransitionMixedProps = Partial<CommonProps> & {
 	/**
 	 * Preset used when an element enters.
 	 */
@@ -358,11 +358,11 @@ type PresetComponentPropsAndEmits = {
 };
 
 export type ComponentProps = PartialDeep<PresetComponentProps> & {
-	TransitionCombined: TransitionCombinedProps;
+	TransitionMixed: TransitionMixedProps;
 };
 
 export type ComponentPropsAndEmits = PartialDeep<PresetComponentPropsAndEmits> & {
-	TransitionCombined: TransitionCombinedProps & Partial<Emits>;
+	TransitionMixed: TransitionMixedProps & Partial<Emits>;
 };
 
 export type PluginOptions = Partial<{

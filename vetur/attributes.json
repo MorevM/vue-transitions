@@ -1,53 +1,53 @@
 {
-	"transition-combined/enter": {
+	"transition-mixed/enter": {
 		"type": "object",
 		"description": "Preset and options used when an element enters."
 	},
-	"transition-combined/leave": {
+	"transition-mixed/leave": {
 		"type": "object",
 		"description": "Preset and options used when an element leaves."
 	},
-	"transition-combined/duration": {
+	"transition-mixed/duration": {
 		"type": "number|object",
 		"description": "Transition animation duration, ms."
 	},
-	"transition-combined/easing": {
+	"transition-mixed/easing": {
 		"type": "string|object",
 		"description": "Transition animation easing. Should be a valid CSS transition timing function."
 	},
-	"transition-combined/delay": {
+	"transition-mixed/delay": {
 		"type": "number|object",
 		"description": "Transition animation delay, ms."
 	},
-	"transition-combined/no-opacity": {
+	"transition-mixed/no-opacity": {
 		"type": "boolean",
 		"description": "Whether to not animate the element opacity."
 	},
-	"transition-combined/appear": {
+	"transition-mixed/appear": {
 		"type": "boolean",
 		"description": "Whether to apply the enter preset on the initial render of a node."
 	},
-	"transition-combined/mode": {
+	"transition-mixed/mode": {
 		"type": "string",
 		"description": "Transition mode ('out-in'|'in-out')."
 	},
-	"transition-combined/motion": {
+	"transition-mixed/motion": {
 		"type": "string",
 		"description": "Motion policy ('system'|'enabled'|'disabled')."
 	},
-	"transition-combined/group": {
+	"transition-mixed/group": {
 		"type": "boolean",
 		"description": "Whether the component should be a transition-group component."
 	},
-	"transition-combined/tag": {
+	"transition-mixed/tag": {
 		"type": "string",
 		"description": "Transition tag, in the case of using a transition-group."
 	},
-	"transition-combined/no-move": {
+	"transition-mixed/no-move": {
 		"type": "boolean",
 		"description": "Whether to not animate elements positions changing, in the case of using a transition-group."
 	},
-	"transition-combined/move-duration": {
+	"transition-mixed/move-duration": {
 		"type": "number",
 		"description": "Duration of animation of elements positions changing, in the case of using a transition-group."
 	},
