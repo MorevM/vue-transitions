@@ -1,4 +1,3 @@
-import type { Plugin } from 'vite';
 import { randomInt } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitepress';
@@ -26,8 +25,8 @@ const YANDEX_METRIKA_HTML = `
 
 const transformLibrarySourceForVue3 = {
 	name: 'transform-library-source-for-vue3',
-	enforce: 'pre',
-	transform(source, id) {
+	enforce: 'pre' as const,
+	transform(source: string, id: string) {
 		if (!id.includes('/src/')) return;
 
 		const transformedSource = source
@@ -44,7 +43,7 @@ const transformLibrarySourceForVue3 = {
 
 		return transformedSource;
 	},
-} satisfies Plugin;
+};
 
 export default defineConfig({
 	title: '@morev/vue-transitions',

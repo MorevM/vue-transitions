@@ -3,6 +3,7 @@
 	"compilerOptions": {
 		"lib": ["ESNext", "DOM"],
 		"noEmit": true,
+		"rootDir": "../..",
 		"types": ["node", "@playwright/test"],
 	},
 	"include": [
