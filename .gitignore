@@ -3,6 +3,9 @@ dist
 build
 tmp
 nuxt
+docs/.vitepress/.temp
+docs/.vitepress/cache
+docs/.vitepress/dist
 
 # Editors
 .idea

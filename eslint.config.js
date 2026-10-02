@@ -18,6 +18,14 @@ export default combine([
 		version: 2,
 		typescript: false,
 	}),
+	defineConfiguration('vue', {
+		files: ['docs/**/*.vue'],
+		typescript: true,
+		version: 3,
+		overrides: {
+			'vue/no-bare-strings-in-template': 'off',
+		},
+	}),
 	defineConfiguration('typescript'),
 	defineConfiguration('json'),
 	defineConfiguration('markdown'),
@@ -40,7 +48,7 @@ export default combine([
 	},
 	{
 		name: 'project/private-package-metadata',
-		files: ['builders/*/package.json', 'nuxt-module/package.json'],
+		files: ['builders/*/package.json', 'docs/package.json', 'nuxt-module/package.json'],
 		rules: {
 			// These private manifests run only through the root package, which declares Node support.
 			'package-json/require-engines': 'off',
@@ -122,6 +130,13 @@ export default combine([
 		rules: {
 			// Nested details require indentation that this rule misidentifies as indented code.
 			'markdown-preferences/prefer-fenced-code-blocks': 'off',
+		},
+	},
+	{
+		name: 'project/vitepress-markdown',
+		files: ['docs/**/*.md'],
+		rules: {
+			'markdown/no-html': 'off',
 		},
 	},
 ]);

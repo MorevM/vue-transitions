@@ -16,11 +16,11 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 ✔️ Considers initial styles of animated elements such as `transform` or `opacity`; \
 ✔️ Even more easy-to-use with universal `Nuxt 2` and `Nuxt 3` module.
 
-[DEMO / Playground]
+[Documentation and interactive demos]
 
 ## Table of contents
 
-- [Demo][DEMO / Playground]
+- [Documentation and interactive demos]
 - [Installation](#installation)
   - [Requirements](#-requirements)
   - [Using `yarn`](#using-yarn)
@@ -979,7 +979,7 @@ Components expose the standard transition lifecycle events:
 - `after-appear`
 - `appear-cancelled`
 
-[DEMO / Playground]: https://morevm.github.io/vue-transitions/
+[Documentation and interactive demos]: https://morevm.github.io/vue-transitions/
 [TransitionScale]: #transitionscale
 [TransitionSlide]: #transitionslide
 [Unique props of `TransitionExpand`]: #unique-props-of-transitionexpand
