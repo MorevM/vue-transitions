@@ -4,7 +4,8 @@
 	"type": "module",
 	"private": false,
 	"sideEffects": [
-		"*.css"
+		"**/*.css",
+		"dist/**/vue-transitions.browser.*"
 	],
 	"version": "3.0.5",
 	"packageManager": "pnpm@12.6.0",
@@ -54,10 +55,12 @@
 		".": {
 			"import": {
 				"types": "./types/vue3.d.ts",
+				"browser": "./dist/vue3/vue-transitions.browser.js",
 				"default": "./dist/vue3/vue-transitions.js"
 			},
 			"require": {
 				"types": "./types/vue3.d.cts",
+				"browser": "./dist/vue3/vue-transitions.browser.cjs",
 				"default": "./dist/vue3/vue-transitions.cjs"
 			}
 		},
@@ -78,35 +81,40 @@
 		"./vue2": {
 			"import": {
 				"types": "./types/vue2.d.ts",
+				"browser": "./dist/vue2/vue-transitions.browser.js",
 				"default": "./dist/vue2/vue-transitions.js"
 			},
 			"require": {
 				"types": "./types/vue2.d.cts",
+				"browser": "./dist/vue2/vue-transitions.browser.cjs",
 				"default": "./dist/vue2/vue-transitions.cjs"
 			}
 		},
 		"./vue3": {
 			"import": {
 				"types": "./types/vue3.d.ts",
+				"browser": "./dist/vue3/vue-transitions.browser.js",
 				"default": "./dist/vue3/vue-transitions.js"
 			},
 			"require": {
 				"types": "./types/vue3.d.cts",
+				"browser": "./dist/vue3/vue-transitions.browser.cjs",
 				"default": "./dist/vue3/vue-transitions.cjs"
 			}
 		}
 	},
 	"main": "./dist/vue3/vue-transitions.cjs",
-	"module": "./dist/vue3/vue-transitions.js",
+	"module": "./dist/vue3/vue-transitions.browser.js",
 	"types": "./types/vue3.d.ts",
 	"scripts": {
 		"dev": "pnpm --filter vue2-builder dev",
 		"build:playground": "pnpm --filter vue2-builder playground",
 		"build:vue2": "pnpm --filter vue2-builder build",
 		"build:vue3": "pnpm --filter vue3-builder build",
+		"build:browser-entrypoints": "node ./scripts/browser-entrypoints.js",
 		"build:styles": "node ./scripts/verify-shared-styles.js",
 		"build:nuxt": "node ./scripts/nuxt-module-build.js",
-		"build": "pnpm run build:playground && pnpm run build:vue2 && pnpm run build:vue3 && pnpm run build:styles && pnpm run build:nuxt",
+		"build": "pnpm run build:playground && pnpm run build:vue2 && pnpm run build:vue3 && pnpm run build:browser-entrypoints && pnpm run build:styles && pnpm run build:nuxt",
 		"prepare": "lefthook install && pnpm run more-sass-clone",
 		"more-sass-clone": "node ./scripts/more-sass-clone.js",
 		"release": "release-it --disable-metrics",

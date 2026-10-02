@@ -99,9 +99,8 @@ The package provides dedicated entrypoints for both Vue versions:
 - `@morev/vue-transitions` targets Vue 3. \
   `@morev/vue-transitions/vue3` is an explicit alias for the Vue 3 entrypoint.
 - `@morev/vue-transitions/vue2` targets Vue 2.
-- `@morev/vue-transitions/styles` provides the shared stylesheet.
 
-> **Important:** Import the shared stylesheet once, including when importing components directly.
+Transition styles are included automatically when you import the plugin or individual components.
 
 ### Global registration
 
@@ -110,7 +109,6 @@ The package provides dedicated entrypoints for both Vue versions:
 ```js
 import { createApp } from 'vue';
 import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
-import '@morev/vue-transitions/styles';
 
 const app = createApp(App);
 
@@ -124,7 +122,6 @@ app.use(vueTransitionsPlugin({
 ```js
 import Vue from 'vue';
 import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions/vue2';
-import '@morev/vue-transitions/styles';
 
 Vue.use(vueTransitionsPlugin, {
   // Plugin options (optional, described below)
@@ -132,16 +129,13 @@ Vue.use(vueTransitionsPlugin, {
 ```
 
 <details>
-  <summary>😥 I got an error "This dependency was not found"</summary>
+  <summary>Transition styles are missing?</summary>
 
-For environments that cannot resolve package exports, import the physical shared stylesheet instead:
+Some build tools may not load the styles automatically. In that case, import them once in your app entrypoint:
 
-```diff
-- import '@morev/vue-transitions/styles';
-+ import '@morev/vue-transitions/dist/vue3/index.css';
+```js
+import '@morev/vue-transitions/styles';
 ```
-
-The Vue 2 and Vue 3 builds produce the same stylesheet.
 
 </details>
 
@@ -160,7 +154,6 @@ You may also change default props per-component, to do so just pass the `compone
 ```js
 import { createApp } from 'vue';
 import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
-import '@morev/vue-transitions/styles';
 
 const app = createApp(App);
 
@@ -193,7 +186,6 @@ app.use(vueTransitionsPlugin({
 
 <script>
   import { TransitionFade } from '@morev/vue-transitions';
-  import '@morev/vue-transitions/styles';
 
   export default {
     components: { TransitionFade },

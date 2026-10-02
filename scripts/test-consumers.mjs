@@ -1,8 +1,9 @@
+import { build as buildWithVite } from 'vite';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { dirname, join, relative, sep } from 'node:path';
+import { basename, dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const PACKAGE_NAME = '@morev/vue-transitions';
@@ -12,9 +13,13 @@ const TEMPORARY_DIRECTORY = process.env.RUNNER_TEMP || tmpdir();
 const FIXTURE_NAMES = ['vue2', 'vue3', 'nuxt2', 'nuxt3'];
 const REQUIRED_PACKAGE_FILES = [
 	'dist/vue2/index.css',
+	'dist/vue2/vue-transitions.browser.cjs',
+	'dist/vue2/vue-transitions.browser.js',
 	'dist/vue2/vue-transitions.cjs',
 	'dist/vue2/vue-transitions.js',
 	'dist/vue3/index.css',
+	'dist/vue3/vue-transitions.browser.cjs',
+	'dist/vue3/vue-transitions.browser.js',
 	'dist/vue3/vue-transitions.cjs',
 	'dist/vue3/vue-transitions.js',
 	'nuxt/module.cjs',
@@ -59,6 +64,55 @@ const setPackageTarball = async (fixtureDirectory, tarballPath) => {
 	await writeFile(packageJsonPath, `${JSON.stringify(packageJson, null, '\t')}\n`);
 };
 
+const verifyBrowserRequireResolution = (fixtureName, fixtureDirectory) => {
+	const entrypoints = fixtureName === 'vue2'
+		? [`${PACKAGE_NAME}/vue2`]
+		: [PACKAGE_NAME, `${PACKAGE_NAME}/vue3`];
+
+	entrypoints.forEach((entrypoint) => {
+		const resolvedEntrypoint = runAndCapture(
+			'node',
+			['--conditions=browser', '--print', `require.resolve('${entrypoint}')`],
+			fixtureDirectory,
+		).trim();
+		assert.equal(
+			basename(resolvedEntrypoint),
+			'vue-transitions.browser.cjs',
+			`${entrypoint} must resolve to the CommonJS browser entrypoint`,
+		);
+	});
+};
+
+const verifyBrowserBuild = async (fixtureName, fixtureDirectory) => {
+	const outputDirectory = join(fixtureDirectory, 'browser-dist');
+
+	await buildWithVite({
+		configFile: false,
+		logLevel: 'error',
+		root: fixtureDirectory,
+		build: {
+			emptyOutDir: true,
+			outDir: outputDirectory,
+			lib: {
+				entry: join(fixtureDirectory, 'browser.mjs'),
+				fileName: 'consumer',
+				formats: ['es'],
+			},
+			rollupOptions: {
+				external: ['@morev/utils', 'vue'],
+			},
+		},
+	});
+
+	const outputFiles = await readdir(outputDirectory);
+	const cssFiles = outputFiles.filter((filename) => filename.endsWith('.css'));
+	assert.equal(cssFiles.length, 1, `${fixtureName} browser build must emit one stylesheet`);
+
+	const styles = await readFile(join(outputDirectory, cssFiles[0]), 'utf8');
+	assert.ok(styles.includes('.expand-enter-active'), `${fixtureName} browser build is missing transition styles`);
+	assert.ok(styles.includes('overflow:hidden'), `${fixtureName} browser build emitted unrelated styles`);
+};
+
 const temporaryRoot = await mkdtemp(join(TEMPORARY_DIRECTORY, 'vue-transitions-consumers-'));
 const artifactsDirectory = join(temporaryRoot, 'artifacts');
 let didSucceed = false;
@@ -88,6 +142,10 @@ try {
 		await setPackageTarball(fixtureDirectory, packageData.filename);
 		run('pnpm', ['install', '--frozen-lockfile=false'], fixtureDirectory);
 		run('pnpm', ['run', 'check'], fixtureDirectory);
+		if (fixtureName === 'vue2' || fixtureName === 'vue3') {
+			verifyBrowserRequireResolution(fixtureName, fixtureDirectory);
+			await verifyBrowserBuild(fixtureName, fixtureDirectory);
+		}
 	}
 	/* eslint-enable no-await-in-loop */
 
