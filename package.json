@@ -143,6 +143,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^21.2.3",
+		"@fontsource/dejavu-sans": "^5.3.0",
 		"@morev/commitlint-config": "^0.2.2",
 		"@morev/eslint-config": "^43.0.0",
 		"@morev/stylelint-config": "^9.0.2",

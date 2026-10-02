@@ -1,6 +1,9 @@
+@import '@fontsource/dejavu-sans/400.css';
+@import '@fontsource/dejavu-sans/700.css';
+
 :root {
 	color: #172033;
-	font-family: Arial, sans-serif;
+	font-family: 'DejaVu Sans', sans-serif;
 	background: #eef2ff;
 }
 
