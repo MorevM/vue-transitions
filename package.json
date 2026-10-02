@@ -119,7 +119,7 @@
 		"docs:preview": "pnpm --filter @morev/vue-transitions-docs preview",
 		"docs:typecheck": "pnpm --filter @morev/vue-transitions-docs typecheck",
 		"prepare": "lefthook install",
-		"release": "release-it --disable-metrics",
+		"release": "release-it",
 		"lint": "pnpm run lint:eslint && pnpm run lint:stylelint",
 		"lint:fix": "pnpm run lint:eslint:fix && pnpm run lint:stylelint:fix",
 		"lint:eslint": "eslint .",
