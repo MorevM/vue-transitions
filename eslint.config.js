@@ -27,18 +27,6 @@ export default combine([
 		files: ['tests/e2e/**/*.e2e.ts'],
 	}),
 	{
-		name: 'project/playground-vue-globals',
-		files: ['playground/**/*.vue'],
-		rules: {
-			// The playground intentionally uses hard-coded demo copy instead of localization.
-			'vue/no-bare-strings-in-template': 'off',
-			// Element UI and the library transitions are registered globally in playground/main.js.
-			'vue/no-undef-components': ['error', { ignorePatterns: ['^el-', '^transition-'] }],
-			// The BEM transformer registers v-bem globally in playground/main.js.
-			'vue/no-undef-directives': ['error', { ignore: ['bem'] }],
-		},
-	},
-	{
 		name: 'project/transition-mixin-methods',
 		files: ['src/transitions/**/*.vue'],
 		rules: {
