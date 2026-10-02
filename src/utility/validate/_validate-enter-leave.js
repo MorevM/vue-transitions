@@ -5,10 +5,10 @@ export const validateEnterLeave = (value, validator) => {
 	if (!isObject(value)) return false;
 	if (Object.keys(value).length !== 2) return false;
 
-	return !Object.entries(value).some(([key, val]) => {
-		const wrongKey = !['enter', 'leave'].includes(key);
-		const wrongValue = !validator(val);
+	return !Object.entries(value).some(([key, value_]) => {
+		const isWrongKey = !['enter', 'leave'].includes(key);
+		const isWrongValue = !validator(value_);
 
-		return wrongKey || wrongValue;
+		return isWrongKey || isWrongValue;
 	});
 };

@@ -20,17 +20,17 @@ English is preferred as it's more widely used, but feel free to use Russian if y
 Please use the provided issue/PR templates where possible. \
 There are various templates for asking a question, reporting a bug or requesting a new feature.
 
-* [Create an issue](https://github.com/MorevM/vue-transitions/issues/new)
-* [Guide: Creating a pull request](https://help.github.com/articles/creating-a-pull-request/)
+- [Create an issue][create-issue]
+- [Guide: Creating a pull request][creating-pull-request]
 
 ## ✒️ Ways to Contribute
 
-* Blog or tweet about the project
-* Improve documentation
-* Fix a bug
-* Implement a new feature
-* Discuss potential ways to improve project
-* Improve existing implementation, performance, etc.
+- Blog or tweet about the project
+- Improve documentation
+- Fix a bug
+- Implement a new feature
+- Discuss potential ways to improve project
+- Improve existing implementation, performance, etc.
 
 
 <br />
@@ -62,14 +62,17 @@ There are various templates for asking a question, reporting a bug or requesting
 Пожалуйста, используйте шаблоны для создания `issue` и `PR`, где это возможно. \
 Используются разные шаблоны для того, чтобы задать вопрос, сообщить о баге или предложить новую функциональность.
 
-* [Задать вопрос / Сообщить о баге / Предложить новую функциональность](https://github.com/MorevM/vue-transitions/issues/new)
-* [Гайд: Создание пул-реквеста [EN]](https://help.github.com/articles/creating-a-pull-request/)
+- [Задать вопрос / Сообщить о баге / Предложить новую функциональность][create-issue]
+- [Гайд: Создание пул-реквеста (EN)][creating-pull-request]
 
 ## ✒️ Способы внести вклад
 
-* Написать о проекте в Твиттере или своём сайте
-* Улучшить документацию
-* Исправить баг
-* Внедрить новую функциональность
-* Участвовать в обсуждениях о развитии проекта
-* Улучшить существующий код
+- Написать о проекте в Твиттере или своём сайте
+- Улучшить документацию
+- Исправить баг
+- Внедрить новую функциональность
+- Участвовать в обсуждениях о развитии проекта
+- Улучшить существующий код
+
+[create-issue]: https://github.com/MorevM/vue-transitions/issues/new
+[creating-pull-request]: https://help.github.com/articles/creating-a-pull-request/

@@ -35,6 +35,16 @@ export default combine([
 		files: ['tests/e2e/**/*.e2e.ts'],
 	}),
 	{
+		name: 'project/typescript-project-service',
+		languageOptions: {
+			parserOptions: {
+				projectService: {
+					allowDefaultProject: ['tests/consumers/nuxt3/nuxt.config.ts'],
+				},
+			},
+		},
+	},
+	{
 		name: 'project/transition-mixin-methods',
 		files: ['src/transitions/**/*.vue'],
 		rules: {
@@ -74,13 +84,6 @@ export default combine([
 	{
 		name: 'project/consumer-fixtures',
 		files: ['tests/consumers/**/*.{cjs,cts,js,mjs,mts,ts,vue}'],
-		languageOptions: {
-			parserOptions: {
-				projectService: {
-					allowDefaultProject: ['tests/consumers/nuxt3/nuxt.config.ts'],
-				},
-			},
-		},
 		rules: {
 			// Fixture dependencies exist only in the temporary consumer installations.
 			'import-x/no-unresolved': 'off',
