@@ -1,5 +1,37 @@
 
 
+## [4.0.0-rc.0](https://github.com/MorevM/vue-transitions/compare/v3.0.5...v4.0.0-rc.0) (2026-10-02)
+
+
+### ⚠ BREAKING CHANGES
+
+- The default entrypoint now always targets Vue 3. Vue 2 users must update imports:
+
+  ```diff
+  - import { TransitionFade } from '@morev/vue-transitions';
+  + import { TransitionFade } from '@morev/vue-transitions/vue2';
+  ```
+
+  The Nuxt module selects the correct version automatically. The package no longer uses a `postinstall` script,
+  so pnpm `onlyBuiltDependencies` and Bun `trustedDependencies` workarounds can be removed.
+
+- Transitions now respect `prefers-reduced-motion` by default. To preserve the previous always-animated behavior, set
+  `motion: 'enabled'` in the plugin's `defaultProps` or pass `motion="enabled"` to a component.
+
+### Features
+
+- Added `TransitionMixed`, which can use different `fade`, `expand`, `scale`, or `slide` presets for enter and leave.
+- Added the `motion` prop with `system`, `enabled`, and `disabled` policies. Lifecycle events still fire when animation is disabled.
+- Vue 2 and Vue 3 now have stable entrypoints, and transition styles are loaded automatically. Keep the explicit
+  `@morev/vue-transitions/styles` import only if your build tool does not pick them up.
+
+
+### Bug fixes
+
+- Delayed, interrupted, and reversed transitions no longer restart delays or leave temporary inline styles behind.
+- Nuxt-generated components now resolve correctly in consumer projects.
+- Lifecycle events and the `/styles` export now have complete TypeScript declarations.
+
 ## [3.0.5](https://github.com/MorevM/vue-transitions/compare/v3.0.4...v3.0.5) (2024-11-04)
 
 ### Bug fixes
