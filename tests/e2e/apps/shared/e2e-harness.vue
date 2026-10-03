@@ -20,6 +20,7 @@
 			:motion-controls="motionControls"
 			@motion-change="setMotion"
 		/>
+		<stagger-scenario v-else-if="scenario === 'stagger'" />
 		<setup-scenario v-else :vue-major="vueMajor" />
 	</main>
 </template>
@@ -27,12 +28,14 @@
 <script>
 	import FadeScenario from './scenarios/fade-scenario.vue';
 	import SetupScenario from './scenarios/setup-scenario.vue';
+	import StaggerScenario from './scenarios/stagger-scenario.vue';
 
 	export default {
 		name: 'e2e-harness',
 		components: {
 			FadeScenario,
 			SetupScenario,
+			StaggerScenario,
 		},
 		props: {
 			vueMajor: {
