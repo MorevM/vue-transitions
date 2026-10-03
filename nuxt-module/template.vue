@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	import { <%= options.componentName %> as TheTransition } from '@morev/vue-transitions';
+	import { <%= options.componentName %> as TheTransition } from '<%= options.packageEntrypoint %>';
 
 	export default {
 		name: '<%= options.componentName %>',

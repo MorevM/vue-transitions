@@ -1,0 +1,14 @@
+packages:
+  - builders/*
+  - docs
+
+allowBuilds:
+  '@parcel/watcher': true
+  core-js: true
+  esbuild: true
+  lefthook: true
+  unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - '@vue/language-core@3.3.12'
+  - vue-tsc@3.3.12

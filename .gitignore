@@ -2,8 +2,10 @@
 dist
 build
 tmp
-playground-bundle
 nuxt
+docs/.vitepress/.temp
+docs/.vitepress/cache
+docs/.vitepress/dist
 
 # Editors
 .idea
@@ -27,7 +29,6 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-.more-sass
+pnpm-debug.log*
 
 todo

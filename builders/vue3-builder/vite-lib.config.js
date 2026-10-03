@@ -6,10 +6,6 @@ const transformPlugin = ({
 	transform: (context) => {
 		return context
 			.replace(
-				'...this.$listeners,',
-				'',
-			)
-			.replace(
 				'// BUILD-TIME: TRANSITIONS IMPORT FOR VUE 3',
 				`import { Transition, TransitionGroup } from 'vue';`,
 			)

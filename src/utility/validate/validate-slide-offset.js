@@ -1,15 +1,15 @@
 import { isArray, isInteger, isString } from '@morev/utils';
 import { validateEnterLeave } from './_validate-enter-leave.js';
 
-export const validateSlideOffset = (value) => validateEnterLeave(value, (val) => {
-	if (!isArray(val)) return false;
-	if (val.length !== 2) return false;
+export const validateSlideOffset = (value) => validateEnterLeave(value, (value_) => {
+	if (!isArray(value_)) return false;
+	if (value_.length !== 2) return false;
 
-	return !val.some(v => {
-		if (isInteger(v)) return false;
+	return !value_.some((offsetPart) => {
+		if (isInteger(offsetPart)) return false;
 
-		if (isString(v)) {
-			return isNaN(Number(v.endsWith('%') ? v.slice(0, -1) : v));
+		if (isString(offsetPart)) {
+			return isNaN(Number(offsetPart.endsWith('%') ? offsetPart.slice(0, -1) : offsetPart));
 		}
 
 		return true;

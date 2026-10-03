@@ -2,7 +2,7 @@ commit-msg:
   commands:
     commitlint:
       skip: [merge, rebase]
-      run: yarn commitlint --edit {1}
+      run: pnpm exec commitlint --edit {1}
 
 pre-commit:
   parallel: true
@@ -10,10 +10,10 @@ pre-commit:
     eslint:
       glob: '*.{js,ts,vue,json,json5,jsonc,yml,yaml,md}'
       skip: [merge, rebase]
-      run: yarn eslint {staged_files} --fix
+      run: pnpm eslint {staged_files} --fix
       stage_fixed: true
     stylelint:
       glob: '*.{css,scss}'
       skip: [merge, rebase]
-      run: yarn stylelint {staged_files} --fix --allow-empty-input
+      run: pnpm stylelint {staged_files} --fix --allow-empty-input
       stage_fixed: true
