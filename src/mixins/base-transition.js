@@ -9,8 +9,36 @@ import { validateMotion } from '../utility/validate/validate-motion.js';
 
 const activeTransitions = new WeakMap();
 const cancelledTransitions = new WeakMap();
+const staggerBatches = new WeakMap();
 const temporaryStyles = new WeakMap();
 let reducedMotionPreference = null;
+
+const getStaggerIndex = (context, event) => {
+	let batches = staggerBatches.get(context);
+
+	if (!batches) {
+		batches = new Map();
+		staggerBatches.set(context, batches);
+	}
+
+	let batch = batches.get(event);
+
+	if (!batch) {
+		batch = { nextIndex: 0 };
+		batches.set(event, batch);
+		context.$nextTick(() => {
+			if (batches.get(event) !== batch) return;
+
+			batches.delete(event);
+			if (batches.size === 0) staggerBatches.delete(context);
+		});
+	}
+
+	const index = batch.nextIndex;
+	batch.nextIndex += 1;
+
+	return index;
+};
 
 const getPrefersReducedMotion = () => {
 	if (!isNull(reducedMotionPreference)) return reducedMotionPreference;
@@ -52,6 +80,10 @@ export const baseTransition = {
 		delay: {
 			validator: validateDelay,
 			default: defaults.transitionDelay,
+		},
+		stagger: {
+			validator: validateDelay,
+			default: defaults.transitionStagger,
 		},
 		noOpacity: {
 			type: Boolean,
@@ -181,8 +213,13 @@ export const baseTransition = {
 
 			if (activeTransition?.event === event) return activeTransition;
 			if (activeTransition) return undefined;
+			const stagger = this.stagger?.[event] ?? this.stagger;
 
-			const transition = { event, isMotionDisabled: this.cMotionDisabled };
+			const transition = {
+				event,
+				isMotionDisabled: this.cMotionDisabled,
+				staggerIndex: this.group && stagger > 0 ? getStaggerIndex(this, event) : 0,
+			};
 
 			activeTransitions.set(element, transition);
 			if (!transition.isMotionDisabled) this.reduceTransition(element);
@@ -253,7 +290,11 @@ export const baseTransition = {
 			const easing = this.easing?.[event] ?? this.easing;
 			const cancelledEvent = event === 'enter' ? 'leave' : 'enter';
 			const isReversed = cancelledTransitions.get(element) === cancelledEvent;
-			const delay = isReversed ? 0 : (this.delay?.[event] ?? this.delay);
+			const baseDelay = this.delay?.[event] ?? this.delay;
+			const stagger = this.stagger?.[event] ?? this.stagger;
+			const staggerIndex = this.getActiveTransition(element)?.staggerIndex ?? 0;
+			const staggerDelay = stagger * staggerIndex;
+			const delay = isReversed ? 0 : baseDelay + staggerDelay;
 
 			cancelledTransitions.delete(element);
 

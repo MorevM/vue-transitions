@@ -14,7 +14,10 @@ const options = {
 			leave: { preset: 'fade' },
 		},
 	},
-	defaultProps: { duration: 175 },
+	defaultProps: {
+		duration: 175,
+		stagger: { enter: 50, leave: 25 },
+	},
 } satisfies PluginOptions;
 const app = createApp({});
 

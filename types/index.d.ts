@@ -63,6 +63,13 @@ type CommonProps = {
 	delay: number | { enter: number; leave: number };
 
 	/**
+	 * Additional delay between transition-group children entering or leaving in the same update, ms.
+	 *
+	 * @default 0
+	 */
+	stagger: number | { enter: number; leave: number };
+
+	/**
 	 * Transition animation easing. Should be a valid CSS transition timing function.
 	 *
 	 * @default 'cubic-bezier(.25, .8, .5, 1)'
