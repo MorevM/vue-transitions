@@ -17,7 +17,10 @@
 
 		<div
 			class="transition-demo__stage"
-			:class="{ 'transition-demo__stage--interactive': !isGroup }"
+			:class="{
+				'transition-demo__stage--group': isGroup,
+				'transition-demo__stage--interactive': !isGroup,
+			}"
 			:role="isGroup ? undefined : 'button'"
 			:tabindex="isGroup ? undefined : 0"
 			@pointerdown="toggleSinglePreview"
@@ -60,6 +63,22 @@
 			<div v-if="isGroup" class="transition-demo__group-actions">
 				<button class="transition-demo__action" type="button" @click.stop="addItem">Add item</button>
 				<button class="transition-demo__action" type="button" @click.stop="reverseItems">Reverse</button>
+				<button
+					v-if="hasControl('stagger')"
+					class="transition-demo__action"
+					type="button"
+					@click.stop="clearItems"
+				>
+					Clear
+				</button>
+				<button
+					v-if="hasControl('stagger')"
+					class="transition-demo__action"
+					type="button"
+					@click.stop="resetItems"
+				>
+					Reset
+				</button>
 			</div>
 		</div>
 
@@ -149,6 +168,16 @@
 				</select>
 			</label>
 
+			<label v-if="hasControl('stagger')" class="transition-demo__field">
+				<span>Stagger</span>
+				<select v-model.number="stagger" class="transition-demo__input">
+					<option :value="0">0ms</option>
+					<option :value="50">50ms</option>
+					<option :value="100">100ms</option>
+					<option :value="200">200ms</option>
+				</select>
+			</label>
+
 			<label v-if="hasControl('easing')" class="transition-demo__field">
 				<span>Easing</span>
 				<select v-model="easing" class="transition-demo__input">
@@ -178,7 +207,7 @@
 
 			<label v-if="hasControl('noMove')" class="transition-demo__checkbox">
 				<input v-model="noMove" type="checkbox" />
-				Disable move animation
+				Keep leaving items in flow
 			</label>
 		</div>
 
@@ -225,7 +254,8 @@
 		| 'noOpacity'
 		| 'offset'
 		| 'origin'
-		| 'scale';
+		| 'scale'
+		| 'stagger';
 	type Preset = 'expand' | 'fade' | 'scale' | 'slide';
 	type PreviewMode = 'group' | 'single';
 	type TransitionName = 'expand' | 'fade' | 'mixed' | 'scale' | 'slide';
@@ -233,10 +263,12 @@
 	const $props = withDefaults(defineProps<{
 		controls?: Control[];
 		defaultMode?: PreviewMode;
+		defaultNoMove?: boolean;
 		transition: TransitionName;
 	}>(), {
 		controls: () => [],
 		defaultMode: 'single',
+		defaultNoMove: false,
 	});
 
 	const transitionComponents = {
@@ -283,9 +315,10 @@
 	const motion = ref('system');
 	const duration = ref(400);
 	const delay = ref(0);
+	const stagger = ref(100);
 	const easing = ref('cubic-bezier(.25, .8, .5, 1)');
 	const moveDuration = ref(400);
-	const noMove = ref(false);
+	const noMove = ref($props.defaultNoMove);
 	const noOpacity = ref(false);
 
 	const activeTransition = computed(() => transitionComponents[$props.transition]);
@@ -327,6 +360,13 @@
 	const reverseItems = () => {
 		items.value.reverse();
 	};
+	const clearItems = () => {
+		items.value = [];
+	};
+	const resetItems = () => {
+		items.value = [1, 2, 3, 4];
+		nextItem.value = 5;
+	};
 	const transitionOptions = computed(() => {
 		const commonOptions = {
 			delay: delay.value,
@@ -337,6 +377,7 @@
 			moveDuration: moveDuration.value,
 			noMove: noMove.value,
 			noOpacity: noOpacity.value,
+			stagger: hasControl('stagger') ? stagger.value : 0,
 			tag: 'ul',
 		};
 
@@ -365,6 +406,7 @@
 		if (hasControl('motion')) attributes.push(`motion="${motion.value}"`);
 		if (hasControl('duration')) attributes.push(`:duration="${duration.value}"`);
 		if (hasControl('delay')) attributes.push(`:delay="${delay.value}"`);
+		if (hasControl('stagger') && isGroup.value) attributes.push(`:stagger="${stagger.value}"`);
 		if (hasControl('easing')) attributes.push(`easing="${easing.value}"`);
 		if (hasControl('moveDuration') && isGroup.value) {
 			attributes.push(`:move-duration="${moveDuration.value}"`);

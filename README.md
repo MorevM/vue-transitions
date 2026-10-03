@@ -732,6 +732,37 @@ export type TransitionDelay = number | { enter: number, leave: number };
 </details>
 
 <details>
+  <summary><code>stagger</code></summary>
+  <br />
+
+Additional delay between children entering or leaving a `transition-group` in the same update, in milliseconds.
+The first child uses the regular `delay`; each following child adds another `stagger` interval.
+
+If an object is given, its `enter` and `leave` values are used for the corresponding transition phases.
+
+```ts
+// Default: 0
+export type TransitionStagger = number | { enter: number, leave: number };
+```
+
+**Example:**
+
+```vue
+<template>
+  <transition-fade group tag="ul" :stagger="{ enter: 80, leave: 40 }">
+    <li v-for="item in items" :key="item.id">
+      {{ item.label }}
+    </li>
+  </transition-fade>
+</template>
+```
+
+The sequence uses the DOM order of only those children that enter or leave together. `stagger` has no effect outside
+group mode and does not delay move animations.
+
+</details>
+
+<details>
   <summary><code>easing</code></summary>
   <br />
 

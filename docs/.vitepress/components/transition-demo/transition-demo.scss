@@ -32,6 +32,7 @@
 	}
 
 	&__stage {
+		position: relative;
 		display: block grid;
 		gap: 22px;
 		align-content: center;
@@ -42,6 +43,10 @@
 			var(--vp-c-bg);
 		overflow: hidden;
 		place-items: center;
+
+		&--group {
+			padding-block-end: 96px;
+		}
 
 		&--interactive {
 			cursor: pointer;
@@ -126,8 +131,16 @@
 	}
 
 	&__group-actions {
+		position: absolute;
+		inset-block-end: 24px;
+		inset-inline-start: 50%;
 		display: block flex;
+		flex-wrap: wrap;
 		gap: 10px;
+		justify-content: center;
+		inline-size: max-content;
+		max-inline-size: calc(100% - 32px);
+		transform: translateX(-50%);
 	}
 
 	&__action,

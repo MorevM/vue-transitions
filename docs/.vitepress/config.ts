@@ -103,6 +103,7 @@ export default defineConfig({
 					{ text: 'Nuxt', link: '/guide/nuxt' },
 					{ text: 'Reduced motion', link: '/guide/accessibility' },
 					{ text: 'List transitions', link: '/guide/lists' },
+					{ text: 'Staggered transitions', link: '/guide/staggered-lists' },
 				],
 			},
 			{
