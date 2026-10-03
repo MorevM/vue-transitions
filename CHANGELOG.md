@@ -1,5 +1,12 @@
 
 
+## [4.0.0-rc.1](https://github.com/MorevM/vue-transitions/compare/v4.0.0-rc.0...v4.0.0-rc.1) (2026-10-03)
+
+
+### CI improvements
+
+* Fix order of release actions ([01ea83e](https://github.com/MorevM/vue-transitions/commit/01ea83e8cd28eb970cf2ffe19dcd7185e616b90a))
+
 ## [4.0.0-rc.0](https://github.com/MorevM/vue-transitions/compare/v3.0.5...v4.0.0-rc.0) (2026-10-02)
 
 
