@@ -7,7 +7,7 @@
 		"**/*.css",
 		"dist/**/vue-transitions.browser.*"
 	],
-	"version": "4.0.0-rc.1",
+	"version": "4.0.0",
 	"packageManager": "pnpm@12.6.0",
 	"workspaces": [
 		"builders/*"
