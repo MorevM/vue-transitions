@@ -11,6 +11,7 @@
 
 <script>
 	import { baseTransition } from '../../mixins/base-transition.js';
+	import { fadePreset } from '../../presets/index.js';
 
 	export default {
 		name: 'transition-fade',
@@ -22,24 +23,11 @@
 		computed: {},
 		methods: {
 			onEnter(element) {
-				this.fadeElement(element, 'enter');
-				element.offsetTop; // eslint-disable-line no-unused-expressions
-
-				this.setupTransition(element, 'enter');
-				this.$nextTick(() => element.style.removeProperty('opacity'));
+				fadePreset.enter(this, element);
 			},
 
 			onLeave(element) {
-				this.setupTransition(element, 'leave');
-				this.fadeElement(element, 'leave');
-			},
-
-			fadeElement(element, event = 'enter') {
-				element.style.setProperty('opacity', 0);
-			},
-
-			resetElement(element) {
-				element.style.removeProperty('opacity');
+				fadePreset.leave(this, element);
 			},
 		},
 	};

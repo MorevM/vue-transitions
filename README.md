@@ -16,41 +16,42 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 ✔️ Considers initial styles of animated elements such as `transform` or `opacity`; \
 ✔️ Even more easy-to-use with universal `Nuxt 2` and `Nuxt 3` module.
 
-[DEMO / Playground](https://morevm.github.io/vue-transitions/)
+[Documentation and interactive demos]
 
-## Table of contents:
+## Table of contents
 
-* [Demo](https://morevm.github.io/vue-transitions/)
-* [Installation](#installation)
-  * [Requirements](#-requirements)
-  * [Using `yarn`](#using-yarn)
-  * [Using `npm`](#using-npm)
-  * [Using `pnpm`](#using-pnpm)
-  * [Using `bun`](#using-bun)
-* [Usage](#usage)
-  * [Global registration](#global-registration)
-    * [Custom options](#custom-options)
-  * [Direct import of components](#direct-import-of-components)
-  * [Usage with Nuxt](#usage-with-nuxt)
-* [IntelliSense](#intellisense)
-* [List of transitions](#list-of-transitions)
-  * [TransitionFade](#transitionfade)
-  * [TransitionExpand](#transitionexpand)
-  * [TransitionSlide](#transitionslide)
-  * [TransitionScale](#transitionscale)
-* [Props](#props)
-  * [Common props](#common-props)
-  * [Unique props of `TransitionExpand`](#unique-props-of-transitionexpand)
-  * [Unique props of `TransitionSlide`](#unique-props-of-transitionslide)
-  * [Unique props of `TransitionScale`](#unique-props-of-transitionscale)
-* [Events](#events)
+- [Documentation and interactive demos]
+- [Installation](#installation)
+  - [Requirements](#-requirements)
+  - [Using `yarn`](#using-yarn)
+  - [Using `npm`](#using-npm)
+  - [Using `pnpm`](#using-pnpm)
+  - [Using `bun`](#using-bun)
+- [Usage](#usage)
+  - [Global registration](#global-registration)
+    - [Custom options](#custom-options)
+  - [Direct import of components](#direct-import-of-components)
+  - [Usage with Nuxt]
+- [IntelliSense](#intellisense)
+- [List of transitions](#list-of-transitions)
+  - [TransitionFade](#transitionfade)
+  - [TransitionMixed](#transitionmixed)
+  - [TransitionExpand](#transitionexpand)
+  - [TransitionSlide]
+  - [TransitionScale]
+- [Props](#props)
+  - [Common props](#common-props)
+  - [Unique props of `TransitionExpand`]
+  - [Unique props of `TransitionSlide`]
+  - [Unique props of `TransitionScale`]
+- [Events](#events)
 
 ## Installation
 
 ### ❗ Requirements
 
-* Node version: `>= 18.0.0`
-* Nuxt version (if used): `>= 2.17.0 || >= 3.5.0`
+- Node version: `>= 18.12.0`
+- Nuxt version (if used): `>= 2.17.0 || >= 3.5.0`
 
 **The plugin will not work if you are using a Node or Nuxt version less than the specified ones.**
 
@@ -58,7 +59,7 @@ Reusable interface transitions for `Vue 2` and `Vue 3` with no CSS needed ❤️
 
 ### Using `yarn`
 
-```bash
+```sh
 yarn add @morev/vue-transitions
 ```
 
@@ -66,7 +67,7 @@ yarn add @morev/vue-transitions
 
 ### Using `npm`
 
-```bash
+```sh
 npm install @morev/vue-transitions
 ```
 
@@ -74,56 +75,16 @@ npm install @morev/vue-transitions
 
 ### Using `pnpm`
 
-```bash
+```sh
 pnpm add @morev/vue-transitions
 ```
-
-❗ **Important note for `pnpm>=10.0.0` users**
-
-The package relies on `postinstall` hook to determine the Vue version and provide proper components. \
-By default, [pnpm@10.0.0 does not execute lifecycle hooks](https://github.com/pnpm/pnpm/releases/tag/v10.0.0),
-so to make it work you need to add the package to the [`pnpm.onlyBuiltDependencies`](https://pnpm.io/package_json#pnpmonlybuiltdependencies)
-field in your `package.json` before installing:
-
-```json
-{
-  "pnpm": {
-    "onlyBuiltDependencies": ["@morev/vue-transitions"]
-  }
-}
-```
-
-If you install the package before adding the entry, you have to set Vue version you are using manually using the command
-`vue-transitions-version-switch`:
-
-```sh
-# set Vue 3
-pnpm vue-transitions-version-switch 3
-
-# Set Vue 2
-pnpm vue-transitions-version-switch 2
-```
-
-*Even with the command launched, it's important to add the `pnpm.onlyBuiltDependencies` field so that everything works well in future installations.*
 
 ---
 
 ### Using `bun`
 
-```bash
+```sh
 bun add @morev/vue-transitions
-```
-
-❗ **Important note for `Bun` users**
-
-The package relies on `postinstall` hook to determine the Vue version and provide proper components. \
-By default, [Bun does not execute lifecycle hooks](https://bun.sh/docs/cli/install#lifecycle-scripts),
-so to make it work you need to manually add the package to the `trustedDependencies` after installing and run `bun install` again.
-
-```json
-{
-  "trustedDependencies": ["@morev/vue-transitions"]
-}
 ```
 
 ---
@@ -131,24 +92,15 @@ so to make it work you need to manually add the package to the `trustedDependenc
 ## Usage
 
 > You may skip the following paragraphs if you are going to use the library with Nuxt. \
-> [Go to "Usage with Nuxt" section](#usage-with-nuxt).
+> [Go to "Usage with Nuxt" section][Usage with Nuxt].
 
-Package exports two versions of components:
+The package provides dedicated entrypoints for both Vue versions:
 
-* Version for `Vue2` available with named export `/vue2`
-* Version for `Vue3` available with named export `/vue3`
+- `@morev/vue-transitions` targets Vue 3. \
+  `@morev/vue-transitions/vue3` is an explicit alias for the Vue 3 entrypoint.
+- `@morev/vue-transitions/vue2` targets Vue 2.
 
-However, there is also a default export mapped to local version of Vue being used. \
-Underhood, it utilized the [postinstall](https://docs.npmjs.com/cli/v8/using-npm/scripts) npm hook. \
-After installing the package, the script will start to check the installed Vue version
-and redirect the exports to based on the local Vue version.
-
-It feels pretty robust, but if you're worried about, prefer an explicit named import according to the version you're using.
-
-> By the way, you can change default export after installation: just run the command `vue-transitions-version-switch <version>`
->
-> * Example using `yarn`: `yarn vue-transitions-version-switch 2`
-> * Example using `npx`: `npx vue-transitions-version-switch 3`
+Transition styles are included automatically when you import the plugin or individual components.
 
 ### Global registration
 
@@ -157,7 +109,6 @@ It feels pretty robust, but if you're worried about, prefer an explicit named im
 ```js
 import { createApp } from 'vue';
 import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
-import '@morev/vue-transitions/styles';
 
 const app = createApp(App);
 
@@ -170,8 +121,7 @@ app.use(vueTransitionsPlugin({
 
 ```js
 import Vue from 'vue';
-import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
-import '@morev/vue-transitions/styles';
+import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions/vue2';
 
 Vue.use(vueTransitionsPlugin, {
   // Plugin options (optional, described below)
@@ -179,15 +129,13 @@ Vue.use(vueTransitionsPlugin, {
 ```
 
 <details>
-  <summary>😥 I got an error "This dependency was not found"</summary>
+  <summary>Transition styles are missing?</summary>
 
-  For environments that can't resolve `exports` field (such as [Nuxt 2](https://nuxtjs.org/))
-  just replace styles import with direct path to file:
+Some build tools may not load the styles automatically. In that case, import them once in your app entrypoint:
 
-  ```diff
-  - import '@morev/vue-transitions/styles';
-  + import '@morev/vue-transitions/dist/index.css';
-  ```
+```js
+import '@morev/vue-transitions/styles';
+```
 
 </details>
 
@@ -206,7 +154,6 @@ You may also change default props per-component, to do so just pass the `compone
 ```js
 import { createApp } from 'vue';
 import { plugin as vueTransitionsPlugin } from '@morev/vue-transitions';
-import '@morev/vue-transitions/styles';
 
 const app = createApp(App);
 
@@ -246,9 +193,12 @@ app.use(vueTransitionsPlugin({
 </script>
 ```
 
+The example uses Vue 3. Import the component from `@morev/vue-transitions/vue2` in a Vue 2 application.
+
 ### Usage with Nuxt
 
 The library exports a ready-to-use universal module for Nuxt 2 and 3 via named export `/nuxt`. \
+The module selects the matching Vue entrypoint from the detected Nuxt major version. \
 Using Nuxt, it's recommended to use the module instead of manual installation because:
 
 1. Nuxt allows to auto-import components on demand instead of global registration, which is a more performant option.
@@ -299,21 +249,21 @@ Basic transition that changes element `opacity`. Pretty simple.
 <details>
   <summary>Show code</summary>
 
-  ```vue
-  <template>
-    <transition-fade>
-      <div v-if="isVisible">...</div>
-    </transition-fade>
-  </template>
+```vue
+<template>
+  <transition-fade>
+    <div v-if="isVisible">...</div>
+  </transition-fade>
+</template>
 
-  <script>
-    import { TransitionFade } from '@morev/vue-transitions';
+<script>
+  import { TransitionFade } from '@morev/vue-transitions';
 
-    export default {
-      components: { TransitionFade },
-    };
-  </script>
-  ```
+  export default {
+    components: { TransitionFade },
+  };
+</script>
+```
 
 </details>
 
@@ -326,7 +276,7 @@ If you are old enough you may know this transition as jQuery [`slideUp/slideDown
 It also can work with `X` axis like `slideLeft` and `slideRight`
 (although it's hard for me to come up with a scenario where it will really be needed).
 
-Has [unique prop](#unique-props-of-transitionexpand): `axis`
+Has [unique prop][Unique props of `TransitionExpand`]: `axis`
 
 ---
 
@@ -338,42 +288,42 @@ It requires `offset` prop to calculate desired element position and can work wit
 <details>
   <summary>Examples how to work with <code>offset</code> prop</summary>
 
-  ```vue
-  <template>
-    <!--
-      Element will fade in and fade out to top.
-      Initial transform is `transform: translate(0, -16px)`
-    -->
-    <transition-slide :offset="[0, -16]"></transition-slide>
+```vue
+<template>
+  <!--
+    Element will fade in and fade out to top.
+    Initial transform is `transform: translate(0, -16px)`
+  -->
+  <transition-slide :offset="[0, -16]"></transition-slide>
 
-    <!--
-      Element will fade in and fade out to bottom left side.
-      Initial transform is `transform: translate(-16px, 16px)`
-    -->
-    <transition-slide :offset="[-16, 16]"></transition-slide>
+  <!--
+    Element will fade in and fade out to bottom left side.
+    Initial transform is `transform: translate(-16px, 16px)`
+  -->
+  <transition-slide :offset="[-16, 16]"></transition-slide>
 
-    <!--
-      Element will fade in and fade out to right,
-      and the offset will be relative to the element width itself.
-      Initial transform is `transform: translate(100%, 0)`
-    -->
-    <transition-slide :offset="['100%', 0]"></transition-slide>
+  <!--
+    Element will fade in and fade out to right,
+    and the offset will be relative to the element width itself.
+    Initial transform is `transform: translate(100%, 0)`
+  -->
+  <transition-slide :offset="['100%', 0]"></transition-slide>
 
-    <!--
-      Element will fade in from top and fade out to bottom,
-      and the offset will be relative to the element height itself.
+  <!--
+    Element will fade in from top and fade out to bottom,
+    and the offset will be relative to the element height itself.
 
-      Transform before element appears: `transform: translate(0, -100%)`
-      Transform when element disappears: `transform: translate(0, 100%)`
-    -->
-    <transition-slide
-      :offset="{
-        enter: [0, '-100%'],
-        leave: [0, '100%']
-      }"
-    ></transition-slide>
-  </template>
-  ```
+    Transform before element appears: `transform: translate(0, -100%)`
+    Transform when element disappears: `transform: translate(0, 100%)`
+  -->
+  <transition-slide
+    :offset="{
+      enter: [0, '-100%'],
+      leave: [0, '100%']
+    }"
+  ></transition-slide>
+</template>
+```
 
 </details>
 
@@ -383,38 +333,38 @@ It's very useful, for example, when you are trying to make centered dropdown.
 <details>
   <summary>👀 Show example of `transform` merging</summary>
 
-  ```vue
-  <template>
-    <div class="block">
-      <!--
-        In this case, given the CSS styles,
-        initial transform will be calculated to `translate(-50%, -16px)`
-      -->
-      <transition-slide :offset="[0, -16]">
-        <div class="block__dropdown" v-if="isVisible">
-          ...
-        </div>
-      </transition-slide>
-    </div>
-  </template>
+```vue
+<template>
+  <div class="block">
+    <!--
+      In this case, given the CSS styles,
+      initial transform will be calculated to `translate(-50%, -16px)`
+    -->
+    <transition-slide :offset="[0, -16]">
+      <div class="block__dropdown" v-if="isVisible">
+        ...
+      </div>
+    </transition-slide>
+  </div>
+</template>
 
-  <style>
-    .block {
-      position: relative;
-    }
+<style>
+  .block {
+    position: relative;
+  }
 
-    .block__dropdown {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  </style>
-  ```
+  .block__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
+```
 
 </details>
 
-Has [unique prop](#unique-props-of-transitionslide): `offset`
+Has [unique prop][Unique props of `TransitionSlide`]: `offset`
 
 ---
 
@@ -422,35 +372,94 @@ Has [unique prop](#unique-props-of-transitionslide): `offset`
 
 Transition that manipulates with element `transform: scale()`. \
 By default, it scales element from `scale(1)` to `scale(0)`, but this behavior can be customized via `:scale` prop. \
-It works with different axis via [axis](#unique-props-of-transitionscale) prop.
+It works with different axis via [axis][Unique props of `TransitionScale`] prop.
 
-Has [unique props](#unique-props-of-transitionscale): `scale`, `axis`, `origin`
+Has [unique props][Unique props of `TransitionScale`]: `scale`, `axis`, `origin`
 
 <details>
   <summary>Show example of code</summary>
 
-  ```vue
-  <template>
-    <!--
-      This element appears in `x` axis and disappears in `y`
-    -->
-    <transition-scale :axis="{ enter: 'x', leave: 'y' }"></transition-scale>
+```vue
+<template>
+  <!--
+    This element appears in `x` axis and disappears in `y`
+  -->
+  <transition-scale :axis="{ enter: 'x', leave: 'y' }"></transition-scale>
 
-    <!--
-      This element behaves like the `transition-expand`,
-      but touches only `transform` property
-    -->
-    <transition-scale transform-origin="50% 0%"></transition-scale>
+  <!--
+    This element behaves like the `transition-expand`,
+    but touches only `transform` property
+  -->
+  <transition-scale transform-origin="50% 0%"></transition-scale>
 
-    <!--
-      This element scales just a little when fading in/out.
-    -->
-    <transition-scale :scale=".8"></transition-scale>
+  <!--
+    This element scales just a little when fading in/out.
+  -->
+  <transition-scale :scale=".8"></transition-scale>
 
-  </template>
-  ```
+</template>
+```
 
 </details>
+
+
+---
+
+### TransitionMixed
+
+Transition that uses independently configured presets when an element enters and leaves.
+The component supports the same common props and lifecycle events as the other transitions.
+
+The `enter` and `leave` props are required objects with a `preset` property.
+Preset-specific options are declared inside the corresponding object.
+
+```vue
+<template>
+  <transition-mixed
+    :enter="{
+      preset: 'scale',
+      scale: 0.8,
+      origin: '50% 50%',
+    }"
+    :leave="{
+      preset: 'slide',
+      offset: [0, '100%'],
+    }"
+    :duration="{
+      enter: 180,
+      leave: 240,
+    }"
+  >
+    <div v-if="isVisible">...</div>
+  </transition-mixed>
+</template>
+
+<script>
+  import { TransitionMixed } from '@morev/vue-transitions';
+
+  export default {
+    components: { TransitionMixed },
+  };
+</script>
+```
+
+Available descriptors:
+
+```ts
+type TransitionPreset =
+  | { preset: 'fade' }
+  | { preset: 'expand'; axis?: 'x' | 'y' }
+  | {
+      preset: 'scale';
+      axis?: 'x' | 'y' | 'both';
+      origin?: string;
+      scale?: number;
+    }
+  | {
+      preset: 'slide';
+      offset?: [number | string, number | string];
+    };
+```
 
 ## Props
 
@@ -462,27 +471,27 @@ Those properties are related to each transition:
   <summary><code>group</code></summary>
   <br />
 
-  Whether the component should be a [`transition-group`](https://v2.vuejs.org/v2/guide/transitions.html#List-Transitions) component.
+Whether the component should be a [`transition-group`] component.
 
-  ```ts
-  export type TransitionGroup = boolean; // Default: false
-  ```
+```ts
+export type TransitionGroup = boolean; // Default: false
+```
 
-  **Example:**
+**Example:**
 
-  ```vue
-  <template>
-    <div>
-      <!--
-        To animate a list of items, use `group` prop.
-        ⚠️ Don't forget you should pass the `:key` to each item in this case.
-      -->
-      <transition-fade group>
-        <div v-for="item in items" :key="item.id">...</div>
-      </transition-fade>
-    </div>
-  </template>
-  ```
+```vue
+<template>
+  <div>
+    <!--
+      To animate a list of items, use `group` prop.
+      ⚠️ Don't forget you should pass the `:key` to each item in this case.
+    -->
+    <transition-fade group>
+      <div v-for="item in items" :key="item.id">...</div>
+    </transition-fade>
+  </div>
+</template>
+```
 
 </details>
 
@@ -490,33 +499,33 @@ Those properties are related to each transition:
   <summary><code>tag</code></summary>
   <br />
 
-  Transition tag, in the case of using a [`transition-group`](https://v2.vuejs.org/v2/guide/transitions.html#List-Transitions) component.
+Transition tag, in the case of using a [`transition-group`] component.
 
-  ```ts
-  export type TransitionTag = string; // Default: 'span'
-  ```
+```ts
+export type TransitionTag = string; // Default: 'span'
+```
 
-  **Example:**
+**Example:**
 
-  ```vue
-  <template>
-    <div>
-      <!--
-        Passing the tag renders transition component with it.
-        It's suitable, for example, for rendering semantic lists:
-      -->
-      <transition-fade group tag="ul">
-        <li v-for="item in items" :key="item.id">...</li>
-      </transition-fade>
+```vue
+<template>
+  <div>
+    <!--
+      Passing the tag renders transition component with it.
+      It's suitable, for example, for rendering semantic lists:
+    -->
+    <transition-fade group tag="ul">
+      <li v-for="item in items" :key="item.id">...</li>
+    </transition-fade>
 
-      <!-- ✨ Rendered HTML: -->
-      <ul>
-        <li>...</li>
-        <li>...</li>
-      </ul>
-    </div>
-  </template>
-  ```
+    <!-- ✨ Rendered HTML: -->
+    <ul>
+      <li>...</li>
+      <li>...</li>
+    </ul>
+  </div>
+</template>
+```
 
 </details>
 
@@ -524,28 +533,28 @@ Those properties are related to each transition:
   <summary><code>appear</code></summary>
   <br />
 
-  Whether to apply a transition on the initial render of a node.
-  Acts literally the same as original
-  [Vue transition appear prop](https://v2.vuejs.org/v2/guide/transitions.html?redirect=true#Transitions-on-Initial-Render)
+Whether to apply a transition on the initial render of a node.
+Acts literally the same as original
+[Vue transition appear prop](https://v2.vuejs.org/v2/guide/transitions.html?redirect=true#Transitions-on-Initial-Render)
 
-  ```ts
-  export type TransitionAppear = boolean; // Default: undefined
-  ```
+```ts
+export type TransitionAppear = boolean; // Default: undefined
+```
 
-  **Example:**
+**Example:**
 
-  ```vue
-  <template>
-    <div>
-      <!--
-        This element appears when mounted if `isVisible` is `true` by default.
-      -->
-      <transition-fade appear>
-        <div v-if="isVisible">...</div>
-      </transition-fade>
-    </div>
-  </template>
-  ```
+```vue
+<template>
+  <div>
+    <!--
+      This element appears when mounted if `isVisible` is `true` by default.
+    -->
+    <transition-fade appear>
+      <div v-if="isVisible">...</div>
+    </transition-fade>
+  </div>
+</template>
+```
 
 </details>
 
@@ -553,27 +562,56 @@ Those properties are related to each transition:
   <summary><code>mode</code></summary>
   <br />
 
-  [Transition mode](https://v2.vuejs.org/v2/guide/transitions.html?redirect=true#Transition-Modes).
+[Transition mode](https://v2.vuejs.org/v2/guide/transitions.html?redirect=true#Transition-Modes).
 
-  ```ts
-  export type TransitionMode = 'in-out' | 'out-in' | undefined; // Default: undefined
-  ```
+```ts
+export type TransitionMode = 'in-out' | 'out-in' | undefined; // Default: undefined
+```
 
-  **Example:**
+**Example:**
 
-  ```vue
-  <template>
-    <div>
-      <!--
-        Current element transitions out first, then when complete,
-        the new element transitions in.
-      -->
-      <transition-slide mode="out-in">
-        <component :is="currentComponent">...</component>
-      </transition-slide>
-    </div>
-  </template>
-  ```
+```vue
+<template>
+  <div>
+    <!--
+      Current element transitions out first, then when complete,
+      the new element transitions in.
+    -->
+    <transition-slide mode="out-in">
+      <component :is="currentComponent">...</component>
+    </transition-slide>
+  </div>
+</template>
+```
+
+</details>
+
+<details>
+  <summary><code>motion</code></summary>
+  <br />
+
+Controls whether transitions are animated:
+
+- `system` disables animations when `prefers-reduced-motion: reduce` matches.
+- `enabled` always animates, ignoring the system preference.
+- `disabled` always performs transitions without animation or delay.
+
+Lifecycle events still fire when animations are disabled. The system preference is read once in the browser and
+refreshed after a page reload. Changes to an explicit `motion` prop apply to transitions started after the change.
+
+```ts
+export type MotionPolicy = 'system' | 'enabled' | 'disabled'; // Default: 'system'
+```
+
+**Example:**
+
+```vue
+<template>
+  <transition-slide :motion="animationsEnabled ? 'enabled' : 'disabled'">
+    <div v-if="isVisible">...</div>
+  </transition-slide>
+</template>
+```
 
 </details>
 
@@ -581,38 +619,38 @@ Those properties are related to each transition:
   <summary><code>duration</code></summary>
   <br />
 
-  Transition animation duration, ms. \
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+Transition animation duration, ms. \
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  ```ts
-  // Default: 300
-  export type TransitionDuration = number | { enter: number, leave: number }
-  ```
+```ts
+// Default: 300
+export type TransitionDuration = number | { enter: number, leave: number }
+```
 
-  **Example:**
+**Example:**
 
-  ```vue
-  <template>
-    <div>
-      <!--
-        If single value provided, the passed amount of milliseconds
-        applied to enter and leave animations both.
-        This element will appear and disappear within 500ms:
-      -->
-      <transition-fade :duration="500">
-        <div v-if="isVisible">...</div>
-      </transition-fade>
+```vue
+<template>
+  <div>
+    <!--
+      If single value provided, the passed amount of milliseconds
+      applied to enter and leave animations both.
+      This element will appear and disappear within 500ms:
+    -->
+    <transition-fade :duration="500">
+      <div v-if="isVisible">...</div>
+    </transition-fade>
 
-      <!--
-        If an object given, it SHOULD have `enter` and `leave` keys.
-        This element appears in 200ms and disappears within 500ms:
-      -->
-      <transition-fade :duration="{ enter: 200, leave: 500 }">
-        <div v-if="isVisible">...</div>
-      </transition-fade>
-    </div>
-  </template>
-  ```
+    <!--
+      If an object given, it SHOULD have `enter` and `leave` keys.
+      This element appears in 200ms and disappears within 500ms:
+    -->
+    <transition-fade :duration="{ enter: 200, leave: 500 }">
+      <div v-if="isVisible">...</div>
+    </transition-fade>
+  </div>
+</template>
+```
 
 </details>
 
@@ -620,12 +658,12 @@ Those properties are related to each transition:
   <summary><code>move-duration</code></summary>
   <br />
 
-  Duration of animation of elements positions changing, in the case of using a `transition-group`.
+Duration of animation of elements positions changing, in the case of using a `transition-group`.
 
-  Although Vue does not have a native way to set the duration of the move animation via props, this task can be done using
-  [CSS Custom Properties](https://css-tricks.com/a-complete-guide-to-custom-properties/).
+Although Vue does not have a native way to set the duration of the move animation via props, this task can be done using
+[CSS Custom Properties](https://css-tricks.com/a-complete-guide-to-custom-properties/).
 
-  <details>
+<details>
     <summary>👀 Show explanation</summary>
     <br />
 
@@ -643,12 +681,12 @@ Those properties are related to each transition:
     }
     ```
 
-  </details>
+</details>
 
-  ```ts
-  // Default: 300
-  export type TransitionMoveDuration = number;
-  ```
+```ts
+// Default: 300
+export type TransitionMoveDuration = number;
+```
 
 </details>
 
@@ -656,40 +694,71 @@ Those properties are related to each transition:
   <summary><code>delay</code></summary>
   <br />
 
-  Transition animation delay, ms.\
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+Transition animation delay, ms.\
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  ```ts
-  // Default: 300
-  export type TransitionDelay = number | { enter: number, leave: number };
-  ```
+```ts
+// Default: 300
+export type TransitionDelay = number | { enter: number, leave: number };
+```
 
-  **Example:**
+**Example:**
 
-  ```vue
-  <template>
-    <div>
-      <!--
-        If single value provided, then enter and leave animations will wait
-        for given amount of milliseconds before run.
-        This element will appear and disappear 100ms after
-        `isVisible` property changes:
-      -->
-      <transition-fade :delay="100">
-        <div v-if="isVisible">...</div>
-      </transition-fade>
+```vue
+<template>
+  <div>
+    <!--
+      If single value provided, then enter and leave animations will wait
+      for given amount of milliseconds before run.
+      This element will appear and disappear 100ms after
+      `isVisible` property changes:
+    -->
+    <transition-fade :delay="100">
+      <div v-if="isVisible">...</div>
+    </transition-fade>
 
-      <!--
-        If an object given, it SHOULD have `enter` and `leave` keys.
-        This element appears immediately and disappears 200ms after
-        `isVisible` property changes:
-      -->
-      <transition-fade :duration="{ enter: 0, leave: 300 }">
-        <div v-if="isVisible">...</div>
-      </transition-fade>
-    </div>
-  </template>
-  ```
+    <!--
+      If an object given, it SHOULD have `enter` and `leave` keys.
+      This element appears immediately and disappears 200ms after
+      `isVisible` property changes:
+    -->
+    <transition-fade :duration="{ enter: 0, leave: 300 }">
+      <div v-if="isVisible">...</div>
+    </transition-fade>
+  </div>
+</template>
+```
+
+</details>
+
+<details>
+  <summary><code>stagger</code></summary>
+  <br />
+
+Additional delay between children entering or leaving a `transition-group` in the same update, in milliseconds.
+The first child uses the regular `delay`; each following child adds another `stagger` interval.
+
+If an object is given, its `enter` and `leave` values are used for the corresponding transition phases.
+
+```ts
+// Default: 0
+export type TransitionStagger = number | { enter: number, leave: number };
+```
+
+**Example:**
+
+```vue
+<template>
+  <transition-fade group tag="ul" :stagger="{ enter: 80, leave: 40 }">
+    <li v-for="item in items" :key="item.id">
+      {{ item.label }}
+    </li>
+  </transition-fade>
+</template>
+```
+
+The sequence uses the DOM order of only those children that enter or leave together. `stagger` has no effect outside
+group mode and does not delay move animations.
 
 </details>
 
@@ -697,41 +766,41 @@ Those properties are related to each transition:
   <summary><code>easing</code></summary>
   <br />
 
-  Transition animation easing. Should be a valid CSS transition timing function. \
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+Transition animation easing. Should be a valid CSS transition timing function. \
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  ```ts
-  export type TransitionEasing = string; // Default: 'cubic-bezier(.25, .8, .5, 1)'
-  ```
+```ts
+export type TransitionEasing = string; // Default: 'cubic-bezier(.25, .8, .5, 1)'
+```
 
-  **Example:**
+**Example:**
 
-  ```vue
-  <template>
-    <div>
-      <!--
-        If single value provided, then enter and leave animations will use it:
-      -->
-      <transition-fade easing="ease-out">
-        <div v-if="isVisible">...</div>
-      </transition-fade>
+```vue
+<template>
+  <div>
+    <!--
+      If single value provided, then enter and leave animations will use it:
+    -->
+    <transition-fade easing="ease-out">
+      <div v-if="isVisible">...</div>
+    </transition-fade>
 
-      <!--
-        If an object given, it SHOULD have `enter` and `leave` keys.
-        This element uses custom animation known as `bounce-in` for entering
-        and simple `ease-out` curve for leaving:
-      -->
-      <transition-fade
-        :easing="{
-          enter: 'cubic-bezier(0.6, 0, 0.4, 2)',
-          leave: 'ease-out'
-        }"
-      >
-        <div v-if="isVisible">...</div>
-      </transition-fade>
-    </div>
-  </template>
-  ```
+    <!--
+      If an object given, it SHOULD have `enter` and `leave` keys.
+      This element uses custom animation known as `bounce-in` for entering
+      and simple `ease-out` curve for leaving:
+    -->
+    <transition-fade
+      :easing="{
+        enter: 'cubic-bezier(0.6, 0, 0.4, 2)',
+        leave: 'ease-out'
+      }"
+    >
+      <div v-if="isVisible">...</div>
+    </transition-fade>
+  </div>
+</template>
+```
 
 </details>
 
@@ -739,44 +808,44 @@ Those properties are related to each transition:
   <summary><code>no-opacity</code></summary>
   <br />
 
-  Whether to **not** animate the element `opacity`.
+Whether to **not** animate the element `opacity`.
 
-  By default, each transition manipulates `opacity` in addition to the main property. \
-  However, sometimes this is not required - for example, when implementing modal panels that appear from the edge of the screen.
+By default, each transition manipulates `opacity` in addition to the main property. \
+However, sometimes this is not required - for example, when implementing modal panels that appear from the edge of the screen.
 
-  > The prop is obviously not applicable to `transition-fade` component.
+> The prop is obviously not applicable to `transition-fade` component.
 
 
-  ```ts
-  export type TransitionNoOpacity = boolean; // Default: false
-  ```
+```ts
+export type TransitionNoOpacity = boolean; // Default: false
+```
 
-  **Example:**
+**Example:**
 
-  ```vue
-  <template>
-    <div>
-      <!--
-        This panel appears from the right edge of the screen,
-        while its transparency remains unchanged.
-      -->
-      <transition-slide :offset="['100%', 0]" no-opacity>
-        <div class="panel" v-if="isVisible">...</div>
-      </transition-slide>
-    </div>
-  </template>
+```vue
+<template>
+  <div>
+    <!--
+      This panel appears from the right edge of the screen,
+      while its transparency remains unchanged.
+    -->
+    <transition-slide :offset="['100%', 0]" no-opacity>
+      <div class="panel" v-if="isVisible">...</div>
+    </transition-slide>
+  </div>
+</template>
 
-  <style>
-    .panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      background: #ffffff;
-      width: 400px;
-    }
-  </style>
-  ```
+<style>
+  .panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    width: 400px;
+  }
+</style>
+```
 
 </details>
 
@@ -784,33 +853,33 @@ Those properties are related to each transition:
   <summary><code>no-move</code></summary>
   <br />
 
-  Whether to **not** animate elements positions changing, in the case of using a `transition-group`.
+Whether to **not** animate elements positions changing, in the case of using a `transition-group`.
 
-  By default, when using `group` mode, when an element is removed, the remaining elements smoothly change their position. \
-  They are given absolute positioning and dropped out of the flow, so the parent container collapses in height.
+By default, when using `group` mode, when an element is removed, the remaining elements smoothly change their position. \
+They are given absolute positioning and dropped out of the flow, so the parent container collapses in height.
 
-  Usually this is not a problem, but sometimes - for example, when using `transition-expand` and
-  sequentially placed elements under each other, it looks rough. \
-  With this option, you can achieve a more pleasant behavior of the elements in this situation.
+Usually this is not a problem, but sometimes - for example, when using `transition-expand` and
+sequentially placed elements under each other, it looks rough. \
+With this option, you can achieve a more pleasant behavior of the elements in this situation.
 
-  ```ts
-  export type TransitionNoMove = boolean; // Default: false
-  ```
+```ts
+export type TransitionNoMove = boolean; // Default: false
+```
 
-  **Example:**
+**Example:**
 
-  ```vue
-  <template>
-    <div>
-      <!--
-        In this case, the height of the parent element (`ul`) changes smoothly.
-      -->
-      <transition-expand group no-move tag="ul">
-        <li v-for="item in items" :key="item.id">...</li>
-      </transition-expand>
-    </div>
-  </template>
-  ```
+```vue
+<template>
+  <div>
+    <!--
+      In this case, the height of the parent element (`ul`) changes smoothly.
+    -->
+    <transition-expand group no-move tag="ul">
+      <li v-for="item in items" :key="item.id">...</li>
+    </transition-expand>
+  </div>
+</template>
+```
 
 </details>
 
@@ -822,13 +891,13 @@ Those properties are related to each transition:
   <summary><code>axis</code></summary>
   <br />
 
-  Axis by which the element should expand. \
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+Axis by which the element should expand. \
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  ```ts
-  type ExpandAxisValue = 'x' | 'y'; // Default: 'y'
-  export type TransitionExpandAxis = ExpandAxisValue | { enter: ExpandAxisValue, leave: ExpandAxisValue }
-  ```
+```ts
+type ExpandAxisValue = 'x' | 'y'; // Default: 'y'
+export type TransitionExpandAxis = ExpandAxisValue | { enter: ExpandAxisValue, leave: ExpandAxisValue }
+```
 
 </details>
 
@@ -840,20 +909,20 @@ Those properties are related to each transition:
   <summary><code>offset</code></summary>
   <br />
 
-  The element offset by `x` and `y` axis before/after the transition. \
-  Should be an integer or a string representation of percentage value (e.g. `'100%'`).
+The element offset by `x` and `y` axis before/after the transition. \
+Should be an integer or a string representation of percentage value (e.g. `'100%'`).
 
-  Number values treats as `px` offset, string values ending with `%` sign treats as `percentage of the element width / height`. \
-  [Examples and explanation](#transitionslide)
+Number values treats as `px` offset, string values ending with `%` sign treats as `percentage of the element width / height`. \
+[Examples and explanation][TransitionSlide]
 
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  ```ts
-  type SlideOffsetValue = [number | string, number | string];
+```ts
+type SlideOffsetValue = [number | string, number | string];
 
-  // Default: [0, -16]
-  export type TransitionSlideOffset = SlideOffsetValue | { enter: SlideOffsetValue, leave: SlideOffsetValue }
-  ```
+// Default: [0, -16]
+export type TransitionSlideOffset = SlideOffsetValue | { enter: SlideOffsetValue, leave: SlideOffsetValue }
+```
 
 </details>
 
@@ -865,22 +934,22 @@ Those properties are related to each transition:
   <summary><code>axis</code></summary>
   <br />
 
-  Scale axis to be animated.
+Scale axis to be animated.
 
     * `both` (uses `transform: scale()`)
     * `x` (uses `transform: scaleX()`)
     * `y` (uses `transform: scaleY()`)
 
-  [Examples and explanation](#transitionscale)
+[Examples and explanation][TransitionScale]
 
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  ```ts
-  type ScaleAxisValue = 'x' | 'y' | 'both';
+```ts
+type ScaleAxisValue = 'x' | 'y' | 'both';
 
-  // Default: 'both'
-  export type TransitionScaleAxis = ScaleAxisValue | { enter: ScaleAxisValue, leave: ScaleAxisValue }
-  ```
+// Default: 'both'
+export type TransitionScaleAxis = ScaleAxisValue | { enter: ScaleAxisValue, leave: ScaleAxisValue }
+```
 
 </details>
 
@@ -888,18 +957,18 @@ Those properties are related to each transition:
   <summary><code>origin</code></summary>
   <br />
 
-  `transform-origin` CSS property applied to element(s). \
+`transform-origin` CSS property applied to element(s).
 
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  [Examples and explanation](#transitionscale)
+[Examples and explanation][TransitionScale]
 
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  ```ts
-  // Default: '50% 50%'
-  export type TransitionScaleAxis = string | { enter: string, leave: string }
-  ```
+```ts
+// Default: '50% 50%'
+export type TransitionScaleAxis = string | { enter: string, leave: string }
+```
 
 </details>
 
@@ -907,18 +976,18 @@ Those properties are related to each transition:
   <summary><code>scale</code></summary>
   <br />
 
-  The element scale value before/after the transition. Should be a number between `0` and `1`.
+The element scale value before/after the transition. Should be a number between `0` and `1`.
 
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  [Examples and explanation](#transitionscale)
+[Examples and explanation][TransitionScale]
 
-  If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
+If an object given then `enter` and `leave` values will be used for enter and leave transition respectively.
 
-  ```ts
-  // Default: 0
-  export type TransitionScaleScale = number | { enter: number, leave: number }
-  ```
+```ts
+// Default: 0
+export type TransitionScaleScale = number | { enter: number, leave: number }
+```
 
 </details>
 
@@ -926,14 +995,26 @@ Those properties are related to each transition:
 
 ## Events
 
-Components do not provide any special events,
-but trigger [all standard transition events](https://ru.vuejs.org/v2/guide/transitions.html#JavaScript-%D1%85%D1%83%D0%BA%D0%B8):
+Components expose the standard transition lifecycle events:
 
-* `before-enter`
-* `enter`
-* `after-enter`
-* `enter-cancelled`
-* `before-leave`
-* `leave`
-* `after-leave`
-* `enter-leave`
+- `before-enter`
+- `enter`
+- `after-enter`
+- `enter-cancelled`
+- `before-leave`
+- `leave`
+- `after-leave`
+- `leave-cancelled`
+- `before-appear`
+- `appear`
+- `after-appear`
+- `appear-cancelled`
+
+[Documentation and interactive demos]: https://morevm.github.io/vue-transitions/
+[TransitionScale]: #transitionscale
+[TransitionSlide]: #transitionslide
+[Unique props of `TransitionExpand`]: #unique-props-of-transitionexpand
+[Unique props of `TransitionScale`]: #unique-props-of-transitionscale
+[Unique props of `TransitionSlide`]: #unique-props-of-transitionslide
+[Usage with Nuxt]: #usage-with-nuxt
+[`transition-group`]: https://v2.vuejs.org/v2/guide/transitions.html#List-Transitions

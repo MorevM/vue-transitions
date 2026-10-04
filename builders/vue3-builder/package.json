@@ -1,8 +1,8 @@
 {
 	"name": "vue3-builder",
 	"type": "module",
-	"version": "1.0.0",
 	"private": true,
+	"version": "1.0.0",
 	"license": "MIT",
 	"scripts": {
 		"build": "vite build --config vite-lib.config.js"

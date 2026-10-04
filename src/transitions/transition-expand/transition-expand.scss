@@ -1,8 +1,9 @@
-@use '../../mixins/base-transition.scss';
+@use '../../mixins/base-transition';
 
 .expand-enter-active,
 .expand-leave-active {
 	overflow: hidden;
+	/* stylelint-disable-next-line property-layout-mappings -- Runtime animates physical width and height properties. */
 	transition-property: opacity, width, height, margin, padding, transform !important;
 }
 

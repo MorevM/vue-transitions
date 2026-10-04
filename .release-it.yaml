@@ -38,8 +38,10 @@ plugins:
           hidden: true
 hooks:
   before:init:
-    - yarn lint:fix
-    - yarn build
+    - pnpm lint:fix
+    - pnpm build
   after:init:
-    - yarn lint
-    - yarn test
+    - pnpm lint
+    - pnpm test
+    - pnpm test:consumers
+    - pnpm test:e2e

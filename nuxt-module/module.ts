@@ -1,18 +1,22 @@
-import { existsSync, unlinkSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
-import { mergeObjects, isEmpty, isArray } from '@morev/utils';
-import { defineNuxtModule, createResolver, addComponentsDir, isNuxtMajorVersion } from '@nuxt/kit';
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { isArray, isEmpty, mergeObjects } from '@morev/utils';
+import { addComponentsDir, createResolver, defineNuxtModule, isNuxtMajorVersion } from '@nuxt/kit';
+import type { NuxtModule } from '@nuxt/schema';
 import type { PluginOptions } from '../types';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-const COMPONENTS = ['TransitionExpand', 'TransitionFade', 'TransitionScale', 'TransitionSlide'] as const;
+const COMPONENTS = [
+	'TransitionExpand',
+	'TransitionFade',
+	'TransitionMixed',
+	'TransitionScale',
+	'TransitionSlide',
+] as const;
 const BABEL_PLUGIN_NAME = '@babel/plugin-transform-logical-assignment-operators';
 const SCOPE = '@morev';
 const MODULE_NAME = `${SCOPE}/vue-transitions`;
 
-export default defineNuxtModule<PluginOptions>({
+const module: NuxtModule<PluginOptions> = defineNuxtModule<PluginOptions>({
 	meta: {
 		name: `${MODULE_NAME}/nuxt`,
 		configKey: 'vueTransitions',
@@ -24,23 +28,25 @@ export default defineNuxtModule<PluginOptions>({
 		componentDefaultProps: {},
 		defaultProps: {},
 	},
-	hooks: {
-		'prepare:types': ({ declarations }) => {
-			declarations.push('import type {} from "@morev/vue-transitions";');
-		},
-	},
 	async setup(options, nuxt) {
-		const NODE_MODULES_PATH = __dirname.replace(new RegExp(`${SCOPE}.*`), '');
-		const COMPONENTS_DIRECTORY = join(NODE_MODULES_PATH, '.vue-transitions');
+		const COMPONENTS_DIRECTORY = join(nuxt.options.rootDir, 'node_modules', '.vue-transitions');
+		const isNuxt2 = isNuxtMajorVersion(2, nuxt);
+		const packageEntrypoint = `${MODULE_NAME}/${isNuxt2 ? 'vue2' : 'vue3'}`;
 
 		const resolver = createResolver(import.meta.url);
+		const packageRuntimeEntrypoint = resolver.resolve(
+			`../dist/${isNuxt2 ? 'vue2' : 'vue3'}/vue-transitions.js`,
+		);
+		nuxt.hook('prepare:types', ({ declarations }) => {
+			declarations.push(`import type {} from "${packageEntrypoint}";`);
+		});
 
 		nuxt.options.css ??= [];
 		nuxt.options.css.push(`${MODULE_NAME}/styles`);
 
 		// This is necessary because the package uses utilities
 		// that use modern syntax and have not been transpiled.
-		if (isNuxtMajorVersion(2, nuxt)) {
+		if (isNuxt2) {
 			nuxt.options.build.transpile.push('@morev/utils', 'ohash', MODULE_NAME);
 
 			/* @ts-expect-error -- Lack of compatibility with Nuxt 2 */
@@ -83,9 +89,10 @@ export default defineNuxtModule<PluginOptions>({
 			writeFileSync(
 				join(COMPONENTS_DIRECTORY, `${componentName}.vue`),
 				templateContents
-					.replaceAll('<%= options.propsDeclaration %>', propsDeclaration)
-					.replaceAll('<%= options.listenersDeclaration %>', isNuxtMajorVersion(2, nuxt) ? ' v-on="$listeners"' : '')
-					.replaceAll('<%= options.componentName %>', componentName),
+					.replaceAll('<%= options.propsDeclaration %>', () => propsDeclaration)
+					.replaceAll('<%= options.listenersDeclaration %>', () => isNuxt2 ? ' v-on="$listeners"' : '')
+					.replaceAll('<%= options.packageEntrypoint %>', () => packageRuntimeEntrypoint)
+					.replaceAll('<%= options.componentName %>', () => componentName),
 			);
 		});
 
@@ -96,3 +103,5 @@ export default defineNuxtModule<PluginOptions>({
 		});
 	},
 });
+
+export default module;

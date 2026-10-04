@@ -1,8 +1,9 @@
 import { copyFileSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'unbuild';
 
+// eslint-disable-next-line unicorn/prefer-import-meta-properties -- `import.meta.dirname` requires Node 20.11.
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const copyNuxtFile = (name) => copyFileSync(
@@ -28,14 +29,14 @@ await build('.', false, {
 	hooks: {
 		'build:done'(context) {
 			// Annoying messages, I know these files are inlined and this is intended.
-			context.warnings.forEach(w => {
+			context.warnings.forEach((w) => {
 				if (w.includes('Inlined') && w.match(/nuxt-module[/\\]module/)) {
 					context.warnings.delete(w);
 				}
 			});
 
 			// Move static files.
-			['template.vue', 'package.json'].forEach(file => copyNuxtFile(file));
+			['template.vue', 'package.json'].forEach((file) => copyNuxtFile(file));
 		},
 	},
 });

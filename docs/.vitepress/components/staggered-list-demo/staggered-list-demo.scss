@@ -1,0 +1,56 @@
+.staggered-list-demo {
+	$b: #{&};
+
+	margin-block: 24px;
+	padding: 24px;
+	background: var(--vp-c-bg-soft);
+	border: 1px solid var(--vp-c-divider);
+	border-radius: 12px;
+
+	&__field {
+		display: block grid;
+		gap: 6px;
+	}
+
+	&__label {
+		color: var(--vp-c-text-2);
+		font-size: 13px;
+		font-weight: 600;
+
+		#{$b}__field:focus-within & {
+			color: var(--vp-c-brand-1);
+		}
+	}
+
+	&__input {
+		inline-size: 100%;
+		min-block-size: 40px;
+		padding-inline: 12px;
+		color: var(--vp-c-text-1);
+		background: var(--vp-c-bg);
+		border: 1px solid var(--vp-c-divider);
+		border-radius: 8px;
+
+		&:focus-visible {
+			border-color: var(--vp-c-brand-1);
+			outline: 2px solid var(--vp-c-brand-soft);
+		}
+	}
+
+	&__list {
+		display: block flow;
+		margin: 20px 0 0 !important;
+		padding: 0 !important;
+		list-style: none !important;
+	}
+
+	&__item {
+		margin: 0;
+		margin-block-end: 8px;
+		padding: 10px 14px;
+		list-style: none !important;
+		background: var(--vp-c-bg);
+		border: 1px solid var(--vp-c-divider);
+		border-radius: 8px;
+	}
+}

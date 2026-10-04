@@ -1,0 +1,14 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"lib": ["ESNext", "DOM"],
+		"noEmit": true,
+		"rootDir": "../..",
+		"types": ["node", "@playwright/test"],
+	},
+	"include": [
+		"../../playwright.config.ts",
+		"./**/*.ts",
+	],
+	"exclude": [],
+}

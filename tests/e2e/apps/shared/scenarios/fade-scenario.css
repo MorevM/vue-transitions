@@ -1,0 +1,83 @@
+.fade-scenario {
+	inline-size: 520px;
+	padding: 32px;
+	background: #ffffff;
+	border: 1px solid #c7d2fe;
+	border-radius: 16px;
+	box-shadow: 0 20px 45px rgb(79 70 229 / .14);
+}
+
+.fade-scenario__header {
+	margin-block-end: 24px;
+}
+
+.fade-scenario__eyebrow {
+	margin: 0 0 8px;
+	color: #4f46e5;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+}
+
+.fade-scenario__title {
+	margin: 0;
+	font-size: 30px;
+	line-height: 1.15;
+}
+
+.fade-scenario__controls {
+	display: block flex;
+	gap: 12px;
+	margin-block-end: 20px;
+
+	button {
+		padding: 8px 16px;
+		color: #ffffff;
+		font: inherit;
+		background: #4f46e5;
+		border: 0;
+		border-radius: 8px;
+		cursor: pointer;
+
+		&:disabled {
+			opacity: .45;
+			cursor: not-allowed;
+		}
+	}
+}
+
+.fade-scenario__stage {
+	display: block grid;
+	min-block-size: 180px;
+	padding: 24px;
+	background:
+		repeating-linear-gradient(
+			135deg,
+			#ffffff 0 10px,
+			#cbd5e1 10px 20px
+		);
+	border: 1px dashed #818cf8;
+	border-radius: 12px;
+	place-items: center;
+}
+
+.fade-scenario__target-container {
+	box-sizing: content-box;
+	inline-size: 220px;
+	block-size: 104px;
+	border: 4px solid #dc2626;
+}
+
+.fade-scenario__target {
+	display: block grid;
+	inline-size: 100%;
+	block-size: 100%;
+	padding: 24px;
+	color: #ffffff;
+	font-size: 20px;
+	font-weight: 700;
+	background: #000000;
+	border-radius: 10px;
+	place-items: center;
+}

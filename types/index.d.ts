@@ -1,10 +1,14 @@
-/* eslint-disable import/exports-last */
+/* eslint-disable import-x/exports-last -- Shared public types are declared before their exports. */
 import type { PartialDeep } from '@morev/utils';
-import type { PluginObject, DefineComponent } from 'vue';
 
 // All components
 type TransitionComponents =
-	'TransitionFade' | 'TransitionSlide' | 'TransitionExpand' | 'TransitionScale';
+	'TransitionMixed' | 'TransitionFade' | 'TransitionSlide' | 'TransitionExpand' | 'TransitionScale';
+
+/**
+ * Policy controlling whether transitions are animated.
+ */
+export type MotionPolicy = 'system' | 'enabled' | 'disabled';
 
 // Common props
 type CommonProps = {
@@ -37,6 +41,14 @@ type CommonProps = {
 	mode: 'in-out' | 'out-in' | undefined;
 
 	/**
+	 * Controls whether transitions are animated. `system` disables motion when
+	 * `prefers-reduced-motion: reduce` matches.
+	 *
+	 * @default 'system'
+	 */
+	motion: MotionPolicy;
+
+	/**
 	 * Transition animation duration, ms.
 	 *
 	 * @default 300
@@ -49,6 +61,13 @@ type CommonProps = {
 	 * @default 0
 	 */
 	delay: number | { enter: number; leave: number };
+
+	/**
+	 * Additional delay between transition-group children entering or leaving in the same update, ms.
+	 *
+	 * @default 0
+	 */
+	stagger: number | { enter: number; leave: number };
 
 	/**
 	 * Transition animation easing. Should be a valid CSS transition timing function.
@@ -80,6 +99,9 @@ type CommonProps = {
 	noMove: boolean;
 };
 
+/**
+ * Lifecycle listeners exposed by transition components.
+ */
 export type Emits = {
 	/**
 	 * Called before the element is inserted into the DOM.
@@ -88,7 +110,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onBeforeEnter: (el: HTMLElement) => void;
+	onBeforeEnter: (el: HTMLElement) => void;
 
 	/**
 	 * Called one frame after the element is inserted.
@@ -98,7 +120,7 @@ export type Emits = {
 	 *
 	 * @returns        Nothing.
 	 */
-	 onEnter: (el: HTMLElement, done: () => void) => void;
+	onEnter: (el: HTMLElement, done: () => void) => void;
 
 	/**
 	 * Called when the enter transition has finished.
@@ -107,7 +129,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onAfterEnter: (el: HTMLElement) => void;
+	onAfterEnter: (el: HTMLElement) => void;
 
 	/**
 	 * Called if the enter transition was cancelled.
@@ -116,7 +138,44 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onEnterCancelled: (el: HTMLElement) => void;
+	onEnterCancelled: (el: HTMLElement) => void;
+
+	/**
+	 * Called before the initial appear transition starts.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns      Nothing.
+	 */
+	onBeforeAppear: (el: HTMLElement) => void;
+
+	/**
+	 * Called when the initial appear transition starts.
+	 *
+	 * @param   el     Animated element(s).
+	 * @param   done   Callback function used to indicate transition end.
+	 *
+	 * @returns        Nothing.
+	 */
+	onAppear: (el: HTMLElement, done: () => void) => void;
+
+	/**
+	 * Called when the initial appear transition has finished.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns      Nothing.
+	 */
+	onAfterAppear: (el: HTMLElement) => void;
+
+	/**
+	 * Called if the initial appear transition was cancelled.
+	 *
+	 * @param   el   Animated element(s).
+	 *
+	 * @returns      Nothing.
+	 */
+	onAppearCancelled: (el: HTMLElement) => void;
 
 	/**
 	 * Called before the leave hook.
@@ -125,7 +184,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onBeforeLeave: (el: HTMLElement) => void;
+	onBeforeLeave: (el: HTMLElement) => void;
 
 	/**
 	 * Called when the leave transition starts.
@@ -135,7 +194,7 @@ export type Emits = {
 	 *
 	 * @returns        Nothing.
 	 */
-	 onLeave: (el: HTMLElement, done: () => void) => void;
+	onLeave: (el: HTMLElement, done: () => void) => void;
 
 	/**
 	 * Called when the leave transition has finished and the element has been removed from the DOM.
@@ -144,7 +203,7 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onAfterLeave: (el: HTMLElement) => void;
+	onAfterLeave: (el: HTMLElement) => void;
 
 	/**
 	 * Called if the leave transition was cancelled. \
@@ -154,13 +213,94 @@ export type Emits = {
 	 *
 	 * @returns      Nothing.
 	 */
-	 onLeaveCancelled: (el: HTMLElement) => void;
+	onLeaveCancelled: (el: HTMLElement) => void;
 };
 
 // Unique props
 type PropExpandAxisValue = 'x' | 'y';
 type PropSlideOffsetValue = [number | string, number | string];
 type PropScaleAxisValue = 'x' | 'y' | 'both';
+
+type TransitionFadePreset = {
+	/**
+	 * Preset used for this transition phase.
+	 */
+	preset: 'fade';
+};
+
+type TransitionSlidePreset = {
+	/**
+	 * Preset used for this transition phase.
+	 */
+	preset: 'slide';
+
+	/**
+	 * Element offset by the x and y axes.
+	 *
+	 * @default [0, -16]
+	 */
+	offset?: PropSlideOffsetValue;
+};
+
+type TransitionExpandPreset = {
+	/**
+	 * Preset used for this transition phase.
+	 */
+	preset: 'expand';
+
+	/**
+	 * Axis by which the element is expanded.
+	 *
+	 * @default 'y'
+	 */
+	axis?: PropExpandAxisValue;
+};
+
+type TransitionScalePreset = {
+	/**
+	 * Preset used for this transition phase.
+	 */
+	preset: 'scale';
+
+	/**
+	 * Scale axis to animate.
+	 *
+	 * @default 'both'
+	 */
+	axis?: PropScaleAxisValue;
+
+	/**
+	 * CSS transform origin.
+	 *
+	 * @default '50% 50%'
+	 */
+	origin?: string;
+
+	/**
+	 * Scale value between `0` and `1`.
+	 *
+	 * @default 0
+	 */
+	scale?: number;
+};
+
+/**
+ * Configuration of one enter or leave transition phase.
+ */
+export type TransitionPreset =
+	TransitionFadePreset | TransitionSlidePreset | TransitionExpandPreset | TransitionScalePreset;
+
+type TransitionMixedProps = Partial<CommonProps> & {
+	/**
+	 * Preset used when an element enters.
+	 */
+	enter: TransitionPreset;
+
+	/**
+	 * Preset used when an element leaves.
+	 */
+	leave: TransitionPreset;
+};
 
 type UniqueProps = {
 	TransitionFade: never;
@@ -210,19 +350,27 @@ type UniqueProps = {
 	};
 };
 
-export type ComponentProps = PartialDeep<{
+type PresetComponentProps = {
 	TransitionFade: CommonProps;
 	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'];
 	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'];
 	TransitionScale: CommonProps & UniqueProps['TransitionScale'];
-}>;
+};
 
-export type ComponentPropsAndEmits = PartialDeep<{
+type PresetComponentPropsAndEmits = {
 	TransitionFade: CommonProps & Emits;
 	TransitionExpand: CommonProps & UniqueProps['TransitionExpand'] & Emits;
 	TransitionSlide: CommonProps & UniqueProps['TransitionSlide'] & Emits;
 	TransitionScale: CommonProps & UniqueProps['TransitionScale'] & Emits;
-}>;
+};
+
+export type ComponentProps = PartialDeep<PresetComponentProps> & {
+	TransitionMixed: TransitionMixedProps;
+};
+
+export type ComponentPropsAndEmits = PartialDeep<PresetComponentPropsAndEmits> & {
+	TransitionMixed: TransitionMixedProps & Partial<Emits>;
+};
 
 export type PluginOptions = Partial<{
 	/**
@@ -238,24 +386,3 @@ export type PluginOptions = Partial<{
 	 */
 	componentDefaultProps: PartialDeep<ComponentProps>;
 }>;
-
-/* eslint-disable @typescript-eslint/naming-convention */
-export declare const TransitionExpand: DefineComponent<ComponentPropsAndEmits['TransitionExpand']>;
-export declare const TransitionFade: DefineComponent<ComponentPropsAndEmits['TransitionFade']>;
-export declare const TransitionScale: DefineComponent<ComponentPropsAndEmits['TransitionScale']>;
-export declare const TransitionSlide: DefineComponent<ComponentPropsAndEmits['TransitionSlide']>;
-/* eslint-enable @typescript-eslint/naming-convention */
-
-export const plugin: (options?: PluginOptions) => PluginObject<PluginOptions>;
-
-declare const vueTransitions: () => PluginObject<PluginOptions>;
-export default vueTransitions;
-
-declare module 'vue' {
-	export interface GlobalComponents {
-		TransitionFade: typeof TransitionFade;
-		TransitionExpand: typeof TransitionExpand;
-		TransitionScale: typeof TransitionScale;
-		TransitionSlide: typeof TransitionSlide;
-	}
-}

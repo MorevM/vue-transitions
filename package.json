@@ -2,16 +2,18 @@
 	"name": "@morev/vue-transitions",
 	"description": "Shareable Vue transitions library",
 	"type": "module",
-	"version": "3.0.5",
+	"private": false,
 	"sideEffects": [
-		"*.css"
+		"**/*.css",
+		"dist/**/vue-transitions.browser.*"
 	],
-	"private": true,
+	"version": "4.0.0-rc.1",
+	"packageManager": "pnpm@12.6.0",
 	"workspaces": [
 		"builders/*"
 	],
 	"engines": {
-		"node": ">= 18.0.0"
+		"node": ">= 18.12.0"
 	},
 	"license": "MIT",
 	"publishConfig": {
@@ -43,45 +45,22 @@
 		"animation"
 	],
 	"files": [
-		"dist",
+		"dist/vue2",
+		"dist/vue3",
 		"vetur",
 		"types",
-		"bin",
-		"scripts",
 		"nuxt"
 	],
-	"bin": {
-		"vue-transitions-version-fix": "bin/fix.js",
-		"vue-transitions-version-switch": "bin/switch.js"
-	},
 	"exports": {
 		".": {
 			"import": {
-				"types": "./types/index.d.ts",
-				"default": "./dist/vue-transitions.js"
-			},
-			"require": {
-				"types": "./types/index.d.cts",
-				"default": "./dist/vue-transitions.cjs"
-			}
-		},
-		"./vue2": {
-			"import": {
-				"types": "./types/index.d.ts",
-				"default": "./dist/vue2/vue-transitions.js"
-			},
-			"require": {
-				"types": "./types/index.d.cts",
-				"default": "./dist/vue2/vue-transitions.cjs"
-			}
-		},
-		"./vue3": {
-			"import": {
-				"types": "./types/index.d.ts",
+				"types": "./types/vue3.d.ts",
+				"browser": "./dist/vue3/vue-transitions.browser.js",
 				"default": "./dist/vue3/vue-transitions.js"
 			},
 			"require": {
-				"types": "./types/index.d.cts",
+				"types": "./types/vue3.d.cts",
+				"browser": "./dist/vue3/vue-transitions.browser.cjs",
 				"default": "./dist/vue3/vue-transitions.cjs"
 			}
 		},
@@ -95,30 +74,64 @@
 				"default": "./nuxt/module.cjs"
 			}
 		},
-		"./styles": "./dist/index.css"
+		"./styles": {
+			"types": "./types/styles.d.ts",
+			"default": "./dist/vue3/index.css"
+		},
+		"./vue2": {
+			"import": {
+				"types": "./types/vue2.d.ts",
+				"browser": "./dist/vue2/vue-transitions.browser.js",
+				"default": "./dist/vue2/vue-transitions.js"
+			},
+			"require": {
+				"types": "./types/vue2.d.cts",
+				"browser": "./dist/vue2/vue-transitions.browser.cjs",
+				"default": "./dist/vue2/vue-transitions.cjs"
+			}
+		},
+		"./vue3": {
+			"import": {
+				"types": "./types/vue3.d.ts",
+				"browser": "./dist/vue3/vue-transitions.browser.js",
+				"default": "./dist/vue3/vue-transitions.js"
+			},
+			"require": {
+				"types": "./types/vue3.d.cts",
+				"browser": "./dist/vue3/vue-transitions.browser.cjs",
+				"default": "./dist/vue3/vue-transitions.cjs"
+			}
+		}
 	},
-	"main": "./dist/vue-transitions.cjs",
-	"module": "./dist/vue-transitions.js",
-	"types": "./types/index.d.ts",
+	"main": "./dist/vue3/vue-transitions.cjs",
+	"module": "./dist/vue3/vue-transitions.browser.js",
+	"types": "./types/vue3.d.ts",
 	"scripts": {
-		"prepack": "node ./scripts/prepack.js",
-		"postpublish": "node ./scripts/postpublish.js",
-		"dev": "yarn workspace vue2-builder dev",
-		"build:playground": "yarn workspace vue2-builder playground",
-		"build:vue2": "yarn workspace vue2-builder build",
-		"build:vue3": "yarn workspace vue3-builder build",
+		"dev": "pnpm docs:dev",
+		"build:vue2": "pnpm --filter vue2-builder build",
+		"build:vue3": "pnpm --filter vue3-builder build",
+		"build:browser-entrypoints": "node ./scripts/browser-entrypoints.js",
+		"build:styles": "node ./scripts/verify-shared-styles.js",
 		"build:nuxt": "node ./scripts/nuxt-module-build.js",
-		"build": "yarn build:playground && yarn build:vue2 && yarn build:vue3 && yarn build:nuxt && node ./scripts/postinstall.js",
-		"prepare": "lefthook install && yarn more-sass-clone",
-		"more-sass-clone": "rm -rf .more-sass && cp -r ./node_modules/more-sass ./.more-sass",
-		"release": "release-it --disable-metrics",
-		"lint": "yarn lint:eslint && yarn lint:stylelint",
-		"lint:fix": "yarn lint:eslint:fix && yarn lint:stylelint:fix",
-		"lint:eslint": "eslint \"**/*.{js,ts,vue,json,json5,jsonc,yml,yaml,md}\"",
-		"lint:eslint:fix": "eslint \"**/*.{js,ts,vue,json,json5,jsonc,yml,yaml}\" --fix",
+		"build": "pnpm run build:vue2 && pnpm run build:vue3 && pnpm run build:browser-entrypoints && pnpm run build:styles && pnpm run build:nuxt",
+		"docs:dev": "pnpm --filter @morev/vue-transitions-docs dev",
+		"docs:build": "pnpm --filter @morev/vue-transitions-docs build",
+		"docs:preview": "pnpm --filter @morev/vue-transitions-docs preview",
+		"docs:typecheck": "pnpm --filter @morev/vue-transitions-docs typecheck",
+		"prepare": "lefthook install",
+		"release": "release-it",
+		"lint": "pnpm run lint:eslint && pnpm run lint:stylelint",
+		"lint:fix": "pnpm run lint:eslint:fix && pnpm run lint:stylelint:fix",
+		"lint:eslint": "eslint .",
+		"lint:eslint:fix": "eslint . --fix",
 		"lint:stylelint": "stylelint \"**/*.{css,scss}\" --allow-empty-input",
 		"lint:stylelint:fix": "stylelint \"**/*.{css,scss}\" --fix --allow-empty-input",
 		"test": "vitest",
+		"test:consumers": "pnpm run build && node ./scripts/test-consumers.mjs",
+		"test:e2e": "pnpm run typecheck:e2e && playwright test",
+		"test:e2e:update": "pnpm run typecheck:e2e && playwright test --update-snapshots",
+		"test:e2e:ui": "pnpm run typecheck:e2e && playwright test --ui",
+		"typecheck:e2e": "tsc --noEmit --project tests/e2e/tsconfig.json",
 		"test:dev": "vitest --watch"
 	},
 	"peerDependencies": {
@@ -129,22 +142,27 @@
 		"@nuxt/kit": "^3.13.2"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^21.2.3",
+		"@fontsource/dejavu-sans": "^5.3.0",
 		"@morev/commitlint-config": "^0.2.2",
-		"@morev/eslint-config": "^29.0.0",
-		"@morev/stylelint-config": "^5.3.0",
+		"@morev/eslint-config": "^43.0.0",
+		"@morev/stylelint-config": "^9.0.2",
 		"@nuxt/schema": "^3.13.2",
+		"@playwright/test": "~1.62.1",
 		"@release-it/conventional-changelog": "^8.0.1",
-		"eslint": "^8.57.1",
-		"lefthook": "^1.8.2",
-		"postcss": "^8.4.47",
-		"release-it": "^17.1.1",
-		"sass": "^1.71.1",
-		"stylelint": "^16.2.1",
+		"@types/node": "^24.19.0",
+		"eslint": "^10.11.0",
+		"lefthook": "^2.1.16",
+		"postcss": "^8.5.28",
+		"release-it": "^21.1.0",
+		"sass": "^1.105.1",
+		"stylelint": "^17.15.0",
 		"terser": "^5.29.1",
-		"typescript": "^5.4.2",
-		"unbuild": "^2.0.0",
-		"vite": "^5.1.6",
-		"vitest": "^1.6.0",
+		"typescript": "^6.0.3",
+		"unbuild": "^3.6.1",
+		"vite": "^8.3.2",
+		"vitest": "^5.0.3",
+		"vue": "^2.7.16",
 		"vue-types": "^4.2.1"
 	},
 	"vetur": {
