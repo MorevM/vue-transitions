@@ -35,8 +35,8 @@ await build('.', false, {
 				}
 			});
 
-			// Move static files.
-			['template.vue', 'package.json'].forEach((file) => copyNuxtFile(file));
+			// Let Nuxt resolve the public subpath from the root package exports.
+			copyNuxtFile('template.vue');
 		},
 	},
 });
