@@ -141,6 +141,14 @@ try {
 		);
 		await setPackageTarball(fixtureDirectory, packageData.filename);
 		run('pnpm', ['install', '--frozen-lockfile=false'], fixtureDirectory);
+		if (fixtureName === 'nuxt3') {
+			run('pnpm', ['exec', 'nuxt', 'prepare'], fixtureDirectory);
+			const declarations = await readFile(join(fixtureDirectory, '.nuxt/types/schema.d.ts'), 'utf8');
+			assert.ok(
+				declarations.includes(`typeof import("${PACKAGE_NAME}/nuxt").default`),
+				'Nuxt types must import the public module entrypoint',
+			);
+		}
 		run('pnpm', ['run', 'check'], fixtureDirectory);
 		if (fixtureName === 'vue2' || fixtureName === 'vue3') {
 			verifyBrowserRequireResolution(fixtureName, fixtureDirectory);
